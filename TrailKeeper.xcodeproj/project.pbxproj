@@ -13,6 +13,9 @@
 		2615C1241BCAE7660065B62C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2615C1221BCAE7660065B62C /* Main.storyboard */; };
 		2615C1261BCAE7660065B62C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2615C1251BCAE7660065B62C /* Assets.xcassets */; };
 		2615C1291BCAE7660065B62C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2615C1271BCAE7660065B62C /* LaunchScreen.storyboard */; };
+		2615C13B1BCAED6A0065B62C /* ModelTrails.m in Sources */ = {isa = PBXBuildFile; fileRef = 2615C13A1BCAED6A0065B62C /* ModelTrails.m */; settings = {ASSET_TAGS = (); }; };
+		2615C13E1BCAED890065B62C /* ModelTrailComments.m in Sources */ = {isa = PBXBuildFile; fileRef = 2615C13D1BCAED890065B62C /* ModelTrailComments.m */; settings = {ASSET_TAGS = (); }; };
+		2615C1411BCAED9C0065B62C /* ModelTrailStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 2615C1401BCAED9B0065B62C /* ModelTrailStatus.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,12 @@
 		2615C1251BCAE7660065B62C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2615C1281BCAE7660065B62C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2615C12A1BCAE7660065B62C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2615C1391BCAED6A0065B62C /* ModelTrails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelTrails.h; sourceTree = "<group>"; };
+		2615C13A1BCAED6A0065B62C /* ModelTrails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelTrails.m; sourceTree = "<group>"; };
+		2615C13C1BCAED890065B62C /* ModelTrailComments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelTrailComments.h; sourceTree = "<group>"; };
+		2615C13D1BCAED890065B62C /* ModelTrailComments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelTrailComments.m; sourceTree = "<group>"; };
+		2615C13F1BCAED9B0065B62C /* ModelTrailStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelTrailStatus.h; sourceTree = "<group>"; };
+		2615C1401BCAED9B0065B62C /* ModelTrailStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelTrailStatus.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +156,12 @@
 		2615C1381BCAEC740065B62C /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				2615C1391BCAED6A0065B62C /* ModelTrails.h */,
+				2615C13A1BCAED6A0065B62C /* ModelTrails.m */,
+				2615C13C1BCAED890065B62C /* ModelTrailComments.h */,
+				2615C13D1BCAED890065B62C /* ModelTrailComments.m */,
+				2615C13F1BCAED9B0065B62C /* ModelTrailStatus.h */,
+				2615C1401BCAED9B0065B62C /* ModelTrailStatus.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -221,8 +236,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2615C13B1BCAED6A0065B62C /* ModelTrails.m in Sources */,
 				2615C1211BCAE7660065B62C /* Home.m in Sources */,
+				2615C1411BCAED9C0065B62C /* ModelTrailStatus.m in Sources */,
 				2615C11E1BCAE7660065B62C /* AppDelegate.m in Sources */,
+				2615C13E1BCAED890065B62C /* ModelTrailComments.m in Sources */,
 				2615C11B1BCAE7660065B62C /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
