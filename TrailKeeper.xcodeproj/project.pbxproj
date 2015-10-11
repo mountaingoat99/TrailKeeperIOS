@@ -16,9 +16,12 @@
 		2615C13B1BCAED6A0065B62C /* ModelTrails.m in Sources */ = {isa = PBXBuildFile; fileRef = 2615C13A1BCAED6A0065B62C /* ModelTrails.m */; settings = {ASSET_TAGS = (); }; };
 		2615C13E1BCAED890065B62C /* ModelTrailComments.m in Sources */ = {isa = PBXBuildFile; fileRef = 2615C13D1BCAED890065B62C /* ModelTrailComments.m */; settings = {ASSET_TAGS = (); }; };
 		2615C1411BCAED9C0065B62C /* ModelTrailStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 2615C1401BCAED9B0065B62C /* ModelTrailStatus.m */; settings = {ASSET_TAGS = (); }; };
+		26751E991BCB24BA002C3498 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 26751E981BCB24BA002C3498 /* libsqlite3.tbd */; };
+		AD129E6EA046676355810966 /* libPods-TrailKeeper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 149CB766E1EA3B4629A01B39 /* libPods-TrailKeeper.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		149CB766E1EA3B4629A01B39 /* libPods-TrailKeeper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TrailKeeper.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2615C1161BCAE7660065B62C /* TrailKeeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrailKeeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2615C11A1BCAE7660065B62C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2615C11C1BCAE7660065B62C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -35,6 +38,9 @@
 		2615C13D1BCAED890065B62C /* ModelTrailComments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelTrailComments.m; sourceTree = "<group>"; };
 		2615C13F1BCAED9B0065B62C /* ModelTrailStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelTrailStatus.h; sourceTree = "<group>"; };
 		2615C1401BCAED9B0065B62C /* ModelTrailStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelTrailStatus.m; sourceTree = "<group>"; };
+		26751E981BCB24BA002C3498 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		2F888E95CE45AFE1354158EF /* Pods-TrailKeeper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrailKeeper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TrailKeeper/Pods-TrailKeeper.debug.xcconfig"; sourceTree = "<group>"; };
+		78EEF1E93A254E3A42D0AC7D /* Pods-TrailKeeper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrailKeeper.release.xcconfig"; path = "Pods/Target Support Files/Pods-TrailKeeper/Pods-TrailKeeper.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +48,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26751E991BCB24BA002C3498 /* libsqlite3.tbd in Frameworks */,
+				AD129E6EA046676355810966 /* libPods-TrailKeeper.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,6 +61,8 @@
 			children = (
 				2615C1181BCAE7660065B62C /* TrailKeeper */,
 				2615C1171BCAE7660065B62C /* Products */,
+				DA81B6D8C2CD2D0BA67C0168 /* Pods */,
+				8E2C8ACE4F64BE6172923985 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -166,6 +176,24 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		8E2C8ACE4F64BE6172923985 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				26751E981BCB24BA002C3498 /* libsqlite3.tbd */,
+				149CB766E1EA3B4629A01B39 /* libPods-TrailKeeper.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DA81B6D8C2CD2D0BA67C0168 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2F888E95CE45AFE1354158EF /* Pods-TrailKeeper.debug.xcconfig */,
+				78EEF1E93A254E3A42D0AC7D /* Pods-TrailKeeper.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -173,9 +201,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2615C12D1BCAE7660065B62C /* Build configuration list for PBXNativeTarget "TrailKeeper" */;
 			buildPhases = (
+				902E6004BB1F0B0A6B55C050 /* Check Pods Manifest.lock */,
 				2615C1121BCAE7660065B62C /* Sources */,
 				2615C1131BCAE7660065B62C /* Frameworks */,
 				2615C1141BCAE7660065B62C /* Resources */,
+				0D8384A6A4739BE42E7DEA11 /* Embed Pods Frameworks */,
+				FEA3BD2B41FC9D8276CB8439 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -230,6 +261,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0D8384A6A4739BE42E7DEA11 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TrailKeeper/Pods-TrailKeeper-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		902E6004BB1F0B0A6B55C050 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FEA3BD2B41FC9D8276CB8439 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TrailKeeper/Pods-TrailKeeper-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2615C1121BCAE7660065B62C /* Sources */ = {
@@ -351,10 +430,15 @@
 		};
 		2615C12E1BCAE7660065B62C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2F888E95CE45AFE1354158EF /* Pods-TrailKeeper.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = TrailKeeper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.singlecog.TrailKeeper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -362,10 +446,15 @@
 		};
 		2615C12F1BCAE7660065B62C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 78EEF1E93A254E3A42D0AC7D /* Pods-TrailKeeper.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = TrailKeeper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.singlecog.TrailKeeper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -390,6 +479,7 @@
 				2615C12F1BCAE7660065B62C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
