@@ -19,6 +19,9 @@
 		26751E991BCB24BA002C3498 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 26751E981BCB24BA002C3498 /* libsqlite3.tbd */; };
 		26A4C10D1BCB3C8A00524635 /* offline_trails.db in Resources */ = {isa = PBXBuildFile; fileRef = 26A4C10C1BCB3C8A00524635 /* offline_trails.db */; settings = {ASSET_TAGS = (); }; };
 		26A4C1101BCB3D7800524635 /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4C10F1BCB3D7800524635 /* DBManager.m */; settings = {ASSET_TAGS = (); }; };
+		26A4C1131BCB407100524635 /* NewTrailDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4C1121BCB407100524635 /* NewTrailDB.m */; settings = {ASSET_TAGS = (); }; };
+		26A4C11C1BCB412300524635 /* TrailCommentDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4C11B1BCB412300524635 /* TrailCommentDB.m */; settings = {ASSET_TAGS = (); }; };
+		26A4C11F1BCB414900524635 /* TrailStatusDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4C11E1BCB414900524635 /* TrailStatusDB.m */; settings = {ASSET_TAGS = (); }; };
 		AD129E6EA046676355810966 /* libPods-TrailKeeper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 149CB766E1EA3B4629A01B39 /* libPods-TrailKeeper.a */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +47,12 @@
 		26A4C10C1BCB3C8A00524635 /* offline_trails.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = offline_trails.db; path = ../../offline_trails.db; sourceTree = "<group>"; };
 		26A4C10E1BCB3D7800524635 /* DBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBManager.h; sourceTree = "<group>"; };
 		26A4C10F1BCB3D7800524635 /* DBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBManager.m; sourceTree = "<group>"; };
+		26A4C1111BCB407100524635 /* NewTrailDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewTrailDB.h; sourceTree = "<group>"; };
+		26A4C1121BCB407100524635 /* NewTrailDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewTrailDB.m; sourceTree = "<group>"; };
+		26A4C11A1BCB412300524635 /* TrailCommentDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrailCommentDB.h; sourceTree = "<group>"; };
+		26A4C11B1BCB412300524635 /* TrailCommentDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrailCommentDB.m; sourceTree = "<group>"; };
+		26A4C11D1BCB414900524635 /* TrailStatusDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrailStatusDB.h; sourceTree = "<group>"; };
+		26A4C11E1BCB414900524635 /* TrailStatusDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrailStatusDB.m; sourceTree = "<group>"; };
 		2F888E95CE45AFE1354158EF /* Pods-TrailKeeper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrailKeeper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TrailKeeper/Pods-TrailKeeper.debug.xcconfig"; sourceTree = "<group>"; };
 		78EEF1E93A254E3A42D0AC7D /* Pods-TrailKeeper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrailKeeper.release.xcconfig"; path = "Pods/Target Support Files/Pods-TrailKeeper/Pods-TrailKeeper.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -139,6 +148,12 @@
 			children = (
 				26A4C10E1BCB3D7800524635 /* DBManager.h */,
 				26A4C10F1BCB3D7800524635 /* DBManager.m */,
+				26A4C1111BCB407100524635 /* NewTrailDB.h */,
+				26A4C1121BCB407100524635 /* NewTrailDB.m */,
+				26A4C11A1BCB412300524635 /* TrailCommentDB.h */,
+				26A4C11B1BCB412300524635 /* TrailCommentDB.m */,
+				26A4C11D1BCB414900524635 /* TrailStatusDB.h */,
+				26A4C11E1BCB414900524635 /* TrailStatusDB.m */,
 			);
 			name = Database;
 			sourceTree = "<group>";
@@ -327,8 +342,11 @@
 				26A4C1101BCB3D7800524635 /* DBManager.m in Sources */,
 				2615C13B1BCAED6A0065B62C /* ModelTrails.m in Sources */,
 				2615C1211BCAE7660065B62C /* Home.m in Sources */,
+				26A4C1131BCB407100524635 /* NewTrailDB.m in Sources */,
 				2615C1411BCAED9C0065B62C /* ModelTrailStatus.m in Sources */,
 				2615C11E1BCAE7660065B62C /* AppDelegate.m in Sources */,
+				26A4C11F1BCB414900524635 /* TrailStatusDB.m in Sources */,
+				26A4C11C1BCB412300524635 /* TrailCommentDB.m in Sources */,
 				2615C13E1BCAED890065B62C /* ModelTrailComments.m in Sources */,
 				2615C11B1BCAE7660065B62C /* main.m in Sources */,
 			);
