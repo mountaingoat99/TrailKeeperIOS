@@ -22,6 +22,7 @@
 		26A4C1131BCB407100524635 /* NewTrailDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4C1121BCB407100524635 /* NewTrailDB.m */; settings = {ASSET_TAGS = (); }; };
 		26A4C11C1BCB412300524635 /* TrailCommentDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4C11B1BCB412300524635 /* TrailCommentDB.m */; settings = {ASSET_TAGS = (); }; };
 		26A4C11F1BCB414900524635 /* TrailStatusDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4C11E1BCB414900524635 /* TrailStatusDB.m */; settings = {ASSET_TAGS = (); }; };
+		26A4C1221BCB41EF00524635 /* AlertControllerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4C1211BCB41EF00524635 /* AlertControllerHelper.m */; settings = {ASSET_TAGS = (); }; };
 		AD129E6EA046676355810966 /* libPods-TrailKeeper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 149CB766E1EA3B4629A01B39 /* libPods-TrailKeeper.a */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +54,8 @@
 		26A4C11B1BCB412300524635 /* TrailCommentDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrailCommentDB.m; sourceTree = "<group>"; };
 		26A4C11D1BCB414900524635 /* TrailStatusDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrailStatusDB.h; sourceTree = "<group>"; };
 		26A4C11E1BCB414900524635 /* TrailStatusDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrailStatusDB.m; sourceTree = "<group>"; };
+		26A4C1201BCB41EF00524635 /* AlertControllerHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertControllerHelper.h; sourceTree = "<group>"; };
+		26A4C1211BCB41EF00524635 /* AlertControllerHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertControllerHelper.m; sourceTree = "<group>"; };
 		2F888E95CE45AFE1354158EF /* Pods-TrailKeeper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrailKeeper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TrailKeeper/Pods-TrailKeeper.debug.xcconfig"; sourceTree = "<group>"; };
 		78EEF1E93A254E3A42D0AC7D /* Pods-TrailKeeper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrailKeeper.release.xcconfig"; path = "Pods/Target Support Files/Pods-TrailKeeper/Pods-TrailKeeper.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -161,6 +164,8 @@
 		2615C1341BCAEC4D0065B62C /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				26A4C1201BCB41EF00524635 /* AlertControllerHelper.h */,
+				26A4C1211BCB41EF00524635 /* AlertControllerHelper.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -345,6 +350,7 @@
 				26A4C1131BCB407100524635 /* NewTrailDB.m in Sources */,
 				2615C1411BCAED9C0065B62C /* ModelTrailStatus.m in Sources */,
 				2615C11E1BCAE7660065B62C /* AppDelegate.m in Sources */,
+				26A4C1221BCB41EF00524635 /* AlertControllerHelper.m in Sources */,
 				26A4C11F1BCB414900524635 /* TrailStatusDB.m in Sources */,
 				26A4C11C1BCB412300524635 /* TrailCommentDB.m in Sources */,
 				2615C13E1BCAED890065B62C /* ModelTrailComments.m in Sources */,
