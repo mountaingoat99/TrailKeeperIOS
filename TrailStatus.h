@@ -8,8 +8,12 @@
 
 #import <Parse/Parse.h>
 
-@interface TrailStatus : PFObject<PFSubclassing>
+@interface TrailStatus : PFObject<PFSubclassing, NSCoding>
 
 + (NSString *)parseClassName;
+
+@property (nonatomic, strong) NSString *trailName;
+@property (nonatomic, strong) NSString *updateStatusPin;
+@property (nonatomic, strong) NSArray *authorizedUserNames;
 
 @end

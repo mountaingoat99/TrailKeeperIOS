@@ -11,6 +11,10 @@
 
 @implementation TrailStatus
 
+@dynamic trailName;
+@dynamic updateStatusPin;
+@dynamic authorizedUserNames;
+
 +(void)load {
     [self registerSubclass];
 }

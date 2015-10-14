@@ -8,8 +8,11 @@
 
 #import <Parse/Parse.h>
 
-@interface Installation : PFObject<PFSubclassing>
+@interface Installation : PFInstallation<PFSubclassing, NSCoding>
 
 + (NSString *)parseClassName;
+
+@property (nonatomic, strong) NSArray *user;
+@property (nonatomic, strong) NSArray *userName;
 
 @end

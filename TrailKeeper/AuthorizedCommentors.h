@@ -8,8 +8,12 @@
 
 #import <Parse/Parse.h>
 
-@interface AuthorizedCommentors : PFObject<PFSubclassing>
+@interface AuthorizedCommentors : PFObject<PFSubclassing, NSCoding>
 
 + (NSString *)parseClassName;
+
+@property (nonatomic, strong) NSString *userObjectId;
+@property (nonatomic, strong) NSString *userName;
+@property (nonatomic) BOOL canComment;
 
 @end

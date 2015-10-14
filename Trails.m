@@ -11,6 +11,18 @@
 
 @implementation Trails
 
+@dynamic trailName;
+@dynamic status;
+@dynamic mapLink;
+@dynamic city;
+@dynamic state;
+@dynamic country;
+@dynamic geoLocation;
+@dynamic privateTrail;
+@dynamic skillEasy;
+@dynamic skillMedium;
+@dynamic skillHard;
+
 +(void)load {
     [self registerSubclass];
 }

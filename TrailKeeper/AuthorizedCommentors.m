@@ -11,6 +11,10 @@
 
 @implementation AuthorizedCommentors
 
+@dynamic userObjectId;
+@dynamic userName;
+@dynamic canComment;
+
 +(void)load {
     [self registerSubclass];
 }

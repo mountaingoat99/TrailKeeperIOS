@@ -11,6 +11,12 @@
 
 @implementation Comments
 
+@dynamic trailObjectId;
+@dynamic trailName;
+@dynamic userObjectId;
+@dynamic userName;
+@dynamic comment;
+
 +(void)load {
     [self registerSubclass];
 }

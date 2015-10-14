@@ -11,6 +11,8 @@
 
 @implementation User
 
+@dynamic emailVerified;
+
 +(void)load {
     [self registerSubclass];
 }

@@ -11,6 +11,9 @@
 
 @implementation Installation
 
+@dynamic user;
+@dynamic userName;
+
 +(void)load {
     [self registerSubclass];
 }

@@ -8,8 +8,10 @@
 
 #import <Parse/Parse.h>
 
-@interface User : PFObject<PFSubclassing>
+@interface User : PFUser<PFSubclassing, NSCoding>
 
 + (NSString *)parseClassName;
+
+@property (nonatomic) BOOL emailVerified;
 
 @end
