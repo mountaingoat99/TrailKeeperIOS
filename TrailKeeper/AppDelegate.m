@@ -17,6 +17,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [Parse enableLocalDatastore];
+    [Trails registerSubclass];
+    [TrailStatus registerSubclass];
+    [User registerSubclass];
+    [AuthorizedCommentors registerSubclass];
+    [Comments registerSubclass];
+    [Installation registerSubclass];
     [Parse setApplicationId:@"uU8JsEF9eLEYcFzUrwqmrWzblj65IoQ0G6S4DkI8" clientKey:@"4S7u2tedpm9yeE6DR3J6mDyJHHpgmUgktu6Q6QvD"];
     
     // Override point for customization after application launch.

@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
+#import "Trails.h"
+#import "TrailStatus.h"
+#import "User.h"
+#import "AuthorizedCommentors.h"
+#import "Comments.h"
+#import "Installation.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

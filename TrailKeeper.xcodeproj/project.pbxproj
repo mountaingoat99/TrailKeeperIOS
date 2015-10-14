@@ -13,9 +13,6 @@
 		2615C1241BCAE7660065B62C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2615C1221BCAE7660065B62C /* Main.storyboard */; };
 		2615C1261BCAE7660065B62C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2615C1251BCAE7660065B62C /* Assets.xcassets */; };
 		2615C1291BCAE7660065B62C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2615C1271BCAE7660065B62C /* LaunchScreen.storyboard */; };
-		2615C13B1BCAED6A0065B62C /* ModelTrails.m in Sources */ = {isa = PBXBuildFile; fileRef = 2615C13A1BCAED6A0065B62C /* ModelTrails.m */; settings = {ASSET_TAGS = (); }; };
-		2615C13E1BCAED890065B62C /* ModelTrailComments.m in Sources */ = {isa = PBXBuildFile; fileRef = 2615C13D1BCAED890065B62C /* ModelTrailComments.m */; settings = {ASSET_TAGS = (); }; };
-		2615C1411BCAED9C0065B62C /* ModelTrailStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 2615C1401BCAED9B0065B62C /* ModelTrailStatus.m */; settings = {ASSET_TAGS = (); }; };
 		26751E991BCB24BA002C3498 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 26751E981BCB24BA002C3498 /* libsqlite3.tbd */; };
 		26A4C10D1BCB3C8A00524635 /* offline_trails.db in Resources */ = {isa = PBXBuildFile; fileRef = 26A4C10C1BCB3C8A00524635 /* offline_trails.db */; settings = {ASSET_TAGS = (); }; };
 		26A4C1101BCB3D7800524635 /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4C10F1BCB3D7800524635 /* DBManager.m */; settings = {ASSET_TAGS = (); }; };
@@ -39,6 +36,12 @@
 		26A4C14C1BCB468900524635 /* AsyncSaveOfflineStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4C14B1BCB468900524635 /* AsyncSaveOfflineStatus.m */; settings = {ASSET_TAGS = (); }; };
 		26A4C14F1BCB469D00524635 /* AsyncSaveOfflineTrail.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4C14E1BCB469D00524635 /* AsyncSaveOfflineTrail.m */; settings = {ASSET_TAGS = (); }; };
 		26A4C1521BCB46AF00524635 /* AsyncLoadTrailLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4C1511BCB46AF00524635 /* AsyncLoadTrailLocations.m */; settings = {ASSET_TAGS = (); }; };
+		26AAB1CA1BCDDE8B0084B67D /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 26AAB1C91BCDDE8B0084B67D /* User.m */; settings = {ASSET_TAGS = (); }; };
+		26AAB1CD1BCDDEB60084B67D /* AuthorizedCommentors.m in Sources */ = {isa = PBXBuildFile; fileRef = 26AAB1CC1BCDDEB60084B67D /* AuthorizedCommentors.m */; settings = {ASSET_TAGS = (); }; };
+		26AAB1D01BCDDEC20084B67D /* Comments.m in Sources */ = {isa = PBXBuildFile; fileRef = 26AAB1CF1BCDDEC20084B67D /* Comments.m */; settings = {ASSET_TAGS = (); }; };
+		26AAB1D31BCDDECE0084B67D /* Trails.m in Sources */ = {isa = PBXBuildFile; fileRef = 26AAB1D21BCDDECE0084B67D /* Trails.m */; settings = {ASSET_TAGS = (); }; };
+		26AAB1D61BCDDEDC0084B67D /* TrailStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 26AAB1D51BCDDEDC0084B67D /* TrailStatus.m */; settings = {ASSET_TAGS = (); }; };
+		26AAB1D91BCDE0E70084B67D /* Installation.m in Sources */ = {isa = PBXBuildFile; fileRef = 26AAB1D81BCDE0E70084B67D /* Installation.m */; settings = {ASSET_TAGS = (); }; };
 		AD129E6EA046676355810966 /* libPods-TrailKeeper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 149CB766E1EA3B4629A01B39 /* libPods-TrailKeeper.a */; };
 /* End PBXBuildFile section */
 
@@ -54,12 +57,6 @@
 		2615C1251BCAE7660065B62C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2615C1281BCAE7660065B62C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2615C12A1BCAE7660065B62C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2615C1391BCAED6A0065B62C /* ModelTrails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelTrails.h; sourceTree = "<group>"; };
-		2615C13A1BCAED6A0065B62C /* ModelTrails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelTrails.m; sourceTree = "<group>"; };
-		2615C13C1BCAED890065B62C /* ModelTrailComments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelTrailComments.h; sourceTree = "<group>"; };
-		2615C13D1BCAED890065B62C /* ModelTrailComments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelTrailComments.m; sourceTree = "<group>"; };
-		2615C13F1BCAED9B0065B62C /* ModelTrailStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelTrailStatus.h; sourceTree = "<group>"; };
-		2615C1401BCAED9B0065B62C /* ModelTrailStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelTrailStatus.m; sourceTree = "<group>"; };
 		26751E981BCB24BA002C3498 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		26A4C10C1BCB3C8A00524635 /* offline_trails.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = offline_trails.db; path = ../../offline_trails.db; sourceTree = "<group>"; };
 		26A4C10E1BCB3D7800524635 /* DBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBManager.h; sourceTree = "<group>"; };
@@ -104,6 +101,18 @@
 		26A4C14E1BCB469D00524635 /* AsyncSaveOfflineTrail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncSaveOfflineTrail.m; sourceTree = "<group>"; };
 		26A4C1501BCB46AF00524635 /* AsyncLoadTrailLocations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncLoadTrailLocations.h; sourceTree = "<group>"; };
 		26A4C1511BCB46AF00524635 /* AsyncLoadTrailLocations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncLoadTrailLocations.m; sourceTree = "<group>"; };
+		26AAB1C81BCDDE8B0084B67D /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		26AAB1C91BCDDE8B0084B67D /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		26AAB1CB1BCDDEB60084B67D /* AuthorizedCommentors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthorizedCommentors.h; sourceTree = "<group>"; };
+		26AAB1CC1BCDDEB60084B67D /* AuthorizedCommentors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthorizedCommentors.m; sourceTree = "<group>"; };
+		26AAB1CE1BCDDEC20084B67D /* Comments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comments.h; sourceTree = "<group>"; };
+		26AAB1CF1BCDDEC20084B67D /* Comments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comments.m; sourceTree = "<group>"; };
+		26AAB1D11BCDDECE0084B67D /* Trails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Trails.h; path = ../Trails.h; sourceTree = "<group>"; };
+		26AAB1D21BCDDECE0084B67D /* Trails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Trails.m; path = ../Trails.m; sourceTree = "<group>"; };
+		26AAB1D41BCDDEDC0084B67D /* TrailStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TrailStatus.h; path = ../TrailStatus.h; sourceTree = "<group>"; };
+		26AAB1D51BCDDEDC0084B67D /* TrailStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TrailStatus.m; path = ../TrailStatus.m; sourceTree = "<group>"; };
+		26AAB1D71BCDE0E70084B67D /* Installation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Installation.h; sourceTree = "<group>"; };
+		26AAB1D81BCDE0E70084B67D /* Installation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Installation.m; sourceTree = "<group>"; };
 		2F888E95CE45AFE1354158EF /* Pods-TrailKeeper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrailKeeper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TrailKeeper/Pods-TrailKeeper.debug.xcconfig"; sourceTree = "<group>"; };
 		78EEF1E93A254E3A42D0AC7D /* Pods-TrailKeeper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrailKeeper.release.xcconfig"; path = "Pods/Target Support Files/Pods-TrailKeeper/Pods-TrailKeeper.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -144,7 +153,6 @@
 			isa = PBXGroup;
 			children = (
 				2615C1381BCAEC740065B62C /* Models */,
-				2615C1371BCAEC670065B62C /* ParseObjects */,
 				2615C1361BCAEC5B0065B62C /* AsyncTasks */,
 				2615C1351BCAEC540065B62C /* Utils */,
 				2615C1341BCAEC4D0065B62C /* Helpers */,
@@ -264,22 +272,21 @@
 			name = AsyncTasks;
 			sourceTree = "<group>";
 		};
-		2615C1371BCAEC670065B62C /* ParseObjects */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = ParseObjects;
-			sourceTree = "<group>";
-		};
 		2615C1381BCAEC740065B62C /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				2615C1391BCAED6A0065B62C /* ModelTrails.h */,
-				2615C13A1BCAED6A0065B62C /* ModelTrails.m */,
-				2615C13C1BCAED890065B62C /* ModelTrailComments.h */,
-				2615C13D1BCAED890065B62C /* ModelTrailComments.m */,
-				2615C13F1BCAED9B0065B62C /* ModelTrailStatus.h */,
-				2615C1401BCAED9B0065B62C /* ModelTrailStatus.m */,
+				26AAB1D11BCDDECE0084B67D /* Trails.h */,
+				26AAB1D21BCDDECE0084B67D /* Trails.m */,
+				26AAB1D41BCDDEDC0084B67D /* TrailStatus.h */,
+				26AAB1D51BCDDEDC0084B67D /* TrailStatus.m */,
+				26AAB1C81BCDDE8B0084B67D /* User.h */,
+				26AAB1C91BCDDE8B0084B67D /* User.m */,
+				26AAB1CB1BCDDEB60084B67D /* AuthorizedCommentors.h */,
+				26AAB1CC1BCDDEB60084B67D /* AuthorizedCommentors.m */,
+				26AAB1CE1BCDDEC20084B67D /* Comments.h */,
+				26AAB1CF1BCDDEC20084B67D /* Comments.m */,
+				26AAB1D71BCDE0E70084B67D /* Installation.h */,
+				26AAB1D81BCDE0E70084B67D /* Installation.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -425,16 +432,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				26A4C1101BCB3D7800524635 /* DBManager.m in Sources */,
+				26AAB1CD1BCDDEB60084B67D /* AuthorizedCommentors.m in Sources */,
 				26A4C1401BCB463700524635 /* AsyncLoadTrailStatus.m in Sources */,
-				2615C13B1BCAED6A0065B62C /* ModelTrails.m in Sources */,
 				2615C1211BCAE7660065B62C /* Home.m in Sources */,
 				26A4C1131BCB407100524635 /* NewTrailDB.m in Sources */,
 				26A4C1281BCB432300524635 /* GeoLocationHelper.m in Sources */,
-				2615C1411BCAED9C0065B62C /* ModelTrailStatus.m in Sources */,
+				26AAB1D61BCDDEDC0084B67D /* TrailStatus.m in Sources */,
 				26A4C12B1BCB433200524635 /* PushNotificationHelper.m in Sources */,
+				26AAB1CA1BCDDE8B0084B67D /* User.m in Sources */,
 				26A4C1251BCB430A00524635 /* ConnectionDetector.m in Sources */,
 				26A4C1461BCB466100524635 /* AsyncLoadOneTrailsComments.m in Sources */,
 				2615C11E1BCAE7660065B62C /* AppDelegate.m in Sources */,
+				26AAB1D31BCDDECE0084B67D /* Trails.m in Sources */,
+				26AAB1D01BCDDEC20084B67D /* Comments.m in Sources */,
 				26A4C1491BCB467500524635 /* AysncSaveOfflineComments.m in Sources */,
 				26A4C1311BCB434D00524635 /* StateListHelper.m in Sources */,
 				26A4C1431BCB464C00524635 /* AsyncRefreshCurrentUser.m in Sources */,
@@ -446,11 +456,11 @@
 				26A4C13D1BCB461800524635 /* AsyncLoadTrails.m in Sources */,
 				26A4C11C1BCB412300524635 /* TrailCommentDB.m in Sources */,
 				26A4C1521BCB46AF00524635 /* AsyncLoadTrailLocations.m in Sources */,
-				2615C13E1BCAED890065B62C /* ModelTrailComments.m in Sources */,
 				2615C11B1BCAE7660065B62C /* main.m in Sources */,
 				26A4C12E1BCB433E00524635 /* CreateAccountHelper.m in Sources */,
 				26A4C1371BCB45D700524635 /* AsyncLoadAuthCommentors.m in Sources */,
 				26A4C13A1BCB460600524635 /* AsyncLoadComments.m in Sources */,
+				26AAB1D91BCDE0E70084B67D /* Installation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
