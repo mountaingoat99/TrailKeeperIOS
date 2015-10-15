@@ -11,9 +11,13 @@
 
 @implementation AuthorizedCommentors
 
+#pragma properties
+
 @dynamic userObjectId;
 @dynamic userName;
 @dynamic canComment;
+
+#pragma init methods
 
 +(void)load {
     [self registerSubclass];
@@ -21,6 +25,12 @@
 
 +(NSString *)parseClassName {
     return @"AuthorizedCommentors";
+}
+
+#pragma public methods
+
+-(void)AddAuthorizedCommentor:(NSString*)userObjectId {
+    
 }
 
 @end

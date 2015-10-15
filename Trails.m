@@ -20,6 +20,8 @@
 
 @implementation Trails
 
+@synthesize tStatus;
+
 #pragma public properties
 
 @dynamic trailName;
@@ -53,12 +55,76 @@
     return self.tStatus;
 }
 
+-(NSArray *)GetAllTrailInfo {
+    NSArray *trailInfo;
+    
+    
+    
+    return trailInfo;
+}
 
+-(NSArray*)GetTrailNames {
+    NSArray *trailNames;
+    
+    
+    return trailNames;
+    
+}
 
-#pragma Public Database methods
+-(NSDictionary*)GetTrailStates {
+    NSDictionary *trailStates;
+    
+    
+    
+    return trailStates;
+}
 
+-(NSArray*)getTrailsByState:(NSString*)state {
+    NSArray *trailsByState;
+    
+    
+    
+    return trailsByState;
+}
 
+-(NSString*)GetTrailObjectId:(NSString*)trailName {
+    NSString *trailObjectId;
+    
+    
+    
+    return trailObjectId;
+}
+
+-(void)CreateNewTrail:(Trails*)newTrail {
+    
+}
+
+-(void)SaveNewTrail:(Trails*)newTrail {
+    
+}
+
+-(Trails*)GetOffLineTrail {
+    Trails *offlineTrail = [[Trails alloc] init];
+    
+    
+    return offlineTrail;
+}
+
+-(int)GetDbTrailsRowCount {
+    int rows = 0;
+    
+    
+    return rows;
+}
 
 #pragma Private methods
+
+-(void)AddOfflineTrail:(Trails*)trail {
+    
+}
+
+-(void)DeleteNewTrail:(int)tableId {
+    
+}
 
 @end

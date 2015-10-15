@@ -10,11 +10,11 @@
 
 @interface AuthorizedCommentors : PFObject<PFSubclassing, NSCoding>
 
-+ (NSString *)parseClassName;
-
 @property (nonatomic, strong) NSString *userObjectId;
 @property (nonatomic, strong) NSString *userName;
 @property (nonatomic) BOOL canComment;
+
++ (NSString *)parseClassName;
 
 -(void)AddAuthorizedCommentor:(NSString*)userObjectId;
 

@@ -11,8 +11,12 @@
 
 @implementation Installation
 
+#pragma Properties
+
 @dynamic user;
 @dynamic userName;
+
+#pragma init methods
 
 +(void)load {
     [self registerSubclass];
@@ -20,6 +24,18 @@
 
 +(NSString *)parseClassName {
     return @"Installation";
+}
+
+#pragma public methods
+
+-(void)SubscribeToChannel:(NSString*)trailName Choice:(BOOL)choice {
+    
+}
+
+-(BOOL)isSubscribedToChannel:(NSString*)channelName {
+    
+    
+    return true;
 }
 
 @end

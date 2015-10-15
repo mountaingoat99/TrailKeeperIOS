@@ -18,11 +18,15 @@
 
 @implementation Comments
 
+#pragma Properties
+
 @dynamic trailObjectId;
 @dynamic trailName;
 @dynamic userObjectId;
 @dynamic userName;
 @dynamic comment;
+
+#pragma init methods
 
 +(void)load {
     [self registerSubclass];
@@ -30,6 +34,60 @@
 
 +(NSString *)parseClassName {
     return @"Comments";
+}
+
+#pragma public methods
+
+-(NSArray*)GetCommentsByUser:(NSString*)userObjectId {
+    NSArray *userComments;
+    
+    
+    return userComments;
+}
+
+-(NSArray*)GetCommentsByTrail:(NSString*)trailObjectId {
+    NSArray *trailComments;
+    
+    
+    return trailComments;
+}
+
+-(NSArray*)GetAllComments {
+    NSArray *allComments;
+    
+    
+    return allComments;
+}
+
+-(void)CreateNewComment:(Comments*)comment {
+    
+}
+
+//TODO use a generic db class?
+
+-(Comments*)GetOfflineComments {
+    Comments *allComments;
+    
+    
+    return allComments;
+}
+
+-(int)GetDbCommentRowCount {
+    int rows = 0;
+    
+    
+    return rows;
+}
+
+
+#pragma private methods
+
+-(void)addOfflineComment:(Comments*)comment {
+    
+}
+
+-(void)deleteOneOfflineComment:(int)tableId {
+    
 }
 
 @end

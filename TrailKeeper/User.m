@@ -11,7 +11,11 @@
 
 @implementation User
 
+#pragma properties
+
 @dynamic emailVerified;
+
+#pragma init methods
 
 +(void)load {
     [self registerSubclass];
@@ -19,6 +23,14 @@
 
 +(NSString *)parseClassName {
     return @"User";
+}
+
+#pragma public methods
+
+-(BOOL)isEmailVerified:(User*)user {
+    
+    
+    return true;
 }
 
 @end
