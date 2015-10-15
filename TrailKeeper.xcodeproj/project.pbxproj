@@ -16,9 +16,6 @@
 		26751E991BCB24BA002C3498 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 26751E981BCB24BA002C3498 /* libsqlite3.tbd */; };
 		26A4C10D1BCB3C8A00524635 /* offline_trails.db in Resources */ = {isa = PBXBuildFile; fileRef = 26A4C10C1BCB3C8A00524635 /* offline_trails.db */; settings = {ASSET_TAGS = (); }; };
 		26A4C1101BCB3D7800524635 /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4C10F1BCB3D7800524635 /* DBManager.m */; settings = {ASSET_TAGS = (); }; };
-		26A4C1131BCB407100524635 /* NewTrailDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4C1121BCB407100524635 /* NewTrailDB.m */; settings = {ASSET_TAGS = (); }; };
-		26A4C11C1BCB412300524635 /* TrailCommentDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4C11B1BCB412300524635 /* TrailCommentDB.m */; settings = {ASSET_TAGS = (); }; };
-		26A4C11F1BCB414900524635 /* TrailStatusDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4C11E1BCB414900524635 /* TrailStatusDB.m */; settings = {ASSET_TAGS = (); }; };
 		26A4C1221BCB41EF00524635 /* AlertControllerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4C1211BCB41EF00524635 /* AlertControllerHelper.m */; settings = {ASSET_TAGS = (); }; };
 		26A4C1251BCB430A00524635 /* ConnectionDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4C1241BCB430A00524635 /* ConnectionDetector.m */; settings = {ASSET_TAGS = (); }; };
 		26A4C1281BCB432300524635 /* GeoLocationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4C1271BCB432300524635 /* GeoLocationHelper.m */; settings = {ASSET_TAGS = (); }; };
@@ -61,12 +58,6 @@
 		26A4C10C1BCB3C8A00524635 /* offline_trails.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = offline_trails.db; path = ../../offline_trails.db; sourceTree = "<group>"; };
 		26A4C10E1BCB3D7800524635 /* DBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBManager.h; sourceTree = "<group>"; };
 		26A4C10F1BCB3D7800524635 /* DBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBManager.m; sourceTree = "<group>"; };
-		26A4C1111BCB407100524635 /* NewTrailDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewTrailDB.h; sourceTree = "<group>"; };
-		26A4C1121BCB407100524635 /* NewTrailDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewTrailDB.m; sourceTree = "<group>"; };
-		26A4C11A1BCB412300524635 /* TrailCommentDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrailCommentDB.h; sourceTree = "<group>"; };
-		26A4C11B1BCB412300524635 /* TrailCommentDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrailCommentDB.m; sourceTree = "<group>"; };
-		26A4C11D1BCB414900524635 /* TrailStatusDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrailStatusDB.h; sourceTree = "<group>"; };
-		26A4C11E1BCB414900524635 /* TrailStatusDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrailStatusDB.m; sourceTree = "<group>"; };
 		26A4C1201BCB41EF00524635 /* AlertControllerHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertControllerHelper.h; sourceTree = "<group>"; };
 		26A4C1211BCB41EF00524635 /* AlertControllerHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertControllerHelper.m; sourceTree = "<group>"; };
 		26A4C1231BCB430A00524635 /* ConnectionDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionDetector.h; sourceTree = "<group>"; };
@@ -207,12 +198,6 @@
 			children = (
 				26A4C10E1BCB3D7800524635 /* DBManager.h */,
 				26A4C10F1BCB3D7800524635 /* DBManager.m */,
-				26A4C1111BCB407100524635 /* NewTrailDB.h */,
-				26A4C1121BCB407100524635 /* NewTrailDB.m */,
-				26A4C11A1BCB412300524635 /* TrailCommentDB.h */,
-				26A4C11B1BCB412300524635 /* TrailCommentDB.m */,
-				26A4C11D1BCB414900524635 /* TrailStatusDB.h */,
-				26A4C11E1BCB414900524635 /* TrailStatusDB.m */,
 			);
 			name = Database;
 			sourceTree = "<group>";
@@ -435,7 +420,6 @@
 				26AAB1CD1BCDDEB60084B67D /* AuthorizedCommentors.m in Sources */,
 				26A4C1401BCB463700524635 /* AsyncLoadTrailStatus.m in Sources */,
 				2615C1211BCAE7660065B62C /* Home.m in Sources */,
-				26A4C1131BCB407100524635 /* NewTrailDB.m in Sources */,
 				26A4C1281BCB432300524635 /* GeoLocationHelper.m in Sources */,
 				26AAB1D61BCDDEDC0084B67D /* TrailStatus.m in Sources */,
 				26A4C12B1BCB433200524635 /* PushNotificationHelper.m in Sources */,
@@ -451,10 +435,8 @@
 				26A4C14F1BCB469D00524635 /* AsyncSaveOfflineTrail.m in Sources */,
 				26A4C1221BCB41EF00524635 /* AlertControllerHelper.m in Sources */,
 				26A4C1341BCB438D00524635 /* NotificationReciever.m in Sources */,
-				26A4C11F1BCB414900524635 /* TrailStatusDB.m in Sources */,
 				26A4C14C1BCB468900524635 /* AsyncSaveOfflineStatus.m in Sources */,
 				26A4C13D1BCB461800524635 /* AsyncLoadTrails.m in Sources */,
-				26A4C11C1BCB412300524635 /* TrailCommentDB.m in Sources */,
 				26A4C1521BCB46AF00524635 /* AsyncLoadTrailLocations.m in Sources */,
 				2615C11B1BCAE7660065B62C /* main.m in Sources */,
 				26A4C12E1BCB433E00524635 /* CreateAccountHelper.m in Sources */,

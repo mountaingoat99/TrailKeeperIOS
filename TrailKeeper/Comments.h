@@ -10,12 +10,19 @@
 
 @interface Comments : PFObject<PFSubclassing, NSCoding>
 
-+ (NSString *)parseClassName;
-
 @property (nonatomic, strong) NSString *trailObjectId;
 @property (nonatomic, strong) NSString *trailName;
 @property (nonatomic, strong) NSString *userObjectId;
 @property (nonatomic, strong) NSString *userName;
 @property (nonatomic, strong) NSString *comment;
+
++ (NSString *)parseClassName;
+
+-(NSArray*)GetCommentsByUser:(NSString*)userObjectId;
+-(NSArray*)GetCommentsByTrail:(NSString*)trailObjectId;
+-(NSArray*)GetAllComments;
+-(void)CreateNewComment:(Comments*)comment;
+-(Comments*)GetOfflineComments;
+-(int)GetDbCommentRowCount;
 
 @end

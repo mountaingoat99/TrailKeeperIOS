@@ -14,4 +14,6 @@
 
 @property (nonatomic) BOOL emailVerified;
 
+-(BOOL)isEmailVerified:(User*)user;
+
 @end

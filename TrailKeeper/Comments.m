@@ -9,6 +9,13 @@
 #import "Comments.h"
 #import <Parse/PFObject+Subclass.h>
 
+@interface Comments ()
+
+-(void)addOfflineComment:(Comments*)comment;
+-(void)deleteOneOfflineComment:(int)tableId;
+
+@end
+
 @implementation Comments
 
 @dynamic trailObjectId;

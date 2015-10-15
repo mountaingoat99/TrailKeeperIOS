@@ -9,6 +9,13 @@
 #import "TrailStatus.h"
 #import <Parse/PFObject+Subclass.h>
 
+@interface TrailStatus ()
+
+-(void)addOfflineTrailStatus:(TrailStatus*)trailStatus;
+-(void)deleteOneOfflineTrailStatus:(int)tableId;
+
+@end
+
 @implementation TrailStatus
 
 @dynamic trailName;

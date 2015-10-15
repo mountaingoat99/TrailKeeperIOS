@@ -16,4 +16,6 @@
 @property (nonatomic, strong) NSString *userName;
 @property (nonatomic) BOOL canComment;
 
+-(void)AddAuthorizedCommentor:(NSString*)userObjectId;
+
 @end

@@ -10,9 +10,6 @@
 
 @interface Trails : PFObject<PFSubclassing, NSCoding>
 
-+ (NSString *)parseClassName;
-
-//@property (nonatomic, strong) NSString *objectId;
 @property (nonatomic, strong) NSString *trailName;
 @property (nonatomic, strong) NSNumber *status;
 @property (nonatomic, strong) NSString *mapLink;
@@ -24,5 +21,18 @@
 @property (nonatomic) BOOL skillEasy;
 @property (nonatomic) BOOL skillMedium;
 @property (nonatomic) BOOL skillHard;
+
++ (NSString *)parseClassName;
+
+-(NSString *)ConvertTrailStatus:(NSNumber*)status;
+-(NSArray *)GetAllTrailInfo;
+-(NSArray*)GetTrailNames;
+-(NSDictionary*)GetTrailStates;
+-(NSArray*)getTrailsByState:(NSString*)state;
+-(NSString*)GetTrailObjectId:(NSString*)trailName;
+-(void)CreateNewTrail:(Trails*)newTrail;
+-(void)SaveNewTrail:(Trails*)newTrail;
+-(Trails*)GetOffLineTrail;
+-(int)GetDbTrailsRowCount;
 
 @end
