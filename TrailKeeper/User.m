@@ -17,6 +17,18 @@
 
 #pragma init methods
 
+-(id)initWithCoder:(NSCoder *)aDecoder {
+    if ((self = [super init])) {
+        self.emailVerified = [aDecoder decodeBoolForKey:@"emailVerified"];
+    }
+    return self;
+}
+
+-(void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeBool:self.emailVerified forKey:@"emailVerified"];
+}
+
+
 +(void)load {
     [self registerSubclass];
 }

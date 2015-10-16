@@ -19,6 +19,22 @@
 
 #pragma init methods
 
+-(id)initWithCoder:(NSCoder *)aDecoder {
+    if ((self = [super init])) {
+        self.userObjectId = [aDecoder decodeObjectForKey:@"userObjectId"];
+        self.userName = [aDecoder decodeObjectForKey:@"userName"];
+        self.canComment = [aDecoder decodeBoolForKey:@"canComment"];
+    }
+    return self;
+}
+
+-(void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:self.userObjectId forKey:@"emailVerified"];
+    [aCoder encodeObject:self.userName forKey:@"userName"];
+    [aCoder encodeBool:self.canComment forKey:@"canComment"];
+}
+
+
 +(void)load {
     [self registerSubclass];
 }

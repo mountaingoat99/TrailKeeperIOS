@@ -18,6 +18,20 @@
 
 #pragma init methods
 
+-(id)initWithCoder:(NSCoder *)aDecoder {
+    if ((self = [super init])) {
+        self.user = [aDecoder decodeObjectForKey:@"user"];
+        self.userName = [aDecoder decodeObjectForKey:@"userName"];
+    }
+    return self;
+}
+
+-(void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:self.user forKey:@"user"];
+    [aCoder encodeObject:self.userName forKey:@"userName"];
+}
+
+
 +(void)load {
     [self registerSubclass];
 }

@@ -26,6 +26,21 @@
 
 #pragma init methods
 
+-(id)initWithCoder:(NSCoder *)aDecoder {
+    if ((self = [super init])) {
+        self.trailName = [aDecoder decodeObjectForKey:@"trailName"];
+        self.updateStatusPin = [aDecoder decodeObjectForKey:@"updateStatusPin"];
+        self.authorizedUserNames = [aDecoder decodeObjectForKey:@"authorizedUserNames"];
+    }
+    return self;
+}
+
+-(void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:self.trailName forKey:@"trailName"];
+    [aCoder encodeObject:self.updateStatusPin forKey:@"updateStatusPin"];
+    [aCoder encodeObject:self.authorizedUserNames forKey:@"authorizedUserNames"];
+}
+
 +(void)load {
     [self registerSubclass];
 }

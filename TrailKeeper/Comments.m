@@ -28,6 +28,26 @@
 
 #pragma init methods
 
+-(id)initWithCoder:(NSCoder *)aDecoder {
+    if ((self = [super init])) {
+        self.trailObjectId = [aDecoder decodeObjectForKey:@"trailObjectId"];
+        self.trailName = [aDecoder decodeObjectForKey:@"trailName"];
+        self.userObjectId = [aDecoder decodeObjectForKey:@"userObjectId"];
+        self.userName = [aDecoder decodeObjectForKey:@"userName"];
+        self.comment = [aDecoder decodeObjectForKey:@"comment"];
+
+    }
+    return self;
+}
+
+-(void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:self.trailObjectId forKey:@"trailObjectId"];
+    [aCoder encodeObject:self.trailName forKey:@"trailName"];
+    [aCoder encodeObject:self.userObjectId forKey:@"userObjectId"];
+    [aCoder encodeObject:self.userName forKey:@"userName"];
+    [aCoder encodeObject:self.comment forKey:@"comment"];
+}
+
 +(void)load {
     [self registerSubclass];
 }

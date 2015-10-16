@@ -38,6 +38,37 @@
 
 #pragma init
 
+-(id)initWithCoder:(NSCoder *)aDecoder {
+    if ((self = [super init])) {
+        self.trailName = [aDecoder decodeObjectForKey:@"trailName"];
+        self.status = [aDecoder decodeObjectForKey:@"status"];
+        self.mapLink = [aDecoder decodeObjectForKey:@"mapLink"];
+        self.city = [aDecoder decodeObjectForKey:@"city"];
+        self.state = [aDecoder decodeObjectForKey:@"state"];
+        self.country = [aDecoder decodeObjectForKey:@"country"];
+        self.geoLocation = [aDecoder decodeObjectForKey:@"geoLocation"];
+        self.privateTrail = [aDecoder decodeBoolForKey:@"privateTrail"];
+        self.skillEasy = [aDecoder decodeBoolForKey:@"skillEasy"];
+        self.skillMedium = [aDecoder decodeBoolForKey:@"skillMedium"];
+        self.skillHard = [aDecoder decodeBoolForKey:@"skillHard"];
+    }
+    return self;
+}
+
+-(void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:self.trailName forKey:@"trailName"];
+    [aCoder encodeObject:self.status forKey:@"status"];
+    [aCoder encodeObject:self.mapLink forKey:@"mapLink"];
+    [aCoder encodeObject:self.city forKey:@"city"];
+    [aCoder encodeObject:self.state forKey:@"state"];
+    [aCoder encodeObject:self.country forKey:@"country"];
+    [aCoder encodeObject:self.geoLocation forKey:@"geoLocation"];
+    [aCoder encodeBool:self.privateTrail forKey:@"privateTrail"];
+    [aCoder encodeBool:self.skillEasy forKey:@"skillEasy"];
+    [aCoder encodeBool:self.skillMedium forKey:@"skillMedium"];
+    [aCoder encodeBool:self.skillHard forKey:@"skillHard"];
+}
+
 +(void)load {
     [self registerSubclass];
 }
