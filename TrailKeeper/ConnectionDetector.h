@@ -7,7 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <sys/socket.h>
+#import <netinet/in.h>
+#import <SystemConfiguration/SystemConfiguration.h>
 
 @interface ConnectionDetector : NSObject
+
++(BOOL)hasConnectivity;
 
 @end
