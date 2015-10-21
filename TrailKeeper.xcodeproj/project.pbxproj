@@ -14,6 +14,7 @@
 		2615C1261BCAE7660065B62C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2615C1251BCAE7660065B62C /* Assets.xcassets */; };
 		2615C1291BCAE7660065B62C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2615C1271BCAE7660065B62C /* LaunchScreen.storyboard */; };
 		26751E991BCB24BA002C3498 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 26751E981BCB24BA002C3498 /* libsqlite3.tbd */; };
+		269296591BD71C8100D05848 /* offline_trails.db in Resources */ = {isa = PBXBuildFile; fileRef = 269296581BD71C8100D05848 /* offline_trails.db */; settings = {ASSET_TAGS = (); }; };
 		26A4C1101BCB3D7800524635 /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4C10F1BCB3D7800524635 /* DBManager.m */; settings = {ASSET_TAGS = (); }; };
 		26A4C1221BCB41EF00524635 /* AlertControllerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4C1211BCB41EF00524635 /* AlertControllerHelper.m */; settings = {ASSET_TAGS = (); }; };
 		26A4C1251BCB430A00524635 /* ConnectionDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4C1241BCB430A00524635 /* ConnectionDetector.m */; settings = {ASSET_TAGS = (); }; };
@@ -38,7 +39,6 @@
 		26AAB1D31BCDDECE0084B67D /* Trails.m in Sources */ = {isa = PBXBuildFile; fileRef = 26AAB1D21BCDDECE0084B67D /* Trails.m */; settings = {ASSET_TAGS = (); }; };
 		26AAB1D61BCDDEDC0084B67D /* TrailStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 26AAB1D51BCDDEDC0084B67D /* TrailStatus.m */; settings = {ASSET_TAGS = (); }; };
 		26AAB1D91BCDE0E70084B67D /* Installation.m in Sources */ = {isa = PBXBuildFile; fileRef = 26AAB1D81BCDE0E70084B67D /* Installation.m */; settings = {ASSET_TAGS = (); }; };
-		26B65CFE1BD5BB79008616EC /* offline_trails.db in Resources */ = {isa = PBXBuildFile; fileRef = 26B65CFD1BD5BB79008616EC /* offline_trails.db */; settings = {ASSET_TAGS = (); }; };
 		26B65D001BD5CB74008616EC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B65CFF1BD5CB74008616EC /* SystemConfiguration.framework */; };
 		AD129E6EA046676355810966 /* libPods-TrailKeeper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 149CB766E1EA3B4629A01B39 /* libPods-TrailKeeper.a */; };
 /* End PBXBuildFile section */
@@ -56,6 +56,7 @@
 		2615C1281BCAE7660065B62C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2615C12A1BCAE7660065B62C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		26751E981BCB24BA002C3498 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		269296581BD71C8100D05848 /* offline_trails.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = offline_trails.db; path = ../../offline_trails.db; sourceTree = "<group>"; };
 		26A4C10E1BCB3D7800524635 /* DBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBManager.h; sourceTree = "<group>"; };
 		26A4C10F1BCB3D7800524635 /* DBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBManager.m; sourceTree = "<group>"; };
 		26A4C1201BCB41EF00524635 /* AlertControllerHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertControllerHelper.h; sourceTree = "<group>"; };
@@ -104,7 +105,6 @@
 		26AAB1D51BCDDEDC0084B67D /* TrailStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TrailStatus.m; path = ../TrailStatus.m; sourceTree = "<group>"; };
 		26AAB1D71BCDE0E70084B67D /* Installation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Installation.h; sourceTree = "<group>"; };
 		26AAB1D81BCDE0E70084B67D /* Installation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Installation.m; sourceTree = "<group>"; };
-		26B65CFD1BD5BB79008616EC /* offline_trails.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = offline_trails.db; path = ../../offline_trails.db; sourceTree = "<group>"; };
 		26B65CFF1BD5CB74008616EC /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		2F888E95CE45AFE1354158EF /* Pods-TrailKeeper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrailKeeper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TrailKeeper/Pods-TrailKeeper.debug.xcconfig"; sourceTree = "<group>"; };
 		78EEF1E93A254E3A42D0AC7D /* Pods-TrailKeeper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrailKeeper.release.xcconfig"; path = "Pods/Target Support Files/Pods-TrailKeeper/Pods-TrailKeeper.release.xcconfig"; sourceTree = "<group>"; };
@@ -127,7 +127,7 @@
 		2615C10D1BCAE7660065B62C = {
 			isa = PBXGroup;
 			children = (
-				26B65CFD1BD5BB79008616EC /* offline_trails.db */,
+				269296581BD71C8100D05848 /* offline_trails.db */,
 				2615C1181BCAE7660065B62C /* TrailKeeper */,
 				2615C1171BCAE7660065B62C /* Products */,
 				DA81B6D8C2CD2D0BA67C0168 /* Pods */,
@@ -360,7 +360,7 @@
 			files = (
 				2615C1291BCAE7660065B62C /* LaunchScreen.storyboard in Resources */,
 				2615C1261BCAE7660065B62C /* Assets.xcassets in Resources */,
-				26B65CFE1BD5BB79008616EC /* offline_trails.db in Resources */,
+				269296591BD71C8100D05848 /* offline_trails.db in Resources */,
 				2615C1241BCAE7660065B62C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

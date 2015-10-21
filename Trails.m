@@ -239,6 +239,18 @@
     return trailObjectId;
 }
 
+-(void)UpdateTrailStatus:(NSString*)objectId Choice:(NSNumber*)choice TrailName:(NSString*)trailName {
+    PFQuery *query = [PFQuery queryWithClassName:@"Trails"];
+    [query fromLocalDatastore];
+    
+    // Retrieve the object by id
+    [query getObjectInBackgroundWithId:objectId block:^(PFObject *trail, NSError *error) {
+         trail[@"cheatMode"] = choice;
+         [trail pinInBackground];
+         [trail saveInBackground];
+     }];
+}
+
 -(void)CreateNewTrail:(Trails*)newTrail {
     // call the async first to check for connection
     if ([ConnectionDetector hasConnectivity]) {
@@ -249,7 +261,7 @@
     }
     
     TrailStatus *status = [[TrailStatus alloc] init];
-    [status CreateNewTrailStatus:newTrail];
+    [status SaveNewTrailStatus:newTrail];
 }
 
 -(void)SaveNewTrail:(Trails*)newTrail {

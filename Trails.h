@@ -31,6 +31,7 @@
 -(NSMutableOrderedSet*)GetTrailStates;
 -(NSMutableArray*)getTrailsByState:(NSString*)state;
 -(NSString*)GetTrailObjectId:(NSString*)trailName;
+-(void)UpdateTrailStatus:(NSString*)objectId Choice:(NSNumber*)choice TrailName:(NSString*)trailName;
 -(void)CreateNewTrail:(Trails*)newTrail;
 -(void)SaveNewTrail:(Trails*)newTrail;
 -(Trails*)GetOffLineTrail;

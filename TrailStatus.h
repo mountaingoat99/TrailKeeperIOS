@@ -18,10 +18,9 @@
 @property (nonatomic, strong) NSArray *authorizedUserNames;
 
 -(NSString*)GetTrailPin:(NSString*)trailName;
--(void)CreateNewTrailStatus:(Trails*)trailName;
--(void)UpdateTrailStatus:(NSString*)objectId Choice:(NSNumber*)choice TrailName:(NSString*)trailName;
+-(void)SaveNewTrailStatus:(Trails*)trailName;
 -(void)UpdateTrailStatusUser:(NSString*)trailName;
 -(TrailStatus*)GetOffTrailStatus;
--(int)GetDbCommentRowCount;
+-(NSNumber*)GetDbCommentRowCount;
 
 @end
