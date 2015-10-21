@@ -37,12 +37,98 @@
     return @"User";
 }
 
+#pragma Class Methods
+
++(BOOL)isAnonUser {
+    
+    return false;
+}
+
++(BOOL)isEmailVerified:(User*)user {
+    
+    return false;
+}
+
++(BOOL)isValidUserName:(NSString*)userName {
+    
+    return false;
+}
+
++(BOOL)isValidEmail:(NSString*)userEmail {
+    
+    return false;
+}
+
++(BOOL)isValidPassword:(NSString*)userPassword {
+    
+    return false;
+}
+
+
 #pragma public methods
 
--(BOOL)isEmailVerified:(User*)user {
+-(NSString*)SignUpNewUser:(User*)newUser {
+    __block NSString *errorString;
     
+    [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (!error) {
+            errorString = @"success";
+        } else {
+            errorString = [error userInfo][@"error"];
+        }
+    }];
+    return errorString;
+}
+
+-(BOOL)UserLogIn:(User*)user {
     
-    return true;
+    return false;
+}
+
+-(BOOL)UserLogOut:(User*)user {
+    
+    return false;
+}
+
+-(BOOL)DeleteUserAccount:(User*)user {
+    
+    return false;
+}
+
+-(BOOL)UpdateUserName:(User*)user NewName:(NSString*)newName {
+    
+    return false;
+}
+
+-(BOOL)UpdateUserEmail:(User*)user NewEmail:(NSString*)newEmail {
+    
+    return false;
+}
+
+-(BOOL)ResendVerifyUserEmail:(User*)user {
+    // send a fake email
+    
+    return false;
+}
+
+-(BOOL)resendRealEmailAfterCreatingFake:(NSString*)realEmail {
+    // then send a real one
+    
+    return false;
+}
+
+-(BOOL)ResetUserPassword:(User*)user {
+    
+    return false;
+}
+
+-(NSString*)FindUserName:(User*)user {
+    
+    return @"";
+}
+
+-(void)CreateAnonUser {
+    
 }
 
 @end
