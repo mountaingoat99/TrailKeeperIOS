@@ -16,6 +16,6 @@
 
 + (NSString *)parseClassName;
 
--(void)AddAuthorizedCommentor:(NSString*)userObjectId;
+-(void)AddAuthorizedCommentor:(AuthorizedCommentors*)commentor;
 
 @end

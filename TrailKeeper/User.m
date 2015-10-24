@@ -8,6 +8,7 @@
 
 #import "User.h"
 #import <Parse/PFObject+Subclass.h>
+#import "AuthorizedCommentors.h"
 
 @interface User ()
 
@@ -99,6 +100,13 @@
         if (!error) {
             // call the view controller method to okay the sign up
             // with a string success message
+            // update the authorizedUser class
+            AuthorizedCommentors *auth = [[AuthorizedCommentors alloc] init];
+            PFUser *user = [PFUser currentUser];
+            auth.userObjectId = user.objectId;
+            auth.userObjectId = user.username;
+            auth.canComment = YES;
+            [auth AddAuthorizedCommentor:auth];
         } else {
             // call the view controller method to okay the sign up
             // with a string fail message

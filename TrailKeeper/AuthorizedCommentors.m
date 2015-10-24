@@ -8,6 +8,7 @@
 
 #import "AuthorizedCommentors.h"
 #import <Parse/PFObject+Subclass.h>
+#import "Converters.h"
 
 @implementation AuthorizedCommentors
 
@@ -29,7 +30,7 @@
 }
 
 -(void)encodeWithCoder:(NSCoder *)aCoder {
-    [aCoder encodeObject:self.userObjectId forKey:@"emailVerified"];
+    [aCoder encodeObject:self.userObjectId forKey:@"userObjectId"];
     [aCoder encodeObject:self.userName forKey:@"userName"];
     [aCoder encodeBool:self.canComment forKey:@"canComment"];
 }
@@ -45,7 +46,14 @@
 
 #pragma public methods
 
--(void)AddAuthorizedCommentor:(NSString*)userObjectId {
+-(void)AddAuthorizedCommentor:(AuthorizedCommentors*)commentor {
+    PFObject *authorizedCommentors = [PFObject objectWithClassName:@"AuthorizedCommentor"];
+    authorizedCommentors[@"userObjectId"] = commentor.userObjectId;
+    authorizedCommentors[@"userName"] = commentor.userName;
+    authorizedCommentors[@"canComment"] = [Converters ConvertBoolToNSNumber:commentor.canComment];
+    
+    [authorizedCommentors pinInBackground];
+    [authorizedCommentors saveEventually];
     
 }
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		260EC2641BDB13F600BB01DF /* Converters.m in Sources */ = {isa = PBXBuildFile; fileRef = 260EC2631BDB13F600BB01DF /* Converters.m */; settings = {ASSET_TAGS = (); }; };
 		2615C11B1BCAE7660065B62C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2615C11A1BCAE7660065B62C /* main.m */; };
 		2615C11E1BCAE7660065B62C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2615C11D1BCAE7660065B62C /* AppDelegate.m */; };
 		2615C1211BCAE7660065B62C /* Home.m in Sources */ = {isa = PBXBuildFile; fileRef = 2615C1201BCAE7660065B62C /* Home.m */; };
@@ -44,6 +45,8 @@
 
 /* Begin PBXFileReference section */
 		149CB766E1EA3B4629A01B39 /* libPods-TrailKeeper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TrailKeeper.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		260EC2621BDB13F600BB01DF /* Converters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Converters.h; sourceTree = "<group>"; };
+		260EC2631BDB13F600BB01DF /* Converters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Converters.m; sourceTree = "<group>"; };
 		2615C1161BCAE7660065B62C /* TrailKeeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrailKeeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2615C11A1BCAE7660065B62C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2615C11C1BCAE7660065B62C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -215,6 +218,8 @@
 				26A4C12A1BCB433200524635 /* PushNotificationHelper.m */,
 				26A4C12F1BCB434D00524635 /* StateListHelper.h */,
 				26A4C1301BCB434D00524635 /* StateListHelper.m */,
+				260EC2621BDB13F600BB01DF /* Converters.h */,
+				260EC2631BDB13F600BB01DF /* Converters.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -419,6 +424,7 @@
 				26AAB1CD1BCDDEB60084B67D /* AuthorizedCommentors.m in Sources */,
 				26A4C1401BCB463700524635 /* AsyncLoadTrailStatus.m in Sources */,
 				2615C1211BCAE7660065B62C /* Home.m in Sources */,
+				260EC2641BDB13F600BB01DF /* Converters.m in Sources */,
 				26A4C1281BCB432300524635 /* GeoLocationHelper.m in Sources */,
 				26AAB1D61BCDDEDC0084B67D /* TrailStatus.m in Sources */,
 				26A4C12B1BCB433200524635 /* PushNotificationHelper.m in Sources */,

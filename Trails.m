@@ -11,6 +11,7 @@
 #import "DBManager.h"
 #import "TrailStatus.h"
 #import "ConnectionDetector.h"
+#import "Converters.h"
 
 @interface Trails ()
 
@@ -19,8 +20,6 @@
 
 -(void)AddOfflineTrail:(Trails*)trail;
 -(void)DeleteNewTrail:(int)tableId;
--(BOOL)getBoolValueFromNSNumber:(NSNumber *)number;
--(NSNumber*)ConvertBoolToNSNumber:(BOOL)boolValue;
 
 @end
 
@@ -113,7 +112,7 @@
     [query fromLocalDatastore];
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         if (!error) {
-            NSLog(@"Successfully Retrieved %lu Trails", objects.count);
+            NSLog(@"Successfully Retrieved Trails");
             // add the items to the NSArray
             for (PFObject *object in objects) {
                 Trails *trail = [[Trails alloc] init];
@@ -126,10 +125,10 @@
                 trail.country = [object objectForKey:@"country"];
                 trail.length = [object objectForKey:@"length"];
                 trail.geoLocation = [object objectForKey:@"geoLocation"];
-                trail.privateTrail = [self getBoolValueFromNSNumber:[object objectForKey:@"privateTrail"]];
-                trail.skillEasy = [self getBoolValueFromNSNumber:[object objectForKey:@"skillEasy"]];
-                trail.skillMedium = [self getBoolValueFromNSNumber:[object objectForKey:@"skillMedium"]];
-                trail.skillHard = [self getBoolValueFromNSNumber:[object objectForKey:@"skillHard"]];
+                trail.privateTrail = [Converters getBoolValueFromNSNumber:[object objectForKey:@"privateTrail"]];
+                trail.skillEasy = [Converters getBoolValueFromNSNumber:[object objectForKey:@"skillEasy"]];
+                trail.skillMedium = [Converters getBoolValueFromNSNumber:[object objectForKey:@"skillMedium"]];
+                trail.skillHard = [Converters getBoolValueFromNSNumber:[object objectForKey:@"skillHard"]];
                 
                 [allTrails addObject:trail];
             }
@@ -147,7 +146,7 @@
     [query fromLocalDatastore];
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         if (!error) {
-            NSLog(@"Successfully Retrieved %lu Trails", objects.count);
+            NSLog(@"Successfully Retrieved Trails");
             // add the items to the NSArray
             for (PFObject *object in objects) {
                 Trails *trail = [[Trails alloc] init];
@@ -169,7 +168,7 @@
     [query fromLocalDatastore];
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         if (!error) {
-            NSLog(@"Successfully Retrieved %lu Trails", objects.count);
+            NSLog(@"Successfully Retrieved Trails");
             // add the items to the NSArray
             for (PFObject *object in objects) {
                 Trails *trail = [[Trails alloc] init];
@@ -193,7 +192,7 @@
     [query fromLocalDatastore];
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         if (!error) {
-            NSLog(@"Successfully Retrieved %lu Trails", objects.count);
+            NSLog(@"Successfully Retrieved Trails");
             // add the items to the NSArray
             for (PFObject *object in objects) {
                 Trails *trail = [[Trails alloc] init];
@@ -206,10 +205,10 @@
                 trail.country = [object objectForKey:@"country"];
                 trail.length = [object objectForKey:@"length"];
                 trail.geoLocation = [object objectForKey:@"geoLocation"];
-                trail.privateTrail = [self getBoolValueFromNSNumber:[object objectForKey:@"privateTrail"]];
-                trail.skillEasy = [self getBoolValueFromNSNumber:[object objectForKey:@"skillEasy"]];
-                trail.skillMedium = [self getBoolValueFromNSNumber:[object objectForKey:@"skillMedium"]];
-                trail.skillHard = [self getBoolValueFromNSNumber:[object objectForKey:@"skillHard"]];
+                trail.privateTrail = [Converters getBoolValueFromNSNumber:[object objectForKey:@"privateTrail"]];
+                trail.skillEasy = [Converters getBoolValueFromNSNumber:[object objectForKey:@"skillEasy"]];
+                trail.skillMedium = [Converters getBoolValueFromNSNumber:[object objectForKey:@"skillMedium"]];
+                trail.skillHard = [Converters getBoolValueFromNSNumber:[object objectForKey:@"skillHard"]];
                 
                 // NSMustableOrderedSet only allows unique values
                 [trailsByState addObject:trail];
@@ -274,10 +273,10 @@
     trail[@"country"] = newTrail.country;
     trail[@"length"] = newTrail.length;
     trail[@"geoLocation"] = newTrail.geoLocation;
-    trail[@"privateTrail"] = [self ConvertBoolToNSNumber:newTrail.privateTrail];
-    trail[@"skillEasy"] = [self ConvertBoolToNSNumber:newTrail.skillEasy];
-    trail[@"skillMedium"] = [self ConvertBoolToNSNumber:newTrail.skillMedium];
-    trail[@"skillHard"] = [self ConvertBoolToNSNumber:newTrail.skillHard];
+    trail[@"privateTrail"] = [Converters ConvertBoolToNSNumber:newTrail.privateTrail];
+    trail[@"skillEasy"] = [Converters ConvertBoolToNSNumber:newTrail.skillEasy];
+    trail[@"skillMedium"] = [Converters ConvertBoolToNSNumber:newTrail.skillMedium];
+    trail[@"skillHard"] = [Converters ConvertBoolToNSNumber:newTrail.skillHard];
     
     [trail pinInBackground];
     [trail saveEventually];
@@ -332,10 +331,10 @@
              trail.geoLocation.latitude,
              trail.geoLocation.longitude,
              trail.status,
-             [self ConvertBoolToNSNumber:trail.skillEasy],
-             [self ConvertBoolToNSNumber:trail.skillMedium],
-             [self ConvertBoolToNSNumber:trail.skillHard],
-             [self ConvertBoolToNSNumber:trail.privateTrail]];
+             [Converters ConvertBoolToNSNumber:trail.skillEasy],
+             [Converters ConvertBoolToNSNumber:trail.skillMedium],
+             [Converters ConvertBoolToNSNumber:trail.skillHard],
+             [Converters ConvertBoolToNSNumber:trail.privateTrail]];
     
     [self.dbManager executeQuery:query];
     if (self.dbManager.affectedRows != 0) {
@@ -349,14 +348,6 @@
     self.dbManager = [[DBManager alloc] initWithDatabaseFilename:@"offline_trails.db"];
     NSString *query = [NSString stringWithFormat:@"delete from offline_trail where id=%d", tableId];
     [self.dbManager executeQuery:query];
-}
-
--(BOOL)getBoolValueFromNSNumber:(NSNumber *)number {
-    return [number boolValue];
-}
-
--(NSNumber*)ConvertBoolToNSNumber:(BOOL)boolValue {
-    return [NSNumber  numberWithBool:boolValue];
 }
 
 @end
