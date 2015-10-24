@@ -15,7 +15,10 @@
 @property (nonatomic, strong) NSArray *user;
 @property (nonatomic, strong) NSArray *userName;
 
++(BOOL)isSubscribedToChannel:(NSString*)channelName;
+
 -(void)SubscribeToChannel:(NSString*)trailName Choice:(BOOL)choice;
--(BOOL)isSubscribedToChannel:(NSString*)channelName;
+-(void)AddUserToCurrentInsallation;
+-(NSArray*)GetUserChannels;
 
 @end

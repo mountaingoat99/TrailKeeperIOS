@@ -8,6 +8,7 @@
 
 #import "Installation.h"
 #import <Parse/PFObject+Subclass.h>
+#import "User.h"
 
 @implementation Installation
 
@@ -42,14 +43,44 @@
 
 #pragma public methods
 
--(void)SubscribeToChannel:(NSString*)trailName Choice:(BOOL)choice {
-    
++(BOOL)isSubscribedToChannel:(NSString*)channelName {
+    BOOL isSubscribed = NO;
+    PFInstallation *installation = [PFInstallation currentInstallation];
+    NSArray *channels = [installation objectForKey:@"channels"];
+    if (channels.count > 0) {
+        for (NSString *channel in channels) {
+            if ([channel isEqualToString:channelName]) {
+                isSubscribed = YES;
+            }
+        }
+    }
+    return isSubscribed;
 }
 
--(BOOL)isSubscribedToChannel:(NSString*)channelName {
+-(void)SubscribeToChannel:(NSString*)trailName Choice:(BOOL)choice {
+    if (choice) {
+        PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+        [currentInstallation addUniqueObject:trailName forKey:@"channels"];
+        [currentInstallation saveInBackground];
+    } else {
+        PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+        [currentInstallation removeObjectsInArray:@[trailName] forKey:@"channels"];
+        [currentInstallation saveInBackground];
+    }
+}
+
+-(void)AddUserToCurrentInsallation {
+    PFUser *currentUser = [PFUser currentUser];
+    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    [currentInstallation addUniqueObject:currentUser forKey:@"user"];
+    [currentInstallation saveInBackground];
+}
+
+-(NSArray*)GetUserChannels {
+    PFInstallation *installation = [PFInstallation currentInstallation];
+    NSArray *channels = [installation objectForKey:@"channels"];
     
-    
-    return true;
+    return channels;
 }
 
 @end

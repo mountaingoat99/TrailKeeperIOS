@@ -9,6 +9,7 @@
 #import "User.h"
 #import <Parse/PFObject+Subclass.h>
 #import "AuthorizedCommentors.h"
+#import "Installation.h"
 
 @interface User ()
 
@@ -107,6 +108,9 @@
             auth.userObjectId = user.username;
             auth.canComment = YES;
             [auth AddAuthorizedCommentor:auth];
+            // add user to the current installation
+            Installation *installation = [[Installation alloc] init];
+            [installation AddUserToCurrentInsallation];
         } else {
             // call the view controller method to okay the sign up
             // with a string fail message
