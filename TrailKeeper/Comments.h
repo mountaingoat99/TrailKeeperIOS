@@ -18,11 +18,12 @@
 
 + (NSString *)parseClassName;
 
--(NSArray*)GetCommentsByUser:(NSString*)userObjectId;
--(NSArray*)GetCommentsByTrail:(NSString*)trailObjectId;
--(NSArray*)GetAllComments;
+-(NSMutableArray*)GetCommentsByUser:(NSString*)userObjectId;
+-(NSMutableArray*)GetCommentsByTrail:(NSString*)trailObjectId;
+-(NSMutableArray*)GetAllComments;
 -(void)CreateNewComment:(Comments*)comment;
+-(void)SaveNewComment:(Comments*)newComment;
 -(Comments*)GetOfflineComments;
--(int)GetDbCommentRowCount;
+-(NSNumber*)GetDbCommentRowCount;
 
 @end
