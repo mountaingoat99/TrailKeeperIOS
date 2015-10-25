@@ -25,7 +25,9 @@
 
 + (NSString *)parseClassName;
 
--(NSString *)ConvertTrailStatus:(NSNumber*)status;
++(NSString *)ConvertTrailStatus:(NSNumber*)status;
++(NSString *)ConvertTrailStatusForPush:(NSNumber*)status trailname:(NSString*)trailName;
+
 -(NSMutableArray *)GetAllTrailInfo;
 -(NSMutableArray*)GetTrailNames;
 -(NSMutableOrderedSet*)GetTrailStates;

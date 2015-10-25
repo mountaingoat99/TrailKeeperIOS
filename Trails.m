@@ -15,7 +15,6 @@
 
 @interface Trails ()
 
-@property (nonatomic, strong) NSString *tStatus;
 @property (nonatomic, strong) DBManager *dbManager;
 
 -(void)AddOfflineTrail:(Trails*)trail;
@@ -25,7 +24,6 @@
 
 @implementation Trails
 
-@synthesize tStatus;
 @synthesize dbManager;
 
 #pragma public properties
@@ -88,22 +86,43 @@
 
 #pragma Public methods
 
--(NSString *)ConvertTrailStatus:(NSNumber*)status {
++(NSString *)ConvertTrailStatus:(NSNumber*)status {
+    
+    NSString *statusString;
     
     switch ([status intValue]) {
         case 1:
-            self.tStatus = @"Closed";
+            statusString = @"Closed";
             break;
         case 2:
-            self.tStatus = @"Open";
+            statusString = @"Open";
             break;
         case 3:
-            self.tStatus = @"UnKnown";
+            statusString = @"UnKnown";
             break;
         default:
             break;
     }
-    return self.tStatus;
+    return statusString;
+}
+
++(NSString *)ConvertTrailStatusForPush:(NSNumber*)status trailname:(NSString*)trailName {
+    NSString *statusString;
+    
+    switch ([status intValue]) {
+        case 1:
+            statusString = @" trails are closed!";
+            break;
+        case 2:
+            statusString = @"trails are open";
+            break;
+        case 3:
+            statusString = [NSString stringWithFormat:@"We don't know if %@ trails are open or closed", trailName];
+            break;
+        default:
+            break;
+    }
+    return statusString;
 }
 
 -(NSMutableArray *)GetAllTrailInfo {
