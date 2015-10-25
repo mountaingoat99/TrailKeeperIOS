@@ -40,10 +40,10 @@
 +(void)load {
     [self registerSubclass];
 }
-
-+(NSString *)parseClassName {
-    return @"User";
-}
+//
+//+(NSString *)parseClassName {
+//    return @"User";
+//}
 
 #pragma Class Methods
 

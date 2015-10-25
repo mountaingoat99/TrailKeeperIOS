@@ -36,10 +36,10 @@
 +(void)load {
     [self registerSubclass];
 }
-
-+(NSString *)parseClassName {
-    return @"Installation";
-}
+//
+//+(NSString *)parseClassName {
+//    return @"Installation";
+//}
 
 #pragma public methods
 

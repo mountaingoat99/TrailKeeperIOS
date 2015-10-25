@@ -154,7 +154,6 @@
 				2615C1321BCAEC2E0065B62C /* Assets */,
 				2615C1311BCAEC1F0065B62C /* Views */,
 				2615C1301BCAEC0A0065B62C /* StoryBoard */,
-				2615C12A1BCAE7660065B62C /* Info.plist */,
 				2615C1191BCAE7660065B62C /* Supporting Files */,
 			);
 			path = TrailKeeper;
@@ -163,6 +162,7 @@
 		2615C1191BCAE7660065B62C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2615C12A1BCAE7660065B62C /* Info.plist */,
 				2615C11C1BCAE7660065B62C /* AppDelegate.h */,
 				2615C11D1BCAE7660065B62C /* AppDelegate.m */,
 				2615C11A1BCAE7660065B62C /* main.m */,
@@ -332,6 +332,7 @@
 				TargetAttributes = {
 					2615C1151BCAE7660065B62C = {
 						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = 5LME3793K2;
 					};
 				};
 			};
@@ -561,7 +562,8 @@
 			baseConfigurationReference = 2F888E95CE45AFE1354158EF /* Pods-TrailKeeper.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "TrailKeeper App Development Profile";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = TrailKeeper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -570,6 +572,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.singlecog.TrailKeeper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -578,7 +581,8 @@
 			baseConfigurationReference = 78EEF1E93A254E3A42D0AC7D /* Pods-TrailKeeper.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "TrailKeeper App Development Profile";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = TrailKeeper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -587,6 +591,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.singlecog.TrailKeeper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
