@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface GeoLocationHelper : NSObject
-//test
 
 
 @end
