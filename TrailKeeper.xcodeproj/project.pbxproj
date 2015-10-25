@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		260EC2641BDB13F600BB01DF /* Converters.m in Sources */ = {isa = PBXBuildFile; fileRef = 260EC2631BDB13F600BB01DF /* Converters.m */; settings = {ASSET_TAGS = (); }; };
+		260EC2641BDB13F600BB01DF /* Converters.m in Sources */ = {isa = PBXBuildFile; fileRef = 260EC2631BDB13F600BB01DF /* Converters.m */; };
 		2615C11B1BCAE7660065B62C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2615C11A1BCAE7660065B62C /* main.m */; };
 		2615C11E1BCAE7660065B62C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2615C11D1BCAE7660065B62C /* AppDelegate.m */; };
 		2615C1211BCAE7660065B62C /* Home.m in Sources */ = {isa = PBXBuildFile; fileRef = 2615C1201BCAE7660065B62C /* Home.m */; };
@@ -15,30 +15,30 @@
 		2615C1261BCAE7660065B62C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2615C1251BCAE7660065B62C /* Assets.xcassets */; };
 		2615C1291BCAE7660065B62C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2615C1271BCAE7660065B62C /* LaunchScreen.storyboard */; };
 		26751E991BCB24BA002C3498 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 26751E981BCB24BA002C3498 /* libsqlite3.tbd */; };
-		269296591BD71C8100D05848 /* offline_trails.db in Resources */ = {isa = PBXBuildFile; fileRef = 269296581BD71C8100D05848 /* offline_trails.db */; settings = {ASSET_TAGS = (); }; };
-		26A4C1101BCB3D7800524635 /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4C10F1BCB3D7800524635 /* DBManager.m */; settings = {ASSET_TAGS = (); }; };
-		26A4C1221BCB41EF00524635 /* AlertControllerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4C1211BCB41EF00524635 /* AlertControllerHelper.m */; settings = {ASSET_TAGS = (); }; };
-		26A4C1251BCB430A00524635 /* ConnectionDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4C1241BCB430A00524635 /* ConnectionDetector.m */; settings = {ASSET_TAGS = (); }; };
-		26A4C1281BCB432300524635 /* GeoLocationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4C1271BCB432300524635 /* GeoLocationHelper.m */; settings = {ASSET_TAGS = (); }; };
-		26A4C12B1BCB433200524635 /* PushNotificationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4C12A1BCB433200524635 /* PushNotificationHelper.m */; settings = {ASSET_TAGS = (); }; };
-		26A4C1311BCB434D00524635 /* StateListHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4C1301BCB434D00524635 /* StateListHelper.m */; settings = {ASSET_TAGS = (); }; };
-		26A4C1341BCB438D00524635 /* NotificationReciever.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4C1331BCB438D00524635 /* NotificationReciever.m */; settings = {ASSET_TAGS = (); }; };
-		26A4C1371BCB45D700524635 /* AsyncLoadAuthCommentors.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4C1361BCB45D700524635 /* AsyncLoadAuthCommentors.m */; settings = {ASSET_TAGS = (); }; };
-		26A4C13A1BCB460600524635 /* AsyncLoadComments.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4C1391BCB460600524635 /* AsyncLoadComments.m */; settings = {ASSET_TAGS = (); }; };
-		26A4C13D1BCB461800524635 /* AsyncLoadTrails.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4C13C1BCB461800524635 /* AsyncLoadTrails.m */; settings = {ASSET_TAGS = (); }; };
-		26A4C1401BCB463700524635 /* AsyncLoadTrailStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4C13F1BCB463700524635 /* AsyncLoadTrailStatus.m */; settings = {ASSET_TAGS = (); }; };
-		26A4C1431BCB464C00524635 /* AsyncRefreshCurrentUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4C1421BCB464C00524635 /* AsyncRefreshCurrentUser.m */; settings = {ASSET_TAGS = (); }; };
-		26A4C1461BCB466100524635 /* AsyncLoadOneTrailsComments.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4C1451BCB466100524635 /* AsyncLoadOneTrailsComments.m */; settings = {ASSET_TAGS = (); }; };
-		26A4C1491BCB467500524635 /* AysncSaveOfflineComments.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4C1481BCB467500524635 /* AysncSaveOfflineComments.m */; settings = {ASSET_TAGS = (); }; };
-		26A4C14C1BCB468900524635 /* AsyncSaveOfflineStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4C14B1BCB468900524635 /* AsyncSaveOfflineStatus.m */; settings = {ASSET_TAGS = (); }; };
-		26A4C14F1BCB469D00524635 /* AsyncSaveOfflineTrail.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4C14E1BCB469D00524635 /* AsyncSaveOfflineTrail.m */; settings = {ASSET_TAGS = (); }; };
-		26A4C1521BCB46AF00524635 /* AsyncLoadTrailLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4C1511BCB46AF00524635 /* AsyncLoadTrailLocations.m */; settings = {ASSET_TAGS = (); }; };
-		26AAB1CA1BCDDE8B0084B67D /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 26AAB1C91BCDDE8B0084B67D /* User.m */; settings = {ASSET_TAGS = (); }; };
-		26AAB1CD1BCDDEB60084B67D /* AuthorizedCommentors.m in Sources */ = {isa = PBXBuildFile; fileRef = 26AAB1CC1BCDDEB60084B67D /* AuthorizedCommentors.m */; settings = {ASSET_TAGS = (); }; };
-		26AAB1D01BCDDEC20084B67D /* Comments.m in Sources */ = {isa = PBXBuildFile; fileRef = 26AAB1CF1BCDDEC20084B67D /* Comments.m */; settings = {ASSET_TAGS = (); }; };
-		26AAB1D31BCDDECE0084B67D /* Trails.m in Sources */ = {isa = PBXBuildFile; fileRef = 26AAB1D21BCDDECE0084B67D /* Trails.m */; settings = {ASSET_TAGS = (); }; };
-		26AAB1D61BCDDEDC0084B67D /* TrailStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 26AAB1D51BCDDEDC0084B67D /* TrailStatus.m */; settings = {ASSET_TAGS = (); }; };
-		26AAB1D91BCDE0E70084B67D /* Installation.m in Sources */ = {isa = PBXBuildFile; fileRef = 26AAB1D81BCDE0E70084B67D /* Installation.m */; settings = {ASSET_TAGS = (); }; };
+		269296591BD71C8100D05848 /* offline_trails.db in Resources */ = {isa = PBXBuildFile; fileRef = 269296581BD71C8100D05848 /* offline_trails.db */; };
+		26A4C1101BCB3D7800524635 /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4C10F1BCB3D7800524635 /* DBManager.m */; };
+		26A4C1221BCB41EF00524635 /* AlertControllerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4C1211BCB41EF00524635 /* AlertControllerHelper.m */; };
+		26A4C1251BCB430A00524635 /* ConnectionDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4C1241BCB430A00524635 /* ConnectionDetector.m */; };
+		26A4C1281BCB432300524635 /* GeoLocationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4C1271BCB432300524635 /* GeoLocationHelper.m */; };
+		26A4C12B1BCB433200524635 /* PushNotificationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4C12A1BCB433200524635 /* PushNotificationHelper.m */; };
+		26A4C1311BCB434D00524635 /* StateListHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4C1301BCB434D00524635 /* StateListHelper.m */; };
+		26A4C1341BCB438D00524635 /* NotificationReciever.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4C1331BCB438D00524635 /* NotificationReciever.m */; };
+		26A4C1371BCB45D700524635 /* AsyncLoadAuthCommentors.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4C1361BCB45D700524635 /* AsyncLoadAuthCommentors.m */; };
+		26A4C13A1BCB460600524635 /* AsyncLoadComments.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4C1391BCB460600524635 /* AsyncLoadComments.m */; };
+		26A4C13D1BCB461800524635 /* AsyncLoadTrails.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4C13C1BCB461800524635 /* AsyncLoadTrails.m */; };
+		26A4C1401BCB463700524635 /* AsyncLoadTrailStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4C13F1BCB463700524635 /* AsyncLoadTrailStatus.m */; };
+		26A4C1431BCB464C00524635 /* AsyncRefreshCurrentUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4C1421BCB464C00524635 /* AsyncRefreshCurrentUser.m */; };
+		26A4C1461BCB466100524635 /* AsyncLoadOneTrailsComments.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4C1451BCB466100524635 /* AsyncLoadOneTrailsComments.m */; };
+		26A4C1491BCB467500524635 /* AysncSaveOfflineComments.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4C1481BCB467500524635 /* AysncSaveOfflineComments.m */; };
+		26A4C14C1BCB468900524635 /* AsyncSaveOfflineStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4C14B1BCB468900524635 /* AsyncSaveOfflineStatus.m */; };
+		26A4C14F1BCB469D00524635 /* AsyncSaveOfflineTrail.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4C14E1BCB469D00524635 /* AsyncSaveOfflineTrail.m */; };
+		26A4C1521BCB46AF00524635 /* AsyncLoadTrailLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4C1511BCB46AF00524635 /* AsyncLoadTrailLocations.m */; };
+		26AAB1CA1BCDDE8B0084B67D /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 26AAB1C91BCDDE8B0084B67D /* User.m */; };
+		26AAB1CD1BCDDEB60084B67D /* AuthorizedCommentors.m in Sources */ = {isa = PBXBuildFile; fileRef = 26AAB1CC1BCDDEB60084B67D /* AuthorizedCommentors.m */; };
+		26AAB1D01BCDDEC20084B67D /* Comments.m in Sources */ = {isa = PBXBuildFile; fileRef = 26AAB1CF1BCDDEC20084B67D /* Comments.m */; };
+		26AAB1D31BCDDECE0084B67D /* Trails.m in Sources */ = {isa = PBXBuildFile; fileRef = 26AAB1D21BCDDECE0084B67D /* Trails.m */; };
+		26AAB1D61BCDDEDC0084B67D /* TrailStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 26AAB1D51BCDDEDC0084B67D /* TrailStatus.m */; };
+		26AAB1D91BCDE0E70084B67D /* Installation.m in Sources */ = {isa = PBXBuildFile; fileRef = 26AAB1D81BCDE0E70084B67D /* Installation.m */; };
 		26B65D001BD5CB74008616EC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B65CFF1BD5CB74008616EC /* SystemConfiguration.framework */; };
 		AD129E6EA046676355810966 /* libPods-TrailKeeper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 149CB766E1EA3B4629A01B39 /* libPods-TrailKeeper.a */; };
 /* End PBXBuildFile section */
@@ -489,7 +489,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "TrailKeeper App Development Profile";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "TrailKeeper App Development Profile";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -533,7 +534,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "TrailKeeper App Development Profile";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "TrailKeeper App Development Profile";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -559,6 +561,7 @@
 			baseConfigurationReference = 2F888E95CE45AFE1354158EF /* Pods-TrailKeeper.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "TrailKeeper App Development Profile";
 				INFOPLIST_FILE = TrailKeeper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -575,6 +578,7 @@
 			baseConfigurationReference = 78EEF1E93A254E3A42D0AC7D /* Pods-TrailKeeper.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "TrailKeeper App Development Profile";
 				INFOPLIST_FILE = TrailKeeper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
