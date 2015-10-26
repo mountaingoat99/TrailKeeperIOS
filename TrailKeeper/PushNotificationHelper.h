@@ -14,7 +14,6 @@
 +(NSString*)CreateChannelName:(NSString*)trail;
 +(void)SendOutAPushNotificationForNewComment:(NSString*)trailNameString trailObjectId:(NSString*)trailObjectId comment:(NSString*)Comment;
 +(void)SendOutAPushNotificationForStatusUpdate:(NSString*)trailNameString trailObjectId:(NSString*)trailObjectId status:(NSNumber*)Status;
-
--(void)GetNewPush:(NSString*)jsonString;
++(void)GetNewPush:(NSDictionary*)jsonString;
 
 @end

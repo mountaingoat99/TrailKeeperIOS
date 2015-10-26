@@ -13,8 +13,8 @@
 
 @interface PushNotificationHelper ()
 
--(void)ConvertCommentPush:(id)object;
--(void)ConvertStatusPush:(id)object;
++(void)ConvertCommentPush:(NSDictionary*)object;
++(void)ConvertStatusPush:(NSDictionary*)object;
 
 @end
 
@@ -119,35 +119,33 @@ NSString* const STATUS_ACTION = @"com.singlecog.trailkeeper.NEW_STATUS_NOTIF";
     [push sendPushInBackground];
 }
 
-#pragma public methods
-
--(void)GetNewPush:(NSString*)jsonString {
++(void)GetNewPush:(NSDictionary*)jsonString {
     //NSData *json = [[NSData alloc] initWithBase64EncodedString:jsonString options:NSUTF8StringEncoding];
-    NSData *jsonData = [NSData dataWithContentsOfFile:jsonString];
+    //NSData *jsonData = [NSData dataWithContentsOfFile:jsonString];
     NSError *error;
     
     // get JSON data into a foundation object
-    id object = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:&error];
+    //id object = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:&error];
     
     // verify object recieved is dictionary
-    if ([object isKindOfClass:[NSDictionary class]] && error == nil) {
-        NSLog(@"dictionary: %@", object);
+    if ([jsonString isKindOfClass:[NSDictionary class]] && error == nil) {
+        NSLog(@"dictionary: %@", jsonString);
         
         // get the value string for the next key page
-        NSString *action = [object objectForKey:@"action"];
+        NSString *action = [jsonString objectForKey:@"action"];
         if ([action isEqualToString:COMMENT_ACTION]) {
-            [self ConvertCommentPush:object];
+            [self ConvertCommentPush:jsonString];
         } else if ([action isEqualToString:STATUS_ACTION]){
-            [self ConvertStatusPush:object];
+            [self ConvertStatusPush:jsonString];
         } else {
-            NSLog(@"dictionary: %@ did not have the correct type of action", object);
+            NSLog(@"dictionary: %@ did not have the correct type of action", jsonString);
         }
     }
 }
 
 #pragma private methods
 
--(void)ConvertCommentPush:(id)object {
++(void)ConvertCommentPush:(NSDictionary*)object {
     // first lets get the variables from the JSON object
     NSString *channel = [object objectForKey:@"com.Parse.Channel"];
     NSString *trailObjectId = [object objectForKey:@"trailObjectId"];
@@ -155,17 +153,47 @@ NSString* const STATUS_ACTION = @"com.singlecog.trailkeeper.NEW_STATUS_NOTIF";
     NSString *comment = [object objectForKey:@"comment"];
     NSString *installationObjectId = [object objectForKey:@"InstallationObjectId"];
     
-    // now do something with the items???
+    // create a string for the comment
+    NSString *commentWithTrailName = [NSString stringWithFormat:@"%@ has a new Comment.\n%@", trailName, comment];
+    
+    // create the array that the Parse Push class is looking for from our custom notification object
+    //TODO figure out the app badges
+    // TODO figure out the sounds dealio
+    NSDictionary *aps = @{@"alert" : commentWithTrailName,
+                           @"badge" : @"3",
+                           @"sound" : @"default"};
+    
+    NSDictionary *userInfo = @{@"aps" : aps};
+    NSLog(@"dictionary: %@", userInfo);
+    
+    // then call the parse class to handle it
+    [PFPush handlePush:userInfo];
+    
+    // TODO do something to get the other info and have that page pull up when user clicks on the notification
+    
 }
 
--(void)ConvertStatusPush:(id)object {
++(void)ConvertStatusPush:(NSDictionary*)object {
     // first lets get the variables from the JSON object
     NSString *channel = [object objectForKey:@"com.Parse.Channel"];
     NSString *trailObjectId = [object objectForKey:@"trailObjectId"];
     NSString *statusString = [object objectForKey:@"statusUpdate"];
     NSString *installationObjectId = [object objectForKey:@"InstallationObjectId"];
     
-    // now do something with the items???
+    // create the array that the Parse Push class is looking for from our custom notification object
+    //TODO figure out the app badges
+    // TODO figure out the sounds dealio
+    NSDictionary *aps = @{@"alert" : statusString,
+                          @"badge" : @"3",
+                          @"sound" : @"default"};
+    
+    NSDictionary *userInfo = @{@"aps" : aps};
+    NSLog(@"dictionary: %@", userInfo);
+    
+    // then call the parse class to handle it
+    [PFPush handlePush:userInfo];
+    
+    // TODO do something to get the other info and have that page pull up when user clicks on the notification
 }
 
 @end

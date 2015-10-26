@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "PushNotificationHelper.h"
 
 @interface AppDelegate ()
 
@@ -45,7 +46,10 @@
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    [PFPush handlePush:userInfo];
+    //[PFPush handlePush:userInfo];   we are going to let the helper class handle this
+    
+    [PushNotificationHelper GetNewPush:userInfo];
+    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
