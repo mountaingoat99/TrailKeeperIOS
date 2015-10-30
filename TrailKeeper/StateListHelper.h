@@ -10,4 +10,10 @@
 
 @interface StateListHelper : NSObject
 
+@property (nonatomic, strong) NSDictionary *stateList;
+
++(NSDictionary*)GetStates;
++(NSString*)GetStateName:(NSString*)abbreviation;
++(NSMutableArray*)GetCountries;
+
 @end
