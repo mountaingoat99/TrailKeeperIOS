@@ -258,14 +258,16 @@
 }
 
 -(void)UpdateTrailStatus:(NSString*)objectId Choice:(NSNumber*)choice TrailName:(NSString*)trailName {
+    PFUser *user = [PFUser currentUser];
     PFQuery *query = [PFQuery queryWithClassName:@"Trails"];
     [query fromLocalDatastore];
     
     // Retrieve the object by id
     [query getObjectInBackgroundWithId:objectId block:^(PFObject *trail, NSError *error) {
-         trail[@"cheatMode"] = choice;
-         [trail pinInBackground];
-         [trail saveInBackground];
+        trail[@"status"] = choice;
+        trail[@"lastUpdatedByUserObjectd"] = user.objectId;
+        [trail pinInBackground];
+        [trail saveInBackground];
      }];
 }
 
@@ -283,6 +285,7 @@
 }
 
 -(void)SaveNewTrail:(Trails*)newTrail {
+    PFUser *user = [PFUser currentUser];
     PFObject *trail = [PFObject objectWithClassName:@"Trails"];
     trail[@"trailName"] = newTrail.trailName;
     trail[@"status"] = newTrail.status;
@@ -296,6 +299,7 @@
     trail[@"skillEasy"] = [Converters ConvertBoolToNSNumber:newTrail.skillEasy];
     trail[@"skillMedium"] = [Converters ConvertBoolToNSNumber:newTrail.skillMedium];
     trail[@"skillHard"] = [Converters ConvertBoolToNSNumber:newTrail.skillHard];
+    trail[@"lastUpdatedByUserObjectd"] = user.objectId;
     
     [trail pinInBackground];
     [trail saveEventually];

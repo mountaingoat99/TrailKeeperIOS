@@ -105,9 +105,9 @@
 #pragma private methods
 
 -(BOOL)isUserWhoUpdated:(NSDictionary*)userInfo {
-        PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    PFUser *user = [PFUser currentUser];
     NSString *userObjectId = [userInfo objectForKey:@"userObjectId"];
-    return ([userObjectId isEqualToString:currentInstallation.objectId]);
+    return ([userObjectId isEqualToString:user.objectId]);
 }
 
 @end
