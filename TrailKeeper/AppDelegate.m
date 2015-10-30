@@ -12,6 +12,8 @@
 
 @interface AppDelegate ()
 
+-(BOOL)isUserWhoUpdated:(NSDictionary*)userInfo;
+
 @end
 
 @implementation AppDelegate
@@ -36,13 +38,12 @@
     
     // Override point for customization after application launch.
     NSDictionary *notificationPayload = launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey];
-    // get the trailID
-    NSString *trailObjectId = [notificationPayload objectForKey:@"trailObjectId"];
-    PFObject *trailToGet = [PFObject objectWithoutDataWithClassName:@"Trails" objectId:trailObjectId];
-    Trails *trail = [[Trails alloc] init];
-    
-    //Open up the TrailInfo View Controller for the correct trail
-    [PushNotificationHelper GetNewPush:notificationPayload];    
+
+    // we do not want to show the notification is the user is the one who sent the update
+    if (![self isUserWhoUpdated:notificationPayload]) {
+        //Open up the TrailInfo View Controller for the correct trail
+        [PushNotificationHelper GetNewPush:notificationPayload];
+    }
     return YES;
 }
 
@@ -56,18 +57,20 @@
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     NSLog(@"JSON: %@", userInfo);
-    [PFPush handlePush:userInfo];  
-    // if the app is open we do not want to show anything on the badge
-    if ([application applicationState] == UIApplicationStateActive) {
-        PFInstallation *currentInstallation = [PFInstallation currentInstallation];
-        if (currentInstallation.badge != 0) {
-            currentInstallation.badge = 0;
-            [currentInstallation saveEventually];
+    
+    // we do not want to show the notification is the user is the one who sent the update
+    if (![self isUserWhoUpdated:userInfo]) {
+        [PFPush handlePush:userInfo];
+        // if the app is open we do not want to show anything on the badge
+        if ([application applicationState] == UIApplicationStateActive) {
+            PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+            if (currentInstallation.badge != 0) {
+                currentInstallation.badge = 0;
+                [currentInstallation saveEventually];
+            }
+            [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
         }
-        [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
     }
-    
-    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -97,6 +100,14 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+#pragma private methods
+
+-(BOOL)isUserWhoUpdated:(NSDictionary*)userInfo {
+        PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    NSString *userObjectId = [userInfo objectForKey:@"userObjectId"];
+    return ([userObjectId isEqualToString:currentInstallation.objectId]);
 }
 
 @end

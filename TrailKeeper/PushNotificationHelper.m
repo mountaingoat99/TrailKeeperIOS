@@ -51,81 +51,8 @@ NSString* const STATUS_ACTION = @"com.singlecog.trailkeeper.NEW_STATUS_NOTIF";
     return newTrailName;
 }
 
-+(void)SendOutAPushNotificationForNewComment:(NSString*)trailNameString trailObjectId:(NSString*)trailObjectId comment:(NSString*)Comment {
-    NSString *channel = [self CreateChannelName:trailNameString];
-    PFInstallation *installation = [PFInstallation currentInstallation];
-    
-    // serialize the object to JSON
-    NSDictionary *dict = @{@"action" : COMMENT_ACTION,
-                           @"com.Parse.Channel" : channel,
-                           @"trailObjectId" : trailObjectId,
-                           @"trailName" : trailNameString,
-                           @"comment" : Comment,
-                           @"InstallationObjectId" : installation.objectId};
-    
-    NSError *error = nil;
-    NSData *json;
-    NSString *jsonString;
-    
-    // Dictionary convertable to JSON?
-    if ([NSJSONSerialization isValidJSONObject:dict]) {
-        // serialize the object
-        json = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&error];
-        
-        // if no errors, view the JSON for testing
-        if (json != nil && error == nil) {
-            jsonString = [[NSString alloc] initWithData:json encoding:NSUTF8StringEncoding];
-            NSLog(@"JSON: %@", jsonString);
-        }
-    }
-    
-    PFPush *push = [[PFPush alloc] init];
-    [push setChannel:channel];
-    [push setMessage:jsonString];  
-    [push sendPushInBackground];
-}
-
-+(void)SendOutAPushNotificationForStatusUpdate:(NSString*)trailNameString trailObjectId:(NSString*)trailObjectId status:(NSNumber*)Status {
-    NSString *channel = [self CreateChannelName:trailNameString];
-    PFInstallation *installation = [PFInstallation currentInstallation];
-    NSString *statusString = [Trails ConvertTrailStatusForPush:Status trailname:trailNameString];
-    
-    // serialize the object to JSON
-    NSDictionary *dict = @{@"action" : STATUS_ACTION,
-                           @"com.Parse.Channel" : channel,
-                           @"trailObjectId" : trailObjectId,
-                           @"statusUpdate" : statusString,
-                           @"InstallationObjectId" : installation.objectId};
-    
-    NSError *error = nil;
-    NSData *json;
-    NSString *jsonString;
-    
-    // Dictionary convertable to JSON?
-    if ([NSJSONSerialization isValidJSONObject:dict]) {
-        // serialize the object
-        json = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&error];
-        
-        // if no errors, view the JSON for testing
-        if (json != nil && error == nil) {
-            jsonString = [[NSString alloc] initWithData:json encoding:NSUTF8StringEncoding];
-            NSLog(@"JSON: %@", jsonString);
-        }
-    }
-    
-    PFPush *push = [[PFPush alloc] init];
-    [push setChannel:channel];
-    [push setMessage:jsonString];
-    [push sendPushInBackground];
-}
-
 +(void)GetNewPush:(NSDictionary*)jsonString {
-    //NSData *json = [[NSData alloc] initWithBase64EncodedString:jsonString options:NSUTF8StringEncoding];
-    //NSData *jsonData = [NSData dataWithContentsOfFile:jsonString];
     NSError *error;
-    
-    // get JSON data into a foundation object
-    //id object = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:&error];
     
     // verify object recieved is dictionary
     if ([jsonString isKindOfClass:[NSDictionary class]] && error == nil) {
@@ -147,53 +74,22 @@ NSString* const STATUS_ACTION = @"com.singlecog.trailkeeper.NEW_STATUS_NOTIF";
 
 +(void)ConvertCommentPush:(NSDictionary*)object {
     // first lets get the variables from the JSON object
-    NSString *channel = [object objectForKey:@"com.Parse.Channel"];
     NSString *trailObjectId = [object objectForKey:@"trailObjectId"];
     NSString *trailName = [object objectForKey:@"trailName"];
-    NSString *comment = [object objectForKey:@"comment"];
-    NSString *installationObjectId = [object objectForKey:@"InstallationObjectId"];
+    NSString *comment = [object objectForKey:@"fullComment"];
+    NSString *userId = [object objectForKey:@"userObjectId"];
     
-    // create a string for the comment
-    NSString *commentWithTrailName = [NSString stringWithFormat:@"%@ has a new Comment.\n%@", trailName, comment];
-    
-    // create the array that the Parse Push class is looking for from our custom notification object
-    //TODO figure out the app badges
-    // TODO figure out the sounds dealio
-    NSDictionary *aps = @{@"alert" : commentWithTrailName,
-                           @"badge" : @"3",
-                           @"sound" : @"default"};
-    
-    NSDictionary *userInfo = @{@"aps" : aps};
-    NSLog(@"dictionary: %@", userInfo);
-    
-    // then call the parse class to handle it
-    [PFPush handlePush:userInfo];
-    
-    // TODO do something to get the other info and have that page pull up when user clicks on the notification
-    
+    // do something with this info, send the to the correct view controller?
 }
 
 +(void)ConvertStatusPush:(NSDictionary*)object {
     // first lets get the variables from the JSON object
-    NSString *channel = [object objectForKey:@"com.Parse.Channel"];
     NSString *trailObjectId = [object objectForKey:@"trailObjectId"];
+    NSString *trailName = [object objectForKey:@"trailName"];
     NSString *statusString = [object objectForKey:@"statusUpdate"];
-    NSString *installationObjectId = [object objectForKey:@"InstallationObjectId"];
+    NSString *userId = [object objectForKey:@"userObjectId"];
     
-    // create the array that the Parse Push class is looking for from our custom notification object
-    //TODO figure out the app badges
-    // TODO figure out the sounds dealio
-    NSDictionary *aps = @{@"alert" : statusString,
-                          @"badge" : @"3",
-                          @"sound" : @"default"};
-    
-    NSDictionary *userInfo = @{@"aps" : aps};
-    NSLog(@"dictionary: %@", userInfo);
-    
-    // then call the parse class to handle it
-    [PFPush handlePush:userInfo];
-    
-    // TODO do something to get the other info and have that page pull up when user clicks on the notification
+    // do something with this info, send the to the correct view controller?
 }
 
 @end
