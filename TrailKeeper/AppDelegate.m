@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "PushNotificationHelper.h"
+#import <Parse/Parse.h>
 
 @interface AppDelegate ()
 
@@ -34,6 +35,14 @@
     [Parse setApplicationId:@"uU8JsEF9eLEYcFzUrwqmrWzblj65IoQ0G6S4DkI8" clientKey:@"4S7u2tedpm9yeE6DR3J6mDyJHHpgmUgktu6Q6QvD"];
     
     // Override point for customization after application launch.
+    NSDictionary *notificationPayload = launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey];
+    // get the trailID
+    NSString *trailObjectId = [notificationPayload objectForKey:@"trailObjectId"];
+    PFObject *trailToGet = [PFObject objectWithoutDataWithClassName:@"Trails" objectId:trailObjectId];
+    Trails *trail = [[Trails alloc] init];
+    
+    //Open up the TrailInfo View Controller for the correct trail
+    [PushNotificationHelper GetNewPush:notificationPayload];    
     return YES;
 }
 
@@ -46,9 +55,18 @@
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    //[PFPush handlePush:userInfo];   we are going to let the helper class handle this
+    NSLog(@"JSON: %@", userInfo);
+    [PFPush handlePush:userInfo];  
+    // if the app is open we do not want to show anything on the badge
+    if ([application applicationState] == UIApplicationStateActive) {
+        PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+        if (currentInstallation.badge != 0) {
+            currentInstallation.badge = 0;
+            [currentInstallation saveEventually];
+        }
+        [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+    }
     
-    [PushNotificationHelper GetNewPush:userInfo];
     
 }
 
@@ -67,6 +85,13 @@
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
+    // watching and clearing the badge on the app
+    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    if (currentInstallation.badge != 0) {
+        currentInstallation.badge = 0;
+        [currentInstallation saveEventually];
+    }
+    
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
 
