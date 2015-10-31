@@ -6,7 +6,6 @@ platform :ios, '9.0'
 target 'TrailKeeper' do
 
 pod 'Parse'
-pod 'MMDrawerController', '~> 0.5.7'
 
 end
 
