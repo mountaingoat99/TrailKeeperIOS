@@ -7,8 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Parse/Parse.h>
+#import "Trails.h"
 
 @interface GeoLocationHelper : NSObject
 
++(NSArray*)GetClosestTrailsForHomeScreen:(PFGeoPoint*)currentLocation;
++(NSArray*)GetClosestTrailsForMap:(PFGeoPoint*)currentLocation;
++(PFGeoPoint*)GetUsersCurrentPostion;
 
 @end
