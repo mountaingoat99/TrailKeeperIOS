@@ -10,4 +10,6 @@
 
 @interface TrailSubscriptionsViewController : UIViewController
 
+- (IBAction)btn_back:(id)sender;
+
 @end

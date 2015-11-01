@@ -10,4 +10,6 @@
 
 @interface FindTrailViewController : UIViewController
 
+- (IBAction)btn_back:(id)sender;
+
 @end

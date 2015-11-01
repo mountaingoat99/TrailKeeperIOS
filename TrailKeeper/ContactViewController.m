@@ -42,4 +42,12 @@
 }
 */
 
+- (IBAction)btn_back:(id)sender {
+    NSLog(@"Button click to return from Contact");
+    UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    NSString *name = NSStringFromClass([self.appDelegate.whichController class]);
+    id lastWindow = [mainStoryBoard instantiateViewControllerWithIdentifier:name];
+    UINavigationController *centerNav = [[UINavigationController alloc] initWithRootViewController:lastWindow];
+    self.appDelegate.drawerController.centerViewController = centerNav;
+}
 @end

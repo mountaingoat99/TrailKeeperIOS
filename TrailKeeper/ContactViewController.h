@@ -10,4 +10,6 @@
 
 @interface ContactViewController : UIViewController
 
+- (IBAction)btn_back:(id)sender;
+
 @end

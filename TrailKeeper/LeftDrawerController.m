@@ -71,7 +71,6 @@
     switch (indexPath.row) {
         case 0: {
             NSLog(@"Home");
-            
             id mainView = [mainStoryBoard instantiateViewControllerWithIdentifier:@"MainViewController"];
             UINavigationController *centerNav = [[UINavigationController alloc] initWithRootViewController:mainView];
             appDelegate.drawerController.centerViewController = centerNav;
@@ -80,22 +79,42 @@
         }
         case 1: {
             NSLog(@"Find Trail");
+            id mainView = [mainStoryBoard instantiateViewControllerWithIdentifier:@"FindTrailViewController"];
+            UINavigationController *centerNav = [[UINavigationController alloc] initWithRootViewController:mainView];
+            appDelegate.drawerController.centerViewController = centerNav;
+            [appDelegate.drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
             break;
         }
         case 2: {
             NSLog(@"Comments");
+            id mainView = [mainStoryBoard instantiateViewControllerWithIdentifier:@"CommentsViewController"];
+            UINavigationController *centerNav = [[UINavigationController alloc] initWithRootViewController:mainView];
+            appDelegate.drawerController.centerViewController = centerNav;
+            [appDelegate.drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
             break;
         }
         case 3: {
             NSLog(@"Map");
+            id mainView = [mainStoryBoard instantiateViewControllerWithIdentifier:@"MapViewController"];
+            UINavigationController *centerNav = [[UINavigationController alloc] initWithRootViewController:mainView];
+            appDelegate.drawerController.centerViewController = centerNav;
+            [appDelegate.drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
             break;
         }
         case 4: {
             NSLog(@"Add Trail");
+            id mainView = [mainStoryBoard instantiateViewControllerWithIdentifier:@"AddTrailViewController"];
+            UINavigationController *centerNav = [[UINavigationController alloc] initWithRootViewController:mainView];
+            appDelegate.drawerController.centerViewController = centerNav;
+            [appDelegate.drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
             break;
         }
         case 5: {
             NSLog(@"Trail Subscriptions");
+            id mainView = [mainStoryBoard instantiateViewControllerWithIdentifier:@"TrailSubscriptionsViewController"];
+            UINavigationController *centerNav = [[UINavigationController alloc] initWithRootViewController:mainView];
+            appDelegate.drawerController.centerViewController = centerNav;
+            [appDelegate.drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
             break;
         }
         case 6: {
@@ -108,10 +127,18 @@
         }
         case 7: {
             NSLog(@"Get Trail Pin");
+            id mainView = [mainStoryBoard instantiateViewControllerWithIdentifier:@"GetTrailPinViewController"];
+            UINavigationController *centerNav = [[UINavigationController alloc] initWithRootViewController:mainView];
+            appDelegate.drawerController.centerViewController = centerNav;
+            [appDelegate.drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
             break;
         }
         case 8: {
             NSLog(@"Contact Us");
+            id mainView = [mainStoryBoard instantiateViewControllerWithIdentifier:@"ContactViewController"];
+            UINavigationController *centerNav = [[UINavigationController alloc] initWithRootViewController:mainView];
+            appDelegate.drawerController.centerViewController = centerNav;
+            [appDelegate.drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
             break;
         }
         default:

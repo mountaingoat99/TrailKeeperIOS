@@ -10,4 +10,6 @@
 
 @interface MapViewController : UIViewController
 
+- (IBAction)btn_click:(id)sender;
+
 @end

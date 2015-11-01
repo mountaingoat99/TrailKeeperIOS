@@ -10,4 +10,6 @@
 
 @interface GetTrailPinViewController : UIViewController
 
+- (IBAction)btn_back:(id)sender;
+
 @end
