@@ -31,7 +31,7 @@
 		26F7A3941BE453E5007D98D6 /* GetAllObjectsFromParseHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A3931BE453E5007D98D6 /* GetAllObjectsFromParseHelper.m */; };
 		26F8D40C1BE5A227007770F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26F8D40A1BE5A227007770F4 /* Main.storyboard */; };
 		26F8D40F1BE5A389007770F4 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F8D40E1BE5A389007770F4 /* MainViewController.m */; };
-		26F8D4121BE5A3A3007770F4 /* SideBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F8D4111BE5A3A3007770F4 /* SideBar.m */; };
+		26F8D4151BE65539007770F4 /* LeftDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F8D4141BE65539007770F4 /* LeftDrawerController.m */; };
 		AD129E6EA046676355810966 /* libPods-TrailKeeper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 149CB766E1EA3B4629A01B39 /* libPods-TrailKeeper.a */; };
 /* End PBXBuildFile section */
 
@@ -80,8 +80,8 @@
 		26F8D40B1BE5A227007770F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		26F8D40D1BE5A389007770F4 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		26F8D40E1BE5A389007770F4 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
-		26F8D4101BE5A3A3007770F4 /* SideBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideBar.h; sourceTree = "<group>"; };
-		26F8D4111BE5A3A3007770F4 /* SideBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideBar.m; sourceTree = "<group>"; };
+		26F8D4131BE65539007770F4 /* LeftDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftDrawerController.h; sourceTree = "<group>"; };
+		26F8D4141BE65539007770F4 /* LeftDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftDrawerController.m; sourceTree = "<group>"; };
 		2F888E95CE45AFE1354158EF /* Pods-TrailKeeper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrailKeeper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TrailKeeper/Pods-TrailKeeper.debug.xcconfig"; sourceTree = "<group>"; };
 		78EEF1E93A254E3A42D0AC7D /* Pods-TrailKeeper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrailKeeper.release.xcconfig"; path = "Pods/Target Support Files/Pods-TrailKeeper/Pods-TrailKeeper.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -159,8 +159,8 @@
 			children = (
 				26F8D40D1BE5A389007770F4 /* MainViewController.h */,
 				26F8D40E1BE5A389007770F4 /* MainViewController.m */,
-				26F8D4101BE5A3A3007770F4 /* SideBar.h */,
-				26F8D4111BE5A3A3007770F4 /* SideBar.m */,
+				26F8D4131BE65539007770F4 /* LeftDrawerController.h */,
+				26F8D4141BE65539007770F4 /* LeftDrawerController.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -378,7 +378,6 @@
 				260EC2641BDB13F600BB01DF /* Converters.m in Sources */,
 				26A4C1281BCB432300524635 /* GeoLocationHelper.m in Sources */,
 				26AAB1D61BCDDEDC0084B67D /* TrailStatus.m in Sources */,
-				26F8D4121BE5A3A3007770F4 /* SideBar.m in Sources */,
 				26F8D40F1BE5A389007770F4 /* MainViewController.m in Sources */,
 				26F7A3941BE453E5007D98D6 /* GetAllObjectsFromParseHelper.m in Sources */,
 				26A4C12B1BCB433200524635 /* PushNotificationHelper.m in Sources */,
@@ -391,6 +390,7 @@
 				26A4C1221BCB41EF00524635 /* AlertControllerHelper.m in Sources */,
 				26A4C1341BCB438D00524635 /* NotificationReciever.m in Sources */,
 				2615C11B1BCAE7660065B62C /* main.m in Sources */,
+				26F8D4151BE65539007770F4 /* LeftDrawerController.m in Sources */,
 				26AAB1D91BCDE0E70084B67D /* Installation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

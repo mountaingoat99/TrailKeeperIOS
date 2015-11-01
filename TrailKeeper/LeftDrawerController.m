@@ -1,23 +1,22 @@
 //
-//  MainViewController.m
+//  LeftDrawerController.m
 //  TrailKeeper
 //
-//  Created by Jeremey Rodriguez on 10/31/15.
+//  Created by Jeremey Rodriguez on 11/1/15.
 //  Copyright © 2015 Jeremey Rodriguez. All rights reserved.
 //
 
-#import "MainViewController.h"
+#import "LeftDrawerController.h"
 
-
-@interface MainViewController ()
+@interface LeftDrawerController ()
 
 @end
 
-@implementation MainViewController
+@implementation LeftDrawerController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
