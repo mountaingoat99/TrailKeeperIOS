@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trail Keeper Main Page" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sfQ-An-OIA">
-                                <rect key="frame" x="96" y="323" width="183" height="21"/>
+                                <rect key="frame" x="100" y="323" width="175" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -28,10 +28,8 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="sfQ-An-OIA" secondAttribute="trailing" constant="80" id="4rO-zZ-ZEk"/>
-                            <constraint firstItem="sfQ-An-OIA" firstAttribute="leading" secondItem="Ls5-Jy-Oht" secondAttribute="leadingMargin" constant="80" id="ERA-9N-MYu"/>
-                            <constraint firstItem="oPL-FP-qvj" firstAttribute="top" secondItem="sfQ-An-OIA" secondAttribute="bottom" constant="323" id="XD2-0N-UPs"/>
-                            <constraint firstItem="sfQ-An-OIA" firstAttribute="top" secondItem="PUr-jK-IYh" secondAttribute="bottom" constant="259" id="hh9-IO-ZeL"/>
+                            <constraint firstItem="sfQ-An-OIA" firstAttribute="centerY" secondItem="Ls5-Jy-Oht" secondAttribute="centerY" id="OB4-6g-OaE"/>
+                            <constraint firstItem="sfQ-An-OIA" firstAttribute="centerX" secondItem="Ls5-Jy-Oht" secondAttribute="centerX" id="Rzn-9h-MKl"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="TrailKeeper" id="Xc8-67-3Q2">
