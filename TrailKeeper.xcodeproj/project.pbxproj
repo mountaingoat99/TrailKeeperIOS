@@ -36,6 +36,7 @@
 		26F8D4211BE65E4A007770F4 /* MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F8D41A1BE65E4A007770F4 /* MMDrawerController.m */; };
 		26F8D4221BE65E4A007770F4 /* MMDrawerVisualState.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F8D41D1BE65E4A007770F4 /* MMDrawerVisualState.m */; };
 		26F8D4231BE65E4A007770F4 /* UIViewController+MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F8D41F1BE65E4A007770F4 /* UIViewController+MMDrawerController.m */; };
+		26F8D4261BE6913F007770F4 /* SettingsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F8D4251BE6913F007770F4 /* SettingsHelper.m */; };
 		AD129E6EA046676355810966 /* libPods-TrailKeeper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 149CB766E1EA3B4629A01B39 /* libPods-TrailKeeper.a */; };
 /* End PBXBuildFile section */
 
@@ -95,6 +96,8 @@
 		26F8D41D1BE65E4A007770F4 /* MMDrawerVisualState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMDrawerVisualState.m; sourceTree = "<group>"; };
 		26F8D41E1BE65E4A007770F4 /* UIViewController+MMDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+MMDrawerController.h"; sourceTree = "<group>"; };
 		26F8D41F1BE65E4A007770F4 /* UIViewController+MMDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MMDrawerController.m"; sourceTree = "<group>"; };
+		26F8D4241BE6913F007770F4 /* SettingsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsHelper.h; sourceTree = "<group>"; };
+		26F8D4251BE6913F007770F4 /* SettingsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsHelper.m; sourceTree = "<group>"; };
 		2F888E95CE45AFE1354158EF /* Pods-TrailKeeper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrailKeeper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TrailKeeper/Pods-TrailKeeper.debug.xcconfig"; sourceTree = "<group>"; };
 		78EEF1E93A254E3A42D0AC7D /* Pods-TrailKeeper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrailKeeper.release.xcconfig"; path = "Pods/Target Support Files/Pods-TrailKeeper/Pods-TrailKeeper.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -213,6 +216,8 @@
 				260EC2631BDB13F600BB01DF /* Converters.m */,
 				26F7A3921BE453E5007D98D6 /* GetAllObjectsFromParseHelper.h */,
 				26F7A3931BE453E5007D98D6 /* GetAllObjectsFromParseHelper.m */,
+				26F8D4241BE6913F007770F4 /* SettingsHelper.h */,
+				26F8D4251BE6913F007770F4 /* SettingsHelper.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -415,6 +420,7 @@
 				26AAB1CA1BCDDE8B0084B67D /* User.m in Sources */,
 				26A4C1251BCB430A00524635 /* ConnectionDetector.m in Sources */,
 				2615C11E1BCAE7660065B62C /* AppDelegate.m in Sources */,
+				26F8D4261BE6913F007770F4 /* SettingsHelper.m in Sources */,
 				26AAB1D31BCDDECE0084B67D /* Trails.m in Sources */,
 				26AAB1D01BCDDEC20084B67D /* Comments.m in Sources */,
 				26A4C1311BCB434D00524635 /* StateListHelper.m in Sources */,

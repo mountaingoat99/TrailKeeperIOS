@@ -22,7 +22,7 @@
 
 @implementation AppDelegate
 
-@synthesize centerController;
+@synthesize drawerController;
 
 -(BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
@@ -38,22 +38,25 @@
     UINavigationController *leftNav = [[UINavigationController alloc] initWithRootViewController:leftDrawerController];
     
     // create the drawer
-    centerController = [[MMDrawerController alloc] initWithCenterViewController:centerNav leftDrawerViewController:leftNav];
+    drawerController = [[MMDrawerController alloc] initWithCenterViewController:centerNav leftDrawerViewController:leftNav];
     
     // drawer properties
-    [centerController setShowsShadow:YES];
-    [centerController setRestorationIdentifier:@"MMDrawer"];
+    [drawerController setShowsShadow:YES];
+    [drawerController setRestorationIdentifier:@"MMDrawer"];
     
     // gesture masks
-    [centerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
-    [centerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
+    [drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
+    [drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
     
+    // style of drawer open
+    [drawerController setDrawerVisualStateBlock:[MMDrawerVisualState swingingDoorVisualStateBlock]];
+        
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     UIColor *tintColor = [UIColor colorWithRed:29.0/255.0 green:173.0/255.0 blue:234.0/255.0 alpha:1.0];
     [self.window setTintColor:tintColor];
     
-    [self.window setRootViewController:self.centerController];
+    [self.window setRootViewController:self.drawerController];
     
     return YES;
 }
@@ -79,10 +82,10 @@
     [Parse setApplicationId:@"uU8JsEF9eLEYcFzUrwqmrWzblj65IoQ0G6S4DkI8" clientKey:@"4S7u2tedpm9yeE6DR3J6mDyJHHpgmUgktu6Q6QvD"];
     
     // refresh all the objects
-    [GetAllObjectsFromParseHelper RefreshTrails];
-    [GetAllObjectsFromParseHelper RefreshTrailStatus];
-    [GetAllObjectsFromParseHelper RefreshAuthorizedCommentors];
-    [GetAllObjectsFromParseHelper RefreshComments];
+//    [GetAllObjectsFromParseHelper RefreshTrails];
+//    [GetAllObjectsFromParseHelper RefreshTrailStatus];
+//    [GetAllObjectsFromParseHelper RefreshAuthorizedCommentors];
+//    [GetAllObjectsFromParseHelper RefreshComments];
     
     // Override point for customization after application launch.
     NSDictionary *notificationPayload = launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey];
@@ -99,6 +102,7 @@
     [[UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[[UINavigationBar class]]] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName,nil] forState:UIControlStateNormal];
     //set back button arrow color
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
     
     // UIAlertViewController
     [[UIView appearanceWhenContainedInInstancesOfClasses:@[[UIAlertController class]]] setTintColor:[UIColor blackColor]];

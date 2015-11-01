@@ -19,7 +19,7 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (nonatomic, strong) MMDrawerController *centerController;
+@property (nonatomic, strong) MMDrawerController *drawerController;
 
 @end
 

@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LeftDrawerController : UIViewController
+@interface LeftDrawerController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+
+@property (weak, nonatomic) IBOutlet UITableView *tblSettings;
+@property (weak, nonatomic) IBOutlet UIImageView *appIconImage;
+@property (weak, nonatomic) IBOutlet UILabel *lblUserName;
 
 @end
