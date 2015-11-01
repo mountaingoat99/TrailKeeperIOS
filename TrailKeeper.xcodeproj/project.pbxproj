@@ -37,6 +37,14 @@
 		26F8D4221BE65E4A007770F4 /* MMDrawerVisualState.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F8D41D1BE65E4A007770F4 /* MMDrawerVisualState.m */; };
 		26F8D4231BE65E4A007770F4 /* UIViewController+MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F8D41F1BE65E4A007770F4 /* UIViewController+MMDrawerController.m */; };
 		26F8D4261BE6913F007770F4 /* SettingsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F8D4251BE6913F007770F4 /* SettingsHelper.m */; };
+		26F8D4291BE6A387007770F4 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F8D4281BE6A387007770F4 /* SettingsViewController.m */; };
+		26F8D42C1BE6BFCB007770F4 /* FindTrailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F8D42B1BE6BFCB007770F4 /* FindTrailViewController.m */; };
+		26F8D42F1BE6BFD6007770F4 /* CommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F8D42E1BE6BFD6007770F4 /* CommentsViewController.m */; };
+		26F8D4321BE6BFE2007770F4 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F8D4311BE6BFE2007770F4 /* MapViewController.m */; };
+		26F8D4351BE6BFEF007770F4 /* AddTrailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F8D4341BE6BFEF007770F4 /* AddTrailViewController.m */; };
+		26F8D4381BE6C009007770F4 /* TrailSubscriptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F8D4371BE6C009007770F4 /* TrailSubscriptionsViewController.m */; };
+		26F8D43B1BE6C019007770F4 /* GetTrailPinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F8D43A1BE6C019007770F4 /* GetTrailPinViewController.m */; };
+		26F8D43E1BE6C026007770F4 /* ContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F8D43D1BE6C026007770F4 /* ContactViewController.m */; };
 		AD129E6EA046676355810966 /* libPods-TrailKeeper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 149CB766E1EA3B4629A01B39 /* libPods-TrailKeeper.a */; };
 /* End PBXBuildFile section */
 
@@ -98,6 +106,22 @@
 		26F8D41F1BE65E4A007770F4 /* UIViewController+MMDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MMDrawerController.m"; sourceTree = "<group>"; };
 		26F8D4241BE6913F007770F4 /* SettingsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsHelper.h; sourceTree = "<group>"; };
 		26F8D4251BE6913F007770F4 /* SettingsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsHelper.m; sourceTree = "<group>"; };
+		26F8D4271BE6A387007770F4 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		26F8D4281BE6A387007770F4 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		26F8D42A1BE6BFCB007770F4 /* FindTrailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindTrailViewController.h; sourceTree = "<group>"; };
+		26F8D42B1BE6BFCB007770F4 /* FindTrailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindTrailViewController.m; sourceTree = "<group>"; };
+		26F8D42D1BE6BFD6007770F4 /* CommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsViewController.h; sourceTree = "<group>"; };
+		26F8D42E1BE6BFD6007770F4 /* CommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsViewController.m; sourceTree = "<group>"; };
+		26F8D4301BE6BFE2007770F4 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		26F8D4311BE6BFE2007770F4 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		26F8D4331BE6BFEF007770F4 /* AddTrailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTrailViewController.h; sourceTree = "<group>"; };
+		26F8D4341BE6BFEF007770F4 /* AddTrailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTrailViewController.m; sourceTree = "<group>"; };
+		26F8D4361BE6C009007770F4 /* TrailSubscriptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrailSubscriptionsViewController.h; sourceTree = "<group>"; };
+		26F8D4371BE6C009007770F4 /* TrailSubscriptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrailSubscriptionsViewController.m; sourceTree = "<group>"; };
+		26F8D4391BE6C019007770F4 /* GetTrailPinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetTrailPinViewController.h; sourceTree = "<group>"; };
+		26F8D43A1BE6C019007770F4 /* GetTrailPinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetTrailPinViewController.m; sourceTree = "<group>"; };
+		26F8D43C1BE6C026007770F4 /* ContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactViewController.h; sourceTree = "<group>"; };
+		26F8D43D1BE6C026007770F4 /* ContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactViewController.m; sourceTree = "<group>"; };
 		2F888E95CE45AFE1354158EF /* Pods-TrailKeeper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrailKeeper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TrailKeeper/Pods-TrailKeeper.debug.xcconfig"; sourceTree = "<group>"; };
 		78EEF1E93A254E3A42D0AC7D /* Pods-TrailKeeper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrailKeeper.release.xcconfig"; path = "Pods/Target Support Files/Pods-TrailKeeper/Pods-TrailKeeper.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -178,6 +202,22 @@
 				26F8D40E1BE5A389007770F4 /* MainViewController.m */,
 				26F8D4131BE65539007770F4 /* LeftDrawerController.h */,
 				26F8D4141BE65539007770F4 /* LeftDrawerController.m */,
+				26F8D4271BE6A387007770F4 /* SettingsViewController.h */,
+				26F8D4281BE6A387007770F4 /* SettingsViewController.m */,
+				26F8D42A1BE6BFCB007770F4 /* FindTrailViewController.h */,
+				26F8D42B1BE6BFCB007770F4 /* FindTrailViewController.m */,
+				26F8D42D1BE6BFD6007770F4 /* CommentsViewController.h */,
+				26F8D42E1BE6BFD6007770F4 /* CommentsViewController.m */,
+				26F8D4301BE6BFE2007770F4 /* MapViewController.h */,
+				26F8D4311BE6BFE2007770F4 /* MapViewController.m */,
+				26F8D4331BE6BFEF007770F4 /* AddTrailViewController.h */,
+				26F8D4341BE6BFEF007770F4 /* AddTrailViewController.m */,
+				26F8D4361BE6C009007770F4 /* TrailSubscriptionsViewController.h */,
+				26F8D4371BE6C009007770F4 /* TrailSubscriptionsViewController.m */,
+				26F8D4391BE6C019007770F4 /* GetTrailPinViewController.h */,
+				26F8D43A1BE6C019007770F4 /* GetTrailPinViewController.m */,
+				26F8D43C1BE6C026007770F4 /* ContactViewController.h */,
+				26F8D43D1BE6C026007770F4 /* ContactViewController.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -410,9 +450,11 @@
 			files = (
 				26A4C1101BCB3D7800524635 /* DBManager.m in Sources */,
 				26AAB1CD1BCDDEB60084B67D /* AuthorizedCommentors.m in Sources */,
+				26F8D4351BE6BFEF007770F4 /* AddTrailViewController.m in Sources */,
 				26F8D4221BE65E4A007770F4 /* MMDrawerVisualState.m in Sources */,
 				260EC2641BDB13F600BB01DF /* Converters.m in Sources */,
 				26A4C1281BCB432300524635 /* GeoLocationHelper.m in Sources */,
+				26F8D43B1BE6C019007770F4 /* GetTrailPinViewController.m in Sources */,
 				26AAB1D61BCDDEDC0084B67D /* TrailStatus.m in Sources */,
 				26F8D40F1BE5A389007770F4 /* MainViewController.m in Sources */,
 				26F7A3941BE453E5007D98D6 /* GetAllObjectsFromParseHelper.m in Sources */,
@@ -422,16 +464,22 @@
 				2615C11E1BCAE7660065B62C /* AppDelegate.m in Sources */,
 				26F8D4261BE6913F007770F4 /* SettingsHelper.m in Sources */,
 				26AAB1D31BCDDECE0084B67D /* Trails.m in Sources */,
+				26F8D42F1BE6BFD6007770F4 /* CommentsViewController.m in Sources */,
 				26AAB1D01BCDDEC20084B67D /* Comments.m in Sources */,
 				26A4C1311BCB434D00524635 /* StateListHelper.m in Sources */,
 				26A4C1221BCB41EF00524635 /* AlertControllerHelper.m in Sources */,
 				26A4C1341BCB438D00524635 /* NotificationReciever.m in Sources */,
+				26F8D4381BE6C009007770F4 /* TrailSubscriptionsViewController.m in Sources */,
+				26F8D42C1BE6BFCB007770F4 /* FindTrailViewController.m in Sources */,
 				26F8D4231BE65E4A007770F4 /* UIViewController+MMDrawerController.m in Sources */,
 				26F8D4211BE65E4A007770F4 /* MMDrawerController.m in Sources */,
 				2615C11B1BCAE7660065B62C /* main.m in Sources */,
 				26F8D4201BE65E4A007770F4 /* MMDrawerBarButtonItem.m in Sources */,
+				26F8D4291BE6A387007770F4 /* SettingsViewController.m in Sources */,
 				26F8D4151BE65539007770F4 /* LeftDrawerController.m in Sources */,
+				26F8D43E1BE6C026007770F4 /* ContactViewController.m in Sources */,
 				26AAB1D91BCDE0E70084B67D /* Installation.m in Sources */,
+				26F8D4321BE6BFE2007770F4 /* MapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

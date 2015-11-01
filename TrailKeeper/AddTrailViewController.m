@@ -1,37 +1,35 @@
 //
-//  MainViewController.m
+//  AddTrailViewController.m
 //  TrailKeeper
 //
-//  Created by Jeremey Rodriguez on 10/31/15.
+//  Created by Jeremey Rodriguez on 11/1/15.
 //  Copyright © 2015 Jeremey Rodriguez. All rights reserved.
 //
 
-#import "MainViewController.h"
-//#import "UIViewController+MMDrawerController.h"
+#import "AddTrailViewController.h"
 #import "AppDelegate.h"
 
-@interface MainViewController ()
+@interface AddTrailViewController ()
 
 @property (nonatomic, strong) AppDelegate *appDelegate;
 
 @end
 
-@implementation MainViewController
+@implementation AddTrailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-}
-
--(void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
     self.appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    self.appDelegate.whichController = self;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    self.appDelegate.whichController = self;
 }
 
 /*
@@ -44,10 +42,4 @@
 }
 */
 
-- (IBAction)btn_drawerClick:(id)sender {
-    NSLog(@"Left Drawer button tapped");
-    AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    [appDelegate.drawerController toggleDrawerSide:MMDrawerSideLeft animated:true completion:nil];
-    //[self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
-}
 @end

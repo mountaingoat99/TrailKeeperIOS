@@ -7,7 +7,9 @@
 //
 
 #import "LeftDrawerController.h"
+#import "SettingsViewController.h"
 #import "SettingsHelper.h"
+#import "AppDelegate.h"
 
 @interface LeftDrawerController ()
 
@@ -43,21 +45,78 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    
+    
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
-*/
+
 
 #pragma mark - tableView
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    NSLog(@"Choose Row %@", indexPath);
+    NSLog(@"Choose Row %ld", (long)indexPath.row);
+    // get the storyboard
+    UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    
+    // here we want to know the current view close the drawer if we are currently on it
+    switch (indexPath.row) {
+        case 0: {
+            NSLog(@"Home");
+            
+            id mainView = [mainStoryBoard instantiateViewControllerWithIdentifier:@"MainViewController"];
+            UINavigationController *centerNav = [[UINavigationController alloc] initWithRootViewController:mainView];
+            appDelegate.drawerController.centerViewController = centerNav;
+            [appDelegate.drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+            break;
+        }
+        case 1: {
+            NSLog(@"Find Trail");
+            break;
+        }
+        case 2: {
+            NSLog(@"Comments");
+            break;
+        }
+        case 3: {
+            NSLog(@"Map");
+            break;
+        }
+        case 4: {
+            NSLog(@"Add Trail");
+            break;
+        }
+        case 5: {
+            NSLog(@"Trail Subscriptions");
+            break;
+        }
+        case 6: {
+            NSLog(@"Account Settings");
+            id accountSettings = [mainStoryBoard instantiateViewControllerWithIdentifier:@"SettingsViewController"];
+            UINavigationController *centerNav = [[UINavigationController alloc] initWithRootViewController:accountSettings];
+            appDelegate.drawerController.centerViewController = centerNav;
+            [appDelegate.drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+            break;
+        }
+        case 7: {
+            NSLog(@"Get Trail Pin");
+            break;
+        }
+        case 8: {
+            NSLog(@"Contact Us");
+            break;
+        }
+        default:
+            break;
+    }
     
 }
 

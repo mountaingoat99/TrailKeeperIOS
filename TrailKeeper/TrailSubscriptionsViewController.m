@@ -1,31 +1,29 @@
 //
-//  MainViewController.m
+//  TrailSubscriptionsViewController.m
 //  TrailKeeper
 //
-//  Created by Jeremey Rodriguez on 10/31/15.
+//  Created by Jeremey Rodriguez on 11/1/15.
 //  Copyright © 2015 Jeremey Rodriguez. All rights reserved.
 //
 
-#import "MainViewController.h"
-//#import "UIViewController+MMDrawerController.h"
+#import "TrailSubscriptionsViewController.h"
 #import "AppDelegate.h"
 
-@interface MainViewController ()
+@interface TrailSubscriptionsViewController ()
 
 @property (nonatomic, strong) AppDelegate *appDelegate;
 
 @end
 
-@implementation MainViewController
+@implementation TrailSubscriptionsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
 }
 
 -(void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
-    self.appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     self.appDelegate.whichController = self;
 }
 
@@ -44,10 +42,4 @@
 }
 */
 
-- (IBAction)btn_drawerClick:(id)sender {
-    NSLog(@"Left Drawer button tapped");
-    AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    [appDelegate.drawerController toggleDrawerSide:MMDrawerSideLeft animated:true completion:nil];
-    //[self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
-}
 @end

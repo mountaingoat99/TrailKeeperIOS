@@ -47,6 +47,47 @@
             </objects>
             <point key="canvasLocation" x="3112" y="331"/>
         </scene>
+        <!--Account Settings-->
+        <scene sceneID="UZy-dA-bDX">
+            <objects>
+                <viewController storyboardIdentifier="SettingsViewController" title="Account Settings" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2m9-gS-3c7" customClass="SettingsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KR9-Bd-L9n"/>
+                        <viewControllerLayoutGuide type="bottom" id="2In-XN-ozH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="FF3-UQ-EXv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qza-Vb-ywv">
+                                <rect key="frame" x="113" y="323" width="148" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="qza-Vb-ywv" firstAttribute="centerX" secondItem="FF3-UQ-EXv" secondAttribute="centerX" id="Bvc-we-Tbj"/>
+                            <constraint firstItem="qza-Vb-ywv" firstAttribute="leading" secondItem="FF3-UQ-EXv" secondAttribute="leadingMargin" constant="97" id="Xhs-Tc-c3r"/>
+                            <constraint firstItem="qza-Vb-ywv" firstAttribute="centerY" secondItem="FF3-UQ-EXv" secondAttribute="centerY" id="ca3-tF-QmB"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Account Settings" id="BUw-Gx-K7r">
+                        <barButtonItem key="leftBarButtonItem" image="back" id="vUg-WN-hBA">
+                            <connections>
+                                <action selector="btn_return:" destination="2m9-gS-3c7" id="PUt-cP-WGg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XRe-b8-0cp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3111.5" y="1101.5"/>
+        </scene>
         <!--Left Drawer Controller-->
         <scene sceneID="6KD-WU-OcI">
             <objects>
@@ -63,6 +104,7 @@
                                 <rect key="frame" x="0.0" y="54" width="375" height="613"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="drawerpc" selectionStyle="default" indentationWidth="10" reuseIdentifier="idCellRecord" textLabel="wUP-56-KCF" style="IBUITableViewCellStyleDefault" id="v1i-zw-ygc">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
@@ -148,9 +190,30 @@
             </objects>
             <point key="canvasLocation" x="2614.5" y="330.5"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="cKs-QO-5Ng">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KK1-Xk-XSf" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3OC-Z7-6m3">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="2m9-gS-3c7" kind="relationship" relationship="rootViewController" id="mn8-Wm-1XT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kzK-lC-Te3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2614.5" y="1101.5"/>
+        </scene>
     </scenes>
     <resources>
         <image name="app_icon_image_view" width="36" height="36"/>
+        <image name="back" width="29" height="29"/>
         <image name="drawer_icon" width="29" height="29"/>
     </resources>
 </document>
