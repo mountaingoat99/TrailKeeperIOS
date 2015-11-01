@@ -14,11 +14,12 @@
 #import "AuthorizedCommentors.h"
 #import "Comments.h"
 #import "Installation.h"
+#import "MMDrawerController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
+@property (nonatomic, strong) MMDrawerController *centerController;
 
 @end
 

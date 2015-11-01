@@ -20,9 +20,9 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
-	<key>UILaunchImageFile</key>
-	<string>LaunchScreen</string>
 	<key>UILaunchStoryboardName</key>
+	<string>Main</string>
+	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>

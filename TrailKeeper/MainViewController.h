@@ -11,4 +11,6 @@
 
 @interface MainViewController : UIViewController
 
+- (IBAction)btn_drawerClick:(id)sender;
+
 @end

@@ -7,7 +7,8 @@
 //
 
 #import "MainViewController.h"
-
+//#import "UIViewController+MMDrawerController.h"
+#import "AppDelegate.h"
 
 @interface MainViewController ()
 
@@ -35,4 +36,12 @@
 }
 */
 
+- (IBAction)btn_drawerClick:(id)sender {
+    NSLog(@"Left Drawer button tapped");
+    AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    
+    [appDelegate.centerController toggleDrawerSide:MMDrawerSideLeft animated:true completion:nil];
+    
+    //[self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+}
 @end

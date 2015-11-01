@@ -10,6 +10,9 @@
 #import "PushNotificationHelper.h"
 #import <Parse/Parse.h>
 #import "GetAllObjectsFromParseHelper.h"
+#import "LeftDrawerController.h"
+#import "MainViewController.h"
+#import "MMDrawerVisualState.h"
 
 @interface AppDelegate ()
 
@@ -19,8 +22,49 @@
 
 @implementation AppDelegate
 
+@synthesize centerController;
+
+-(BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    // get the storyboard
+    UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    // get the ViewController by their identifiers
+    id mainViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"MainViewController"];
+    id leftDrawerController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"LeftDrawerController"];
+    
+    // init the Navigation controllers
+    UINavigationController *centerNav = [[UINavigationController alloc] initWithRootViewController:mainViewController];
+    UINavigationController *leftNav = [[UINavigationController alloc] initWithRootViewController:leftDrawerController];
+    
+    // create the drawer
+    centerController = [[MMDrawerController alloc] initWithCenterViewController:centerNav leftDrawerViewController:leftNav];
+    
+    // drawer properties
+    [centerController setShowsShadow:YES];
+    [centerController setRestorationIdentifier:@"MMDrawer"];
+    //[self.centerController setMaximumLeftDrawerWidth:100.0];
+    
+    // gesture masks
+    [centerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
+    [centerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
+    //self.centerController.openDrawerGestureModeMask = MMOpenDrawerGestureModePanningCenterView;
+    //self.centerController.closeDrawerGestureModeMask = MMCloseDrawerGestureModePanningCenterView;
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    UIColor *tintColor = [UIColor colorWithRed:29.0/255.0 green:173.0/255.0 blue:234.0/255.0 alpha:1.0];
+    [self.window setTintColor:tintColor];
+    
+    [self.window setRootViewController:self.centerController];
+    
+    return YES;
+}
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    // Parse stuff
     [Parse enableLocalDatastore];
     [Trails registerSubclass];
     [TrailStatus registerSubclass];
@@ -28,13 +72,13 @@
     [AuthorizedCommentors registerSubclass];
     [Comments registerSubclass];
     [Installation registerSubclass];
-    // push
+    // Parse push
     UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound);
     UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes  categories:nil];
     [application registerUserNotificationSettings:settings];
     [application registerForRemoteNotifications];
     
-    // key
+    // Parse key
     [Parse setApplicationId:@"uU8JsEF9eLEYcFzUrwqmrWzblj65IoQ0G6S4DkI8" clientKey:@"4S7u2tedpm9yeE6DR3J6mDyJHHpgmUgktu6Q6QvD"];
     
     // refresh all the objects
@@ -46,11 +90,15 @@
     // Override point for customization after application launch.
     NSDictionary *notificationPayload = launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey];
 
-    // we do not want to show the notification is the user is the one who sent the update
+    // we do not want to show the notification to the user is the one who sent the update
     if (![self isUserWhoUpdated:notificationPayload]) {
         //Open up the TrailInfo View Controller for the correct trail
         [PushNotificationHelper GetNewPush:notificationPayload];
     }
+    
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
