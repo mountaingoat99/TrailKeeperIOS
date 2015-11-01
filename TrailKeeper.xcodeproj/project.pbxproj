@@ -32,6 +32,10 @@
 		26F8D40C1BE5A227007770F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26F8D40A1BE5A227007770F4 /* Main.storyboard */; };
 		26F8D40F1BE5A389007770F4 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F8D40E1BE5A389007770F4 /* MainViewController.m */; };
 		26F8D4151BE65539007770F4 /* LeftDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F8D4141BE65539007770F4 /* LeftDrawerController.m */; };
+		26F8D4201BE65E4A007770F4 /* MMDrawerBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F8D4181BE65E4A007770F4 /* MMDrawerBarButtonItem.m */; };
+		26F8D4211BE65E4A007770F4 /* MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F8D41A1BE65E4A007770F4 /* MMDrawerController.m */; };
+		26F8D4221BE65E4A007770F4 /* MMDrawerVisualState.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F8D41D1BE65E4A007770F4 /* MMDrawerVisualState.m */; };
+		26F8D4231BE65E4A007770F4 /* UIViewController+MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F8D41F1BE65E4A007770F4 /* UIViewController+MMDrawerController.m */; };
 		AD129E6EA046676355810966 /* libPods-TrailKeeper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 149CB766E1EA3B4629A01B39 /* libPods-TrailKeeper.a */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +86,15 @@
 		26F8D40E1BE5A389007770F4 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		26F8D4131BE65539007770F4 /* LeftDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftDrawerController.h; sourceTree = "<group>"; };
 		26F8D4141BE65539007770F4 /* LeftDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftDrawerController.m; sourceTree = "<group>"; };
+		26F8D4171BE65E4A007770F4 /* MMDrawerBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMDrawerBarButtonItem.h; sourceTree = "<group>"; };
+		26F8D4181BE65E4A007770F4 /* MMDrawerBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMDrawerBarButtonItem.m; sourceTree = "<group>"; };
+		26F8D4191BE65E4A007770F4 /* MMDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMDrawerController.h; sourceTree = "<group>"; };
+		26F8D41A1BE65E4A007770F4 /* MMDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMDrawerController.m; sourceTree = "<group>"; };
+		26F8D41B1BE65E4A007770F4 /* MMDrawerController+Subclass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MMDrawerController+Subclass.h"; sourceTree = "<group>"; };
+		26F8D41C1BE65E4A007770F4 /* MMDrawerVisualState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMDrawerVisualState.h; sourceTree = "<group>"; };
+		26F8D41D1BE65E4A007770F4 /* MMDrawerVisualState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMDrawerVisualState.m; sourceTree = "<group>"; };
+		26F8D41E1BE65E4A007770F4 /* UIViewController+MMDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+MMDrawerController.h"; sourceTree = "<group>"; };
+		26F8D41F1BE65E4A007770F4 /* UIViewController+MMDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MMDrawerController.m"; sourceTree = "<group>"; };
 		2F888E95CE45AFE1354158EF /* Pods-TrailKeeper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrailKeeper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TrailKeeper/Pods-TrailKeeper.debug.xcconfig"; sourceTree = "<group>"; };
 		78EEF1E93A254E3A42D0AC7D /* Pods-TrailKeeper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrailKeeper.release.xcconfig"; path = "Pods/Target Support Files/Pods-TrailKeeper/Pods-TrailKeeper.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -122,6 +135,7 @@
 		2615C1181BCAE7660065B62C /* TrailKeeper */ = {
 			isa = PBXGroup;
 			children = (
+				26F8D4161BE65E18007770F4 /* MySideMenu */,
 				2615C1381BCAEC740065B62C /* Models */,
 				2615C1351BCAEC540065B62C /* Utils */,
 				2615C1341BCAEC4D0065B62C /* Helpers */,
@@ -229,6 +243,22 @@
 				26AAB1D81BCDE0E70084B67D /* Installation.m */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		26F8D4161BE65E18007770F4 /* MySideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				26F8D4171BE65E4A007770F4 /* MMDrawerBarButtonItem.h */,
+				26F8D4181BE65E4A007770F4 /* MMDrawerBarButtonItem.m */,
+				26F8D4191BE65E4A007770F4 /* MMDrawerController.h */,
+				26F8D41A1BE65E4A007770F4 /* MMDrawerController.m */,
+				26F8D41B1BE65E4A007770F4 /* MMDrawerController+Subclass.h */,
+				26F8D41C1BE65E4A007770F4 /* MMDrawerVisualState.h */,
+				26F8D41D1BE65E4A007770F4 /* MMDrawerVisualState.m */,
+				26F8D41E1BE65E4A007770F4 /* UIViewController+MMDrawerController.h */,
+				26F8D41F1BE65E4A007770F4 /* UIViewController+MMDrawerController.m */,
+			);
+			name = MySideMenu;
 			sourceTree = "<group>";
 		};
 		8E2C8ACE4F64BE6172923985 /* Frameworks */ = {
@@ -375,6 +405,7 @@
 			files = (
 				26A4C1101BCB3D7800524635 /* DBManager.m in Sources */,
 				26AAB1CD1BCDDEB60084B67D /* AuthorizedCommentors.m in Sources */,
+				26F8D4221BE65E4A007770F4 /* MMDrawerVisualState.m in Sources */,
 				260EC2641BDB13F600BB01DF /* Converters.m in Sources */,
 				26A4C1281BCB432300524635 /* GeoLocationHelper.m in Sources */,
 				26AAB1D61BCDDEDC0084B67D /* TrailStatus.m in Sources */,
@@ -389,7 +420,10 @@
 				26A4C1311BCB434D00524635 /* StateListHelper.m in Sources */,
 				26A4C1221BCB41EF00524635 /* AlertControllerHelper.m in Sources */,
 				26A4C1341BCB438D00524635 /* NotificationReciever.m in Sources */,
+				26F8D4231BE65E4A007770F4 /* UIViewController+MMDrawerController.m in Sources */,
+				26F8D4211BE65E4A007770F4 /* MMDrawerController.m in Sources */,
 				2615C11B1BCAE7660065B62C /* main.m in Sources */,
+				26F8D4201BE65E4A007770F4 /* MMDrawerBarButtonItem.m in Sources */,
 				26F8D4151BE65539007770F4 /* LeftDrawerController.m in Sources */,
 				26AAB1D91BCDE0E70084B67D /* Installation.m in Sources */,
 			);
