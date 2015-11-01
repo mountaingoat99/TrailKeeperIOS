@@ -43,13 +43,10 @@
     // drawer properties
     [centerController setShowsShadow:YES];
     [centerController setRestorationIdentifier:@"MMDrawer"];
-    //[self.centerController setMaximumLeftDrawerWidth:100.0];
     
     // gesture masks
     [centerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
     [centerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
-    //self.centerController.openDrawerGestureModeMask = MMOpenDrawerGestureModePanningCenterView;
-    //self.centerController.closeDrawerGestureModeMask = MMCloseDrawerGestureModePanningCenterView;
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
@@ -95,6 +92,17 @@
         //Open up the TrailInfo View Controller for the correct trail
         [PushNotificationHelper GetNewPush:notificationPayload];
     }
+    
+    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:0/255.0 green:150.0/255.00 blue:136.0/255.0 alpha:1]];
+    [[UINavigationBar appearance] setTranslucent:NO];
+    //set back button color
+    [[UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[[UINavigationBar class]]] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName,nil] forState:UIControlStateNormal];
+    //set back button arrow color
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    
+    // UIAlertViewController
+    [[UIView appearanceWhenContainedInInstancesOfClasses:@[[UIAlertController class]]] setTintColor:[UIColor blackColor]];
+    [[UIView appearanceWhenContainedInInstancesOfClasses:@[[UIAlertController class]]] setBackgroundColor:[UIColor colorWithRed:230/255.0 green:230/255.0 blue:230/255.0 alpha:1]];
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
