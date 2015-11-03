@@ -15,12 +15,15 @@
 #import "Comments.h"
 #import "Installation.h"
 #import "MMDrawerController.h"
+#import <CoreLocation/CoreLocation.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, CLLocationManagerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic, strong) MMDrawerController *drawerController;
 @property (nonatomic, strong) UIViewController *whichController;
+@property (nonatomic, strong) CLLocationManager *locationManager;
+@property (nonatomic, strong) CLLocation *currentLocation;
 
 @end
 

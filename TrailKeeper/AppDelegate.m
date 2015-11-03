@@ -13,6 +13,7 @@
 #import "LeftDrawerController.h"
 #import "MainViewController.h"
 #import "MMDrawerVisualState.h"
+#import "AlertControllerHelper.h"
 
 @interface AppDelegate ()
 
@@ -23,6 +24,8 @@
 @implementation AppDelegate
 
 @synthesize drawerController;
+@synthesize locationManager;
+@synthesize currentLocation;
 
 -(BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
@@ -64,6 +67,21 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    // location manager
+    if(self.locationManager == nil) {
+        self.locationManager = [[CLLocationManager alloc] init];
+        
+        self.locationManager.delegate = self;
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        self.locationManager.distanceFilter = 30;  // might change this one we start creating trail maps
+        [self.locationManager requestWhenInUseAuthorization];
+        //[self.locationManager requestAlwaysAuthorization];
+    }
+    
+    if ([CLLocationManager locationServicesEnabled]) {
+        [self.locationManager startUpdatingLocation];
+    }
+    
     // Parse stuff
     [Parse enableLocalDatastore];
     [Trails registerSubclass];
@@ -82,10 +100,10 @@
     [Parse setApplicationId:@"uU8JsEF9eLEYcFzUrwqmrWzblj65IoQ0G6S4DkI8" clientKey:@"4S7u2tedpm9yeE6DR3J6mDyJHHpgmUgktu6Q6QvD"];
     
     // refresh all the objects
-//    [GetAllObjectsFromParseHelper RefreshTrails];
-//    [GetAllObjectsFromParseHelper RefreshTrailStatus];
-//    [GetAllObjectsFromParseHelper RefreshAuthorizedCommentors];
-//    [GetAllObjectsFromParseHelper RefreshComments];
+    [GetAllObjectsFromParseHelper RefreshTrails];
+    [GetAllObjectsFromParseHelper RefreshTrailStatus];
+    [GetAllObjectsFromParseHelper RefreshAuthorizedCommentors];
+    [GetAllObjectsFromParseHelper RefreshComments];
     
     // Override point for customization after application launch.
     NSDictionary *notificationPayload = launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey];
@@ -167,6 +185,48 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
+    switch (status) {
+        case kCLAuthorizationStatusDenied:
+            NSLog(@"kCLAuthorizationStatusDenied");
+        {
+            MainViewController  *main = [[MainViewController alloc] init];
+            
+            [AlertControllerHelper ShowAlert:@"Location Services Not Enabled" message:@"The app can’t access your current location.\n\nTo enable, please turn on location access in the Settings app under Location Services." view:main];
+        }
+            break;
+        case kCLAuthorizationStatusAuthorizedWhenInUse:
+        {
+            self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+            self.locationManager.distanceFilter = kCLLocationAccuracyNearestTenMeters;
+            [self.locationManager startUpdatingLocation];
+            
+            self.currentLocation = self.locationManager.location;
+        }
+            break;
+        case kCLAuthorizationStatusAuthorizedAlways:
+        {
+            self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+            self.locationManager.distanceFilter = kCLLocationAccuracyNearestTenMeters;
+            [self.locationManager startUpdatingLocation];
+            
+            self.currentLocation = self.locationManager.location;
+        }
+            break;
+        case kCLAuthorizationStatusNotDetermined:
+            NSLog(@"kCLAuthorizationStatusNotDetermined");
+            break;
+        case kCLAuthorizationStatusRestricted:
+            NSLog(@"kCLAuthorizationStatusRestricted");
+            break;
+    }
+}
+
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
+    // not implemented now but will use it later
+    
 }
 
 #pragma private methods
