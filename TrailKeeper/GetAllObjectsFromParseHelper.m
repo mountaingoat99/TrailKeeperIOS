@@ -16,6 +16,7 @@
         return [[PFObject unpinAllObjectsInBackgroundWithName:@"Trails"] continueWithSuccessBlock:^id(BFTask *ignored) {
             NSArray *trails = task.result;
             NSLog(@"Trail Count from refresh %lu", (unsigned long)trails.count);
+            NSLog(@"First Trail Name %@", [[trails objectAtIndex:0] objectForKey:@"trailName"]);
             return [PFObject pinAllInBackground:trails withName:@"Trails"];
         }];
     }];

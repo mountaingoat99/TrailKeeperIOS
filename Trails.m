@@ -12,6 +12,8 @@
 #import "TrailStatus.h"
 #import "ConnectionDetector.h"
 #import "Converters.h"
+#import "GeoLocationHelper.h"
+#import "MainViewController.h"
 
 @interface Trails ()
 
@@ -28,6 +30,7 @@
 
 #pragma public properties
 
+@dynamic trailObjectId;
 @dynamic trailName;
 @dynamic status;
 @dynamic mapLink;
@@ -45,6 +48,7 @@
 
 -(id)initWithCoder:(NSCoder *)aDecoder {
     if ((self = [super init])) {
+        self.trailObjectId = [aDecoder decodeObjectForKey:@"trailObjectId"];
         self.trailName = [aDecoder decodeObjectForKey:@"trailName"];
         self.status = [aDecoder decodeObjectForKey:@"status"];
         self.mapLink = [aDecoder decodeObjectForKey:@"mapLink"];
@@ -62,6 +66,7 @@
 }
 
 -(void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:self.trailObjectId forKey:@"trailObectId"];
     [aCoder encodeObject:self.trailName forKey:@"trailName"];
     [aCoder encodeObject:self.status forKey:@"status"];
     [aCoder encodeObject:self.mapLink forKey:@"mapLink"];
@@ -125,6 +130,20 @@
     return statusString;
 }
 
+-(NSArray*)GetClosestTrailsForHomeScreen; {
+    // User's location
+    PFGeoPoint *userGeoPoint = [GeoLocationHelper GetUsersCurrentPostion];
+    // Create a query for places
+    PFQuery *query = [PFQuery queryWithClassName:@"Trails"];
+    [query fromLocalDatastore];
+    // Interested in locations near user.
+    [query whereKey:@"geoLocation" nearGeoPoint:userGeoPoint];
+    // Limit what could be a lot of points.
+    query.limit = 5;
+    NSArray * _Nullable objects = [query findObjects];
+    return objects;
+}
+
 -(NSMutableArray *)GetAllTrailInfo {
     NSMutableArray *allTrails = [[NSMutableArray alloc] init];
     PFQuery *query = [PFQuery queryWithClassName:@"Trails"];
@@ -135,7 +154,9 @@
             // add the items to the NSArray
             for (PFObject *object in objects) {
                 Trails *trail = [[Trails alloc] init];
-                trail.objectId = object.objectId;
+                NSString *parseId = object.objectId;
+                trail.trailObjectId = parseId;
+                //trail.objectId = object.objectId;
                 trail.trailName = [object objectForKey:@"trailName"];
                 trail.status = [object objectForKey:@"status"];
                 trail.mapLink = [object objectForKey:@"mapLink"];

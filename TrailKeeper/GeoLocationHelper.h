@@ -12,7 +12,6 @@
 
 @interface GeoLocationHelper : NSObject
 
-+(NSArray*)GetClosestTrailsForHomeScreen:(PFGeoPoint*)currentLocation;
 +(NSArray*)GetClosestTrailsForMap:(PFGeoPoint*)currentLocation;
 +(PFGeoPoint*)GetUsersCurrentPostion;
 

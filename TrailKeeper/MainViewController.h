@@ -9,8 +9,12 @@
 #import <UIKit/UIKit.h>
 
 
-@interface MainViewController : UIViewController
+@interface MainViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+
+@property (weak, nonatomic) IBOutlet UITableView *tbltrailCards;
 
 - (IBAction)btn_drawerClick:(id)sender;
+
+-(void)getTrails:(NSMutableArray*)trails;
 
 @end

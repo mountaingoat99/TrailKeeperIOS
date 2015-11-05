@@ -10,6 +10,7 @@
 
 @interface Trails : PFObject<PFSubclassing, NSCoding>
 
+@property (nonatomic, strong) NSString *trailObjectId;
 @property (nonatomic, strong) NSString *trailName;
 @property (nonatomic, strong) NSNumber *status;
 @property (nonatomic, strong) NSString *mapLink;
@@ -28,6 +29,7 @@
 +(NSString *)ConvertTrailStatus:(NSNumber*)status;
 +(NSString *)ConvertTrailStatusForPush:(NSNumber*)status trailname:(NSString*)trailName;
 
+-(NSArray*)GetClosestTrailsForHomeScreen;
 -(NSMutableArray *)GetAllTrailInfo;
 -(NSMutableArray*)GetTrailNames;
 -(NSMutableOrderedSet*)GetTrailStates;
