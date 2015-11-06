@@ -18,4 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnTrailMap;
 @property (weak, nonatomic) IBOutlet UIView *cardView;
 
+- (IBAction)btnTrailHome_Click:(id)sender;
+- (IBAction)btnMap_Click:(id)sender;
+
 @end

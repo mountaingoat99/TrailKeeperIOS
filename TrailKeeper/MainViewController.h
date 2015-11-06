@@ -15,6 +15,4 @@
 
 - (IBAction)btn_drawerClick:(id)sender;
 
--(void)getTrails:(NSMutableArray*)trails;
-
 @end

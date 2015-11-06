@@ -17,38 +17,45 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="120" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LWd-CW-yy2">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="110" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LWd-CW-yy2">
+                                <rect key="frame" x="0.0" y="68" width="375" height="599"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" restorationIdentifier="TrailCell" selectionStyle="none" indentationLevel="10" indentationWidth="0.0" reuseIdentifier="idCellRecord" rowHeight="120" id="Bm5-Sw-mej" customClass="TrailCell">
-                                        <rect key="frame" x="0.0" y="92" width="375" height="120"/>
+                                    <tableViewCell contentMode="scaleToFill" restorationIdentifier="TrailCell" selectionStyle="none" indentationLevel="10" indentationWidth="0.0" reuseIdentifier="idCellRecord" id="Bm5-Sw-mej" customClass="TrailCell">
+                                        <rect key="frame" x="0.0" y="92" width="375" height="110"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Bm5-Sw-mej" id="AfL-Si-UZG">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="119"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="109"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City, ST" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dgy-Mv-Txd">
-                                                    <rect key="frame" x="32" y="52" width="59" height="21"/>
+                                                    <rect key="frame" x="32" y="49" width="59" height="21"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back" translatesAutoresizingMaskIntoConstraints="NO" id="vbR-ap-1pI">
-                                                    <rect key="frame" x="330" y="12" width="29" height="29"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="open" translatesAutoresizingMaskIntoConstraints="NO" id="vbR-ap-1pI">
+                                                    <rect key="frame" x="330" y="16" width="29" height="29"/>
                                                     <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="29" id="8b1-rb-hhN"/>
+                                                        <constraint firstAttribute="height" constant="29" id="Y4u-dy-Ca3"/>
+                                                    </constraints>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ddj-fg-jMf">
-                                                    <rect key="frame" x="81" y="81" width="46" height="30"/>
+                                                    <rect key="frame" x="81" y="78" width="46" height="30"/>
                                                     <animations/>
                                                     <state key="normal" title="Home">
                                                         <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="btnTrailHome_Click:" destination="Bm5-Sw-mej" eventType="touchUpInside" id="c9S-pG-zB5"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qz9-P7-LYW">
-                                                    <rect key="frame" x="250" y="81" width="46" height="30"/>
+                                                    <rect key="frame" x="250" y="78" width="46" height="30"/>
                                                     <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="46" id="nWf-p2-yKY"/>
@@ -56,16 +63,19 @@
                                                     <state key="normal" title="Map">
                                                         <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="btnMap_Click:" destination="Bm5-Sw-mej" eventType="touchUpInside" id="8G1-Tn-TQP"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="5.0 Miles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6gw-Hn-REv">
-                                                    <rect key="frame" x="107" y="52" width="252" height="21"/>
+                                                    <rect key="frame" x="107" y="49" width="252" height="21"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Trail Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ABm-qZ-rgy">
-                                                    <rect key="frame" x="24" y="16" width="256" height="21"/>
+                                                    <rect key="frame" x="24" y="20" width="256" height="21"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -77,11 +87,11 @@
                                                 <constraint firstItem="qz9-P7-LYW" firstAttribute="centerY" secondItem="Ddj-fg-jMf" secondAttribute="centerY" id="1a1-ig-e3n"/>
                                                 <constraint firstItem="Ddj-fg-jMf" firstAttribute="leading" secondItem="AfL-Si-UZG" secondAttribute="leadingMargin" constant="73" id="2AM-uo-0fk"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="vbR-ap-1pI" secondAttribute="trailing" constant="8" id="3gC-WQ-UeU"/>
-                                                <constraint firstItem="Dgy-Mv-Txd" firstAttribute="top" secondItem="ABm-qZ-rgy" secondAttribute="bottom" constant="15" id="Akq-kK-gMb"/>
+                                                <constraint firstItem="Dgy-Mv-Txd" firstAttribute="top" secondItem="ABm-qZ-rgy" secondAttribute="bottom" constant="8" id="Akq-kK-gMb"/>
                                                 <constraint firstItem="Dgy-Mv-Txd" firstAttribute="leading" secondItem="AfL-Si-UZG" secondAttribute="leadingMargin" constant="24" id="Flt-X2-dRy"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="qz9-P7-LYW" secondAttribute="trailing" constant="71" id="Nwr-w7-bg0"/>
                                                 <constraint firstItem="ABm-qZ-rgy" firstAttribute="leading" secondItem="AfL-Si-UZG" secondAttribute="leadingMargin" constant="16" id="R1W-Jo-9Ai"/>
-                                                <constraint firstItem="ABm-qZ-rgy" firstAttribute="top" secondItem="AfL-Si-UZG" secondAttribute="topMargin" constant="8" id="Sn4-cM-ASr"/>
+                                                <constraint firstItem="ABm-qZ-rgy" firstAttribute="top" secondItem="AfL-Si-UZG" secondAttribute="topMargin" constant="12" id="Sn4-cM-ASr"/>
                                                 <constraint firstItem="6gw-Hn-REv" firstAttribute="leading" secondItem="Dgy-Mv-Txd" secondAttribute="trailing" constant="16" id="XH9-mH-Hb8"/>
                                                 <constraint firstItem="Ddj-fg-jMf" firstAttribute="top" secondItem="6gw-Hn-REv" secondAttribute="bottom" constant="8" id="h3f-3y-mKn"/>
                                                 <constraint firstItem="qz9-P7-LYW" firstAttribute="width" secondItem="Ddj-fg-jMf" secondAttribute="width" id="iUX-T0-fnU"/>
@@ -109,7 +119,7 @@
                         <animations/>
                         <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="LWd-CW-yy2" firstAttribute="top" secondItem="PUr-jK-IYh" secondAttribute="bottom" id="3x2-ZC-Dth"/>
+                            <constraint firstItem="LWd-CW-yy2" firstAttribute="top" secondItem="PUr-jK-IYh" secondAttribute="bottom" constant="4" id="3x2-ZC-Dth"/>
                             <constraint firstAttribute="trailing" secondItem="LWd-CW-yy2" secondAttribute="trailing" id="69m-Zs-BrQ"/>
                             <constraint firstItem="LWd-CW-yy2" firstAttribute="leading" secondItem="Ls5-Jy-Oht" secondAttribute="leading" id="bbo-zF-A0e"/>
                             <constraint firstItem="LWd-CW-yy2" firstAttribute="bottom" secondItem="oPL-FP-qvj" secondAttribute="top" id="dgz-Ba-hoy"/>
@@ -738,5 +748,6 @@
         <image name="app_icon_image_view" width="36" height="36"/>
         <image name="back" width="29" height="29"/>
         <image name="drawer_icon" width="29" height="29"/>
+        <image name="open" width="170" height="170"/>
     </resources>
 </document>

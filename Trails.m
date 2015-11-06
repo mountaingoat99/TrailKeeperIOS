@@ -91,6 +91,25 @@
 
 #pragma Public methods
 
++(UIImage*)GetStatusIcon:(NSNumber*)status {
+    UIImage *statusImage;
+    
+    switch ([status intValue]) {
+        case 1:
+            statusImage = [UIImage imageNamed:@"closed"];
+            break;
+        case 2:
+            statusImage = [UIImage imageNamed:@"open"];
+            break;
+        case 3:
+            statusImage =[UIImage imageNamed:@"unknown_status"];
+            break;
+        default:
+            break;
+    }
+    return statusImage;
+}
+
 +(NSString *)ConvertTrailStatus:(NSNumber*)status {
     
     NSString *statusString;

@@ -26,6 +26,7 @@
 
 + (NSString *)parseClassName;
 
++(UIImage*)GetStatusIcon:(NSNumber*)status;
 +(NSString *)ConvertTrailStatus:(NSNumber*)status;
 +(NSString *)ConvertTrailStatusForPush:(NSNumber*)status trailname:(NSString*)trailName;
 

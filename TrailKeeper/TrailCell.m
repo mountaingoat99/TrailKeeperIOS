@@ -7,10 +7,9 @@
 //
 
 #import "TrailCell.h"
+#import "AppDelegate.h"
 
 @interface TrailCell ()
-
--(void)cardSetup;
 
 @end
 
@@ -26,30 +25,9 @@
 }
 
 -(void)layoutSubviews {
-    //[self cardSetup];
-    
-//    self.cardView.frame = CGRectOffset(self.cardView.frame, 10, 10);
-//    [self.cardView setAlpha:1];
-//    self.cardView.layer.masksToBounds = NO;
-//    self.cardView.layer.cornerRadius = 1;
-//    self.cardView.layer.shadowOffset = CGSizeMake(-.2f, .2f);
-//    self.cardView.layer.shadowRadius = 1;
-//    UIBezierPath *path = [UIBezierPath bezierPathWithRect:self.cardView.bounds];
-//    self.cardView.layer.shadowPath = path.CGPath;
-//    self.cardView.layer.shadowOpacity = 0;
+
 }
 
--(void)cardSetup{
-    
-    [self.cardView setAlpha:1];
-    self.cardView.layer.masksToBounds = NO;
-    self.cardView.layer.cornerRadius = 1;
-    self.cardView.layer.shadowOffset = CGSizeMake(-.2f, .2f);
-    self.cardView.layer.shadowRadius = 1;
-    UIBezierPath *path = [UIBezierPath bezierPathWithRect:self.cardView.bounds];
-    self.cardView.layer.shadowPath = path.CGPath;
-    self.cardView.layer.shadowOpacity = 0;
-}
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
@@ -58,4 +36,19 @@
     // Configure the view for the selected state
 }
 
+- (IBAction)btnTrailHome_Click:(id)sender {
+}
+
+- (IBAction)btnMap_Click:(id)sender {
+    // get the storyboard
+    UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    
+    
+    id mainView = [mainStoryBoard instantiateViewControllerWithIdentifier:@"MapViewController"];
+    UINavigationController *centerNav = [[UINavigationController alloc] initWithRootViewController:mainView];
+    appDelegate.drawerController.centerViewController = centerNav;
+    //[appDelegate.drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+    
+}
 @end

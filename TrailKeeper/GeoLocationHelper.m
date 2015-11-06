@@ -15,24 +15,10 @@
 
 @implementation GeoLocationHelper
 
-
-
-+(NSArray*)GetClosestTrailsForMap:(PFGeoPoint*)currentLocation {
-    
-    // User's location
-    PFGeoPoint *userGeoPoint = [self GetUsersCurrentPostion];
-    // Create a query for places
-    PFQuery *query = [PFQuery queryWithClassName:@"Trails"];
-    [query fromLocalDatastore];
-    // Interested in locations near user.
-    [query whereKey:@"geoLocation" nearGeoPoint:userGeoPoint];
-    // Limit what could be a lot of points.
-    //query.limit = 5;
-    // Final list of objects
-    NSArray *trails = [query findObjects];
-    
-    return trails;
-    
++(double)GetDistanceFromCurrentLocation:(PFGeoPoint*)userLocation traillocation:(PFGeoPoint*)trailLocation {
+    double distance = 0.0;
+    distance = [userLocation distanceInMilesTo:trailLocation];
+    return distance;
 }
 
 +(PFGeoPoint*)GetUsersCurrentPostion {
@@ -46,19 +32,7 @@
         location = [PFGeoPoint geoPointWithLocation:userLocation];
     } else {
         location = [PFGeoPoint geoPointWithLatitude:42.566763 longitude:-87.887405];   // default location if we don't have users
-    }
-    
-    // parse way to do it
-//    __block PFGeoPoint *location = nil;
-//    
-//    [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
-//        if (!error) {
-//            location = geoPoint;
-//        } else {
-//            NSLog(@"Could not get users location");
-//        }
-//    }];
-    
+    }    
     return location;
 }
 

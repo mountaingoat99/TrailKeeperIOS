@@ -16,6 +16,7 @@
 
 @property (nonatomic, strong) AppDelegate *appDelegate;
 @property (nonatomic, strong) NSArray *trailList;
+@property (nonatomic, strong) PFGeoPoint *userLocation;
 
 -(void)loadData;
 
@@ -25,9 +26,12 @@
 @implementation MainViewController
 
 @synthesize trailList;
+@synthesize userLocation;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.userLocation = [GeoLocationHelper GetUsersCurrentPostion];
     
     self.tbltrailCards.delegate = self;
     self.tbltrailCards.dataSource = self;
@@ -73,34 +77,16 @@
 }
 
 -(void)tableView:(UITableView*)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    //cell.contentView.backgroundColor = cell.contentView.backgroundColor;
     
-//    if (cell.IsMonth)
-//    {
-//        UIImageView *av = [[UIImageView alloc] initWithFrame:CGRectMake(20, 20, 20, 20)];
-//        av.backgroundColor = [UIColor clearColor];
-//        av.opaque = NO;
-//        av.image = [UIImage imageNamed:@"month-bar-bkgd.png"];
-//        UILabel *monthTextLabel = [[UILabel alloc] init];
-//        CGFloat font = 11.0f;
-//        monthTextLabel.font = [BVFont HelveticaNeue:&font];
-//        
-//        cell.backgroundView = av;
-//        cell.textLabel.font = [BVFont HelveticaNeue:&font];
-//        cell.textLabel.textColor = [BVFont WebGrey];
-//    }
-    
-        cell.contentView.backgroundColor = [UIColor clearColor];
-        UIView *whiteRoundedCornerView = [[UIView alloc] initWithFrame:CGRectMake(1,1,380,115)];
-        whiteRoundedCornerView.backgroundColor = [UIColor whiteColor];
-        whiteRoundedCornerView.layer.masksToBounds = NO;
-        whiteRoundedCornerView.layer.cornerRadius = 3.0;
-        whiteRoundedCornerView.layer.shadowOffset = CGSizeMake(-1, 1);
-        whiteRoundedCornerView.layer.shadowOpacity = 1.0;
-        [cell.contentView addSubview:whiteRoundedCornerView];
-        [cell.contentView sendSubviewToBack:whiteRoundedCornerView];
-        
-    
+    cell.contentView.backgroundColor = [UIColor clearColor];
+    UIView *whiteRoundedCornerView = [[UIView alloc] initWithFrame:CGRectMake(5,10,self.view.window.bounds.size.width - 10,110)];
+    whiteRoundedCornerView.backgroundColor = [UIColor whiteColor];
+    whiteRoundedCornerView.layer.masksToBounds = NO;
+    whiteRoundedCornerView.layer.cornerRadius = 3.0;
+    whiteRoundedCornerView.layer.shadowOffset = CGSizeMake(1, 0);
+    whiteRoundedCornerView.layer.shadowOpacity = 0.5;
+    [cell.contentView addSubview:whiteRoundedCornerView];
+    [cell.contentView sendSubviewToBack:whiteRoundedCornerView];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -115,12 +101,17 @@
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     //deque the cell
     TrailCell *cell = [tableView dequeueReusableCellWithIdentifier:@"idCellRecord" forIndexPath:indexPath];
+    
+    cell.imageTrailStatus.image = [Trails GetStatusIcon:[[self.trailList objectAtIndex:indexPath.row] objectForKey:@"status"]];
     cell.lblTrailName.text = [NSString stringWithFormat:@"%@", [[self.trailList objectAtIndex:indexPath.row] objectForKey:@"trailName"]];
     NSString *cityState = [NSString stringWithFormat:@"%@", [[self.trailList objectAtIndex:indexPath.row] objectForKey:@"city"]];
     cityState = [cityState stringByAppendingString:@", "];
     cityState = [cityState stringByAppendingString:[NSString stringWithFormat:@"%@", [[self.trailList objectAtIndex:indexPath.row] objectForKey:@"state"]]] ;
     cell.lblTrailCityState.text = [NSString stringWithFormat:@"%@", cityState];
-    cell.lblTrailMileageFrom.text = @"5.6 Miles";
+    PFGeoPoint *trailLocation  = [[self.trailList objectAtIndex:indexPath.row] objectForKey:@"geoLocation"];
+    NSString *milesFromCurrent = [NSString stringWithFormat:@"%.2f", [GeoLocationHelper GetDistanceFromCurrentLocation:self.userLocation traillocation:trailLocation]];
+    milesFromCurrent = [milesFromCurrent stringByAppendingString:@" Miles"];
+    cell.lblTrailMileageFrom.text =  milesFromCurrent;
     return cell;
 }
 

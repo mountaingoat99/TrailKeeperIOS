@@ -12,7 +12,7 @@
 
 @interface GeoLocationHelper : NSObject
 
-+(NSArray*)GetClosestTrailsForMap:(PFGeoPoint*)currentLocation;
++(double)GetDistanceFromCurrentLocation:(PFGeoPoint*)userLocation traillocation:(PFGeoPoint*)trailLocation;
 +(PFGeoPoint*)GetUsersCurrentPostion;
 
 @end
