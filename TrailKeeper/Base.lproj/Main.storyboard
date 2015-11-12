@@ -144,11 +144,62 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="tbltrailCards" destination="LWd-CW-yy2" id="vN8-Nc-THh"/>
+                        <segue destination="GMy-jg-7sC" kind="show" identifier="segueHomeToTrailHome" id="G2Z-Xy-QiM"/>
+                        <segue destination="sKl-ua-KVP" kind="show" identifier="segueHomeToMap" id="R7t-sm-OpO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eqE-7E-YRA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1375.5" y="-165.5"/>
+        </scene>
+        <!--Trail Home-->
+        <scene sceneID="Mcm-Y5-hkm">
+            <objects>
+                <viewController storyboardIdentifier="TrailHomeViewController" title="Trail Home" useStoryboardIdentifierAsRestorationIdentifier="YES" id="GMy-jg-7sC" customClass="TrailHomeViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qyq-8G-HQc"/>
+                        <viewControllerLayoutGuide type="bottom" id="jwY-C2-IhP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="FrY-8e-qi1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trail Home" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xDV-hF-1Tx">
+                                <rect key="frame" x="132" y="323" width="110" height="21"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="110" id="TgM-Pq-ukg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="xDV-hF-1Tx" firstAttribute="centerX" secondItem="FrY-8e-qi1" secondAttribute="centerX" id="N6O-qn-igu"/>
+                            <constraint firstItem="xDV-hF-1Tx" firstAttribute="centerY" secondItem="FrY-8e-qi1" secondAttribute="centerY" id="Rba-3t-rn8"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="7n8-6A-R58">
+                        <barButtonItem key="leftBarButtonItem" image="back" id="5xR-xK-Nbr">
+                            <connections>
+                                <action selector="btn_backClick:" destination="GMy-jg-7sC" id="hpV-OJ-Ht8"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <segue destination="OaI-2H-gHn" kind="show" identifier="segueTrailHomeToHome" id="A7J-lr-uSV"/>
+                        <segue destination="hur-5N-8BM" kind="show" identifier="segueTrailHomeToFindTrail" id="nBy-B7-tTJ"/>
+                        <segue destination="LC3-Up-6aK" kind="show" identifier="segueTrailHomeToComments" id="zjZ-ZA-Yv8"/>
+                        <segue destination="sKl-ua-KVP" kind="show" identifier="segueTrailHomeToMap" id="VXT-hM-XIA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nFM-i9-yom" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2344.5" y="-165.5"/>
         </scene>
         <!--Find Trail-->
         <scene sceneID="dtu-cn-rGA">
@@ -752,11 +803,39 @@
             </objects>
             <point key="canvasLocation" x="1858.5" y="2769.5"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="fmJ-Ej-iyD">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="b7p-Zp-Zbc" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="kZn-1H-sCE">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="GMy-jg-7sC" kind="relationship" relationship="rootViewController" id="NgQ-gl-9gk"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="O50-9z-qlk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1819.5" y="-165.5"/>
+        </scene>
     </scenes>
     <resources>
         <image name="app_icon_image_view" width="36" height="36"/>
+        <image name="back" width="29" height="29"/>
         <image name="background" width="256" height="334"/>
         <image name="drawer_icon" width="29" height="29"/>
         <image name="open" width="170" height="170"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="1hX-R9-qCA"/>
+        <segue reference="nBy-B7-tTJ"/>
+        <segue reference="G2Z-Xy-QiM"/>
+        <segue reference="A7J-lr-uSV"/>
+        <segue reference="R7t-sm-OpO"/>
+    </inferredMetricsTieBreakers>
 </document>

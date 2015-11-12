@@ -58,6 +58,7 @@
 
 #pragma mark - Navigation
 
+
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
@@ -115,25 +116,12 @@
 
 -(void)btnClick_Map:(NSString*)trailObjectId {
     NSLog(@"Sent TrailObjectID to Maps is: %@", trailObjectId);
-    // get the storyboard
-    UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    
-    id mainView = [mainStoryBoard instantiateViewControllerWithIdentifier:@"MapViewController"];
-    UINavigationController *centerNav = [[UINavigationController alloc] initWithRootViewController:mainView];
-    
-    // TODO figure out the transitions
-    //centerNav.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-    //centerNav.modalPresentationStyle = UIModalPresentationFormSheet;
-    //[self setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
-    //[appDelegate.drawerController.centerViewController setModalPresentationStyle:UIModalPresentationFormSheet];
-    
-    appDelegate.drawerController.centerViewController = centerNav;
-    //[appDelegate.drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+    [self performSegueWithIdentifier:@"segueHomeToMap" sender:self];
 }
 
 -(void)btnClick_TrailHome:(NSString*)trailObjectId {
     NSLog(@"Sent TrailObjectId to Trail Home Screen is %@", trailObjectId);
+    [self performSegueWithIdentifier:@"segueHomeToTrailHome" sender:self];
 }
 
 - (IBAction)btn_drawerClick:(id)sender {
