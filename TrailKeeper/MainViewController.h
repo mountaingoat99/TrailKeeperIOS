@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CustomCell.h"
 
-
-@interface MainViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface MainViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, CustomCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tbltrailCards;
 

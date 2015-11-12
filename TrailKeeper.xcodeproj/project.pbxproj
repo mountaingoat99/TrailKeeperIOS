@@ -28,7 +28,7 @@
 		26AAB1D61BCDDEDC0084B67D /* TrailStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 26AAB1D51BCDDEDC0084B67D /* TrailStatus.m */; };
 		26AAB1D91BCDE0E70084B67D /* Installation.m in Sources */ = {isa = PBXBuildFile; fileRef = 26AAB1D81BCDE0E70084B67D /* Installation.m */; };
 		26B65D001BD5CB74008616EC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B65CFF1BD5CB74008616EC /* SystemConfiguration.framework */; };
-		26DBC11F1BE6E1F700273D56 /* TrailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DBC11E1BE6E1F700273D56 /* TrailCell.m */; };
+		26D6E5CD1BEEBCEB007C9F6C /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26D6E5CC1BEEBCEB007C9F6C /* CustomCell.m */; };
 		26DBC1211BE82F2F00273D56 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26DBC1201BE82F2F00273D56 /* CoreLocation.framework */; };
 		26F7A3941BE453E5007D98D6 /* GetAllObjectsFromParseHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A3931BE453E5007D98D6 /* GetAllObjectsFromParseHelper.m */; };
 		26F8D40C1BE5A227007770F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26F8D40A1BE5A227007770F4 /* Main.storyboard */; };
@@ -90,8 +90,8 @@
 		26AAB1D71BCDE0E70084B67D /* Installation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Installation.h; sourceTree = "<group>"; };
 		26AAB1D81BCDE0E70084B67D /* Installation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Installation.m; sourceTree = "<group>"; };
 		26B65CFF1BD5CB74008616EC /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		26DBC11D1BE6E1F700273D56 /* TrailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrailCell.h; sourceTree = "<group>"; };
-		26DBC11E1BE6E1F700273D56 /* TrailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrailCell.m; sourceTree = "<group>"; };
+		26D6E5CB1BEEBCEB007C9F6C /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
+		26D6E5CC1BEEBCEB007C9F6C /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
 		26DBC1201BE82F2F00273D56 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		26F7A3921BE453E5007D98D6 /* GetAllObjectsFromParseHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetAllObjectsFromParseHelper.h; sourceTree = "<group>"; };
 		26F7A3931BE453E5007D98D6 /* GetAllObjectsFromParseHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetAllObjectsFromParseHelper.m; sourceTree = "<group>"; };
@@ -168,7 +168,7 @@
 		2615C1181BCAE7660065B62C /* TrailKeeper */ = {
 			isa = PBXGroup;
 			children = (
-				26DBC11C1BE6E1CB00273D56 /* CustomViews */,
+				26D6E5CA1BEEBCCF007C9F6C /* CustomViews */,
 				26F8D4161BE65E18007770F4 /* MySideMenu */,
 				2615C1381BCAEC740065B62C /* Models */,
 				2615C1351BCAEC540065B62C /* Utils */,
@@ -297,11 +297,11 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
-		26DBC11C1BE6E1CB00273D56 /* CustomViews */ = {
+		26D6E5CA1BEEBCCF007C9F6C /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
-				26DBC11D1BE6E1F700273D56 /* TrailCell.h */,
-				26DBC11E1BE6E1F700273D56 /* TrailCell.m */,
+				26D6E5CB1BEEBCEB007C9F6C /* CustomCell.h */,
+				26D6E5CC1BEEBCEB007C9F6C /* CustomCell.m */,
 			);
 			name = CustomViews;
 			sourceTree = "<group>";
@@ -467,9 +467,9 @@
 			files = (
 				26A4C1101BCB3D7800524635 /* DBManager.m in Sources */,
 				26AAB1CD1BCDDEB60084B67D /* AuthorizedCommentors.m in Sources */,
+				26D6E5CD1BEEBCEB007C9F6C /* CustomCell.m in Sources */,
 				26F8D4351BE6BFEF007770F4 /* AddTrailViewController.m in Sources */,
 				26F8D4221BE65E4A007770F4 /* MMDrawerVisualState.m in Sources */,
-				26DBC11F1BE6E1F700273D56 /* TrailCell.m in Sources */,
 				260EC2641BDB13F600BB01DF /* Converters.m in Sources */,
 				26A4C1281BCB432300524635 /* GeoLocationHelper.m in Sources */,
 				26F8D43B1BE6C019007770F4 /* GetTrailPinViewController.m in Sources */,

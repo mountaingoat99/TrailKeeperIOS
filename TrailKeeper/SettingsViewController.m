@@ -25,7 +25,6 @@
 
 -(void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
-    self.appDelegate.whichController = self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -43,12 +42,7 @@
 }
 */
 
-- (IBAction)btn_return:(id)sender {
-    NSLog(@"Button click to return from Account Settings");
-    UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    NSString *name = NSStringFromClass([self.appDelegate.whichController class]);
-    id lastWindow = [mainStoryBoard instantiateViewControllerWithIdentifier:name];
-    UINavigationController *centerNav = [[UINavigationController alloc] initWithRootViewController:lastWindow];
-    self.appDelegate.drawerController.centerViewController = centerNav;
+- (IBAction)btn_drawerClick:(id)sender {
+    [self.appDelegate.drawerController toggleDrawerSide:MMDrawerSideLeft animated:true completion:nil];
 }
 @end

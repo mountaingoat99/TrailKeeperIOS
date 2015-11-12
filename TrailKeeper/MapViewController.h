@@ -10,6 +10,6 @@
 
 @interface MapViewController : UIViewController
 
-- (IBAction)btn_click:(id)sender;
+- (IBAction)btn_drawerClick:(id)sender;
 
 @end

@@ -10,6 +10,6 @@
 
 @interface SettingsViewController : UIViewController
 
-- (IBAction)btn_return:(id)sender;
+- (IBAction)btn_drawerClick:(id)sender;
 
 @end

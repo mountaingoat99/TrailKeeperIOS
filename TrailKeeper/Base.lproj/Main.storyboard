@@ -17,13 +17,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="110" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LWd-CW-yy2">
-                                <rect key="frame" x="0.0" y="68" width="375" height="599"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="BLs-Sp-OoB">
+                                <rect key="frame" x="-4" y="64" width="383" height="603"/>
                                 <animations/>
-                                <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="110" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LWd-CW-yy2">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <animations/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" restorationIdentifier="TrailCell" selectionStyle="none" indentationLevel="10" indentationWidth="0.0" reuseIdentifier="idCellRecord" id="Bm5-Sw-mej" customClass="TrailCell">
-                                        <rect key="frame" x="0.0" y="92" width="375" height="110"/>
+                                    <tableViewCell contentMode="scaleToFill" restorationIdentifier="CustomCell" selectionStyle="none" indentationLevel="10" indentationWidth="0.0" reuseIdentifier="idCellRecord" id="Bm5-Sw-mej" customClass="CustomCell">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="110"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Bm5-Sw-mej" id="AfL-Si-UZG">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="109"/>
@@ -51,7 +56,7 @@
                                                         <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="btnTrailHome_Click:" destination="Bm5-Sw-mej" eventType="touchUpInside" id="c9S-pG-zB5"/>
+                                                        <action selector="btnTrailHome_Click:" destination="Bm5-Sw-mej" eventType="touchUpInside" id="L0L-7W-UuG"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qz9-P7-LYW">
@@ -64,7 +69,7 @@
                                                         <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="btnMap_Click:" destination="Bm5-Sw-mej" eventType="touchUpInside" id="8G1-Tn-TQP"/>
+                                                        <action selector="btnMap_Click:" destination="Bm5-Sw-mej" eventType="touchUpInside" id="g4Z-Zz-xtH"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="5.0 Miles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6gw-Hn-REv">
@@ -102,15 +107,15 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
-                                        <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <outlet property="btnTrailHome" destination="Ddj-fg-jMf" id="ECi-op-1T0"/>
-                                            <outlet property="btnTrailMap" destination="qz9-P7-LYW" id="8OY-Hx-PRL"/>
-                                            <outlet property="cardView" destination="AfL-Si-UZG" id="cBo-LF-ZZh"/>
-                                            <outlet property="imageTrailStatus" destination="vbR-ap-1pI" id="8xV-A4-lsW"/>
-                                            <outlet property="lblTrailCityState" destination="Dgy-Mv-Txd" id="4sz-Dj-wEq"/>
-                                            <outlet property="lblTrailMileageFrom" destination="6gw-Hn-REv" id="1tz-eI-S8D"/>
-                                            <outlet property="lblTrailName" destination="ABm-qZ-rgy" id="3A4-Df-hMn"/>
+                                            <outlet property="btnTrailHome" destination="Ddj-fg-jMf" id="UsF-wB-C2o"/>
+                                            <outlet property="btnTrailMap" destination="qz9-P7-LYW" id="If0-Il-KLJ"/>
+                                            <outlet property="cardView" destination="AfL-Si-UZG" id="1Q8-Vo-m9B"/>
+                                            <outlet property="imageTrailStatus" destination="vbR-ap-1pI" id="DBi-6g-yLm"/>
+                                            <outlet property="lblTrailCityState" destination="Dgy-Mv-Txd" id="SYm-to-MuP"/>
+                                            <outlet property="lblTrailMileageFrom" destination="6gw-Hn-REv" id="l4Y-F5-Gsg"/>
+                                            <outlet property="lblTrailName" destination="ABm-qZ-rgy" id="idF-6U-cQn"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -119,10 +124,14 @@
                         <animations/>
                         <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="LWd-CW-yy2" firstAttribute="top" secondItem="PUr-jK-IYh" secondAttribute="bottom" constant="4" id="3x2-ZC-Dth"/>
+                            <constraint firstItem="LWd-CW-yy2" firstAttribute="top" secondItem="PUr-jK-IYh" secondAttribute="bottom" id="3x2-ZC-Dth"/>
                             <constraint firstAttribute="trailing" secondItem="LWd-CW-yy2" secondAttribute="trailing" id="69m-Zs-BrQ"/>
+                            <constraint firstItem="BLs-Sp-OoB" firstAttribute="top" secondItem="PUr-jK-IYh" secondAttribute="bottom" id="6Mz-ne-mgi"/>
+                            <constraint firstItem="BLs-Sp-OoB" firstAttribute="leading" secondItem="Ls5-Jy-Oht" secondAttribute="leadingMargin" constant="-20" id="Ul5-cR-SZB"/>
                             <constraint firstItem="LWd-CW-yy2" firstAttribute="leading" secondItem="Ls5-Jy-Oht" secondAttribute="leading" id="bbo-zF-A0e"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="BLs-Sp-OoB" secondAttribute="trailing" constant="-20" id="dOu-S9-mNN"/>
                             <constraint firstItem="LWd-CW-yy2" firstAttribute="bottom" secondItem="oPL-FP-qvj" secondAttribute="top" id="dgz-Ba-hoy"/>
+                            <constraint firstItem="oPL-FP-qvj" firstAttribute="top" secondItem="BLs-Sp-OoB" secondAttribute="bottom" id="jZb-XP-PWA"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="TrailKeeper" id="Xc8-67-3Q2">
@@ -172,9 +181,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Find Trail" id="egq-a8-w61">
-                        <barButtonItem key="leftBarButtonItem" image="back" id="mGa-01-g8v">
+                        <barButtonItem key="leftBarButtonItem" image="drawer_icon" id="mGa-01-g8v">
                             <connections>
-                                <action selector="btn_back:" destination="hur-5N-8BM" id="f1J-5H-k32"/>
+                                <action selector="btn_drawerClick:" destination="hur-5N-8BM" id="1cE-Md-4DH"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -213,9 +222,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Trail Subscriptions" id="kje-Xe-5uv">
-                        <barButtonItem key="leftBarButtonItem" image="back" id="WRE-XJ-dq6">
+                        <barButtonItem key="leftBarButtonItem" image="drawer_icon" id="WRE-XJ-dq6">
                             <connections>
-                                <action selector="btn_back:" destination="a2t-yc-XBy" id="l7h-uH-k5c"/>
+                                <action selector="btn_drawerClick:" destination="a2t-yc-XBy" id="0kk-uS-DtZ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -256,9 +265,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Comments" id="X5F-NS-dHd">
-                        <barButtonItem key="leftBarButtonItem" image="back" id="rAD-eA-Be6">
+                        <barButtonItem key="leftBarButtonItem" image="drawer_icon" id="rAD-eA-Be6">
                             <connections>
-                                <action selector="btn_back:" destination="LC3-Up-6aK" id="HUM-K3-kAo"/>
+                                <action selector="btn_drawerClick:" destination="LC3-Up-6aK" id="8iz-5X-4B6"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -297,9 +306,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Account Settings" id="BUw-Gx-K7r">
-                        <barButtonItem key="leftBarButtonItem" image="back" id="vUg-WN-hBA">
+                        <barButtonItem key="leftBarButtonItem" image="drawer_icon" id="vUg-WN-hBA">
                             <connections>
-                                <action selector="btn_return:" destination="2m9-gS-3c7" id="PUt-cP-WGg"/>
+                                <action selector="btn_drawerClick:" destination="2m9-gS-3c7" id="ciB-dw-dpZ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -340,9 +349,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Get Trail Pin" id="UG1-vH-Ppa">
-                        <barButtonItem key="leftBarButtonItem" image="back" id="eUa-8a-0H4">
+                        <barButtonItem key="leftBarButtonItem" image="drawer_icon" id="eUa-8a-0H4">
                             <connections>
-                                <action selector="btn_back:" destination="ht8-ys-tvh" id="2H1-y4-Awf"/>
+                                <action selector="btn_drawerClick:" destination="ht8-ys-tvh" id="lL1-mw-aWB"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -383,9 +392,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Contact Us" id="5Xs-YL-n9L">
-                        <barButtonItem key="leftBarButtonItem" image="back" id="UqB-EQ-yoG">
+                        <barButtonItem key="leftBarButtonItem" image="drawer_icon" id="UqB-EQ-yoG">
                             <connections>
-                                <action selector="btn_back:" destination="MFh-BB-OYb" id="Cz3-a4-FfW"/>
+                                <action selector="btn_drawerClick:" destination="MFh-BB-OYb" id="AMj-9N-RkB"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -528,9 +537,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Map" id="6JE-dO-JT4">
-                        <barButtonItem key="leftBarButtonItem" image="back" id="moc-C8-fs7">
+                        <barButtonItem key="leftBarButtonItem" image="drawer_icon" id="moc-C8-fs7">
                             <connections>
-                                <action selector="btn_click:" destination="sKl-ua-KVP" id="Uh4-gZ-zPt"/>
+                                <action selector="btn_drawerClick:" destination="sKl-ua-KVP" id="Xhd-If-deJ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -571,9 +580,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Add New Trail" id="35p-th-eCF">
-                        <barButtonItem key="leftBarButtonItem" image="back" id="ghl-Fu-JRC">
+                        <barButtonItem key="leftBarButtonItem" image="drawer_icon" id="ghl-Fu-JRC">
                             <connections>
-                                <action selector="btn_back:" destination="vLr-Rg-4Rn" id="D6q-8E-2zk"/>
+                                <action selector="btn_drawerClick:" destination="vLr-Rg-4Rn" id="8nf-dQ-ZE7"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -746,7 +755,7 @@
     </scenes>
     <resources>
         <image name="app_icon_image_view" width="36" height="36"/>
-        <image name="back" width="29" height="29"/>
+        <image name="background" width="256" height="334"/>
         <image name="drawer_icon" width="29" height="29"/>
         <image name="open" width="170" height="170"/>
     </resources>

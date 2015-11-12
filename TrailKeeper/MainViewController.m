@@ -8,7 +8,6 @@
 
 #import "MainViewController.h"
 #import "AppDelegate.h"
-#import "TrailCell.h"
 #import "Trails.h"
 #import "GeoLocationHelper.h"
 
@@ -20,7 +19,6 @@
 
 -(void)loadData;
 
-
 @end
 
 @implementation MainViewController
@@ -31,27 +29,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // get users current location
     self.userLocation = [GeoLocationHelper GetUsersCurrentPostion];
     
+    // set the Table delegate and datasource
     self.tbltrailCards.delegate = self;
     self.tbltrailCards.dataSource = self;
     
+    // load the data
     [self loadData];
     
-    // drop shadow for the table
-    //self.tbltrailCards.layer.shadowColor = [UIColor blackColor].CGColor;
-    //self.tbltrailCards.layer.shadowOffset = CGSizeMake(1.0f, 1.0f);
-    //self.tbltrailCards.layer.masksToBounds = NO;
-    //self.tbltrailCards.layer.shadowOpacity = 1.0;
+    // add some view properties
     [self.tbltrailCards setSeparatorColor:[UIColor clearColor]];
-    // if overscroll keep the background color
-    //self.view.backgroundColor = [UIColor colorWithRed:.9 green:.9 blue:.9 alpha:1];
+    [self.tbltrailCards setBackgroundColor:[UIColor clearColor]];
 }
 
 -(void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
+    // set the current ViewController
     self.appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    self.appDelegate.whichController = self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -59,7 +55,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -67,7 +63,7 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
-*/
+
 
 #pragma mark - tableview
 
@@ -100,8 +96,10 @@
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     //deque the cell
-    TrailCell *cell = [tableView dequeueReusableCellWithIdentifier:@"idCellRecord" forIndexPath:indexPath];
+    CustomCell *cell = [tableView dequeueReusableCellWithIdentifier:@"idCellRecord" forIndexPath:indexPath];
+    cell.delegate = self;
     
+    cell.sentTrailObjectId = [NSString stringWithFormat:@"%@", [[self.trailList objectAtIndex:indexPath.row] objectId]];
     cell.imageTrailStatus.image = [Trails GetStatusIcon:[[self.trailList objectAtIndex:indexPath.row] objectForKey:@"status"]];
     cell.lblTrailName.text = [NSString stringWithFormat:@"%@", [[self.trailList objectAtIndex:indexPath.row] objectForKey:@"trailName"]];
     NSString *cityState = [NSString stringWithFormat:@"%@", [[self.trailList objectAtIndex:indexPath.row] objectForKey:@"city"]];
@@ -115,7 +113,28 @@
     return cell;
 }
 
+-(void)btnClick_Map:(NSString*)trailObjectId {
+    NSLog(@"Sent TrailObjectID to Maps is: %@", trailObjectId);
+    // get the storyboard
+    UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    
+    id mainView = [mainStoryBoard instantiateViewControllerWithIdentifier:@"MapViewController"];
+    UINavigationController *centerNav = [[UINavigationController alloc] initWithRootViewController:mainView];
+    
+    // TODO figure out the transitions
+    //centerNav.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    //centerNav.modalPresentationStyle = UIModalPresentationFormSheet;
+    //[self setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
+    //[appDelegate.drawerController.centerViewController setModalPresentationStyle:UIModalPresentationFormSheet];
+    
+    appDelegate.drawerController.centerViewController = centerNav;
+    //[appDelegate.drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+}
 
+-(void)btnClick_TrailHome:(NSString*)trailObjectId {
+    NSLog(@"Sent TrailObjectId to Trail Home Screen is %@", trailObjectId);
+}
 
 - (IBAction)btn_drawerClick:(id)sender {
     NSLog(@"Left Drawer button tapped");
