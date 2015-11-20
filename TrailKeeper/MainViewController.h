@@ -12,6 +12,7 @@
 @interface MainViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, CustomCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tbltrailCards;
+@property (strong, nonatomic) NSString *sentTrailObjectId;
 
 - (IBAction)btn_drawerClick:(id)sender;
 

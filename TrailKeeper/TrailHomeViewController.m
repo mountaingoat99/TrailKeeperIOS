@@ -14,7 +14,8 @@
 @property (nonatomic, strong) AppDelegate *appDelegate;
 @property (nonatomic, strong) NSArray *commentList;
 
--(void)loadData;
+-(void)loadTableData;
+-(void)loadTrailData;
 
 @end
 
@@ -29,8 +30,6 @@
     self.tblComments.delegate = self;
     self.tblComments.dataSource = self;
     
-    [self loadData];
-    
     [self.tblComments setSeparatorColor:[UIColor clearColor]];
     self.tblComments.backgroundColor = [UIColor clearColor];
     
@@ -44,6 +43,9 @@
     self.vTrailHomeBackground.layer.cornerRadius = 3.0;
     self.vTrailHomeBackground.layer.shadowOffset = CGSizeMake(1, 0);
     self.vTrailHomeBackground.layer.shadowOpacity = 0.5;
+    
+    [self loadTrailData];
+    [self loadTableData];
 }
 
 -(void)viewDidDisappear:(BOOL)animated {
@@ -69,20 +71,11 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 130.0;
+    return 20.0;
 }
 
 -(void)tableView:(UITableView*)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-//    cell.contentView.backgroundColor = [UIColor clearColor];
-//    UIView *whiteRoundedCornerView = [[UIView alloc] initWithFrame:CGRectMake(5,10,self.view.window.bounds.size.width - 10,110)];
-//    whiteRoundedCornerView.backgroundColor = [UIColor whiteColor];
-//    whiteRoundedCornerView.layer.masksToBounds = NO;
-//    whiteRoundedCornerView.layer.cornerRadius = 3.0;
-//    whiteRoundedCornerView.layer.shadowOffset = CGSizeMake(1, 0);
-//    whiteRoundedCornerView.layer.shadowOpacity = 0.5;
-//    [cell.contentView addSubview:whiteRoundedCornerView];
-//    [cell.contentView sendSubviewToBack:whiteRoundedCornerView];
+
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -90,14 +83,15 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    //NSLog(@"TrailList Count in Table %lu", (unsigned long)self.trailList.count);
-    return 5;
-    //return self.trailList.count;
+    NSLog(@"TrailList Count in Table %lu", (unsigned long)self.commentList.count);
+    return self.commentList.count;
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     //deque the cell
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"idCellRecord" forIndexPath:indexPath];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@", [[self.commentList objectAtIndex:indexPath.row] objectForKey:@"comment"]];
+    
 //    cell.delegate = self;
 //    
 //    cell.sentTrailObjectId = [NSString stringWithFormat:@"%@", [[self.trailList objectAtIndex:indexPath.row] objectId]];
@@ -120,10 +114,54 @@
     [self performSegueWithIdentifier:@"segueTrailHomeToHome" sender:self];
 }
 
-#pragma private methods
--(void)loadData {
-    
+- (IBAction)btn_subscribeClick:(id)sender {
 }
 
+- (IBAction)btn_statusClick:(id)sender {
+}
+
+- (IBAction)btn_AllCommentsClick:(id)sender {
+}
+
+- (IBAction)btn_LeaveCommentClick:(id)sender {
+}
+
+#pragma private methods
+-(void)loadTableData {
+    if (self.commentList != nil) {
+        self.commentList = nil;
+    }
+    
+    Comments *comments = [[Comments alloc] init];
+    self.commentList = [comments GetCommentsByTrail:self.sentTrailObjectId];
+    [self.tblComments reloadData];
+}
+
+-(void)loadTrailData {
+    Trails *trails = [[Trails alloc] init];
+    trails = [trails GetTrailObject:self.sentTrailObjectId];
+    
+    self.lblTrailName.text = trails.trailName;
+    NSString *cityState = trails.city;
+    cityState = [cityState stringByAppendingString:@", "];
+    cityState = [cityState stringByAppendingString:trails.state];
+    self.lblCityState.text = cityState;
+    self.imageStatus.image = [Trails GetStatusIcon:trails.status];
+    if (trails.skillEasy) {
+        self.imageEasy.hidden = NO;
+    } else {
+        self.imageEasy.hidden = YES;
+    }
+    if (trails.skillMedium) {
+        self.imageMedium.hidden = NO;
+    } else {
+        self.imageMedium.hidden = YES;
+    }
+    if (trails.skillHard) {
+        self.imageHard.hidden = NO;
+    } else {
+        self.imageHard.hidden = YES;
+    }
+}
 
 @end

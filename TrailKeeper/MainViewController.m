@@ -10,6 +10,8 @@
 #import "AppDelegate.h"
 #import "Trails.h"
 #import "GeoLocationHelper.h"
+#import "TrailHomeViewController.h"
+#import "MapViewController.h"
 
 @interface MainViewController ()
 
@@ -63,6 +65,14 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"segueHomeToTrailHome"]) {
+        TrailHomeViewController *home = [segue destinationViewController];
+        home.sentTrailObjectId = self.sentTrailObjectId;
+    }
+    if ([segue.identifier isEqualToString:@"segueHomeToMap"]) {
+        MapViewController *map = [segue destinationViewController];
+        //TODO send the sentTrailObjectID
+    }
 }
 
 
@@ -116,11 +126,13 @@
 
 -(void)btnClick_Map:(NSString*)trailObjectId {
     NSLog(@"Sent TrailObjectID to Maps is: %@", trailObjectId);
+    self.sentTrailObjectId = trailObjectId;
     [self performSegueWithIdentifier:@"segueHomeToMap" sender:self];
 }
 
 -(void)btnClick_TrailHome:(NSString*)trailObjectId {
     NSLog(@"Sent TrailObjectId to Trail Home Screen is %@", trailObjectId);
+    self.sentTrailObjectId = trailObjectId;
     [self performSegueWithIdentifier:@"segueHomeToTrailHome" sender:self];
 }
 

@@ -31,6 +31,7 @@
 +(NSString *)ConvertTrailStatusForPush:(NSNumber*)status trailname:(NSString*)trailName;
 
 -(NSArray*)GetClosestTrailsForHomeScreen;
+-(Trails*)GetTrailObject:(NSString*)trailObjectId;
 -(NSMutableArray *)GetAllTrailInfo;
 -(NSMutableArray*)GetTrailNames;
 -(NSMutableOrderedSet*)GetTrailStates;

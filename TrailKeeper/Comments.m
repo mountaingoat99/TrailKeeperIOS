@@ -66,7 +66,7 @@
 
 -(NSMutableArray*)GetCommentsByUser:(NSString*)userObjectId {
     NSMutableArray *userComments = [[NSMutableArray alloc] init];
-    PFQuery *query = [PFQuery queryWithClassName:@"Comment"];
+    PFQuery *query = [PFQuery queryWithClassName:@"Comments"];
     [query whereKey:@"userObjectId" equalTo:userObjectId];
     [query fromLocalDatastore];
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
@@ -89,34 +89,36 @@
     return userComments;
 }
 
--(NSMutableArray*)GetCommentsByTrail:(NSString*)trailObjectId {
-    NSMutableArray *trailComments = [[NSMutableArray alloc] init];
-    PFQuery *query = [PFQuery queryWithClassName:@"Comment"];
-    [query whereKey:@"trailObjecId" equalTo:trailObjectId];
+-(NSArray*)GetCommentsByTrail:(NSString*)trailObjectId {
+    PFQuery *query = [PFQuery queryWithClassName:@"Comments"];
+    [query whereKey:@"trailObjectId" equalTo:trailObjectId];
+    [query orderByDescending:@"workingCreatedDate"];
     [query fromLocalDatastore];
-    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
-        if (!error) {
-            for (PFObject *object in objects) {
-                Comments *comment = [[Comments alloc] init];
-                comment.objectId = object.objectId;
-                comment.trailObjectId = [object objectForKey:@"trailObjectId"];
-                comment.trailName = [object objectForKey:@"trailName"];
-                comment.userObjectId = [object objectForKey:@"userObjectId"];
-                comment.userName = [object objectForKey:@"userName"];
-                comment.comment = [object objectForKey:@"comment"];
-                
-                [trailComments addObject:comment];
-            }
-        } else {
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-        }
-    }];
-    return trailComments;
+    NSArray * _Nullable objects = [query findObjects];
+    return objects;
+//    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+//        if (!error) {
+//            for (PFObject *object in objects) {
+//                Comments *comment = [[Comments alloc] init];
+//                comment.objectId = object.objectId;
+//                comment.trailObjectId = [object objectForKey:@"trailObjectId"];
+//                comment.trailName = [object objectForKey:@"trailName"];
+//                comment.userObjectId = [object objectForKey:@"userObjectId"];
+//                comment.userName = [object objectForKey:@"userName"];
+//                comment.comment = [object objectForKey:@"comment"];
+//                
+//                [trailComments addObject:comment];
+//            }
+//        } else {
+//            NSLog(@"Error: %@ %@", error, [error userInfo]);
+//        }
+//    }];
+//    return trailComments;
 }
 
 -(NSMutableArray*)GetAllComments {
     NSMutableArray *allComments = [[NSMutableArray alloc] init];
-    PFQuery *query = [PFQuery queryWithClassName:@"Comment"];
+    PFQuery *query = [PFQuery queryWithClassName:@"Comments"];
     [query orderByDescending:@"createdAt"];
     [query fromLocalDatastore];
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
@@ -148,7 +150,7 @@
 }
 
 -(void)SaveNewComment:(Comments*)newComment {
-    PFObject *comment = [PFObject objectWithClassName:@"Comment"];
+    PFObject *comment = [PFObject objectWithClassName:@"Comments"];
     comment[@"trailObjecId"] = newComment.trailObjectId;
     comment[@"trailName"] = newComment.trailName;
     comment[@"userObjectId"] = newComment.userObjectId;

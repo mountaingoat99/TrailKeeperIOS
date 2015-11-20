@@ -163,6 +163,30 @@
     return objects;
 }
 
+-(Trails*)GetTrailObject:(NSString*)trailObjectId {
+    Trails *trail = [[Trails alloc] init];
+    PFQuery *query = [PFQuery queryWithClassName:@"Trails"];
+    [query fromLocalDatastore];
+    [query whereKey:@"objectId" equalTo:trailObjectId];
+    NSArray * _Nullable objects = [query findObjects];
+    
+    for (PFObject *object in objects ){
+        trail.trailName = [object objectForKey:@"trailName"];
+        trail.status = [object objectForKey:@"status"];
+        trail.mapLink = [object objectForKey:@"mapLink"];
+        trail.city = [object objectForKey:@"city"];
+        trail.state = [object objectForKey:@"state"];
+        trail.country = [object objectForKey:@"country"];
+        trail.length = [object objectForKey:@"length"];
+        trail.geoLocation = [object objectForKey:@"geoLocation"];
+        trail.privateTrail = [Converters getBoolValueFromNSNumber:[object objectForKey:@"privateTrail"]];
+        trail.skillEasy = [Converters getBoolValueFromNSNumber:[object objectForKey:@"skillEasy"]];
+        trail.skillMedium = [Converters getBoolValueFromNSNumber:[object objectForKey:@"skillMedium"]];
+        trail.skillHard = [Converters getBoolValueFromNSNumber:[object objectForKey:@"skillHard"]];
+    }
+    return trail;
+}
+
 -(NSMutableArray *)GetAllTrailInfo {
     NSMutableArray *allTrails = [[NSMutableArray alloc] init];
     PFQuery *query = [PFQuery queryWithClassName:@"Trails"];
