@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TrailHomeViewController : UIViewController
+@interface TrailHomeViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+
+@property (weak, nonatomic) IBOutlet UIView *vTrailHomeBackground;
+@property (weak, nonatomic) IBOutlet UITableView *tblComments;
+@property (weak, nonatomic) IBOutlet UIView *vCommentBackground;
 
 - (IBAction)btn_backClick:(id)sender;
 

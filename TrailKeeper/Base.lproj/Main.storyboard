@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="OaI-2H-gHn">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="OaI-2H-gHn">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -18,11 +18,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="BLs-Sp-OoB">
-                                <rect key="frame" x="-4" y="64" width="383" height="603"/>
+                                <rect key="frame" x="-4" y="0.0" width="383" height="667"/>
                                 <animations/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="110" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LWd-CW-yy2">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -164,22 +164,66 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trail Home" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xDV-hF-1Tx">
-                                <rect key="frame" x="132" y="323" width="110" height="21"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="PrU-2Z-S5E">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <animations/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="26c-9E-8cZ">
+                                <rect key="frame" x="4" y="12" width="367" height="193"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </imageView>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mdc-PP-xYg">
+                                <rect key="frame" x="4" y="213" width="367" height="434"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pbw-8Y-hTM">
+                                        <rect key="frame" x="8" y="60" width="351" height="314"/>
+                                        <animations/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="idCellRecord" id="Cj6-Qr-CpA">
+                                                <rect key="frame" x="0.0" y="28" width="351" height="44"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Cj6-Qr-CpA" id="roD-9K-nQ9">
+                                                    <rect key="frame" x="0.0" y="0.0" width="351" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <animations/>
+                                                </tableViewCellContentView>
+                                                <animations/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            </tableViewCell>
+                                        </prototypes>
+                                    </tableView>
+                                </subviews>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="110" id="TgM-Pq-ukg"/>
+                                    <constraint firstAttribute="bottom" secondItem="pbw-8Y-hTM" secondAttribute="bottom" constant="60" id="bQu-OJ-1jV"/>
+                                    <constraint firstAttribute="trailing" secondItem="pbw-8Y-hTM" secondAttribute="trailing" constant="8" id="dQi-iN-XMz"/>
+                                    <constraint firstItem="pbw-8Y-hTM" firstAttribute="leading" secondItem="mdc-PP-xYg" secondAttribute="leading" constant="8" id="o8E-8f-NBj"/>
+                                    <constraint firstItem="pbw-8Y-hTM" firstAttribute="top" secondItem="mdc-PP-xYg" secondAttribute="top" constant="60" id="vLd-ZM-06l"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </view>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="xDV-hF-1Tx" firstAttribute="centerX" secondItem="FrY-8e-qi1" secondAttribute="centerX" id="N6O-qn-igu"/>
-                            <constraint firstItem="xDV-hF-1Tx" firstAttribute="centerY" secondItem="FrY-8e-qi1" secondAttribute="centerY" id="Rba-3t-rn8"/>
+                            <constraint firstItem="mdc-PP-xYg" firstAttribute="trailing" secondItem="26c-9E-8cZ" secondAttribute="trailing" id="1jR-AB-XmV"/>
+                            <constraint firstItem="PrU-2Z-S5E" firstAttribute="leading" secondItem="FrY-8e-qi1" secondAttribute="leading" id="3d3-Sk-iW9"/>
+                            <constraint firstItem="PrU-2Z-S5E" firstAttribute="bottom" secondItem="jwY-C2-IhP" secondAttribute="top" id="5Yq-bH-l2d"/>
+                            <constraint firstItem="mdc-PP-xYg" firstAttribute="top" secondItem="26c-9E-8cZ" secondAttribute="bottom" constant="8" id="9DO-Mf-UwR"/>
+                            <constraint firstItem="26c-9E-8cZ" firstAttribute="leading" secondItem="FrY-8e-qi1" secondAttribute="leadingMargin" constant="-12" id="CTv-iF-dW4"/>
+                            <constraint firstItem="jwY-C2-IhP" firstAttribute="top" secondItem="mdc-PP-xYg" secondAttribute="bottom" constant="20" id="Jgd-GH-CLf"/>
+                            <constraint firstItem="mdc-PP-xYg" firstAttribute="centerX" secondItem="26c-9E-8cZ" secondAttribute="centerX" id="OEn-oa-aHk"/>
+                            <constraint firstAttribute="trailing" secondItem="PrU-2Z-S5E" secondAttribute="trailing" id="PjP-AS-0cd"/>
+                            <constraint firstItem="mdc-PP-xYg" firstAttribute="leading" secondItem="26c-9E-8cZ" secondAttribute="leading" id="Pxu-wv-Lt1"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="26c-9E-8cZ" secondAttribute="trailing" constant="-12" id="nS1-b4-ERx"/>
+                            <constraint firstItem="PrU-2Z-S5E" firstAttribute="top" secondItem="FrY-8e-qi1" secondAttribute="top" id="x1f-Td-Dxb"/>
+                            <constraint firstItem="26c-9E-8cZ" firstAttribute="top" secondItem="qyq-8G-HQc" secondAttribute="bottom" constant="12" id="x60-Pm-Ztj"/>
+                            <constraint firstItem="jwY-C2-IhP" firstAttribute="top" secondItem="26c-9E-8cZ" secondAttribute="bottom" constant="462" id="xTS-M5-ik7"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="7n8-6A-R58">
@@ -189,8 +233,13 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="tblComments" destination="pbw-8Y-hTM" id="0ki-33-hbT"/>
+                        <outlet property="vCommentBackground" destination="mdc-PP-xYg" id="9aV-bQ-mm8"/>
+                        <outlet property="vTrailHomeBackground" destination="26c-9E-8cZ" id="zB2-DO-ust"/>
                         <segue destination="OaI-2H-gHn" kind="show" identifier="segueTrailHomeToHome" id="A7J-lr-uSV"/>
                         <segue destination="hur-5N-8BM" kind="show" identifier="segueTrailHomeToFindTrail" id="nBy-B7-tTJ"/>
                         <segue destination="LC3-Up-6aK" kind="show" identifier="segueTrailHomeToComments" id="zjZ-ZA-Yv8"/>
@@ -832,10 +881,10 @@
         <image name="open" width="170" height="170"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="1hX-R9-qCA"/>
-        <segue reference="nBy-B7-tTJ"/>
         <segue reference="G2Z-Xy-QiM"/>
         <segue reference="A7J-lr-uSV"/>
-        <segue reference="R7t-sm-OpO"/>
+        <segue reference="zjZ-ZA-Yv8"/>
+        <segue reference="VXT-hM-XIA"/>
+        <segue reference="nBy-B7-tTJ"/>
     </inferredMetricsTieBreakers>
 </document>

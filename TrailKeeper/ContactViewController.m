@@ -20,6 +20,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    
+    
 }
 
 -(void)viewDidDisappear:(BOOL)animated {
