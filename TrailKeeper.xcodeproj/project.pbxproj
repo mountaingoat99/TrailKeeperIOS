@@ -29,6 +29,7 @@
 		26AAB1D61BCDDEDC0084B67D /* TrailStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 26AAB1D51BCDDEDC0084B67D /* TrailStatus.m */; };
 		26AAB1D91BCDE0E70084B67D /* Installation.m in Sources */ = {isa = PBXBuildFile; fileRef = 26AAB1D81BCDE0E70084B67D /* Installation.m */; };
 		26B65D001BD5CB74008616EC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B65CFF1BD5CB74008616EC /* SystemConfiguration.framework */; };
+		26C033631BFFF7DD003B9114 /* CustomTrailHomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C033621BFFF7DD003B9114 /* CustomTrailHomeCell.m */; };
 		26D6E5CD1BEEBCEB007C9F6C /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26D6E5CC1BEEBCEB007C9F6C /* CustomCell.m */; };
 		26DBC1211BE82F2F00273D56 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26DBC1201BE82F2F00273D56 /* CoreLocation.framework */; };
 		26F7A3941BE453E5007D98D6 /* GetAllObjectsFromParseHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A3931BE453E5007D98D6 /* GetAllObjectsFromParseHelper.m */; };
@@ -93,6 +94,8 @@
 		26AAB1D71BCDE0E70084B67D /* Installation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Installation.h; sourceTree = "<group>"; };
 		26AAB1D81BCDE0E70084B67D /* Installation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Installation.m; sourceTree = "<group>"; };
 		26B65CFF1BD5CB74008616EC /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		26C033611BFFF7DD003B9114 /* CustomTrailHomeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTrailHomeCell.h; sourceTree = "<group>"; };
+		26C033621BFFF7DD003B9114 /* CustomTrailHomeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTrailHomeCell.m; sourceTree = "<group>"; };
 		26D6E5CB1BEEBCEB007C9F6C /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
 		26D6E5CC1BEEBCEB007C9F6C /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
 		26DBC1201BE82F2F00273D56 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -307,6 +310,8 @@
 			children = (
 				26D6E5CB1BEEBCEB007C9F6C /* CustomCell.h */,
 				26D6E5CC1BEEBCEB007C9F6C /* CustomCell.m */,
+				26C033611BFFF7DD003B9114 /* CustomTrailHomeCell.h */,
+				26C033621BFFF7DD003B9114 /* CustomTrailHomeCell.m */,
 			);
 			name = CustomViews;
 			sourceTree = "<group>";
@@ -480,6 +485,7 @@
 				26F8D43B1BE6C019007770F4 /* GetTrailPinViewController.m in Sources */,
 				26AAB1D61BCDDEDC0084B67D /* TrailStatus.m in Sources */,
 				26F8D40F1BE5A389007770F4 /* MainViewController.m in Sources */,
+				26C033631BFFF7DD003B9114 /* CustomTrailHomeCell.m in Sources */,
 				26F7A3941BE453E5007D98D6 /* GetAllObjectsFromParseHelper.m in Sources */,
 				26A4C12B1BCB433200524635 /* PushNotificationHelper.m in Sources */,
 				26AAB1CA1BCDDE8B0084B67D /* User.m in Sources */,

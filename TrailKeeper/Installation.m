@@ -9,6 +9,7 @@
 #import "Installation.h"
 #import <Parse/PFObject+Subclass.h>
 #import "User.h"
+#import "PushNotificationHelper.h"
 
 @implementation Installation
 
@@ -58,13 +59,15 @@
 }
 
 -(void)SubscribeToChannel:(NSString*)trailName Choice:(BOOL)choice {
+    NSString *channelName = [PushNotificationHelper FormatChannelName:trailName];
+    
     if (choice) {
         PFInstallation *currentInstallation = [PFInstallation currentInstallation];
-        [currentInstallation addUniqueObject:trailName forKey:@"channels"];
+        [currentInstallation addUniqueObject:channelName forKey:@"channels"];
         [currentInstallation saveInBackground];
     } else {
         PFInstallation *currentInstallation = [PFInstallation currentInstallation];
-        [currentInstallation removeObjectsInArray:@[trailName] forKey:@"channels"];
+        [currentInstallation removeObjectsInArray:@[channelName] forKey:@"channels"];
         [currentInstallation saveInBackground];
     }
 }

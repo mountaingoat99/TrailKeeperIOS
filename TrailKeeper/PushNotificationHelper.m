@@ -28,21 +28,21 @@ NSString* const STATUS_ACTION = @"com.singlecog.trailkeeper.NEW_STATUS_NOTIF";
 #pragma class methods
 
 +(NSString*)FormatChannelName:(NSString*)trail {
-    trail = [trail stringByReplacingOccurrencesOfString:@"Channel" withString:@""];
+    trail = [trail stringByReplacingOccurrencesOfString:@" " withString:@""];
     
-    NSRegularExpression *regexp = [NSRegularExpression
-                                   regularExpressionWithPattern:@"([a-z])([A-Z])"
-                                   options:0
-                                   error:NULL];
+//    NSRegularExpression *regexp = [NSRegularExpression
+//                                   regularExpressionWithPattern:@"([a-z])([A-Z])"
+//                                   options:0
+//                                   error:NULL];
+//    
+//    NSString *newTrailName = [regexp
+//                           stringByReplacingMatchesInString:trail
+//                           options:0
+//                           range:NSMakeRange(0, trail.length)
+//                           withTemplate:@"$1 $2"];
+//    NSLog(@"Changed '%@' -> '%@'", trail, newTrailName);
     
-    NSString *newTrailName = [regexp
-                           stringByReplacingMatchesInString:trail
-                           options:0
-                           range:NSMakeRange(0, trail.length)
-                           withTemplate:@"$1 $2"];
-    NSLog(@"Changed '%@' -> '%@'", trail, newTrailName);
-    
-    return newTrailName;
+    return [self CreateChannelName:trail];
 }
 
 +(NSString*)CreateChannelName:(NSString*)trail {

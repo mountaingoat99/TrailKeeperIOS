@@ -7,21 +7,28 @@
 //
 
 #import "TrailHomeViewController.h"
+#import "CustomTrailHomeCell.h"
 #import "AppDelegate.h"
+#import "Installation.h"
+static NSString * const CTCellIdentifier = @"idCellRecord";
 
 @interface TrailHomeViewController ()
 
 @property (nonatomic, strong) AppDelegate *appDelegate;
 @property (nonatomic, strong) NSArray *commentList;
+@property (nonatomic, strong) NSString *trailName;
 
 -(void)loadTableData;
 -(void)loadTrailData;
+-(NSString*)formateDate:(NSString*)date;
+-(void)subscribeToTrail:(BOOL)isSubscribed;
 
 @end
 
 @implementation TrailHomeViewController
 
 @synthesize commentList;
+@synthesize trailName;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -32,6 +39,9 @@
     
     [self.tblComments setSeparatorColor:[UIColor clearColor]];
     self.tblComments.backgroundColor = [UIColor clearColor];
+    
+    self.tblComments.estimatedRowHeight = 68;
+    self.tblComments.rowHeight = UITableViewAutomaticDimension;
     
     self.vCommentBackground.layer.masksToBounds = NO;
     self.vCommentBackground.layer.cornerRadius = 3.0;
@@ -46,6 +56,12 @@
     
     [self loadTrailData];
     [self loadTableData];
+    self.navigationItem.title = self.trailName;
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
 }
 
 -(void)viewDidDisappear:(BOOL)animated {
@@ -69,13 +85,8 @@
 
 #pragma tableview
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 20.0;
-}
-
--(void)tableView:(UITableView*)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return self.tblComments.rowHeight;
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -83,28 +94,17 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSLog(@"TrailList Count in Table %lu", (unsigned long)self.commentList.count);
+    //NSLog(@"TrailList Count in Table %lu", (unsigned long)self.commentList.count);
     return self.commentList.count;
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     //deque the cell
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"idCellRecord" forIndexPath:indexPath];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@", [[self.commentList objectAtIndex:indexPath.row] objectForKey:@"comment"]];
-    
-//    cell.delegate = self;
-//    
-//    cell.sentTrailObjectId = [NSString stringWithFormat:@"%@", [[self.trailList objectAtIndex:indexPath.row] objectId]];
-//    cell.imageTrailStatus.image = [Trails GetStatusIcon:[[self.trailList objectAtIndex:indexPath.row] objectForKey:@"status"]];
-//    cell.lblTrailName.text = [NSString stringWithFormat:@"%@", [[self.trailList objectAtIndex:indexPath.row] objectForKey:@"trailName"]];
-//    NSString *cityState = [NSString stringWithFormat:@"%@", [[self.trailList objectAtIndex:indexPath.row] objectForKey:@"city"]];
-//    cityState = [cityState stringByAppendingString:@", "];
-//    cityState = [cityState stringByAppendingString:[NSString stringWithFormat:@"%@", [[self.trailList objectAtIndex:indexPath.row] objectForKey:@"state"]]] ;
-//    cell.lblTrailCityState.text = [NSString stringWithFormat:@"%@", cityState];
-//    PFGeoPoint *trailLocation  = [[self.trailList objectAtIndex:indexPath.row] objectForKey:@"geoLocation"];
-//    NSString *milesFromCurrent = [NSString stringWithFormat:@"%.2f", [GeoLocationHelper GetDistanceFromCurrentLocation:self.userLocation traillocation:trailLocation]];
-//    milesFromCurrent = [milesFromCurrent stringByAppendingString:@" Miles"];
-//    cell.lblTrailMileageFrom.text =  milesFromCurrent;
+    CustomTrailHomeCell *cell = [tableView dequeueReusableCellWithIdentifier:CTCellIdentifier forIndexPath:indexPath];
+    cell.lblComment.text = [NSString stringWithFormat:@"%@", [[self.commentList objectAtIndex:indexPath.row] objectForKey:@"comment"]];
+    NSString *date = [self formateDate:[[self.commentList objectAtIndex:indexPath.row] objectForKey:@"workingCreatedDate"]];
+    cell.lblCommentDate.text = date;
+    cell.lblCommentUsername.text = [NSString stringWithFormat:@"%@", [[self.commentList objectAtIndex:indexPath.row] objectForKey:@"userName"]];
     return cell;
 }
 
@@ -115,6 +115,45 @@
 }
 
 - (IBAction)btn_subscribeClick:(id)sender {
+    
+    NSString *name = [NSString stringWithFormat:@"Receive Notifications for %@?", self.trailName];
+    
+    UIAlertController *alert = [UIAlertController
+                                alertControllerWithTitle:name
+                                message:nil
+                                preferredStyle:UIAlertControllerStyleAlert];
+
+    UIAlertAction *cancelAction = [UIAlertAction
+                                   actionWithTitle:@"Cancel"
+                                   style:UIAlertActionStyleCancel
+                                   handler:^(UIAlertAction *action)
+                                   {
+                                       NSLog(@"Cancel Action");
+                                   }];
+    
+    UIAlertAction *yesAction = [UIAlertAction
+                                actionWithTitle:@"Yes"
+                                style:UIAlertActionStyleDefault
+                                handler:^(UIAlertAction *action)
+                                {
+                                    NSLog(@"Subscribe Yes Action");
+                                    [self subscribeToTrail:YES];
+                                }];
+    
+    UIAlertAction *noAction = [UIAlertAction
+                                actionWithTitle:@"No"
+                                style:UIAlertActionStyleDefault
+                                handler:^(UIAlertAction *action)
+                                {
+                                    NSLog(@"Subscribe No Action");
+                                    [self subscribeToTrail:NO];
+                                }];
+    
+    [alert addAction:cancelAction];
+    [alert addAction:yesAction];
+    [alert addAction:noAction];
+    
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 - (IBAction)btn_statusClick:(id)sender {
@@ -141,7 +180,8 @@
     Trails *trails = [[Trails alloc] init];
     trails = [trails GetTrailObject:self.sentTrailObjectId];
     
-    self.lblTrailName.text = trails.trailName;
+    self.trailName = trails.trailName;
+    self.lblTrailName.text = self.trailName;
     NSString *cityState = trails.city;
     cityState = [cityState stringByAppendingString:@", "];
     cityState = [cityState stringByAppendingString:trails.state];
@@ -162,6 +202,17 @@
     } else {
         self.imageHard.hidden = YES;
     }
+}
+
+-(NSString*)formateDate:(NSDate*)date {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"MM/dd/yyyy h:mm a"];
+    return [formatter stringFromDate:date];
+}
+
+-(void)subscribeToTrail:(BOOL)isSubscribed {
+    Installation *install = [[Installation alloc] init];
+    [install SubscribeToChannel:self.trailName Choice:isSubscribed];
 }
 
 @end
