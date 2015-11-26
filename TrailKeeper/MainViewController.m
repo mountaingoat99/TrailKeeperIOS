@@ -44,6 +44,12 @@
     // add some view properties
     [self.tbltrailCards setSeparatorColor:[UIColor clearColor]];
     [self.tbltrailCards setBackgroundColor:[UIColor clearColor]];
+    
+    self.navigationItem.backBarButtonItem =
+    [[UIBarButtonItem alloc] initWithTitle:@""
+                                     style:UIBarButtonItemStylePlain
+                                    target:nil
+                                    action:nil];
 }
 
 -(void)viewDidDisappear:(BOOL)animated {

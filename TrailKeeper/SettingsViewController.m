@@ -132,14 +132,17 @@
 }
 
 -(void)createAccount {
+    [self performSegueWithIdentifier:@"segueAccountSettingsToCreateAccount" sender:self];
     
 }
 
 -(void)updateAccount {
+    [self performSegueWithIdentifier:@"segueAccountSettingsToUpdateAccount" sender:self];
     
 }
 
 -(void)signIn {
+    [self performSegueWithIdentifier:@"segueAccountSettingsToSignIn" sender:self];
     
 }
 
@@ -220,6 +223,7 @@
 }
 
 -(void)unitsOfMeasure {
+    [self performSegueWithIdentifier:@"segueAccountSettingsToUnitsOfMeasure" sender:self];
     
 }
 

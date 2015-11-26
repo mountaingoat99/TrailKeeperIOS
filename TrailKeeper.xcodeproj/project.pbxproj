@@ -13,6 +13,10 @@
 		2615C1261BCAE7660065B62C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2615C1251BCAE7660065B62C /* Assets.xcassets */; };
 		2615C1291BCAE7660065B62C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2615C1271BCAE7660065B62C /* LaunchScreen.storyboard */; };
 		262CFA8D1BE303E000378C5C /* offline_trails.db in Resources */ = {isa = PBXBuildFile; fileRef = 262CFA8C1BE303E000378C5C /* offline_trails.db */; };
+		262D3A6E1C07935500284767 /* CreateAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 262D3A6D1C07935500284767 /* CreateAccountViewController.m */; };
+		262D3A711C07955600284767 /* UpdateAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 262D3A701C07955600284767 /* UpdateAccountViewController.m */; };
+		262D3A741C07956600284767 /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 262D3A731C07956600284767 /* SignInViewController.m */; };
+		262D3A771C07957700284767 /* UnitsOfMeasureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 262D3A761C07957700284767 /* UnitsOfMeasureViewController.m */; };
 		26744DB01BF41D9300309733 /* TrailHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26744DAF1BF41D9300309733 /* TrailHomeViewController.m */; };
 		26751E991BCB24BA002C3498 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 26751E981BCB24BA002C3498 /* libsqlite3.tbd */; };
 		26A4C1101BCB3D7800524635 /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4C10F1BCB3D7800524635 /* DBManager.m */; };
@@ -64,6 +68,14 @@
 		2615C1281BCAE7660065B62C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2615C12A1BCAE7660065B62C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		262CFA8C1BE303E000378C5C /* offline_trails.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = offline_trails.db; path = ../../offline_trails.db; sourceTree = "<group>"; };
+		262D3A6C1C07935500284767 /* CreateAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateAccountViewController.h; sourceTree = "<group>"; };
+		262D3A6D1C07935500284767 /* CreateAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateAccountViewController.m; sourceTree = "<group>"; };
+		262D3A6F1C07955600284767 /* UpdateAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateAccountViewController.h; sourceTree = "<group>"; };
+		262D3A701C07955600284767 /* UpdateAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateAccountViewController.m; sourceTree = "<group>"; };
+		262D3A721C07956600284767 /* SignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInViewController.h; sourceTree = "<group>"; };
+		262D3A731C07956600284767 /* SignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInViewController.m; sourceTree = "<group>"; };
+		262D3A751C07957700284767 /* UnitsOfMeasureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnitsOfMeasureViewController.h; sourceTree = "<group>"; };
+		262D3A761C07957700284767 /* UnitsOfMeasureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnitsOfMeasureViewController.m; sourceTree = "<group>"; };
 		26744DAE1BF41D9300309733 /* TrailHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrailHomeViewController.h; sourceTree = "<group>"; };
 		26744DAF1BF41D9300309733 /* TrailHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrailHomeViewController.m; sourceTree = "<group>"; };
 		26751E981BCB24BA002C3498 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
@@ -233,6 +245,14 @@
 				26F8D43D1BE6C026007770F4 /* ContactViewController.m */,
 				26744DAE1BF41D9300309733 /* TrailHomeViewController.h */,
 				26744DAF1BF41D9300309733 /* TrailHomeViewController.m */,
+				262D3A6C1C07935500284767 /* CreateAccountViewController.h */,
+				262D3A6D1C07935500284767 /* CreateAccountViewController.m */,
+				262D3A6F1C07955600284767 /* UpdateAccountViewController.h */,
+				262D3A701C07955600284767 /* UpdateAccountViewController.m */,
+				262D3A721C07956600284767 /* SignInViewController.h */,
+				262D3A731C07956600284767 /* SignInViewController.m */,
+				262D3A751C07957700284767 /* UnitsOfMeasureViewController.h */,
+				262D3A761C07957700284767 /* UnitsOfMeasureViewController.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -475,6 +495,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				262D3A741C07956600284767 /* SignInViewController.m in Sources */,
 				26A4C1101BCB3D7800524635 /* DBManager.m in Sources */,
 				26AAB1CD1BCDDEB60084B67D /* AuthorizedCommentors.m in Sources */,
 				26D6E5CD1BEEBCEB007C9F6C /* CustomCell.m in Sources */,
@@ -482,11 +503,14 @@
 				26F8D4221BE65E4A007770F4 /* MMDrawerVisualState.m in Sources */,
 				260EC2641BDB13F600BB01DF /* Converters.m in Sources */,
 				26A4C1281BCB432300524635 /* GeoLocationHelper.m in Sources */,
+				262D3A711C07955600284767 /* UpdateAccountViewController.m in Sources */,
 				26F8D43B1BE6C019007770F4 /* GetTrailPinViewController.m in Sources */,
+				262D3A6E1C07935500284767 /* CreateAccountViewController.m in Sources */,
 				26AAB1D61BCDDEDC0084B67D /* TrailStatus.m in Sources */,
 				26F8D40F1BE5A389007770F4 /* MainViewController.m in Sources */,
 				26C033631BFFF7DD003B9114 /* CustomTrailHomeCell.m in Sources */,
 				26F7A3941BE453E5007D98D6 /* GetAllObjectsFromParseHelper.m in Sources */,
+				262D3A771C07957700284767 /* UnitsOfMeasureViewController.m in Sources */,
 				26A4C12B1BCB433200524635 /* PushNotificationHelper.m in Sources */,
 				26AAB1CA1BCDDE8B0084B67D /* User.m in Sources */,
 				26A4C1251BCB430A00524635 /* ConnectionDetector.m in Sources */,

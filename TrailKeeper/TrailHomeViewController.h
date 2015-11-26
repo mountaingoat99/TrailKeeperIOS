@@ -22,7 +22,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageMedium;
 @property (weak, nonatomic) IBOutlet UIImageView *imageHard;
 
-- (IBAction)btn_backClick:(id)sender;
 - (IBAction)btn_subscribeClick:(id)sender;
 - (IBAction)btn_statusClick:(id)sender;
 - (IBAction)btn_AllCommentsClick:(id)sender;

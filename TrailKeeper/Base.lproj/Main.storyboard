@@ -6,10 +6,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Home Screen-->
+        <!--TrailKeeper-->
         <scene sceneID="e8A-lP-uv9">
             <objects>
-                <viewController storyboardIdentifier="MainViewController" title="Home Screen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OaI-2H-gHn" customClass="MainViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainViewController" title="TrailKeeper" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OaI-2H-gHn" customClass="MainViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="PUr-jK-IYh"/>
                         <viewControllerLayoutGuide type="bottom" id="oPL-FP-qvj"/>
@@ -18,11 +18,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="BLs-Sp-OoB">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="BLs-Sp-OoB">
                                 <rect key="frame" x="-4" y="0.0" width="383" height="667"/>
                                 <animations/>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="110" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LWd-CW-yy2">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="110" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LWd-CW-yy2">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -57,7 +57,7 @@
                                                         <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="btnTrailHome_Click:" destination="Bm5-Sw-mej" eventType="touchUpInside" id="L0L-7W-UuG"/>
+                                                        <action selector="btnTrailHome_Click:" destination="Bm5-Sw-mej" eventType="touchUpInside" id="4rm-LE-KRy"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qz9-P7-LYW">
@@ -145,13 +145,13 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="tbltrailCards" destination="LWd-CW-yy2" id="vN8-Nc-THh"/>
-                        <segue destination="GMy-jg-7sC" kind="show" identifier="segueHomeToTrailHome" id="G2Z-Xy-QiM"/>
-                        <segue destination="sKl-ua-KVP" kind="show" identifier="segueHomeToMap" id="R7t-sm-OpO"/>
+                        <segue destination="GMy-jg-7sC" kind="show" identifier="segueHomeToTrailHome" id="oud-Dp-bYe"/>
+                        <segue destination="sKl-ua-KVP" kind="show" identifier="segueHomeToMap" id="8U8-zK-gWV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eqE-7E-YRA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1375.5" y="-165.5"/>
+            <point key="canvasLocation" x="1296.5" y="-165.5"/>
         </scene>
         <!--Trail Home-->
         <scene sceneID="Mcm-Y5-hkm">
@@ -162,18 +162,18 @@
                         <viewControllerLayoutGuide type="bottom" id="jwY-C2-IhP"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="FrY-8e-qi1">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="PrU-2Z-S5E">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                                 <animations/>
                                 <accessibility key="accessibilityConfiguration">
                                     <bool key="isElement" value="YES"/>
                                 </accessibility>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mdc-PP-xYg">
-                                <rect key="frame" x="4" y="175" width="367" height="472"/>
+                                <rect key="frame" x="4" y="175" width="367" height="428"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rL2-ZZ-cj8">
                                         <rect key="frame" x="8" y="12" width="351" height="21"/>
@@ -190,7 +190,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DLU-gc-eOO">
-                                        <rect key="frame" x="203" y="432" width="156" height="30"/>
+                                        <rect key="frame" x="203" y="388" width="156" height="30"/>
                                         <animations/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="49" id="3la-w9-6oD"/>
@@ -223,7 +223,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pbw-8Y-hTM">
-                                        <rect key="frame" x="8" y="35" width="351" height="389"/>
+                                        <rect key="frame" x="8" y="35" width="351" height="345"/>
                                         <animations/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -310,7 +310,7 @@
                                         </prototypes>
                                     </tableView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zC6-n8-6cF">
-                                        <rect key="frame" x="8" y="432" width="156" height="30"/>
+                                        <rect key="frame" x="8" y="388" width="156" height="30"/>
                                         <animations/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="raa-zS-aR7"/>
@@ -509,15 +509,9 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="7n8-6A-R58">
-                        <barButtonItem key="leftBarButtonItem" image="back" id="5xR-xK-Nbr">
-                            <connections>
-                                <action selector="btn_backClick:" destination="GMy-jg-7sC" id="hpV-OJ-Ht8"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="7n8-6A-R58"/>
                     <nil key="simulatedStatusBarMetrics"/>
-                    <nil key="simulatedTopBarMetrics"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="imageEasy" destination="aCb-Ej-FCX" id="UNX-2t-cQh"/>
@@ -529,7 +523,6 @@
                         <outlet property="tblComments" destination="pbw-8Y-hTM" id="0ki-33-hbT"/>
                         <outlet property="vCommentBackground" destination="mdc-PP-xYg" id="9aV-bQ-mm8"/>
                         <outlet property="vTrailHomeBackground" destination="Yxn-4E-jm7" id="Uve-NT-5Qb"/>
-                        <segue destination="OaI-2H-gHn" kind="show" identifier="segueTrailHomeToHome" id="A7J-lr-uSV"/>
                         <segue destination="hur-5N-8BM" kind="show" identifier="segueTrailHomeToFindTrail" id="nBy-B7-tTJ"/>
                         <segue destination="LC3-Up-6aK" kind="show" identifier="segueTrailHomeToComments" id="zjZ-ZA-Yv8"/>
                         <segue destination="sKl-ua-KVP" kind="show" identifier="segueTrailHomeToMap" id="VXT-hM-XIA"/>
@@ -537,7 +530,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nFM-i9-yom" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2351.5" y="-172.5"/>
+            <point key="canvasLocation" x="1850.5" y="-165.5"/>
         </scene>
         <!--Find Trail-->
         <scene sceneID="dtu-cn-rGA">
@@ -548,11 +541,11 @@
                         <viewControllerLayoutGuide type="bottom" id="Hzb-NN-nLH"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="qBs-iY-Zsj">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find Trail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="APV-JC-UTW">
-                                <rect key="frame" x="143" y="323" width="88" height="21"/>
+                                <rect key="frame" x="143" y="301" width="88" height="21"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="88" id="TVC-g0-86b"/>
@@ -632,11 +625,11 @@
                         <viewControllerLayoutGuide type="bottom" id="vlE-bb-ImX"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ade-rd-8nZ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZKX-VV-esM">
-                                <rect key="frame" x="138" y="323" width="98" height="21"/>
+                                <rect key="frame" x="138" y="301" width="98" height="21"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="98" id="N0M-yZ-Xpc"/>
@@ -709,7 +702,8 @@
                             <constraint firstItem="Ron-IV-HYW" firstAttribute="leading" secondItem="FF3-UQ-EXv" secondAttribute="leading" id="kX5-6T-4eu"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Account Settings" id="BUw-Gx-K7r">
+                    <navigationItem key="navigationItem" id="BUw-Gx-K7r">
+                        <barButtonItem key="backBarButtonItem" title="  " id="9RD-rv-4Lg"/>
                         <barButtonItem key="leftBarButtonItem" image="drawer_icon" id="vUg-WN-hBA">
                             <connections>
                                 <action selector="btn_drawerClick:" destination="2m9-gS-3c7" id="ciB-dw-dpZ"/>
@@ -719,11 +713,95 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="tblSettings" destination="Ron-IV-HYW" id="cz7-oZ-d7e"/>
+                        <segue destination="ruV-Yu-8G6" kind="show" identifier="segueAccountSettingsToCreateAccount" id="CYk-V7-bXJ"/>
+                        <segue destination="28n-d2-m9V" kind="show" identifier="segueAccountSettingsToUpdateAccount" id="gSk-wU-gM8"/>
+                        <segue destination="8B2-vP-H8V" kind="show" identifier="segueAccountSettingsToSignIn" id="Lb0-cs-DvL"/>
+                        <segue destination="NPM-by-bX5" kind="show" identifier="segueAccountSettingsToUnitsOfMeasure" id="0Jd-gv-m8y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XRe-b8-0cp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2351.5" y="1291.5"/>
+        </scene>
+        <!--Create Account-->
+        <scene sceneID="m1X-hd-mvK">
+            <objects>
+                <viewController storyboardIdentifier="CreateAccountViewController" title="Create Account" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ruV-Yu-8G6" customClass="CreateAccountViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Wfg-UA-gSQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="8O7-vw-Zfy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hfw-bx-1He">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dDU-wL-NQ4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2845.5" y="1291.5"/>
+        </scene>
+        <!--Update Account-->
+        <scene sceneID="322-Qm-cXe">
+            <objects>
+                <viewController title="Update Account" useStoryboardIdentifierAsRestorationIdentifier="YES" id="28n-d2-m9V" customClass="UpdateAccountViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xxc-3c-0Fu"/>
+                        <viewControllerLayoutGuide type="bottom" id="TrB-2y-wtI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TsZ-a6-CyB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HRp-1A-o3T" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3279.5" y="1291.5"/>
+        </scene>
+        <!--Sign-In-->
+        <scene sceneID="6ke-Gc-Udc">
+            <objects>
+                <viewController title="Sign-In" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8B2-vP-H8V" customClass="SignInViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iII-Hz-xXm"/>
+                        <viewControllerLayoutGuide type="bottom" id="Gmj-sZ-Rmx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JpK-xL-0Z4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gos-KT-kUt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3699.5" y="1291.5"/>
+        </scene>
+        <!--Unit Of Measure-->
+        <scene sceneID="esS-f8-ajj">
+            <objects>
+                <viewController title="Unit Of Measure" useStoryboardIdentifierAsRestorationIdentifier="YES" id="NPM-by-bX5" customClass="UnitsOfMeasureViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="AlN-CP-GZb"/>
+                        <viewControllerLayoutGuide type="bottom" id="4o1-FX-d5v"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6Jx-x8-ENw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zRb-7y-Fke" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4126.5" y="1291.5"/>
         </scene>
         <!--Get Trail Pin-->
         <scene sceneID="ppF-CE-U83">
@@ -1159,30 +1237,9 @@
             </objects>
             <point key="canvasLocation" x="1858.5" y="2769.5"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="fmJ-Ej-iyD">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="b7p-Zp-Zbc" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="kZn-1H-sCE">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="GMy-jg-7sC" kind="relationship" relationship="rootViewController" id="NgQ-gl-9gk"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="O50-9z-qlk" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1819.5" y="-165.5"/>
-        </scene>
     </scenes>
     <resources>
         <image name="app_icon_image_view" width="36" height="36"/>
-        <image name="back" width="29" height="29"/>
         <image name="background" width="256" height="334"/>
         <image name="drawer_icon" width="29" height="29"/>
         <image name="easy" width="170" height="170"/>
@@ -1191,10 +1248,9 @@
         <image name="open" width="170" height="170"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="A7J-lr-uSV"/>
-        <segue reference="OlQ-5H-NIw"/>
-        <segue reference="zjZ-ZA-Yv8"/>
-        <segue reference="VXT-hM-XIA"/>
+        <segue reference="oud-Dp-bYe"/>
+        <segue reference="8U8-zK-gWV"/>
         <segue reference="nBy-B7-tTJ"/>
+        <segue reference="zjZ-ZA-Yv8"/>
     </inferredMetricsTieBreakers>
 </document>

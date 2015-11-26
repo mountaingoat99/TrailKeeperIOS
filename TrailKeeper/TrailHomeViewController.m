@@ -114,9 +114,9 @@ static NSString * const CTCellIdentifier = @"idCellRecord";
 
 #pragma Events
 
-- (IBAction)btn_backClick:(id)sender {
-    [self performSegueWithIdentifier:@"segueTrailHomeToHome" sender:self];
-}
+//- (IBAction)btn_backClick:(id)sender {
+//    [self performSegueWithIdentifier:@"segueTrailHomeToHome" sender:self];
+//}
 
 - (IBAction)btn_subscribeClick:(id)sender {
     
