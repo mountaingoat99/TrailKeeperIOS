@@ -26,4 +26,17 @@
     return settingsList;
 }
 
++(NSArray*)getAccountSettingsList {
+    NSArray *settingsList = [NSArray arrayWithObjects:
+                             @"Create Account",
+                             @"Update Account",
+                             @"Sign-In",
+                             @"Sign-Out",
+                             @"Delete Account",
+                             @"Units of Measure",
+                             nil];
+ 
+    return settingsList;
+}
+
 @end

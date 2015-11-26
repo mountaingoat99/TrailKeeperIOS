@@ -11,5 +11,6 @@
 @interface SettingsHelper : NSObject
 
 +(NSArray*)getSettingsList;
++(NSArray*)getAccountSettingsList;
 
 @end

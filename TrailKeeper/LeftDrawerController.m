@@ -13,7 +13,6 @@
 
 @interface LeftDrawerController ()
 
-@property (nonatomic) int recordIdSetting;
 @property (nonatomic, strong) NSArray *settingList;
 
 -(void)loadData;
@@ -21,8 +20,6 @@
 @end
 
 @implementation LeftDrawerController
-
-@synthesize recordIdSetting;
 
 #pragma mark - setup
 
@@ -143,6 +140,8 @@
         default:
             break;
     }
+    
+    [self.tblSettings deselectRowAtIndexPath:indexPath animated:YES];
     
 }
 

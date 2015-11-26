@@ -682,20 +682,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qza-Vb-ywv">
-                                <rect key="frame" x="113" y="323" width="148" height="21"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ron-IV-HYW">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="idCellRecord" id="Or8-YF-Su9">
+                                        <rect key="frame" x="0.0" y="92" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Or8-YF-Su9" id="GK7-oE-slz">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <animations/>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="qza-Vb-ywv" firstAttribute="centerX" secondItem="FF3-UQ-EXv" secondAttribute="centerX" id="Bvc-we-Tbj"/>
-                            <constraint firstItem="qza-Vb-ywv" firstAttribute="leading" secondItem="FF3-UQ-EXv" secondAttribute="leadingMargin" constant="97" id="Xhs-Tc-c3r"/>
-                            <constraint firstItem="qza-Vb-ywv" firstAttribute="centerY" secondItem="FF3-UQ-EXv" secondAttribute="centerY" id="ca3-tF-QmB"/>
+                            <constraint firstItem="Ron-IV-HYW" firstAttribute="bottom" secondItem="2In-XN-ozH" secondAttribute="top" id="0V3-MT-k99"/>
+                            <constraint firstAttribute="trailing" secondItem="Ron-IV-HYW" secondAttribute="trailing" id="8eh-Gd-AtF"/>
+                            <constraint firstItem="Ron-IV-HYW" firstAttribute="top" secondItem="KR9-Bd-L9n" secondAttribute="bottom" id="hPo-Dj-OYN"/>
+                            <constraint firstItem="Ron-IV-HYW" firstAttribute="leading" secondItem="FF3-UQ-EXv" secondAttribute="leading" id="kX5-6T-4eu"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Account Settings" id="BUw-Gx-K7r">
@@ -706,6 +717,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="tblSettings" destination="Ron-IV-HYW" id="cz7-oZ-d7e"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XRe-b8-0cp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1177,10 +1191,10 @@
         <image name="open" width="170" height="170"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Fo8-Zi-W9W"/>
-        <segue reference="clx-mF-TaS"/>
+        <segue reference="A7J-lr-uSV"/>
         <segue reference="OlQ-5H-NIw"/>
-        <segue reference="1hX-R9-qCA"/>
+        <segue reference="zjZ-ZA-Yv8"/>
         <segue reference="VXT-hM-XIA"/>
+        <segue reference="nBy-B7-tTJ"/>
     </inferredMetricsTieBreakers>
 </document>
