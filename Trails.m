@@ -329,7 +329,7 @@
     // Retrieve the object by id
     [query getObjectInBackgroundWithId:objectId block:^(PFObject *trail, NSError *error) {
         trail[@"status"] = choice;
-        trail[@"lastUpdatedByUserObjectd"] = user.objectId;
+        //trail[@"lastUpdatedByUserObjectd"] = user.objectId;  // TODO user needs to be signed in first
         [trail pinInBackground];
         [trail saveInBackground];
      }];

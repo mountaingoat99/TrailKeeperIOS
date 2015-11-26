@@ -10,6 +10,8 @@
 
 @interface CommentsViewController : UIViewController
 
+@property (strong, nonatomic) NSString *sentTrailObjectId;
+
 - (IBAction)btn_drawerClick:(id)sender;
 
 @end

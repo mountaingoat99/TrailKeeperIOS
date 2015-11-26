@@ -10,6 +10,7 @@
 #import "CustomTrailHomeCell.h"
 #import "AppDelegate.h"
 #import "Installation.h"
+#import "CommentsViewController.h"
 static NSString * const CTCellIdentifier = @"idCellRecord";
 
 @interface TrailHomeViewController ()
@@ -22,6 +23,8 @@ static NSString * const CTCellIdentifier = @"idCellRecord";
 -(void)loadTrailData;
 -(NSString*)formateDate:(NSString*)date;
 -(void)subscribeToTrail:(BOOL)isSubscribed;
+-(void)SetTrailStatus:(NSNumber*)trailStatus;
+-(void)leaveNewComment:(NSString*)comment;
 
 @end
 
@@ -73,15 +76,19 @@ static NSString * const CTCellIdentifier = @"idCellRecord";
     // Dispose of any resources that can be recreated.
 }
 
-/*
+
  #pragma mark - Navigation
  
- // In a storyboard-based application, you will often want to do a little preparation before navigation
+  //In a storyboard-based application, you will often want to do a little preparation before navigation
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
+  //Get the new view controller using [segue destinationViewController].
+  //Pass the selected object to the new view controller.
+     if ([segue.identifier isEqualToString:@"segueTrailHomeToComments"]) {
+         CommentsViewController *comments = [segue destinationViewController];
+         comments.sentTrailObjectId = self.sentTrailObjectId;
+     }
  }
- */
+
 
 #pragma tableview
 
@@ -157,12 +164,98 @@ static NSString * const CTCellIdentifier = @"idCellRecord";
 }
 
 - (IBAction)btn_statusClick:(id)sender {
+    
+    NSString *name = [NSString stringWithFormat:@"How is the trail?"];
+    
+    UIAlertController *alert = [UIAlertController
+                                alertControllerWithTitle:name
+                                message:nil
+                                preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *cancelAction = [UIAlertAction
+                                   actionWithTitle:@"Cancel"
+                                   style:UIAlertActionStyleCancel
+                                   handler:^(UIAlertAction *action)
+                                   {
+                                       NSLog(@"Cancel Action");
+                                   }];
+    
+    UIAlertAction *openAction = [UIAlertAction
+                                actionWithTitle:@"Open"
+                                style:UIAlertActionStyleDefault
+                                handler:^(UIAlertAction *action)
+                                {
+                                    NSLog(@"Open Trail Action");
+                                    [self SetTrailStatus:@2];
+                                }];
+    
+    UIAlertAction *closedAction = [UIAlertAction
+                               actionWithTitle:@"Closed"
+                               style:UIAlertActionStyleDefault
+                               handler:^(UIAlertAction *action)
+                               {
+                                   NSLog(@"Close Trail Action");
+                                   [self SetTrailStatus:@1];
+                               }];
+    
+    UIAlertAction *unKnownAction = [UIAlertAction
+                                   actionWithTitle:@"Unknown"
+                                   style:UIAlertActionStyleDefault
+                                   handler:^(UIAlertAction *action)
+                                   {
+                                       NSLog(@"Unknown Trail Action");
+                                       [self SetTrailStatus:@3];
+                                   }];
+    
+    [alert addAction:cancelAction];
+    [alert addAction:openAction];
+    [alert addAction:closedAction];
+    [alert addAction:unKnownAction];
+    
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 - (IBAction)btn_AllCommentsClick:(id)sender {
+    [self performSegueWithIdentifier:@"segueTrailHomeToComments" sender:self];
 }
 
 - (IBAction)btn_LeaveCommentClick:(id)sender {
+    NSString *name = [NSString stringWithFormat:@"Add Comment for %@?", self.trailName];
+    
+    UIAlertController *alert = [UIAlertController
+                                alertControllerWithTitle:name
+                                message:nil
+                                preferredStyle:UIAlertControllerStyleAlert];
+    
+    [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.placeholder = @"New Comment";
+        textField.keyboardAppearance = UIKeyboardAppearanceDefault;
+        textField.keyboardType = UIKeyboardTypeDefault;
+        textField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
+    }];
+    
+    UIAlertAction *cancelAction = [UIAlertAction
+                                   actionWithTitle:@"Cancel"
+                                   style:UIAlertActionStyleCancel
+                                   handler:^(UIAlertAction *action)
+                                   {
+                                       NSLog(@"Cancel Action");
+                                   }];
+    
+    UIAlertAction *okAction = [UIAlertAction
+                                actionWithTitle:@"OK"
+                                style:UIAlertActionStyleDefault
+                                handler:^(UIAlertAction *action)
+                                {
+                                    NSLog(@"Leave Comment OK Action");
+                                    UITextField *comment = alert.textFields.firstObject;
+                                    [self leaveNewComment:comment.text];
+                                }];
+    
+    [alert addAction:cancelAction];
+    [alert addAction:okAction];
+    
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 #pragma private methods
@@ -213,6 +306,25 @@ static NSString * const CTCellIdentifier = @"idCellRecord";
 -(void)subscribeToTrail:(BOOL)isSubscribed {
     Installation *install = [[Installation alloc] init];
     [install SubscribeToChannel:self.trailName Choice:isSubscribed];
+}
+
+-(void)SetTrailStatus:(NSNumber*)trailStatus {
+    Trails *trails = [[Trails alloc] init];
+    [trails UpdateTrailStatus:self.sentTrailObjectId Choice:trailStatus TrailName:self.trailName];
+}
+
+-(void)leaveNewComment:(NSString*)comment {
+    NSLog(@"New Comment is %@ ", comment);
+    Comments *comments = [[Comments alloc] init];
+    PFUser *user = [PFUser currentUser];          // user needs to be signed in first
+    
+    comments.trailObjectId = self.sentTrailObjectId;
+    comments.trailName = self.trailName;
+    comments.userName = user.username;
+    comments.userObjectId = user.objectId;
+    comments.comment = comment;
+    
+    [comments SaveNewComment:comments];
 }
 
 @end
