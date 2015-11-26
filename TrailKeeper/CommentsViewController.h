@@ -11,6 +11,7 @@
 @interface CommentsViewController : UIViewController
 
 @property (strong, nonatomic) NSString *sentTrailObjectId;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *btnDrawer;
 
 - (IBAction)btn_drawerClick:(id)sender;
 

@@ -8,6 +8,7 @@
 
 #import "CommentsViewController.h"
 #import "AppDelegate.h"
+#import "TrailHomeViewController.h"
 
 @interface CommentsViewController ()
 
@@ -20,6 +21,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    
+    if (self.sentTrailObjectId != nil) {
+        self.btnDrawer.image = [UIImage imageNamed:@"back.png"];
+    } else {
+        self.btnDrawer.image = [UIImage imageNamed:@"drawer_icon.png"];
+    }
 }
 
 -(void)viewDidDisappear:(BOOL)animated {
@@ -31,17 +38,23 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if([segue.identifier isEqualToString:@"segueCommentToTrailHome"]) {
+        TrailHomeViewController *home = [segue destinationViewController];
+        home.sentTrailObjectId = self.sentTrailObjectId;
+    }
 }
-*/
+
 
 - (IBAction)btn_drawerClick:(id)sender {
-    [self.appDelegate.drawerController toggleDrawerSide:MMDrawerSideLeft animated:true completion:nil];
+    if (self.sentTrailObjectId != nil) {
+        [self performSegueWithIdentifier:@"segueCommentToTrailHome" sender:self];
+    } else {
+        [self.appDelegate.drawerController toggleDrawerSide:MMDrawerSideLeft animated:true completion:nil];
+    }
 }
 @end
