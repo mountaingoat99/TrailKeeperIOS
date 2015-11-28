@@ -37,6 +37,12 @@
     self.tblSettings.dataSource = self;
     
     [self loadData];
+    
+    self.navigationItem.backBarButtonItem =
+    [[UIBarButtonItem alloc] initWithTitle:@""
+                                     style:UIBarButtonItemStylePlain
+                                    target:nil
+                                    action:nil];
 }
 
 -(void)viewDidDisappear:(BOOL)animated {
@@ -125,25 +131,31 @@
     if (self.settingList != nil) {
         self.settingList = nil;
     }
-    
     self.settingList = [SettingsHelper getAccountSettingsList];
     
     [self.tblSettings reloadData];
 }
 
 -(void)createAccount {
-    [self performSegueWithIdentifier:@"segueAccountSettingsToCreateAccount" sender:self];
-    
+    PFUser *pfUser = [PFUser currentUser];
+    if (pfUser == nil) {
+        [self performSegueWithIdentifier:@"segueAccountSettingsToCreateAccount" sender:self];
+    } else {
+        [AlertControllerHelper ShowAlert:@"Hold On!" message:@"You are already signed in" view:self];
+    }
 }
 
 -(void)updateAccount {
     [self performSegueWithIdentifier:@"segueAccountSettingsToUpdateAccount" sender:self];
-    
 }
 
 -(void)signIn {
-    [self performSegueWithIdentifier:@"segueAccountSettingsToSignIn" sender:self];
-    
+    PFUser *user = [PFUser currentUser];
+    if (user == nil) {
+        [self performSegueWithIdentifier:@"segueAccountSettingsToSignIn" sender:self];
+    } else {
+        [AlertControllerHelper ShowAlert:@"Hold On" message:@"You are already signed in" view:self];
+    }
 }
 
 -(void)signOut {

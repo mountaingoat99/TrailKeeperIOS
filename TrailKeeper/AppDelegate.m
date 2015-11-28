@@ -137,10 +137,12 @@
     Installation *install = [[Installation alloc] init];
     PFInstallation *currentInstallation = [PFInstallation currentInstallation];
     [currentInstallation setDeviceTokenFromData:deviceToken];
-    currentInstallation.channels = [install GetUserChannels];
-    NSLog(@"Channels %@ ", currentInstallation.channels);
-    NSLog(@"InstallId %@ ", currentInstallation.objectId);
-    [currentInstallation saveInBackground];
+    if ([install GetUserChannels] != nil) {
+        currentInstallation.channels = [install GetUserChannels];
+        NSLog(@"Channels %@ ", currentInstallation.channels);
+        NSLog(@"InstallId %@ ", currentInstallation.objectId);
+        [currentInstallation saveInBackground];
+    }
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {

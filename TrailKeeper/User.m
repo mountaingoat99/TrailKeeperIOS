@@ -94,29 +94,29 @@
 
 
 #pragma public methods
-
--(void)SignUpNewUser:(User*)newUser {
-    
-    [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (!error) {
-            // call the view controller method to okay the sign up
-            // with a string success message
-            // update the authorizedUser class
-            AuthorizedCommentors *auth = [[AuthorizedCommentors alloc] init];
-            PFUser *user = [PFUser currentUser];
-            auth.userObjectId = user.objectId;
-            auth.userObjectId = user.username;
-            auth.canComment = YES;
-            [auth AddAuthorizedCommentor:auth];
-            // add user to the current installation
-            Installation *installation = [[Installation alloc] init];
-            [installation AddUserToCurrentInsallation];
-        } else {
-            // call the view controller method to okay the sign up
-            // with a string fail message
-        }
-    }];
-}
+//
+//-(void)SignUpNewUser:(User*)newUser {
+//    
+//    [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//        if (!error) {
+//            // call the view controller method to okay the sign up
+//            // with a string success message
+//            // update the authorizedUser class
+//            AuthorizedCommentors *auth = [[AuthorizedCommentors alloc] init];
+//            PFUser *user = [PFUser currentUser];
+//            auth.userObjectId = user.objectId;
+//            auth.userObjectId = user.username;
+//            auth.canComment = YES;
+//            [auth AddAuthorizedCommentor:auth];
+//            // add user to the current installation
+//            Installation *installation = [[Installation alloc] init];
+//            [installation AddUserToCurrentInsallation];
+//        } else {
+//            // call the view controller method to okay the sign up
+//            // with a string fail message
+//        }
+//    }];
+//}
 
 -(void)UserLogIn:(User*)user {
     [PFUser logInWithUsernameInBackground:user.username password:user.password

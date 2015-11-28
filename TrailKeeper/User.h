@@ -20,7 +20,7 @@
 +(BOOL)isValidEmail:(NSString*)userEmail;
 +(BOOL)isValidPassword:(NSString*)userPassword;
 
--(void)SignUpNewUser:(User*)newUser;
+//-(void)SignUpNewUser:(User*)newUser;
 -(void)UserLogIn:(User*)user;
 -(void)UserLogOut;
 -(void)DeleteUserAccount;
