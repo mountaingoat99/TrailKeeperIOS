@@ -151,12 +151,18 @@
     [[PFUser currentUser] saveEventually];
 }
 
--(void)ResendVerifyUserEmail:(User*)user {
+-(void)ResendVerifyUserEmail {
     // get the real email first
+    PFUser *pfUser = [[PFUser currentUser] fetch];
+    PFQuery *query = [PFUser query];
+    [query whereKey:@"username" equalTo:pfUser.username];
+    PFUser *user = [query getFirstObject];
+    
     NSString *realEmail = user.email;
     // send a fake email
     [[PFUser currentUser] setEmail:@"fakeemail@gmail.com"];
-    [[PFUser currentUser] saveInBackground];
+    NSLog(@"Current User email %@", [PFUser currentUser].email);
+    [[PFUser currentUser] save];
     // call method to update the real email so it sends the verification again
     [self resendRealEmailAfterCreatingFake:realEmail];
 }
@@ -166,24 +172,18 @@
 //}
 
 -(NSString*)FindUserName:(NSString*)email {
-    NSString *foundName = @"no result";
     PFQuery *query = [PFUser query];
-    [query whereKey:@"email" equalTo:email]; // find all the women
-    NSArray *userNames = [query findObjects];
-    
-    if (userNames.count > 0) {
-        for (PFObject *object in userNames) {
-            foundName = [object objectForKey:@"username"];
-        }
-    }
-    return foundName;
+    [query whereKey:@"email" equalTo:email]; 
+    PFUser *user = [query getFirstObject];
+
+    return user.username;
 }
 
 #pragma private methods
 
 -(void)resendRealEmailAfterCreatingFake:(NSString*)realEmail {
     [[PFUser currentUser] setEmail:realEmail];
-    [[PFUser currentUser] saveInBackground];
+    [[PFUser currentUser] save];
 }
 
 @end

@@ -12,6 +12,7 @@
 #import "User.h"
 #import "AlertControllerHelper.h"
 #import "AuthorizedCommentors.h"
+#import "ConnectionDetector.h"
 
 @interface SettingsViewController ()
 
@@ -25,6 +26,7 @@
 -(void)signIn;
 -(void)signOut;
 -(void)deleteAccount;
+-(void)resendEmailVerification;
 -(void)unitsOfMeasure;
 
 @end
@@ -99,6 +101,9 @@
             [self deleteAccount];
             break;
         case 6:
+            NSLog(@"Resend Email Verification");
+            [self resendEmailVerification];
+        case 7:
             NSLog(@"Units of Measure");
             [self unitsOfMeasure];
             break;
@@ -257,6 +262,22 @@
         [self presentViewController:alert animated:YES completion:nil];
     } else {
         [AlertControllerHelper ShowAlert:@"No Current User" message:@"There is no account to delete!" view:self];
+    }
+}
+
+-(void)resendEmailVerification {
+    PFUser *pfUser = [PFUser currentUser];
+    if (pfUser != nil) {
+        if ([ConnectionDetector hasConnectivity]) {
+            User *user = [[User alloc] init];
+            [user ResendVerifyUserEmail];
+            [AlertControllerHelper ShowAlert:@"Email Sent" message:@"Please check your email and click on the link to verify your email" view:self];
+        } else {
+            [AlertControllerHelper ShowAlert:@"No Connection!" message:@"You will need a WIFI or Data Connection first" view:self];
+        }
+        
+    } else {
+        [AlertControllerHelper ShowAlert:@"No Current User" message:@"You need to be signed in to resend the verification email" view:self];
     }
 }
 

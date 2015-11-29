@@ -109,7 +109,7 @@
         
         [self showWait];
         
-        User *user = [[User alloc] init];
+        PFUser *user = [[PFUser alloc] init];
         user.email = [self.txtEmail.text  stringByTrimmingCharactersInSet:
                       [NSCharacterSet whitespaceAndNewlineCharacterSet]];
         user.username = [self.txtUserName.text stringByTrimmingCharactersInSet:

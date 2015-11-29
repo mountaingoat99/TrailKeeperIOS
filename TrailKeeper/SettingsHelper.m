@@ -34,6 +34,7 @@
                              @"Sign-In",
                              @"Sign-Out",
                              @"Delete Account",
+                             @"Verify Email",
                              @"Units of Measure",
                              nil];
  
