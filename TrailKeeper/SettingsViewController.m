@@ -161,7 +161,13 @@
 }
 
 -(void)updateAccount {
-    [self performSegueWithIdentifier:@"segueAccountSettingsToUpdateAccount" sender:self];
+    PFUser *pfUser = [PFUser currentUser];
+    if (pfUser != nil) {
+        [self performSegueWithIdentifier:@"segueAccountSettingsToUpdateAccount" sender:self];
+    } else {
+        [AlertControllerHelper ShowAlert:@"No Current User" message:@"Please sign in first" view:self];
+    }
+    
 }
 
 -(void)signIn {

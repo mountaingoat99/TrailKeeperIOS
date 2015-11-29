@@ -126,10 +126,6 @@
                                     message:nil
                                     preferredStyle:UIAlertControllerStyleAlert];
         
-        UIActivityIndicatorView *progress= [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(125, 50, 30, 30)];
-        progress.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
-        [progress startAnimating];
-        
         [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
             textField.placeholder = @"Email";
             textField.keyboardAppearance = UIKeyboardAppearanceDefault;

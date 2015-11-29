@@ -921,17 +921,166 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <animations/>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fJ1-Jc-sLV">
+                                <rect key="frame" x="4" y="74" width="367" height="104"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QSB-qW-lj9">
+                                        <rect key="frame" x="8" y="16" width="160" height="30"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="156" id="C97-hF-yTS"/>
+                                            <constraint firstAttribute="width" constant="160" id="EaE-qx-iXh"/>
+                                            <constraint firstAttribute="height" constant="49" id="HaA-aO-YcQ"/>
+                                            <constraint firstAttribute="width" secondItem="QSB-qW-lj9" secondAttribute="height" multiplier="19:6" id="LbT-Eh-Ei8"/>
+                                            <constraint firstAttribute="width" constant="46" id="LfW-8u-Z03"/>
+                                            <constraint firstAttribute="width" constant="100" id="TjK-UY-r4V"/>
+                                        </constraints>
+                                        <state key="normal" title="Update Email">
+                                            <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="C97-hF-yTS"/>
+                                                <exclude reference="HaA-aO-YcQ"/>
+                                                <exclude reference="LbT-Eh-Ei8"/>
+                                                <exclude reference="LfW-8u-Z03"/>
+                                                <exclude reference="TjK-UY-r4V"/>
+                                            </mask>
+                                        </variation>
+                                        <connections>
+                                            <action selector="btn_updateEmailClick:" destination="28n-d2-m9V" eventType="touchUpInside" id="5kq-JY-aSE"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kqT-mq-fYI">
+                                        <rect key="frame" x="191" y="54" width="160" height="30"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="3fr-rf-Wzx"/>
+                                            <constraint firstAttribute="width" constant="46" id="86U-pd-FqH"/>
+                                            <constraint firstAttribute="width" secondItem="kqT-mq-fYI" secondAttribute="height" multiplier="19:6" id="Bwk-NG-CMS"/>
+                                            <constraint firstAttribute="height" constant="49" id="QFd-OM-GAJ"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="156" id="kj4-Zk-8bT"/>
+                                        </constraints>
+                                        <state key="normal" title="Update Password">
+                                            <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="kj4-Zk-8bT"/>
+                                                <exclude reference="86U-pd-FqH"/>
+                                                <exclude reference="3fr-rf-Wzx"/>
+                                                <exclude reference="Bwk-NG-CMS"/>
+                                                <exclude reference="QFd-OM-GAJ"/>
+                                            </mask>
+                                        </variation>
+                                        <connections>
+                                            <action selector="btn_SignInClick:" destination="8B2-vP-H8V" eventType="touchUpInside" id="FwK-1a-3Lk"/>
+                                            <action selector="btn_UpdatePasswordClick:" destination="28n-d2-m9V" eventType="touchUpInside" id="ZJZ-wh-5Ze"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iHS-q9-XSp">
+                                        <rect key="frame" x="191" y="16" width="160" height="30"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="49" id="62Q-sf-jlx"/>
+                                            <constraint firstAttribute="width" secondItem="iHS-q9-XSp" secondAttribute="height" multiplier="19:6" id="QOX-jM-1Ue"/>
+                                            <constraint firstAttribute="width" constant="46" id="c1f-Ks-Z9Z"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="156" id="dLJ-ol-KfK"/>
+                                            <constraint firstAttribute="width" constant="100" id="ju2-S2-lOf"/>
+                                        </constraints>
+                                        <state key="normal" title="Verify Email">
+                                            <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="dLJ-ol-KfK"/>
+                                                <exclude reference="c1f-Ks-Z9Z"/>
+                                                <exclude reference="ju2-S2-lOf"/>
+                                                <exclude reference="QOX-jM-1Ue"/>
+                                                <exclude reference="62Q-sf-jlx"/>
+                                            </mask>
+                                        </variation>
+                                        <connections>
+                                            <action selector="btn_SignInClick:" destination="8B2-vP-H8V" eventType="touchUpInside" id="OHM-9e-98V"/>
+                                            <action selector="btn_VerifyPasswordClick:" destination="28n-d2-m9V" eventType="touchUpInside" id="IOe-rA-vsl"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="71n-Xy-tQL">
+                                        <rect key="frame" x="8" y="54" width="160" height="30"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="46" id="5ON-kW-wOR"/>
+                                            <constraint firstAttribute="height" constant="49" id="JdF-ER-yih"/>
+                                            <constraint firstAttribute="width" secondItem="71n-Xy-tQL" secondAttribute="height" multiplier="19:6" id="Zfz-GQ-3IV"/>
+                                            <constraint firstAttribute="width" constant="100" id="lZ1-TK-Zbs"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="156" id="tcL-rO-LlP"/>
+                                        </constraints>
+                                        <state key="normal" title="Update Username">
+                                            <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="tcL-rO-LlP"/>
+                                                <exclude reference="5ON-kW-wOR"/>
+                                                <exclude reference="lZ1-TK-Zbs"/>
+                                                <exclude reference="Zfz-GQ-3IV"/>
+                                                <exclude reference="JdF-ER-yih"/>
+                                            </mask>
+                                        </variation>
+                                        <connections>
+                                            <action selector="btn_SignInClick:" destination="8B2-vP-H8V" eventType="touchUpInside" id="7Xj-j2-W7l"/>
+                                            <action selector="btn_UpdateUsernameClick:" destination="28n-d2-m9V" eventType="touchUpInside" id="qSv-OU-t6T"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="6dV-CT-pWq"/>
+                                    <constraint firstAttribute="bottom" secondItem="QSB-qW-lj9" secondAttribute="bottom" constant="48" id="Hob-fH-Ple"/>
+                                    <constraint firstItem="kqT-mq-fYI" firstAttribute="centerY" secondItem="71n-Xy-tQL" secondAttribute="centerY" id="LHe-nM-Bk7"/>
+                                    <constraint firstAttribute="bottom" secondItem="71n-Xy-tQL" secondAttribute="bottom" constant="20" id="NIz-uh-4sA"/>
+                                    <constraint firstAttribute="trailing" secondItem="iHS-q9-XSp" secondAttribute="trailing" constant="16" id="VxY-ci-vN0"/>
+                                    <constraint firstItem="kqT-mq-fYI" firstAttribute="trailing" secondItem="iHS-q9-XSp" secondAttribute="trailing" id="Xaa-8Z-lFH"/>
+                                    <constraint firstItem="kqT-mq-fYI" firstAttribute="width" secondItem="QSB-qW-lj9" secondAttribute="width" id="ayP-7h-pnz"/>
+                                    <constraint firstItem="71n-Xy-tQL" firstAttribute="leading" secondItem="QSB-qW-lj9" secondAttribute="leading" id="bjl-v9-gVd"/>
+                                    <constraint firstItem="QSB-qW-lj9" firstAttribute="leading" secondItem="fJ1-Jc-sLV" secondAttribute="leading" constant="8" id="dIs-mf-bXB"/>
+                                    <constraint firstItem="iHS-q9-XSp" firstAttribute="width" secondItem="QSB-qW-lj9" secondAttribute="width" id="eI4-ED-sLV"/>
+                                    <constraint firstAttribute="bottom" secondItem="71n-Xy-tQL" secondAttribute="bottom" constant="16" id="gAa-dz-vqQ"/>
+                                    <constraint firstItem="iHS-q9-XSp" firstAttribute="centerY" secondItem="QSB-qW-lj9" secondAttribute="centerY" id="psZ-ie-gjh"/>
+                                    <constraint firstAttribute="height" constant="500" id="qFO-tL-Ivj"/>
+                                    <constraint firstItem="71n-Xy-tQL" firstAttribute="top" secondItem="QSB-qW-lj9" secondAttribute="bottom" constant="8" id="rZC-A0-qXX"/>
+                                    <constraint firstItem="QSB-qW-lj9" firstAttribute="top" secondItem="fJ1-Jc-sLV" secondAttribute="top" constant="16" id="voP-5n-SrT"/>
+                                    <constraint firstItem="71n-Xy-tQL" firstAttribute="width" secondItem="QSB-qW-lj9" secondAttribute="width" id="yXP-oL-fcl"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="6dV-CT-pWq"/>
+                                        <exclude reference="qFO-tL-Ivj"/>
+                                        <exclude reference="Hob-fH-Ple"/>
+                                        <exclude reference="gAa-dz-vqQ"/>
+                                    </mask>
+                                </variation>
+                            </view>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="fJ1-Jc-sLV" firstAttribute="top" secondItem="xxc-3c-0Fu" secondAttribute="bottom" constant="10" id="Cpa-YR-Dqh"/>
                             <constraint firstItem="d2X-jj-TLR" firstAttribute="leading" secondItem="TsZ-a6-CyB" secondAttribute="leading" id="G82-NT-LBQ"/>
+                            <constraint firstItem="fJ1-Jc-sLV" firstAttribute="centerX" secondItem="TsZ-a6-CyB" secondAttribute="centerX" id="PF4-ws-0XV"/>
+                            <constraint firstItem="fJ1-Jc-sLV" firstAttribute="leading" secondItem="TsZ-a6-CyB" secondAttribute="leadingMargin" constant="-12" id="VEl-o2-stQ"/>
                             <constraint firstAttribute="trailing" secondItem="d2X-jj-TLR" secondAttribute="trailing" id="sHc-Sy-eRj"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="fJ1-Jc-sLV" secondAttribute="trailing" constant="-12" id="umP-Sv-4rf"/>
                             <constraint firstItem="d2X-jj-TLR" firstAttribute="top" secondItem="TsZ-a6-CyB" secondAttribute="top" id="w0Z-8f-i9Q"/>
                             <constraint firstItem="d2X-jj-TLR" firstAttribute="bottom" secondItem="TrB-2y-wtI" secondAttribute="top" id="zOC-Yg-WOz"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="viewBackground" destination="fJ1-Jc-sLV" id="N7F-xP-npa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HRp-1A-o3T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1621,11 +1770,11 @@
         <image name="open" width="170" height="170"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="zjZ-ZA-Yv8"/>
-        <segue reference="oud-Dp-bYe"/>
+        <segue reference="CYk-V7-bXJ"/>
         <segue reference="5dN-Ou-gbx"/>
-        <segue reference="7cm-3b-rHB"/>
+        <segue reference="oud-Dp-bYe"/>
         <segue reference="8U8-zK-gWV"/>
         <segue reference="nBy-B7-tTJ"/>
+        <segue reference="zjZ-ZA-Yv8"/>
     </inferredMetricsTieBreakers>
 </document>

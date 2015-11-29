@@ -10,4 +10,11 @@
 
 @interface UpdateAccountViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIView *viewBackground;
+
+- (IBAction)btn_updateEmailClick:(id)sender;
+- (IBAction)btn_VerifyPasswordClick:(id)sender;
+- (IBAction)btn_UpdateUsernameClick:(id)sender;
+- (IBAction)btn_UpdatePasswordClick:(id)sender;
+
 @end
