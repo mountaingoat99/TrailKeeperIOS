@@ -15,5 +15,7 @@
 @property (weak, nonatomic) IBOutlet UIView *viewBackground;
 
 - (IBAction)btn_SignInClick:(id)sender;
+- (IBAction)btn_ResetPasswordClick:(id)sender;
+- (IBAction)btn_FindUserNameClick:(id)sender;
 
 @end

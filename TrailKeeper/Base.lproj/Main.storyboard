@@ -718,6 +718,7 @@
                         <segue destination="28n-d2-m9V" kind="show" identifier="segueAccountSettingsToUpdateAccount" id="gSk-wU-gM8"/>
                         <segue destination="8B2-vP-H8V" kind="show" identifier="segueAccountSettingsToSignIn" id="Lb0-cs-DvL"/>
                         <segue destination="NPM-by-bX5" kind="show" identifier="segueAccountSettingsToUnitsOfMeasure" id="0Jd-gv-m8y"/>
+                        <segue destination="OaI-2H-gHn" kind="show" identifier="segueAccountSettingsToHome" id="flB-r7-HsM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XRe-b8-0cp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -950,7 +951,7 @@
                                 <animations/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P7v-H9-zha">
-                                <rect key="frame" x="4" y="72" width="367" height="174"/>
+                                <rect key="frame" x="4" y="72" width="367" height="170"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="User Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uai-oC-CFl">
                                         <rect key="frame" x="16" y="16" width="335" height="24"/>
@@ -1016,6 +1017,60 @@
                                             <action selector="btn_SignInClick:" destination="8B2-vP-H8V" eventType="touchUpInside" id="Cqt-pG-mEm"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wAX-4b-xui">
+                                        <rect key="frame" x="32" y="134" width="150" height="26"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="156" id="ItA-eS-flC"/>
+                                            <constraint firstAttribute="width" secondItem="wAX-4b-xui" secondAttribute="height" multiplier="19:6" id="KyU-2E-2bK"/>
+                                            <constraint firstAttribute="width" constant="46" id="UY4-XC-t4d"/>
+                                            <constraint firstAttribute="width" constant="150" id="W5D-Ku-mTb"/>
+                                            <constraint firstAttribute="height" constant="49" id="WSf-F4-hSI"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <state key="normal" title="RESET PASSWORD">
+                                            <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="ItA-eS-flC"/>
+                                                <exclude reference="UY4-XC-t4d"/>
+                                                <exclude reference="KyU-2E-2bK"/>
+                                                <exclude reference="WSf-F4-hSI"/>
+                                            </mask>
+                                        </variation>
+                                        <connections>
+                                            <action selector="btn_ResetPasswordClick:" destination="8B2-vP-H8V" eventType="touchUpInside" id="J67-Hv-wti"/>
+                                            <action selector="btn_SignInClick:" destination="8B2-vP-H8V" eventType="touchUpInside" id="1ET-n7-gJq"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o1J-ju-t3k">
+                                        <rect key="frame" x="185" y="134" width="150" height="26"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="o1J-ju-t3k" secondAttribute="height" multiplier="19:6" id="7xd-ao-c9x"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="156" id="E6p-Kc-HCl"/>
+                                            <constraint firstAttribute="width" constant="150" id="fXW-um-FOG"/>
+                                            <constraint firstAttribute="height" constant="49" id="gn6-Yl-J76"/>
+                                            <constraint firstAttribute="width" constant="46" id="oT5-gW-NQX"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <state key="normal" title="FIND USERNAME">
+                                            <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="E6p-Kc-HCl"/>
+                                                <exclude reference="oT5-gW-NQX"/>
+                                                <exclude reference="7xd-ao-c9x"/>
+                                                <exclude reference="gn6-Yl-J76"/>
+                                            </mask>
+                                        </variation>
+                                        <connections>
+                                            <action selector="btn_FindUserNameClick:" destination="8B2-vP-H8V" eventType="touchUpInside" id="rPu-i1-5r8"/>
+                                            <action selector="btn_SignInClick:" destination="8B2-vP-H8V" eventType="touchUpInside" id="Aew-4L-rJa"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1028,19 +1083,29 @@
                                     <constraint firstItem="Al0-8t-MNY" firstAttribute="top" secondItem="JxN-el-zjm" secondAttribute="bottom" constant="16" id="7Va-mT-6zp"/>
                                     <constraint firstItem="JxN-el-zjm" firstAttribute="top" secondItem="uai-oC-CFl" secondAttribute="bottom" constant="16" id="AAN-Lw-HXk"/>
                                     <constraint firstItem="Al0-8t-MNY" firstAttribute="trailing" secondItem="4ZR-sg-9Bh" secondAttribute="trailing" id="DuC-78-zPz"/>
+                                    <constraint firstItem="o1J-ju-t3k" firstAttribute="top" secondItem="Al0-8t-MNY" secondAttribute="bottom" constant="8" id="Fzn-xM-ysm"/>
                                     <constraint firstItem="JxN-el-zjm" firstAttribute="trailing" secondItem="4ZR-sg-9Bh" secondAttribute="trailing" id="G9z-Gq-F6M"/>
                                     <constraint firstItem="JxN-el-zjm" firstAttribute="bottom" secondItem="4ZR-sg-9Bh" secondAttribute="bottom" constant="-2" id="HU9-Hg-tbu"/>
                                     <constraint firstAttribute="trailing" secondItem="uai-oC-CFl" secondAttribute="trailing" constant="16" id="Mid-pj-bEe"/>
                                     <constraint firstAttribute="trailing" secondItem="JxN-el-zjm" secondAttribute="trailing" constant="16" id="Pe3-17-XGS"/>
+                                    <constraint firstItem="o1J-ju-t3k" firstAttribute="centerY" secondItem="4ZR-sg-9Bh" secondAttribute="centerY" id="Ty7-aw-PxV"/>
                                     <constraint firstItem="vmr-U2-Xua" firstAttribute="trailing" secondItem="uai-oC-CFl" secondAttribute="trailing" id="WLQ-bW-pPC"/>
                                     <constraint firstItem="vmr-U2-Xua" firstAttribute="leading" secondItem="uai-oC-CFl" secondAttribute="leading" id="bcN-II-PPA"/>
+                                    <constraint firstItem="o1J-ju-t3k" firstAttribute="centerY" secondItem="wAX-4b-xui" secondAttribute="centerY" id="dg8-1i-JAl"/>
+                                    <constraint firstItem="wAX-4b-xui" firstAttribute="centerY" secondItem="4ZR-sg-9Bh" secondAttribute="centerY" id="gdL-7n-Obr"/>
                                     <constraint firstItem="JxN-el-zjm" firstAttribute="leading" secondItem="4ZR-sg-9Bh" secondAttribute="leading" id="lLp-r1-cRp"/>
+                                    <constraint firstAttribute="bottom" secondItem="o1J-ju-t3k" secondAttribute="bottom" constant="10" id="oBm-Dg-flh"/>
+                                    <constraint firstItem="wAX-4b-xui" firstAttribute="leading" secondItem="4ZR-sg-9Bh" secondAttribute="leading" constant="16" id="oJT-3v-f0L"/>
                                     <constraint firstItem="JxN-el-zjm" firstAttribute="leading" secondItem="P7v-H9-zha" secondAttribute="leading" constant="16" id="pZA-ay-MsS"/>
                                     <constraint firstItem="uai-oC-CFl" firstAttribute="top" secondItem="P7v-H9-zha" secondAttribute="top" constant="16" id="xsW-xU-nSb"/>
+                                    <constraint firstItem="Al0-8t-MNY" firstAttribute="trailing" secondItem="o1J-ju-t3k" secondAttribute="trailing" constant="16" id="zIu-a0-PaI"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="1Ng-KG-kQp"/>
+                                        <exclude reference="gdL-7n-Obr"/>
+                                        <exclude reference="Ty7-aw-PxV"/>
+                                        <exclude reference="3DO-pa-HVg"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -1072,7 +1137,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gos-KT-kUt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3699.5" y="1291.5"/>
+            <point key="canvasLocation" x="3719.5" y="1291.5"/>
         </scene>
         <!--Unit Of Measure-->
         <scene sceneID="esS-f8-ajj">
@@ -1104,7 +1169,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zRb-7y-Fke" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4126.5" y="1291.5"/>
+            <point key="canvasLocation" x="4152.5" y="1291.5"/>
         </scene>
         <!--Get Trail Pin-->
         <scene sceneID="ppF-CE-U83">
@@ -1551,8 +1616,8 @@
         <image name="open" width="170" height="170"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7cm-3b-rHB"/>
-        <segue reference="5dN-Ou-gbx"/>
+        <segue reference="CYk-V7-bXJ"/>
+        <segue reference="flB-r7-HsM"/>
         <segue reference="oud-Dp-bYe"/>
         <segue reference="8U8-zK-gWV"/>
         <segue reference="nBy-B7-tTJ"/>

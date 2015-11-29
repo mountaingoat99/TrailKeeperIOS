@@ -118,18 +118,18 @@
 //    }];
 //}
 
--(void)UserLogIn:(User*)user {
-    [PFUser logInWithUsernameInBackground:user.username password:user.password
-                                    block:^(PFUser *user, NSError *error) {
-        if (!error) {
-            // call the View Controller method to stop the wait spinner and
-            // successfully enable the user - send back string success message
-        } else {
-            // call the View Controller method to stop the wait spinner and
-            // let user know the reason - send back the string fail message
-        }
-    }];
-}
+//-(void)UserLogIn:(User*)user {
+//    [PFUser logInWithUsernameInBackground:user.username password:user.password
+//                                    block:^(PFUser *user, NSError *error) {
+//        if (!error) {
+//            // call the View Controller method to stop the wait spinner and
+//            // successfully enable the user - send back string success message
+//        } else {
+//            // call the View Controller method to stop the wait spinner and
+//            // let user know the reason - send back the string fail message
+//        }
+//    }];
+//}
 
 -(void)UserLogOut {
     [User logOut];

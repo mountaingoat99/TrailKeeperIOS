@@ -104,9 +104,12 @@
         }
         
         User *user = [[User alloc] init];
-        user.email = self.txtEmail.text;
-        user.username = self.txtUserName.text;
-        user.password = self.txtPassword.text;
+        user.email = [self.txtEmail.text  stringByTrimmingCharactersInSet:
+                      [NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        user.username = [self.txtUserName.text stringByTrimmingCharactersInSet:
+                         [NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        user.password = [self.txtPassword.text stringByTrimmingCharactersInSet:
+                         [NSCharacterSet whitespaceAndNewlineCharacterSet]];
         
         [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (!error) {

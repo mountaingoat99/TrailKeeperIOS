@@ -21,7 +21,7 @@
 +(BOOL)isValidPassword:(NSString*)userPassword;
 
 //-(void)SignUpNewUser:(User*)newUser;
--(void)UserLogIn:(User*)user;
+//-(void)UserLogIn:(User*)user;
 -(void)UserLogOut;
 //-(void)DeleteUserAccount;
 -(void)UpdateUserName:(NSString*)newName;

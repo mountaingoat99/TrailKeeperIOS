@@ -28,6 +28,7 @@
 
 +(NSArray*)getAccountSettingsList {
     NSArray *settingsList = [NSArray arrayWithObjects:
+                             @"Home",
                              @"Create Account",
                              @"Update Account",
                              @"Sign-In",

@@ -19,6 +19,7 @@
 @property (nonatomic, strong) NSArray *settingList;
 
 -(void)loadData;
+-(void)goHome;
 -(void)createAccount;
 -(void)updateAccount;
 -(void)signIn;
@@ -74,26 +75,30 @@
     
     switch (indexPath.row) {
         case 0:
+            NSLog(@"Home");
+            [self goHome];
+            break;
+        case 1:
             NSLog(@"Create Account");
             [self createAccount];
             break;
-        case 1:
+        case 2:
             NSLog(@"Update Account");
             [self updateAccount];
             break;
-        case 2:
+        case 3:
             NSLog(@"Sign-In");
             [self signIn];
             break;
-        case 3:
+        case 4:
             NSLog(@"Sign-Out");
             [self signOut];
             break;
-        case 4:
+        case 5:
             NSLog(@"Delete Account");
             [self deleteAccount];
             break;
-        case 5:
+        case 6:
             NSLog(@"Units of Measure");
             [self unitsOfMeasure];
             break;
@@ -135,6 +140,10 @@
     self.settingList = [SettingsHelper getAccountSettingsList];
     
     [self.tblSettings reloadData];
+}
+
+-(void)goHome {
+    [self performSegueWithIdentifier:@"segueAccountSettingsToHome" sender:self];
 }
 
 -(void)createAccount {
