@@ -16,7 +16,11 @@
 
 @interface CreateAccountViewController ()
 
+@property (nonatomic, strong) UIActivityIndicatorView *spinner;
+@property (nonatomic, strong) UIAlertController *alertSpinner;
+
 -(void)signUpForNewAccount;
+-(void)showWait;
 
 @end
 
@@ -103,6 +107,8 @@
             return;
         }
         
+        [self showWait];
+        
         User *user = [[User alloc] init];
         user.email = [self.txtEmail.text  stringByTrimmingCharactersInSet:
                       [NSCharacterSet whitespaceAndNewlineCharacterSet]];
@@ -123,15 +129,30 @@
                 // add user to the current installation
                 Installation *installation = [[Installation alloc] init];
                 [installation AddUserToCurrentInsallation];
+                [self.alertSpinner dismissViewControllerAnimated:YES completion:nil];
                 [self performSegueWithIdentifier:@"segueCreateAccountToHome" sender:self];
             } else {
                 NSLog(@"Parse Sign-up error %@ ", [error localizedDescription]);
+                [self.alertSpinner dismissViewControllerAnimated:YES completion:nil];
                 [AlertControllerHelper ShowAlert:@"Hold On!" message:[error localizedDescription] view:self];
             }
         }];
     } else {
         [AlertControllerHelper ShowAlert:@"No Connection" message:@"You have no wifi or data connection" view:self];
     }
+}
+
+-(void)showWait {
+    self.alertSpinner = [UIAlertController alertControllerWithTitle:nil
+                                                            message:@"Please wait\n\n\n"
+                                                     preferredStyle:UIAlertControllerStyleAlert];
+    
+    self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    self.spinner.center = CGPointMake(130.5, 65.5);
+    self.spinner.color = [UIColor blackColor];
+    [self.spinner startAnimating];
+    [self.alertSpinner.view addSubview:self.spinner];
+    [self presentViewController:self.alertSpinner animated:NO completion:nil];
 }
 
 @end

@@ -15,7 +15,11 @@
 
 @interface SignInViewController ()
 
+@property (nonatomic, strong) UIActivityIndicatorView *spinner;
+@property (nonatomic, strong) UIAlertController *alertSpinner;
+
 -(void)signInToAccount;
+-(void)showWait;
 
 @end
 
@@ -95,11 +99,13 @@
                                     style:UIAlertActionStyleDefault
                                     handler:^(UIAlertAction *action)
                                     {
+                                        [self showWait];
                                         NSLog(@"Send Email for Password Reset Ok Action");
                                         UITextField *email = alert.textFields.firstObject;
                                         [PFUser requestPasswordResetForEmailInBackground:
                                             [email.text stringByTrimmingCharactersInSet:
                                              [NSCharacterSet whitespaceAndNewlineCharacterSet]]];
+                                        [self.alertSpinner dismissViewControllerAnimated:YES completion:nil];
                                         [AlertControllerHelper ShowAlert:@"Password Reset" message:@"Please check your email to reset your password" view:self];
                                         
                                     }];
@@ -120,6 +126,10 @@
                                     message:nil
                                     preferredStyle:UIAlertControllerStyleAlert];
         
+        UIActivityIndicatorView *progress= [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(125, 50, 30, 30)];
+        progress.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
+        [progress startAnimating];
+        
         [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
             textField.placeholder = @"Email";
             textField.keyboardAppearance = UIKeyboardAppearanceDefault;
@@ -139,6 +149,7 @@
                                    style:UIAlertActionStyleDefault
                                    handler:^(UIAlertAction *action)
                                    {
+                                       [self showWait];
                                        NSLog(@"Find Username Ok Action");
                                        UITextField *email = alert.textFields.firstObject;
                                        User *user = [[User alloc] init];
@@ -147,9 +158,11 @@
                                        
                                        if (userName.length > 0) {
                                            NSString *userNameString = [NSString stringWithFormat:@"Username is %@ ", userName];
+                                           [self.alertSpinner dismissViewControllerAnimated:YES completion:nil];
                                            [AlertControllerHelper ShowAlert:@"Username" message:userNameString view:self];
                                            self.txtUserName.text = userName;
                                        } else {
+                                           [self.alertSpinner dismissViewControllerAnimated:YES completion:nil];
                                             [AlertControllerHelper ShowAlert:@"Username" message:@"We could not find a username attached to that email address" view:self];
                                        }
                                    }];
@@ -166,6 +179,7 @@
 #pragma private methods
 
 -(void)signInToAccount {
+    
     if ([ConnectionDetector hasConnectivity]) {
         if (![User isValidUserName:self.txtUserName.text]) {
             [AlertControllerHelper ShowAlert:@"Invalid User" message:@"Please Enter a Valid Username that is at least 6 characters long" view:self];
@@ -176,6 +190,8 @@
             return;
         }
         
+        [self showWait];
+        
         [PFUser logInWithUsernameInBackground:
          [self.txtUserName.text stringByTrimmingCharactersInSet:
           [NSCharacterSet whitespaceAndNewlineCharacterSet]] password:[self.txtPassword.text stringByTrimmingCharactersInSet:
@@ -184,10 +200,10 @@
             if (error == nil) {
                 Installation *installation = [[Installation alloc] init];
                 [installation AddUserToCurrentInsallation];
-
-                //[self.navigationController popViewControllerAnimated:YES];
+                [self.alertSpinner dismissViewControllerAnimated:YES completion:nil];
                 [self.navigationController popToRootViewControllerAnimated:YES];
             } else {
+                [self.alertSpinner dismissViewControllerAnimated:YES completion:nil];
                 NSLog(@"Parse Sign-in error %@ ", [error localizedDescription]);
                 [AlertControllerHelper ShowAlert:@"Hold On!" message:[error localizedDescription] view:self];
             }
@@ -196,6 +212,19 @@
     } else {
         [AlertControllerHelper ShowAlert:@"No Connection" message:@"You have no wifi or data connection" view:self];
     }
+}
+
+-(void)showWait {
+    self.alertSpinner = [UIAlertController alertControllerWithTitle:nil
+                                                                   message:@"Please wait\n\n\n"
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    self.spinner.center = CGPointMake(130.5, 65.5);
+    self.spinner.color = [UIColor blackColor];
+    [self.spinner startAnimating];
+    [self.alertSpinner.view addSubview:self.spinner];
+    [self presentViewController:self.alertSpinner animated:NO completion:nil];
 }
 
 @end
