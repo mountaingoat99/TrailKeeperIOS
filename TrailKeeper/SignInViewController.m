@@ -70,9 +70,97 @@
 }
 
 - (IBAction)btn_ResetPasswordClick:(id)sender {
+    if ([ConnectionDetector hasConnectivity]) {
+        UIAlertController *alert = [UIAlertController
+                                    alertControllerWithTitle:@"Reset Password"
+                                    message:nil
+                                    preferredStyle:UIAlertControllerStyleAlert];
+        
+        [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+            textField.placeholder = @"Email";
+            textField.keyboardAppearance = UIKeyboardAppearanceDefault;
+            textField.keyboardType = UIKeyboardTypeEmailAddress;
+        }];
+        
+        UIAlertAction *cancelAction = [UIAlertAction
+                                       actionWithTitle:@"Cancel"
+                                       style:UIAlertActionStyleCancel
+                                       handler:^(UIAlertAction *action)
+                                       {
+                                           NSLog(@"Cancel Action");
+                                       }];
+        
+        UIAlertAction *okAction = [UIAlertAction
+                                    actionWithTitle:@"OK"
+                                    style:UIAlertActionStyleDefault
+                                    handler:^(UIAlertAction *action)
+                                    {
+                                        NSLog(@"Send Email for Password Reset Ok Action");
+                                        UITextField *email = alert.textFields.firstObject;
+                                        [PFUser requestPasswordResetForEmailInBackground:
+                                            [email.text stringByTrimmingCharactersInSet:
+                                             [NSCharacterSet whitespaceAndNewlineCharacterSet]]];
+                                        [AlertControllerHelper ShowAlert:@"Password Reset" message:@"Please check your email to reset your password" view:self];
+                                        
+                                    }];
+        
+        [alert addAction:cancelAction];
+        [alert addAction:okAction];
+        
+        [self presentViewController:alert animated:YES completion:nil];
+    } else {
+        [AlertControllerHelper ShowAlert:@"No Connection" message:@"You have no wifi or data connection" view:self];
+    }
 }
 
 - (IBAction)btn_FindUserNameClick:(id)sender {
+    if ([ConnectionDetector hasConnectivity]) {
+        UIAlertController *alert = [UIAlertController
+                                    alertControllerWithTitle:@"Find Username"
+                                    message:nil
+                                    preferredStyle:UIAlertControllerStyleAlert];
+        
+        [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+            textField.placeholder = @"Email";
+            textField.keyboardAppearance = UIKeyboardAppearanceDefault;
+            textField.keyboardType = UIKeyboardTypeEmailAddress;
+        }];
+        
+        UIAlertAction *cancelAction = [UIAlertAction
+                                       actionWithTitle:@"Cancel"
+                                       style:UIAlertActionStyleCancel
+                                       handler:^(UIAlertAction *action)
+                                       {
+                                           NSLog(@"Cancel Action");
+                                       }];
+        
+        UIAlertAction *okAction = [UIAlertAction
+                                   actionWithTitle:@"OK"
+                                   style:UIAlertActionStyleDefault
+                                   handler:^(UIAlertAction *action)
+                                   {
+                                       NSLog(@"Find Username Ok Action");
+                                       UITextField *email = alert.textFields.firstObject;
+                                       User *user = [[User alloc] init];
+                                       NSString *userName = [user FindUserName:[email.text stringByTrimmingCharactersInSet:
+                                                                                [NSCharacterSet whitespaceAndNewlineCharacterSet]]];
+                                       
+                                       if (userName.length > 0) {
+                                           NSString *userNameString = [NSString stringWithFormat:@"Username is %@ ", userName];
+                                           [AlertControllerHelper ShowAlert:@"Username" message:userNameString view:self];
+                                           self.txtUserName.text = userName;
+                                       } else {
+                                            [AlertControllerHelper ShowAlert:@"Username" message:@"We could not find a username attached to that email address" view:self];
+                                       }
+                                   }];
+        
+        [alert addAction:cancelAction];
+        [alert addAction:okAction];
+        
+        [self presentViewController:alert animated:YES completion:nil];
+    } else {
+        [AlertControllerHelper ShowAlert:@"No Connection" message:@"You have no wifi or data connection" view:self];
+    }
 }
 
 #pragma private methods

@@ -182,7 +182,7 @@
                                         <attributedString key="attributedText">
                                             <fragment content="Latest Comments">
                                                 <attributes>
-                                                    <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <font key="NSFont" size="17" name="HelveticaNeue-Bold"/>
                                                     <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                 </attributes>
@@ -220,7 +220,7 @@
                                             <constraint firstAttribute="height" constant="1" id="mZW-57-Nsd"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pbw-8Y-hTM">
@@ -240,7 +240,7 @@
                                                             <rect key="frame" x="8" y="4" width="335" height="13"/>
                                                             <animations/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DateTime" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0fS-0f-jPi">
@@ -355,7 +355,7 @@
                                         <attributedString key="attributedText">
                                             <fragment content="Petrified Springs Park">
                                                 <attributes>
-                                                    <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <font key="NSFont" size="17" name="HelveticaNeue-Bold"/>
                                                     <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                 </attributes>
@@ -367,14 +367,14 @@
                                         <rect key="frame" x="26" y="41" width="333" height="21"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Skill Level:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kxd-19-Aic">
                                         <rect key="frame" x="26" y="70" width="80" height="21"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="easy" translatesAutoresizingMaskIntoConstraints="NO" id="aCb-Ej-FCX">
@@ -747,6 +747,7 @@
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aJi-td-u1Y">
                                         <rect key="frame" x="16" y="16" width="335" height="24"/>
                                         <animations/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="pNd-0g-K7r"/>
@@ -757,6 +758,7 @@
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="User Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Pe-ys-MRC">
                                         <rect key="frame" x="16" y="56" width="335" height="24"/>
                                         <animations/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="F02-Ys-MJB"/>
@@ -767,6 +769,7 @@
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SJ0-kC-oHM">
                                         <rect key="frame" x="16" y="96" width="335" height="24"/>
                                         <animations/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="om9-v2-MbD"/>
@@ -951,27 +954,18 @@
                                 <animations/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P7v-H9-zha">
-                                <rect key="frame" x="4" y="72" width="367" height="170"/>
+                                <rect key="frame" x="4" y="74" width="367" height="170"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="User Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uai-oC-CFl">
                                         <rect key="frame" x="16" y="16" width="335" height="24"/>
                                         <animations/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="p7r-S9-0Le"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="next"/>
-                                    </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JxN-el-zjm">
-                                        <rect key="frame" x="16" y="56" width="335" height="24"/>
-                                        <animations/>
-                                        <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="24" id="fCK-0M-J5M"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="go" secureTextEntry="YES"/>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vmr-U2-Xua">
                                         <rect key="frame" x="16" y="41" width="335" height="1"/>
@@ -1034,8 +1028,8 @@
                                         <variation key="default">
                                             <mask key="constraints">
                                                 <exclude reference="ItA-eS-flC"/>
-                                                <exclude reference="UY4-XC-t4d"/>
                                                 <exclude reference="KyU-2E-2bK"/>
+                                                <exclude reference="UY4-XC-t4d"/>
                                                 <exclude reference="WSf-F4-hSI"/>
                                             </mask>
                                         </variation>
@@ -1060,10 +1054,10 @@
                                         </state>
                                         <variation key="default">
                                             <mask key="constraints">
-                                                <exclude reference="E6p-Kc-HCl"/>
-                                                <exclude reference="oT5-gW-NQX"/>
                                                 <exclude reference="7xd-ao-c9x"/>
+                                                <exclude reference="E6p-Kc-HCl"/>
                                                 <exclude reference="gn6-Yl-J76"/>
+                                                <exclude reference="oT5-gW-NQX"/>
                                             </mask>
                                         </variation>
                                         <connections>
@@ -1071,6 +1065,17 @@
                                             <action selector="btn_SignInClick:" destination="8B2-vP-H8V" eventType="touchUpInside" id="Aew-4L-rJa"/>
                                         </connections>
                                     </button>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JxN-el-zjm">
+                                        <rect key="frame" x="16" y="56" width="335" height="24"/>
+                                        <animations/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="fCK-0M-J5M"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="go" secureTextEntry="YES"/>
+                                    </textField>
                                 </subviews>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1119,7 +1124,7 @@
                             <constraint firstItem="sD8-Uz-Fdy" firstAttribute="bottom" secondItem="Gmj-sZ-Rmx" secondAttribute="top" id="DRJ-ho-cHx"/>
                             <constraint firstItem="P7v-H9-zha" firstAttribute="leading" secondItem="JpK-xL-0Z4" secondAttribute="leadingMargin" constant="-12" id="IvE-Wk-L4c"/>
                             <constraint firstItem="Gmj-sZ-Rmx" firstAttribute="top" secondItem="P7v-H9-zha" secondAttribute="bottom" constant="421" id="bLI-8i-0gy"/>
-                            <constraint firstItem="P7v-H9-zha" firstAttribute="top" secondItem="iII-Hz-xXm" secondAttribute="bottom" constant="8" symbolic="YES" id="ehI-R6-XC1"/>
+                            <constraint firstItem="P7v-H9-zha" firstAttribute="top" secondItem="iII-Hz-xXm" secondAttribute="bottom" constant="10" id="ehI-R6-XC1"/>
                             <constraint firstItem="sD8-Uz-Fdy" firstAttribute="leading" secondItem="JpK-xL-0Z4" secondAttribute="leading" id="md3-zf-Spu"/>
                         </constraints>
                         <variation key="default">
@@ -1616,11 +1621,11 @@
         <image name="open" width="170" height="170"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="CYk-V7-bXJ"/>
-        <segue reference="flB-r7-HsM"/>
+        <segue reference="zjZ-ZA-Yv8"/>
         <segue reference="oud-Dp-bYe"/>
+        <segue reference="5dN-Ou-gbx"/>
+        <segue reference="7cm-3b-rHB"/>
         <segue reference="8U8-zK-gWV"/>
         <segue reference="nBy-B7-tTJ"/>
-        <segue reference="zjZ-ZA-Yv8"/>
     </inferredMetricsTieBreakers>
 </document>

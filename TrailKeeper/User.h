@@ -27,7 +27,7 @@
 -(void)UpdateUserName:(NSString*)newName;
 -(void)UpdateUserEmail:(NSString*)newEmail;
 -(void)ResendVerifyUserEmail:(User*)user;  // send a new fake email
--(void)ResetUserPassword:(User*)user;
+//-(void)ResetUserPassword:(User*)user;
 -(NSString*)FindUserName:(NSString*)email ;
 
 @end

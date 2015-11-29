@@ -209,7 +209,7 @@
 -(void)checkForNewUser {
     if(self.newUser) {
         PFUser *user = [PFUser currentUser];
-        NSString *message = [NSString stringWithFormat:@"Hey %@! \nThanks for signing up! Go tell your friends about us!", user.username];
+        NSString *message = [NSString stringWithFormat:@"Hey %@! \nThanks for signing up! You have one more step. Please check your email for a verification link.", user.username];
         [AlertControllerHelper ShowAlert:@"Welcome" message:message view:self];
     }
 }

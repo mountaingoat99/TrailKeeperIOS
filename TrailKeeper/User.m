@@ -161,9 +161,9 @@
     [self resendRealEmailAfterCreatingFake:realEmail];
 }
 
--(void)ResetUserPassword:(User*)user {
-    [PFUser requestPasswordResetForEmailInBackground:user.email];
-}
+//-(void)ResetUserPassword:(User*)user {
+//    [PFUser requestPasswordResetForEmailInBackground:user.email];
+//}
 
 -(NSString*)FindUserName:(NSString*)email {
     NSString *foundName = @"no result";
@@ -172,8 +172,8 @@
     NSArray *userNames = [query findObjects];
     
     if (userNames.count > 0) {
-        for (NSString *name in userNames) {
-            foundName = name;
+        for (PFObject *object in userNames) {
+            foundName = [object objectForKey:@"username"];
         }
     }
     return foundName;
