@@ -23,7 +23,7 @@
 //-(void)SignUpNewUser:(User*)newUser;
 -(void)UserLogIn:(User*)user;
 -(void)UserLogOut;
--(void)DeleteUserAccount;
+//-(void)DeleteUserAccount;
 -(void)UpdateUserName:(NSString*)newName;
 -(void)UpdateUserEmail:(NSString*)newEmail;
 -(void)ResendVerifyUserEmail:(User*)user;  // send a new fake email

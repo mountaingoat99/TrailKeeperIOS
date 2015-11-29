@@ -13,6 +13,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tbltrailCards;
 @property (strong, nonatomic) NSString *sentTrailObjectId;
+@property (nonatomic) BOOL newUser;
 
 - (IBAction)btn_drawerClick:(id)sender;
 

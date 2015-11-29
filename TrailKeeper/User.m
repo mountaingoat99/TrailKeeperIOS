@@ -132,15 +132,14 @@
 }
 
 -(void)UserLogOut {
-    
     [User logOut];
 }
 
--(void)DeleteUserAccount {
-    PFUser *user = [PFUser currentUser];
-    [user deleteInBackground];
-    [PFUser logOut];
-}
+//-(void)DeleteUserAccount {
+//    PFUser *user = [PFUser currentUser];
+//    [user deleteInBackground];
+//    [PFUser logOut];
+//}
 
 -(void)UpdateUserName:(NSString*)newName {
     [[PFUser currentUser] setUsername:newName];

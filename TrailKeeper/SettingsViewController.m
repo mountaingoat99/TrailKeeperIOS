@@ -11,6 +11,7 @@
 #import "SettingsHelper.h"
 #import "User.h"
 #import "AlertControllerHelper.h"
+#import "AuthorizedCommentors.h"
 
 @interface SettingsViewController ()
 
@@ -185,6 +186,8 @@
                                         NSLog(@"Subscribe Yes Action");
                                         User *user = [[User alloc]init];
                                         [user UserLogOut];
+                                        [AlertControllerHelper ShowAlert:@"Goodbye" message:@"You have been signed out" view:self];
+                                        
                                     }];
         
         [alert addAction:cancelAction];
@@ -198,6 +201,7 @@
 
 -(void)deleteAccount {
     PFUser *pfUser = [PFUser currentUser];
+
     if (pfUser != nil) {
         
         NSString *name = [NSString stringWithFormat:@"Are you sure you want to delete your account?"];
@@ -218,11 +222,24 @@
         UIAlertAction *yesAction = [UIAlertAction
                                     actionWithTitle:@"Yes"
                                     style:UIAlertActionStyleDefault
+                                    
                                     handler:^(UIAlertAction *action)
                                     {
                                         NSLog(@"Subscribe Yes Action");
-                                        User *user = [[User alloc]init];
-                                        [user DeleteUserAccount];
+                                        PFUser *user = [[PFUser currentUser] fetch];
+                                        NSString  *deletedUserName = user.username;
+                                        NSLog(@"IsAuthenticated %@ ", user.isAuthenticated ? @"YES" : @"NO");
+                                        [user deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                                            if (error == nil) {
+                                                [AlertControllerHelper ShowAlert:@"Goodbye" message:@"Your account has been deleted" view:self];
+                                                AuthorizedCommentors *commentors = [[AuthorizedCommentors alloc] init];
+                                                [commentors DeleteAuthorizedCommentor:deletedUserName];
+                                                [PFUser logOut];
+                                            } else {
+                                                NSLog(@"Delete Account Error %@ ", [error localizedDescription]);
+                                                [AlertControllerHelper ShowAlert:@"Error!" message:[error localizedDescription] view:self];
+                                            }
+                                        }];
                                     }];
         
         [alert addAction:cancelAction];

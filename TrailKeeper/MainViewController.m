@@ -12,6 +12,8 @@
 #import "GeoLocationHelper.h"
 #import "TrailHomeViewController.h"
 #import "MapViewController.h"
+#import "AlertControllerHelper.h"
+#import "CreateAccountViewController.h"
 
 @interface MainViewController ()
 
@@ -20,6 +22,8 @@
 @property (nonatomic, strong) PFGeoPoint *userLocation;
 
 -(void)loadData;
+-(void)firstTimeLoad;
+-(void)checkForNewUser;
 
 @end
 
@@ -50,6 +54,9 @@
                                      style:UIBarButtonItemStylePlain
                                     target:nil
                                     action:nil];
+    
+    [self checkForNewUser];
+    [self firstTimeLoad];
 }
 
 -(void)viewDidDisappear:(BOOL)animated {
@@ -158,6 +165,53 @@
     Trails *trails = [[Trails alloc] init];
     self.trailList = [trails GetClosestTrailsForHomeScreen];
     [self.tbltrailCards reloadData];
+}
+
+-(void)firstTimeLoad {
+    NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
+    NSString *firstLoad = @"firstLoad";
+    
+    if ([preferences objectForKey:firstLoad] == nil) {
+        [preferences setObject:@"NO" forKey:@"firstLoad"];
+        
+        NSString *name = [NSString stringWithFormat:@"Welcome! \nWould you like to take full advantage of the TrailKeeper App and sign up for an Account? \nDon't worry, you can always go into the Settings and sign-up later"];
+        
+        UIAlertController *alert = [UIAlertController
+                                    alertControllerWithTitle:name
+                                    message:nil
+                                    preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *cancelAction = [UIAlertAction
+                                       actionWithTitle:@"Cancel"
+                                       style:UIAlertActionStyleCancel
+                                       handler:^(UIAlertAction *action)
+                                       {
+                                           NSLog(@"Cancel Action");
+                                       }];
+        
+        UIAlertAction *yesAction = [UIAlertAction
+                                    actionWithTitle:@"Yes"
+                                    style:UIAlertActionStyleDefault
+                                    handler:^(UIAlertAction *action)
+                                    {
+                                        NSLog(@"New Account Yes Action");
+                                        [self performSegueWithIdentifier:@"segueHomeToCreateAccount" sender:self];
+                                        
+                                    }];
+        
+        [alert addAction:cancelAction];
+        [alert addAction:yesAction];
+        
+        [self presentViewController:alert animated:YES completion:nil];
+    }
+}
+
+-(void)checkForNewUser {
+    if(self.newUser) {
+        PFUser *user = [PFUser currentUser];
+        NSString *message = [NSString stringWithFormat:@"Hey %@! \nThanks for signing up! Go tell your friends about us!", user.username];
+        [AlertControllerHelper ShowAlert:@"Welcome" message:message view:self];
+    }
 }
 
 @end

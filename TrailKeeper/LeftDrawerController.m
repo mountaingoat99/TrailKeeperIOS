@@ -35,6 +35,12 @@
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
+    PFUser *user = [PFUser currentUser];
+    if (user != nil) {
+        self.lblUserName.text = user.username;
+    } else {
+        self.lblUserName.text = @"No Account";
+    }
 }
 
 - (void)didReceiveMemoryWarning {

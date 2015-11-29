@@ -76,6 +76,7 @@
     PFUser *currentUser = [PFUser currentUser];
     PFInstallation *currentInstallation = [PFInstallation currentInstallation];
     [currentInstallation addUniqueObject:currentUser forKey:@"user"];
+    [currentInstallation addUniqueObject:currentUser.username forKey:@"userName"];
     [currentInstallation saveInBackground];
 }
 

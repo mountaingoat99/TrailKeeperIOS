@@ -12,6 +12,7 @@
 #import "ConnectionDetector.h"
 #import "AuthorizedCommentors.h"
 #import "Installation.h"
+#import "MainViewController.h"
 
 @interface CreateAccountViewController ()
 
@@ -48,15 +49,20 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
+
  #pragma mark - Navigation
  
  // In a storyboard-based application, you will often want to do a little preparation before navigation
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
  // Get the new view controller using [segue destinationViewController].
  // Pass the selected object to the new view controller.
+     if ([segue.identifier isEqualToString:@"segueCreateAccountToHome"]) {
+         MainViewController *home = [segue destinationViewController];
+         BOOL newUser = YES;
+         home.newUser = newUser;
+     }
  }
- */
+
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
     if (textField == self.txtEmail) {
@@ -114,6 +120,7 @@
                 // add user to the current installation
                 Installation *installation = [[Installation alloc] init];
                 [installation AddUserToCurrentInsallation];
+                [self performSegueWithIdentifier:@"segueCreateAccountToHome" sender:self];
             } else {
                 NSLog(@"Parse Sign-up error %@ ", [error localizedDescription]);
                 [AlertControllerHelper ShowAlert:@"Hold On!" message:[error localizedDescription] view:self];

@@ -47,7 +47,7 @@
 #pragma public methods
 
 -(void)AddAuthorizedCommentor:(AuthorizedCommentors*)commentor {
-    PFObject *authorizedCommentors = [PFObject objectWithClassName:@"AuthorizedCommentor"];
+    PFObject *authorizedCommentors = [PFObject objectWithClassName:@"AuthorizedCommentors"];
     authorizedCommentors[@"userObjectId"] = commentor.userObjectId;
     authorizedCommentors[@"userName"] = commentor.userName;
     authorizedCommentors[@"canComment"] = [Converters ConvertBoolToNSNumber:commentor.canComment];
@@ -55,6 +55,18 @@
     [authorizedCommentors pinInBackground];
     [authorizedCommentors saveEventually];
     
+}
+
+-(void)DeleteAuthorizedCommentor:(NSString*)userName {
+    PFQuery *query = [PFQuery queryWithClassName:@"AuthorizedCommentors"];
+    [query whereKey:@"userName" equalTo:userName];
+    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+        if (object) {
+            [object deleteInBackground];
+        } else {
+            NSLog(@"Unable to retrieve object with title %@.", userName);
+        }
+    }];
 }
 
 @end
