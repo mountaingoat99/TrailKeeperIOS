@@ -143,15 +143,19 @@
 
 -(void)UpdateUserName:(NSString*)newName {
     [[PFUser currentUser] setUsername:newName];
-    [[PFUser currentUser] saveEventually];
+    [[PFUser currentUser] save];
+    
+    // update the username in authorizedCommentors
+    AuthorizedCommentors *auth = [[AuthorizedCommentors alloc] init];
+    [auth UpdateAuthorizedCommentorsUserName:[PFUser currentUser].objectId Username:newName];
 }
 
 -(void)UpdateUserEmail:(NSString*)newEmail {
     [[PFUser currentUser] setEmail:newEmail];
-    [[PFUser currentUser] saveEventually];
+    [[PFUser currentUser] save];
 }
 
--(void)ResendVerifyUserEmail {
+-(void)ResendVerifyUserEmail {  
     // get the real email first
     PFUser *pfUser = [[PFUser currentUser] fetch];
     PFQuery *query = [PFUser query];

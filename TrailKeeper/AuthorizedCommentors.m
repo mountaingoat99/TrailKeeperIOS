@@ -57,6 +57,17 @@
     
 }
 
+-(void)UpdateAuthorizedCommentorsUserName:(NSString*)objectId Username:(NSString*)username {
+    PFQuery *query = [PFQuery queryWithClassName:@"AuthorizedCommentors"];
+    
+    [query whereKey:@"userObjectId" equalTo:objectId];
+    [query getFirstObjectInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error) {
+        object[@"userName"] = username;
+        [object pinInBackground];
+        [object saveEventually];
+    }];
+}
+
 -(void)DeleteAuthorizedCommentor:(NSString*)userName {
     PFQuery *query = [PFQuery queryWithClassName:@"AuthorizedCommentors"];
     [query whereKey:@"userName" equalTo:userName];

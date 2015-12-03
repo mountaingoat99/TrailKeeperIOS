@@ -96,7 +96,7 @@
                                    style:UIAlertActionStyleDefault
                                    handler:^(UIAlertAction *action)
                                    {
-                                       [self showWait];
+                                       //[self showWait];
                                        NSLog(@"Update Email Ok Action");
                                        UITextField *email = alert.textFields.firstObject;
                                        if ([User isValidEmail:[email.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]]) {
@@ -104,11 +104,11 @@
                                            User *user = [[User alloc] init];
                                            [user UpdateUserEmail:[email.text stringByTrimmingCharactersInSet:
                                                                   [NSCharacterSet whitespaceAndNewlineCharacterSet]]];
-                                           [self.alertSpinner dismissViewControllerAnimated:YES completion:nil];
-                                           NSString *newEmail = [NSString stringWithFormat:@"Email has been changed to %@ ", email.text];
+                                           //[self.alertSpinner dismissViewControllerAnimated:YES completion:nil];
+                                           NSString *newEmail = [NSString stringWithFormat:@"Email has been changed to %@ \nPlease check your email to re-verify your new address", email.text];
                                            [AlertControllerHelper ShowAlert:@"New Email" message:newEmail view:self];
                                        } else {
-                                           [self.alertSpinner dismissViewControllerAnimated:YES completion:nil];
+                                           //[self.alertSpinner dismissViewControllerAnimated:YES completion:nil];
                                            [AlertControllerHelper ShowAlert:@"Not Valid" message:@"Please enter a valid email address" view:self];
                                        }
                                     }];
@@ -158,19 +158,19 @@
                                    style:UIAlertActionStyleDefault
                                    handler:^(UIAlertAction *action)
                                    {
-                                       [self showWait];
+                                       //[self showWait];
                                        NSLog(@"Update userName Ok Action");
                                        UITextField *userName = alert.textFields.firstObject;
                                        if ([User isValidUserName:[userName.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]]) {
                                            
                                            User *user = [[User alloc] init];
-                                           [user UpdateUserEmail:[userName.text stringByTrimmingCharactersInSet:
+                                           [user UpdateUserName:[userName.text stringByTrimmingCharactersInSet:
                                                                   [NSCharacterSet whitespaceAndNewlineCharacterSet]]];
-                                           [self.alertSpinner dismissViewControllerAnimated:YES completion:nil];
+                                           //[self.alertSpinner dismissViewControllerAnimated:YES completion:nil];
                                            NSString *newUsername = [NSString stringWithFormat:@"Username has been changed to %@ ", userName.text];
                                            [AlertControllerHelper ShowAlert:@"New Username" message:newUsername view:self];
                                        } else {
-                                           [self.alertSpinner dismissViewControllerAnimated:YES completion:nil];
+                                           //[self.alertSpinner dismissViewControllerAnimated:YES completion:nil];
                                            [AlertControllerHelper ShowAlert:@"Not Valid" message:@"Please enter a valid Username at least 6 digits long" view:self];
                                        }
                                    }];
