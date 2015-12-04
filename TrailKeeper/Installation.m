@@ -65,6 +65,14 @@
         PFInstallation *currentInstallation = [PFInstallation currentInstallation];
         [currentInstallation addUniqueObject:channelName forKey:@"channels"];
         [currentInstallation saveInBackground];
+        
+        // if they are subscribing give the notification to ask for permissions
+        UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound);
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes  categories:nil];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
+
+        
     } else {
         PFInstallation *currentInstallation = [PFInstallation currentInstallation];
         [currentInstallation removeObjectsInArray:@[channelName] forKey:@"channels"];
