@@ -144,6 +144,7 @@
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="backgroundView" destination="BLs-Sp-OoB" id="2aW-60-Mpk"/>
                         <outlet property="tbltrailCards" destination="LWd-CW-yy2" id="vN8-Nc-THh"/>
                         <segue destination="GMy-jg-7sC" kind="show" identifier="segueHomeToTrailHome" id="oud-Dp-bYe"/>
                         <segue destination="sKl-ua-KVP" kind="show" identifier="segueHomeToMap" id="8U8-zK-gWV"/>

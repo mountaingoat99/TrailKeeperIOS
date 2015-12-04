@@ -14,16 +14,21 @@
 #import "MapViewController.h"
 #import "AlertControllerHelper.h"
 #import "CreateAccountViewController.h"
+#import "GetAllObjectsFromParseHelper.h"
 
 @interface MainViewController ()
 
 @property (nonatomic, strong) AppDelegate *appDelegate;
 @property (nonatomic, strong) NSArray *trailList;
 @property (nonatomic, strong) PFGeoPoint *userLocation;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
+@property (nonatomic, strong) CALayer *darkBackgroundLayer;
+@property (nonatomic, strong) UILabel *messageLabel;
 
 -(void)loadData;
 -(void)firstTimeLoad;
 -(void)checkForNewUser;
+-(void)refresh:(UIRefreshControl*)refreshControl;
 
 @end
 
@@ -31,9 +36,32 @@
 
 @synthesize trailList;
 @synthesize userLocation;
+@synthesize backgroundView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    // Initialize the refresh control.
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    //self.refreshControl.backgroundColor = [UIColor blackColor];
+    self.refreshControl.tintColor = [UIColor whiteColor];
+    [self.refreshControl addTarget:self
+                            action:@selector(refresh:)
+                  forControlEvents:UIControlEventValueChanged];
+    [self.tbltrailCards addSubview:self.refreshControl];
+    
+    // darken the background
+    self.darkBackgroundLayer = [CALayer layer];
+    self.darkBackgroundLayer.frame = CGRectMake(0, 0, self.view.bounds.size.width * 2, self.view.bounds.size.height);
+    self.darkBackgroundLayer.backgroundColor = [[UIColor blackColor] CGColor];
+    self.darkBackgroundLayer.opacity = .1;
+    [self.backgroundView.layer addSublayer: self.darkBackgroundLayer];
+    
+    //init the background message
+    self.messageLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+    
+    // see if we need to load all the data and show the welcome message
+    [self firstTimeLoad];
     
     // get users current location
     self.userLocation = [GeoLocationHelper GetUsersCurrentPostion];
@@ -49,14 +77,16 @@
     [self.tbltrailCards setSeparatorColor:[UIColor clearColor]];
     [self.tbltrailCards setBackgroundColor:[UIColor clearColor]];
     
+    // make sure the back button text does not show
     self.navigationItem.backBarButtonItem =
     [[UIBarButtonItem alloc] initWithTitle:@""
                                      style:UIBarButtonItemStylePlain
                                     target:nil
                                     action:nil];
     
+    // check if they just signed up for an account
     [self checkForNewUser];
-    [self firstTimeLoad];
+    
 }
 
 -(void)viewDidDisappear:(BOOL)animated {
@@ -110,7 +140,23 @@
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    
+    if (self.trailList.count > 0) {
+        self.messageLabel.text = @"";
+        return 1;
+    } else {
+        // Display a message when the table is empty
+        self.messageLabel.text = @"No data is currently available. Please pull down to refresh.";
+        self.messageLabel.textColor = [UIColor whiteColor];
+        self.messageLabel.numberOfLines = 0;
+        self.messageLabel.textAlignment = NSTextAlignmentCenter;
+        self.messageLabel.font = [UIFont fontWithName:@"TrebuchetMS-Bold" size:30];
+        [self.messageLabel sizeToFit];
+        
+        self.tbltrailCards.backgroundView = self.messageLabel;
+        self.tbltrailCards.separatorStyle = UITableViewCellSeparatorStyleNone;
+    }
+    return 0;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -164,7 +210,24 @@
     
     Trails *trails = [[Trails alloc] init];
     self.trailList = [trails GetClosestTrailsForHomeScreen];
+    while (self.trailList.count == 0) {
+        self.trailList = [trails GetClosestTrailsForHomeScreen];
+    }
     [self.tbltrailCards reloadData];
+}
+
+-(void)refresh:(UIRefreshControl*)refreshControl {
+    // refresh all the objects
+    [GetAllObjectsFromParseHelper RefreshTrails];
+    [GetAllObjectsFromParseHelper RefreshTrailStatus];
+    [GetAllObjectsFromParseHelper RefreshAuthorizedCommentors];
+    [GetAllObjectsFromParseHelper RefreshComments];
+    
+    [self loadData];
+    
+    if (self.refreshControl) {
+        [self.refreshControl endRefreshing];
+    }
 }
 
 -(void)firstTimeLoad {
@@ -172,6 +235,7 @@
     NSString *firstLoad = @"firstLoad";
     
     if ([preferences objectForKey:firstLoad] == nil) {
+        [self refresh:self.refreshControl];
         [preferences setObject:@"NO" forKey:@"firstLoad"];
         
         NSString *name = [NSString stringWithFormat:@"Welcome! \nWould you like to take full advantage of the TrailKeeper App and sign up for an Account? \nDon't worry, you can always go into the Settings and sign-up later"];

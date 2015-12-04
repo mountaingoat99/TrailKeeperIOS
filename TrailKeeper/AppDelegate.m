@@ -9,7 +9,6 @@
 #import "AppDelegate.h"
 #import "PushNotificationHelper.h"
 #import <Parse/Parse.h>
-#import "GetAllObjectsFromParseHelper.h"
 #import "LeftDrawerController.h"
 #import "MainViewController.h"
 #import "MMDrawerVisualState.h"
@@ -98,12 +97,6 @@
     
     // Parse key
     [Parse setApplicationId:@"uU8JsEF9eLEYcFzUrwqmrWzblj65IoQ0G6S4DkI8" clientKey:@"4S7u2tedpm9yeE6DR3J6mDyJHHpgmUgktu6Q6QvD"];
-    
-    // refresh all the objects
-    [GetAllObjectsFromParseHelper RefreshTrails];
-    [GetAllObjectsFromParseHelper RefreshTrailStatus];
-    [GetAllObjectsFromParseHelper RefreshAuthorizedCommentors];
-    [GetAllObjectsFromParseHelper RefreshComments];
     
     // Override point for customization after application launch.
     NSDictionary *notificationPayload = launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey];
