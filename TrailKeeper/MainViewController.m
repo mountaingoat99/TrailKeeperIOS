@@ -26,6 +26,7 @@
 @property (nonatomic, strong) UILabel *messageLabel;
 
 -(void)loadData;
+-(void)updateView:(NSNotification *)notification;
 -(void)firstTimeLoad;
 -(void)checkForNewUser;
 -(void)refresh:(UIRefreshControl*)refreshControl;
@@ -63,6 +64,9 @@
     // see if we need to load all the data and show the welcome message
     [self firstTimeLoad];
     
+    //Register a notification to reload the table if the user give location permissions on the app
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateView:) name:@"updateRoot" object:nil];
+    
     // get users current location
     self.userLocation = [GeoLocationHelper GetUsersCurrentPostion];
     
@@ -86,7 +90,6 @@
     
     // check if they just signed up for an account
     [self checkForNewUser];
-    
 }
 
 -(void)viewDidDisappear:(BOOL)animated {
@@ -214,6 +217,10 @@
         self.trailList = [trails GetClosestTrailsForHomeScreen];
     }
     [self.tbltrailCards reloadData];
+}
+
+- (void)updateView:(NSNotification *)notification {
+    [self loadData];
 }
 
 -(void)refresh:(UIRefreshControl*)refreshControl {

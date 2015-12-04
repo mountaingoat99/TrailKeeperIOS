@@ -90,7 +90,6 @@
     [Comments registerSubclass];
     [Installation registerSubclass];
     
-    
     // Parse key
     [Parse setApplicationId:@"uU8JsEF9eLEYcFzUrwqmrWzblj65IoQ0G6S4DkI8" clientKey:@"4S7u2tedpm9yeE6DR3J6mDyJHHpgmUgktu6Q6QvD"];
     
@@ -219,8 +218,16 @@
 }
 
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
-    // not implemented now but will use it later
+    NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
+    NSString *newLocationAuth = @"newLocationAuth";
     
+    if ([preferences objectForKey:newLocationAuth] == nil) {
+        [preferences setObject:@"YES" forKey:@"newLocationAuth"];
+        CLLocation *location = [locations lastObject];
+        if(location != nil){
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"updateRoot" object:nil];
+        }
+    }
 }
 
 #pragma private methods
