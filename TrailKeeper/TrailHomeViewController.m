@@ -11,6 +11,9 @@
 #import "AppDelegate.h"
 #import "Installation.h"
 #import "CommentsViewController.h"
+#import "User.h"
+#import "AlertControllerHelper.h"
+
 static NSString * const CTCellIdentifier = @"idCellRecord";
 
 @interface TrailHomeViewController ()
@@ -18,7 +21,11 @@ static NSString * const CTCellIdentifier = @"idCellRecord";
 @property (nonatomic, strong) AppDelegate *appDelegate;
 @property (nonatomic, strong) NSArray *commentList;
 @property (nonatomic, strong) NSString *trailName;
+@property (nonatomic) BOOL isAnonUser;
+@property (nonatomic) BOOL isParseUser;
 
+-(void)checkForParseUser;
+-(void)checkForAnonUser;
 -(void)loadTableData;
 -(void)loadTrailData;
 -(NSString*)formateDate:(NSString*)date;
@@ -35,6 +42,10 @@ static NSString * const CTCellIdentifier = @"idCellRecord";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self checkForParseUser];
+    [self checkForAnonUser];
+    
     self.appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     
     self.tblComments.delegate = self;
@@ -120,96 +131,119 @@ static NSString * const CTCellIdentifier = @"idCellRecord";
 
 - (IBAction)btn_subscribeClick:(id)sender {
     
-    NSString *name = [NSString stringWithFormat:@"Receive Notifications for %@?", self.trailName];
-    
-    UIAlertController *alert = [UIAlertController
-                                alertControllerWithTitle:name
-                                message:nil
-                                preferredStyle:UIAlertControllerStyleAlert];
+    // lets make sure they are a user and they are verified
+    if (self.isParseUser) {
+        if (!self.isAnonUser) {
+            
+            NSString *name = [NSString stringWithFormat:@"Receive Notifications for %@?", self.trailName];
+            
+            UIAlertController *alert = [UIAlertController
+                                        alertControllerWithTitle:name
+                                        message:nil
+                                        preferredStyle:UIAlertControllerStyleAlert];
 
-    UIAlertAction *cancelAction = [UIAlertAction
-                                   actionWithTitle:@"Cancel"
-                                   style:UIAlertActionStyleCancel
-                                   handler:^(UIAlertAction *action)
-                                   {
-                                       NSLog(@"Cancel Action");
-                                   }];
-    
-    UIAlertAction *yesAction = [UIAlertAction
-                                actionWithTitle:@"Yes"
-                                style:UIAlertActionStyleDefault
-                                handler:^(UIAlertAction *action)
-                                {
-                                    NSLog(@"Subscribe Yes Action");
-                                    [self subscribeToTrail:YES];
-                                }];
-    
-    UIAlertAction *noAction = [UIAlertAction
-                                actionWithTitle:@"No"
-                                style:UIAlertActionStyleDefault
-                                handler:^(UIAlertAction *action)
-                                {
-                                    NSLog(@"Subscribe No Action");
-                                    [self subscribeToTrail:NO];
-                                }];
-    
-    [alert addAction:cancelAction];
-    [alert addAction:yesAction];
-    [alert addAction:noAction];
-    
-    [self presentViewController:alert animated:YES completion:nil];
+            UIAlertAction *cancelAction = [UIAlertAction
+                                           actionWithTitle:@"Cancel"
+                                           style:UIAlertActionStyleCancel
+                                           handler:^(UIAlertAction *action)
+                                           {
+                                               NSLog(@"Cancel Action");
+                                           }];
+            
+            UIAlertAction *yesAction = [UIAlertAction
+                                        actionWithTitle:@"Yes"
+                                        style:UIAlertActionStyleDefault
+                                        handler:^(UIAlertAction *action)
+                                        {
+                                            NSLog(@"Subscribe Yes Action");
+                                            [self subscribeToTrail:YES];
+                                        }];
+            
+            UIAlertAction *noAction = [UIAlertAction
+                                        actionWithTitle:@"No"
+                                        style:UIAlertActionStyleDefault
+                                        handler:^(UIAlertAction *action)
+                                        {
+                                            NSLog(@"Subscribe No Action");
+                                            [self subscribeToTrail:NO];
+                                        }];
+            
+            [alert addAction:cancelAction];
+            [alert addAction:yesAction];
+            [alert addAction:noAction];
+            
+            [self presentViewController:alert animated:YES completion:nil];
+            
+        } else {
+            [AlertControllerHelper ShowAlert:@"Verify Email" message:@"Please verify your email first!" view:self];
+        }
+    } else {
+        [AlertControllerHelper ShowAlert:@"No Account" message:@"Please sign up for an account in Settings and verify your email first!" view:self];
+    }
 }
 
 - (IBAction)btn_statusClick:(id)sender {
     
-    NSString *name = [NSString stringWithFormat:@"How is the trail?"];
+    // lets make sure they are a user and they are verified
+    if (self.isParseUser) {
+        if (!self.isAnonUser) {
     
-    UIAlertController *alert = [UIAlertController
-                                alertControllerWithTitle:name
-                                message:nil
-                                preferredStyle:UIAlertControllerStyleAlert];
-    
-    UIAlertAction *cancelAction = [UIAlertAction
-                                   actionWithTitle:@"Cancel"
-                                   style:UIAlertActionStyleCancel
-                                   handler:^(UIAlertAction *action)
-                                   {
-                                       NSLog(@"Cancel Action");
-                                   }];
-    
-    UIAlertAction *openAction = [UIAlertAction
-                                actionWithTitle:@"Open"
-                                style:UIAlertActionStyleDefault
-                                handler:^(UIAlertAction *action)
-                                {
-                                    NSLog(@"Open Trail Action");
-                                    [self SetTrailStatus:@2];
-                                }];
-    
-    UIAlertAction *closedAction = [UIAlertAction
-                               actionWithTitle:@"Closed"
-                               style:UIAlertActionStyleDefault
-                               handler:^(UIAlertAction *action)
-                               {
-                                   NSLog(@"Close Trail Action");
-                                   [self SetTrailStatus:@1];
-                               }];
-    
-    UIAlertAction *unKnownAction = [UIAlertAction
-                                   actionWithTitle:@"Unknown"
-                                   style:UIAlertActionStyleDefault
-                                   handler:^(UIAlertAction *action)
-                                   {
-                                       NSLog(@"Unknown Trail Action");
-                                       [self SetTrailStatus:@3];
-                                   }];
-    
-    [alert addAction:cancelAction];
-    [alert addAction:openAction];
-    [alert addAction:closedAction];
-    [alert addAction:unKnownAction];
-    
-    [self presentViewController:alert animated:YES completion:nil];
+            NSString *name = [NSString stringWithFormat:@"How is the trail?"];
+            
+            UIAlertController *alert = [UIAlertController
+                                        alertControllerWithTitle:name
+                                        message:nil
+                                        preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction *cancelAction = [UIAlertAction
+                                           actionWithTitle:@"Cancel"
+                                           style:UIAlertActionStyleCancel
+                                           handler:^(UIAlertAction *action)
+                                           {
+                                               NSLog(@"Cancel Action");
+                                           }];
+            
+            UIAlertAction *openAction = [UIAlertAction
+                       
+                                         actionWithTitle:@"Open"
+                                        style:UIAlertActionStyleDefault
+                                        handler:^(UIAlertAction *action)
+                                        {
+                                            NSLog(@"Open Trail Action");
+                                            [self SetTrailStatus:@2];
+                                        }];
+            
+            UIAlertAction *closedAction = [UIAlertAction
+                                       actionWithTitle:@"Closed"
+                                       style:UIAlertActionStyleDefault
+                                       handler:^(UIAlertAction *action)
+                                       {
+                                           NSLog(@"Close Trail Action");
+                                           [self SetTrailStatus:@1];
+                                       }];
+            
+            UIAlertAction *unKnownAction = [UIAlertAction
+                                           actionWithTitle:@"Unknown"
+                                           style:UIAlertActionStyleDefault
+                                           handler:^(UIAlertAction *action)
+                                           {
+                                               NSLog(@"Unknown Trail Action");
+                                               [self SetTrailStatus:@3];
+                                           }];
+            
+            [alert addAction:cancelAction];
+            [alert addAction:openAction];
+            [alert addAction:closedAction];
+            [alert addAction:unKnownAction];
+            
+            [self presentViewController:alert animated:YES completion:nil];
+            
+        } else {
+            [AlertControllerHelper ShowAlert:@"Verify Email" message:@"Please verify your email first!" view:self];
+        }
+    } else {
+        [AlertControllerHelper ShowAlert:@"No Account" message:@"Please sign up for an account in Settings and verify your email first!" view:self];
+    }
 }
 
 - (IBAction)btn_AllCommentsClick:(id)sender {
@@ -217,42 +251,54 @@ static NSString * const CTCellIdentifier = @"idCellRecord";
 }
 
 - (IBAction)btn_LeaveCommentClick:(id)sender {
-    NSString *name = [NSString stringWithFormat:@"Add Comment for %@?", self.trailName];
     
-    UIAlertController *alert = [UIAlertController
-                                alertControllerWithTitle:name
-                                message:nil
-                                preferredStyle:UIAlertControllerStyleAlert];
+    // lets make sure they are a user and they are verified
+    if (self.isParseUser) {
+        if (!self.isAnonUser) {
     
-    [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
-        textField.placeholder = @"New Comment";
-        textField.keyboardAppearance = UIKeyboardAppearanceDefault;
-        textField.keyboardType = UIKeyboardTypeDefault;
-        textField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
-    }];
-    
-    UIAlertAction *cancelAction = [UIAlertAction
-                                   actionWithTitle:@"Cancel"
-                                   style:UIAlertActionStyleCancel
-                                   handler:^(UIAlertAction *action)
-                                   {
-                                       NSLog(@"Cancel Action");
-                                   }];
-    
-    UIAlertAction *okAction = [UIAlertAction
-                                actionWithTitle:@"OK"
-                                style:UIAlertActionStyleDefault
-                                handler:^(UIAlertAction *action)
-                                {
-                                    NSLog(@"Leave Comment OK Action");
-                                    UITextField *comment = alert.textFields.firstObject;
-                                    [self leaveNewComment:comment.text];
-                                }];
-    
-    [alert addAction:cancelAction];
-    [alert addAction:okAction];
-    
-    [self presentViewController:alert animated:YES completion:nil];
+            NSString *name = [NSString stringWithFormat:@"Add Comment for %@?", self.trailName];
+            
+            UIAlertController *alert = [UIAlertController
+                                        alertControllerWithTitle:name
+                                        message:nil
+                                        preferredStyle:UIAlertControllerStyleAlert];
+            
+            [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+                textField.placeholder = @"New Comment";
+                textField.keyboardAppearance = UIKeyboardAppearanceDefault;
+                textField.keyboardType = UIKeyboardTypeDefault;
+                textField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
+            }];
+            
+            UIAlertAction *cancelAction = [UIAlertAction
+                                           actionWithTitle:@"Cancel"
+                                           style:UIAlertActionStyleCancel
+                                           handler:^(UIAlertAction *action)
+                                           {
+                                               NSLog(@"Cancel Action");
+                                           }];
+            
+            UIAlertAction *okAction = [UIAlertAction
+                                        actionWithTitle:@"OK"
+                                        style:UIAlertActionStyleDefault
+                                        handler:^(UIAlertAction *action)
+                                        {
+                                            NSLog(@"Leave Comment OK Action");
+                                            UITextField *comment = alert.textFields.firstObject;
+                                            [self leaveNewComment:comment.text];
+                                        }];
+            
+            [alert addAction:cancelAction];
+            [alert addAction:okAction];
+            
+            [self presentViewController:alert animated:YES completion:nil];
+            
+        } else {
+            [AlertControllerHelper ShowAlert:@"Verify Email" message:@"Please verify your email first!" view:self];
+        }
+    } else {
+        [AlertControllerHelper ShowAlert:@"No Account" message:@"Please sign up for an account in Settings and verify your email first!" view:self];
+    }
 }
 
 #pragma private methods
@@ -322,6 +368,16 @@ static NSString * const CTCellIdentifier = @"idCellRecord";
     comments.comment = comment;
     
     [comments SaveNewComment:comments];
+}
+
+-(void)checkForParseUser {
+    self.isParseUser = [User isParseUser];
+    NSLog(@"IsParseUser is %d ", self.isParseUser);
+}
+
+-(void)checkForAnonUser {
+    self.isAnonUser = [User isAnonUser];
+    NSLog(@"IsAnonUser is %d ", self.isAnonUser);
 }
 
 @end

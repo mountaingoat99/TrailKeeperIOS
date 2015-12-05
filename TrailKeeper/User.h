@@ -12,7 +12,7 @@
 
 @property (nonatomic) BOOL emailVerified;
 
-+ (NSString *)parseClassName;
+//+ (NSString *)parseClassName;
 +(BOOL)isParseUser;
 +(BOOL)isAnonUser;
 +(BOOL)isEmailVerified:(User*)user;
@@ -20,14 +20,10 @@
 +(BOOL)isValidEmail:(NSString*)userEmail;
 +(BOOL)isValidPassword:(NSString*)userPassword;
 
-//-(void)SignUpNewUser:(User*)newUser;
-//-(void)UserLogIn:(User*)user;
 -(void)UserLogOut;
-//-(void)DeleteUserAccount;
 -(void)UpdateUserName:(NSString*)newName;
 -(void)UpdateUserEmail:(NSString*)newEmail;
 -(void)ResendVerifyUserEmail; // send a new fake email
-//-(void)ResetUserPassword:(User*)user;
 -(NSString*)FindUserName:(NSString*)email ;
 
 @end

@@ -56,6 +56,7 @@
 }
 
 +(BOOL)isAnonUser {
+    NSLog(@"IsAnonUser is %d ", [PFAnonymousUtils isLinkedWithUser:[PFUser currentUser]]);
     return [PFAnonymousUtils isLinkedWithUser:[PFUser currentUser]];
 }
 
@@ -94,52 +95,10 @@
 
 
 #pragma public methods
-//
-//-(void)SignUpNewUser:(User*)newUser {
-//    
-//    [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-//        if (!error) {
-//            // call the view controller method to okay the sign up
-//            // with a string success message
-//            // update the authorizedUser class
-//            AuthorizedCommentors *auth = [[AuthorizedCommentors alloc] init];
-//            PFUser *user = [PFUser currentUser];
-//            auth.userObjectId = user.objectId;
-//            auth.userObjectId = user.username;
-//            auth.canComment = YES;
-//            [auth AddAuthorizedCommentor:auth];
-//            // add user to the current installation
-//            Installation *installation = [[Installation alloc] init];
-//            [installation AddUserToCurrentInsallation];
-//        } else {
-//            // call the view controller method to okay the sign up
-//            // with a string fail message
-//        }
-//    }];
-//}
-
-//-(void)UserLogIn:(User*)user {
-//    [PFUser logInWithUsernameInBackground:user.username password:user.password
-//                                    block:^(PFUser *user, NSError *error) {
-//        if (!error) {
-//            // call the View Controller method to stop the wait spinner and
-//            // successfully enable the user - send back string success message
-//        } else {
-//            // call the View Controller method to stop the wait spinner and
-//            // let user know the reason - send back the string fail message
-//        }
-//    }];
-//}
 
 -(void)UserLogOut {
     [User logOut];
 }
-
-//-(void)DeleteUserAccount {
-//    PFUser *user = [PFUser currentUser];
-//    [user deleteInBackground];
-//    [PFUser logOut];
-//}
 
 -(void)UpdateUserName:(NSString*)newName {
     [[PFUser currentUser] setUsername:newName];
@@ -170,10 +129,6 @@
     // call method to update the real email so it sends the verification again
     [self resendRealEmailAfterCreatingFake:realEmail];
 }
-
-//-(void)ResetUserPassword:(User*)user {
-//    [PFUser requestPasswordResetForEmailInBackground:user.email];
-//}
 
 -(NSString*)FindUserName:(NSString*)email {
     PFQuery *query = [PFUser query];
