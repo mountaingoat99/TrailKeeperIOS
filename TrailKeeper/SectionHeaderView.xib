@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="FindTrailSectionHeaderView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="48"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9fy-DV-AEN">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="48"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="State" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6qT-tt-WCY">
+                            <rect key="frame" x="39" y="13" width="281" height="21"/>
+                            <animations/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R7G-Ig-14V" userLabel="Disclosure Button">
+                            <rect key="frame" x="0.0" y="6" width="35" height="35"/>
+                            <animations/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="35" id="pBe-FT-pDN"/>
+                                <constraint firstAttribute="width" constant="35" id="zId-Ed-Tfo"/>
+                            </constraints>
+                            <state key="normal" image="closed-caret"/>
+                        </button>
+                    </subviews>
+                    <animations/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="6qT-tt-WCY" firstAttribute="leading" secondItem="R7G-Ig-14V" secondAttribute="trailing" constant="4" id="6ts-pS-fXr"/>
+                        <constraint firstItem="R7G-Ig-14V" firstAttribute="leading" secondItem="9fy-DV-AEN" secondAttribute="leading" id="CyQ-lU-gtJ"/>
+                        <constraint firstItem="R7G-Ig-14V" firstAttribute="top" secondItem="9fy-DV-AEN" secondAttribute="top" constant="6" id="GbM-U2-t8i"/>
+                        <constraint firstItem="R7G-Ig-14V" firstAttribute="centerY" secondItem="6qT-tt-WCY" secondAttribute="centerY" id="Jun-F9-VYq"/>
+                        <constraint firstAttribute="trailing" secondItem="6qT-tt-WCY" secondAttribute="trailing" id="vKp-74-Kc1"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <animations/>
+            <constraints>
+                <constraint firstItem="9fy-DV-AEN" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Ay1-hp-Iq3"/>
+                <constraint firstItem="9fy-DV-AEN" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="HMJ-wD-JRY"/>
+                <constraint firstAttribute="bottom" secondItem="9fy-DV-AEN" secondAttribute="bottom" id="TfW-wV-MPo"/>
+                <constraint firstItem="9fy-DV-AEN" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="muf-8H-F8d"/>
+                <constraint firstAttribute="trailing" secondItem="9fy-DV-AEN" secondAttribute="trailing" id="qEg-TV-egu"/>
+                <constraint firstItem="9fy-DV-AEN" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="zqB-qA-00W"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="disclosureButton" destination="R7G-Ig-14V" id="NK0-zR-5g6"/>
+                <outlet property="titleLabel" destination="6qT-tt-WCY" id="Grv-Hj-fYC"/>
+            </connections>
+        </view>
+    </objects>
+    <resources>
+        <image name="closed-caret" width="64" height="64"/>
+    </resources>
+</document>

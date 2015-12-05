@@ -546,20 +546,71 @@
                         <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4Iu-ty-ICO">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4Iu-ty-ICO">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="idCellRecord" id="Igz-2J-4oT" customClass="CustomFindTrailCell">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="idCellRecord" rowHeight="80" id="Igz-2J-4oT" customClass="CustomFindTrailCell">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Igz-2J-4oT" id="N38-w3-Lwx">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="79"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Petrified Springs Park" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jmt-3F-hsv">
+                                                    <rect key="frame" x="8" y="8" width="166" height="21"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="open" translatesAutoresizingMaskIntoConstraints="NO" id="kKD-bS-xmj">
+                                                    <rect key="frame" x="338" y="4" width="29" height="29"/>
+                                                    <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="29" id="CN1-Ga-HAQ"/>
+                                                        <constraint firstAttribute="height" constant="29" id="jYF-E9-Tak"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kenosha" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZXg-EA-Z6l">
+                                                    <rect key="frame" x="20" y="33" width="150" height="21"/>
+                                                    <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="150" id="bp9-jc-BS0"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6 Miles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eNI-Nf-VHE">
+                                                    <rect key="frame" x="208" y="33" width="150" height="21"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                             <animations/>
+                                            <constraints>
+                                                <constraint firstItem="jmt-3F-hsv" firstAttribute="top" secondItem="N38-w3-Lwx" secondAttribute="topMargin" id="8Bm-aO-75V"/>
+                                                <constraint firstItem="ZXg-EA-Z6l" firstAttribute="top" secondItem="jmt-3F-hsv" secondAttribute="bottom" constant="4" id="9c9-Z8-JUI"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="kKD-bS-xmj" secondAttribute="trailing" id="9fi-Gr-dZ2"/>
+                                                <constraint firstItem="eNI-Nf-VHE" firstAttribute="width" secondItem="ZXg-EA-Z6l" secondAttribute="width" id="ESE-Ku-pph"/>
+                                                <constraint firstItem="kKD-bS-xmj" firstAttribute="centerY" secondItem="jmt-3F-hsv" secondAttribute="centerY" id="QTK-7W-eD9"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="eNI-Nf-VHE" secondAttribute="trailing" constant="9" id="U4C-75-mEb"/>
+                                                <constraint firstItem="jmt-3F-hsv" firstAttribute="leading" secondItem="N38-w3-Lwx" secondAttribute="leadingMargin" id="e8P-2O-yEQ"/>
+                                                <constraint firstItem="eNI-Nf-VHE" firstAttribute="centerY" secondItem="ZXg-EA-Z6l" secondAttribute="centerY" id="hqh-JF-Tlg"/>
+                                                <constraint firstItem="ZXg-EA-Z6l" firstAttribute="leading" secondItem="N38-w3-Lwx" secondAttribute="leadingMargin" constant="12" id="lO5-Le-1Bh"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
+                                        <connections>
+                                            <outlet property="distance" destination="eNI-Nf-VHE" id="8Ue-qQ-Dkb"/>
+                                            <outlet property="statusImage" destination="kKD-bS-xmj" id="OwA-h5-FIb"/>
+                                            <outlet property="trailCity" destination="ZXg-EA-Z6l" id="Sfu-Rh-AdN"/>
+                                            <outlet property="trailName" destination="jmt-3F-hsv" id="oSx-zd-l6w"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -581,6 +632,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="tblFindTrail" destination="4Iu-ty-ICO" id="7b7-DG-NwC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XYY-kj-7Ti" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

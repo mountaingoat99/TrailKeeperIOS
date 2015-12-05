@@ -17,7 +17,6 @@
 @property (nonatomic, weak) IBOutlet UILabel *trailCity;
 @property (nonatomic, weak) IBOutlet UILabel *distance;
 @property (nonatomic, weak) IBOutlet UIImageView *statusImage;
-@property (nonatomic, weak) FindTrailHighlightTextView *stateHeader;
 
 @property (nonatomic) Trails *trails;
 

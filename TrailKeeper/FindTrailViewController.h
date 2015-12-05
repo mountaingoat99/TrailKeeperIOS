@@ -7,8 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FindTrailSectionHeaderView.h"
 
-@interface FindTrailViewController : UIViewController
+@interface FindTrailViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, SectionHeaderViewDelegate>
+
+@property (nonatomic, strong) NSArray *states;
+
+@property (weak, nonatomic) IBOutlet UITableView *tblFindTrail;
 
 - (IBAction)btn_drawerClick:(id)sender;
 
