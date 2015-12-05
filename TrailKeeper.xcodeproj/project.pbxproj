@@ -26,6 +26,8 @@
 		26A4C12B1BCB433200524635 /* PushNotificationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4C12A1BCB433200524635 /* PushNotificationHelper.m */; };
 		26A4C1311BCB434D00524635 /* StateListHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4C1301BCB434D00524635 /* StateListHelper.m */; };
 		26A4C1341BCB438D00524635 /* NotificationReciever.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4C1331BCB438D00524635 /* NotificationReciever.m */; };
+		26A5E97C1C1287C100C7FE07 /* FindTrailHighlightTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A5E97B1C1287C100C7FE07 /* FindTrailHighlightTextView.m */; };
+		26A5E97F1C12894200C7FE07 /* CustomFindTrailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A5E97E1C12894200C7FE07 /* CustomFindTrailCell.m */; };
 		26AAB1CA1BCDDE8B0084B67D /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 26AAB1C91BCDDE8B0084B67D /* User.m */; };
 		26AAB1CD1BCDDEB60084B67D /* AuthorizedCommentors.m in Sources */ = {isa = PBXBuildFile; fileRef = 26AAB1CC1BCDDEB60084B67D /* AuthorizedCommentors.m */; };
 		26AAB1D01BCDDEC20084B67D /* Comments.m in Sources */ = {isa = PBXBuildFile; fileRef = 26AAB1CF1BCDDEC20084B67D /* Comments.m */; };
@@ -93,6 +95,10 @@
 		26A4C1301BCB434D00524635 /* StateListHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StateListHelper.m; sourceTree = "<group>"; };
 		26A4C1321BCB438D00524635 /* NotificationReciever.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationReciever.h; sourceTree = "<group>"; };
 		26A4C1331BCB438D00524635 /* NotificationReciever.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationReciever.m; sourceTree = "<group>"; };
+		26A5E97A1C1287C100C7FE07 /* FindTrailHighlightTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindTrailHighlightTextView.h; sourceTree = "<group>"; };
+		26A5E97B1C1287C100C7FE07 /* FindTrailHighlightTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindTrailHighlightTextView.m; sourceTree = "<group>"; };
+		26A5E97D1C12894200C7FE07 /* CustomFindTrailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomFindTrailCell.h; sourceTree = "<group>"; };
+		26A5E97E1C12894200C7FE07 /* CustomFindTrailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomFindTrailCell.m; sourceTree = "<group>"; };
 		26AAB1C81BCDDE8B0084B67D /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		26AAB1C91BCDDE8B0084B67D /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		26AAB1CB1BCDDEB60084B67D /* AuthorizedCommentors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthorizedCommentors.h; sourceTree = "<group>"; };
@@ -332,6 +338,10 @@
 				26D6E5CC1BEEBCEB007C9F6C /* CustomCell.m */,
 				26C033611BFFF7DD003B9114 /* CustomTrailHomeCell.h */,
 				26C033621BFFF7DD003B9114 /* CustomTrailHomeCell.m */,
+				26A5E97A1C1287C100C7FE07 /* FindTrailHighlightTextView.h */,
+				26A5E97B1C1287C100C7FE07 /* FindTrailHighlightTextView.m */,
+				26A5E97D1C12894200C7FE07 /* CustomFindTrailCell.h */,
+				26A5E97E1C12894200C7FE07 /* CustomFindTrailCell.m */,
 			);
 			name = CustomViews;
 			sourceTree = "<group>";
@@ -499,6 +509,7 @@
 				26A4C1101BCB3D7800524635 /* DBManager.m in Sources */,
 				26AAB1CD1BCDDEB60084B67D /* AuthorizedCommentors.m in Sources */,
 				26D6E5CD1BEEBCEB007C9F6C /* CustomCell.m in Sources */,
+				26A5E97C1C1287C100C7FE07 /* FindTrailHighlightTextView.m in Sources */,
 				26F8D4351BE6BFEF007770F4 /* AddTrailViewController.m in Sources */,
 				26F8D4221BE65E4A007770F4 /* MMDrawerVisualState.m in Sources */,
 				260EC2641BDB13F600BB01DF /* Converters.m in Sources */,
@@ -529,6 +540,7 @@
 				26F8D4211BE65E4A007770F4 /* MMDrawerController.m in Sources */,
 				2615C11B1BCAE7660065B62C /* main.m in Sources */,
 				26F8D4201BE65E4A007770F4 /* MMDrawerBarButtonItem.m in Sources */,
+				26A5E97F1C12894200C7FE07 /* CustomFindTrailCell.m in Sources */,
 				26F8D4291BE6A387007770F4 /* SettingsViewController.m in Sources */,
 				26F8D4151BE65539007770F4 /* LeftDrawerController.m in Sources */,
 				26F8D43E1BE6C026007770F4 /* ContactViewController.m in Sources */,

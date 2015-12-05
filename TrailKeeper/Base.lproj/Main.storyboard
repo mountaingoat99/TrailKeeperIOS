@@ -551,7 +551,7 @@
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Igz-2J-4oT">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="idCellRecord" id="Igz-2J-4oT" customClass="CustomFindTrailCell">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Igz-2J-4oT" id="N38-w3-Lwx">
@@ -1780,10 +1780,10 @@
         <image name="open" width="170" height="170"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="flB-r7-HsM"/>
+        <segue reference="7cm-3b-rHB"/>
+        <segue reference="oud-Dp-bYe"/>
         <segue reference="8U8-zK-gWV"/>
-        <segue reference="5dN-Ou-gbx"/>
-        <segue reference="CYk-V7-bXJ"/>
-        <segue reference="OlQ-5H-NIw"/>
         <segue reference="zjZ-ZA-Yv8"/>
         <segue reference="nBy-B7-tTJ"/>
     </inferredMetricsTieBreakers>
