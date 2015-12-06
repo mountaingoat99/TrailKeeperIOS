@@ -191,35 +191,27 @@
     NSMutableArray *allTrails = [[NSMutableArray alloc] init];
     PFQuery *query = [PFQuery queryWithClassName:@"Trails"];
     [query fromLocalDatastore];
-    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
-        if (!error) {
-            NSLog(@"Successfully Retrieved Trails");
-            // add the items to the NSArray
-            for (PFObject *object in objects) {
-                Trails *trail = [[Trails alloc] init];
-                NSString *parseId = object.objectId;
-                trail.trailObjectId = parseId;
-                //trail.objectId = object.objectId;
-                trail.trailName = [object objectForKey:@"trailName"];
-                trail.status = [object objectForKey:@"status"];
-                trail.mapLink = [object objectForKey:@"mapLink"];
-                trail.city = [object objectForKey:@"city"];
-                trail.state = [object objectForKey:@"state"];
-                trail.country = [object objectForKey:@"country"];
-                trail.length = [object objectForKey:@"length"];
-                trail.geoLocation = [object objectForKey:@"geoLocation"];
-                trail.privateTrail = [Converters getBoolValueFromNSNumber:[object objectForKey:@"privateTrail"]];
-                trail.skillEasy = [Converters getBoolValueFromNSNumber:[object objectForKey:@"skillEasy"]];
-                trail.skillMedium = [Converters getBoolValueFromNSNumber:[object objectForKey:@"skillMedium"]];
-                trail.skillHard = [Converters getBoolValueFromNSNumber:[object objectForKey:@"skillHard"]];
-                
-                [allTrails addObject:trail];
-            }
-            
-        } else {
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-        }
-    }];
+    NSArray * _Nullable objects = [query findObjects];
+    for (PFObject *object in objects) {
+        Trails *trail = [[Trails alloc] init];
+        NSString *parseId = object.objectId;
+        trail.trailObjectId = parseId;
+        //trail.objectId = object.objectId;
+        trail.trailName = [object objectForKey:@"trailName"];
+        trail.status = [object objectForKey:@"status"];
+        trail.mapLink = [object objectForKey:@"mapLink"];
+        trail.city = [object objectForKey:@"city"];
+        trail.state = [object objectForKey:@"state"];
+        trail.country = [object objectForKey:@"country"];
+        trail.length = [object objectForKey:@"length"];
+        trail.geoLocation = [object objectForKey:@"geoLocation"];
+        trail.privateTrail = [Converters getBoolValueFromNSNumber:[object objectForKey:@"privateTrail"]];
+        trail.skillEasy = [Converters getBoolValueFromNSNumber:[object objectForKey:@"skillEasy"]];
+        trail.skillMedium = [Converters getBoolValueFromNSNumber:[object objectForKey:@"skillMedium"]];
+        trail.skillHard = [Converters getBoolValueFromNSNumber:[object objectForKey:@"skillHard"]];
+        
+        [allTrails addObject:trail];
+    }
     return allTrails;
 }
 
