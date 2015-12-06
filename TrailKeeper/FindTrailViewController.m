@@ -18,7 +18,7 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
 
 @interface FindTrailViewController ()
 
-@property (nonatomic, strong) NSArray *states;
+@property (nonatomic, strong) NSMutableArray *states;
 @property (nonatomic, strong) NSMutableArray *sectionInfoArray;
 @property (nonatomic) NSInteger openSectionIndex;
 @property (nonatomic) NSInteger uniformRowHeight;
@@ -215,8 +215,8 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
         self.states = nil;
     }
     
-    // call the state class here to get the States with the list of trails in it
-    
+    States *state = [[States alloc] init];
+    self.states = [state getStatesWithTrails];
     
     [self.tblFindTrail reloadData];
 }
