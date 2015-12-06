@@ -18,14 +18,15 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
 
 @interface FindTrailViewController ()
 
+@property (nonatomic, strong) NSArray *states;
 @property (nonatomic, strong) NSMutableArray *sectionInfoArray;
 @property (nonatomic) NSInteger openSectionIndex;
 @property (nonatomic) NSInteger uniformRowHeight;
 
 @property (nonatomic) IBOutlet FindTrailSectionHeaderView *sectionHeaderView;
-
-
 @property (nonatomic, strong) AppDelegate *appDelegate;
+
+-(void)loadData;
 
 @end
 
@@ -54,6 +55,8 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
     
     UINib *sectionHeaderNib = [UINib nibWithNibName:@"SectionHeaderView" bundle:nil];
     [self.tblFindTrail registerNib:sectionHeaderNib forHeaderFooterViewReuseIdentifier:SectionHeaderViewIdentifier];
+    
+    [self loadData];
     
     // make sure the back button text does not show
     self.navigationItem.backBarButtonItem =
@@ -204,4 +207,18 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
         }
     }
 }
+
+#pragma Private Methods
+
+-(void)loadData {
+    if (self.states != nil) {
+        self.states = nil;
+    }
+    
+    // call the state class here to get the States with the list of trails in it
+    
+    
+    [self.tblFindTrail reloadData];
+}
+
 @end
