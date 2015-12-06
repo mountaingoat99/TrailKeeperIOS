@@ -10,6 +10,7 @@
 #import "FindTrailSectionHeaderView.h"
 #import "FindTrailSectionInfo.h"
 #import "CustomFindTrailCell.h"
+#import "GeoLocationHelper.h"
 #import "States.h"
 #import "Trails.h"
 #import "AppDelegate.h"
@@ -22,6 +23,7 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
 @property (nonatomic, strong) NSMutableArray *sectionInfoArray;
 @property (nonatomic) NSInteger openSectionIndex;
 @property (nonatomic) NSInteger uniformRowHeight;
+@property (nonatomic, strong) PFGeoPoint *userLocation;
 
 @property (nonatomic) IBOutlet FindTrailSectionHeaderView *sectionHeaderView;
 @property (nonatomic, strong) AppDelegate *appDelegate;
@@ -43,6 +45,9 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    // get users current location
+    self.userLocation = [GeoLocationHelper GetUsersCurrentPostion];
     
     self.appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     self.tblFindTrail.delegate = self;
@@ -111,6 +116,7 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    NSLog(@"Section In Table View %lu", (unsigned long)[self.states count]);
     
     return [self.states count];
 }
@@ -119,15 +125,29 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
     
     FindTrailSectionInfo *sectionInfo = (self.sectionInfoArray)[section];
     NSInteger numStoriesInSection = [[sectionInfo.state trails] count];
+    NSLog(@"Trails in section %lu", (unsigned long)[[sectionInfo.state trails] count]);
     
-    return sectionInfo ? numStoriesInSection : 0;
+    return numStoriesInSection;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    static NSString *QuoteCellIdentifier = @"QuoteCellIdentifier";
+    //static NSString *QuoteCellIdentifier = @"QuoteCellIdentifier";
     
-    CustomFindTrailCell *cell = (CustomFindTrailCell*)[tableView dequeueReusableCellWithIdentifier:QuoteCellIdentifier];
+    CustomFindTrailCell *cell = [tableView dequeueReusableCellWithIdentifier:@"idCellRecord" forIndexPath:indexPath];
+    //cell.delegate = self;
+    
+    FindTrailSectionInfo *sectionInfo = (self.sectionInfoArray)[indexPath.section];
+    Trails *trail = (sectionInfo.state.trails)[indexPath.row];
+    cell.trailName.text = trail.trailName;
+    cell.trailCity.text = trail.city;
+    PFGeoPoint *trailLocation = trail.geoLocation;
+    NSString *milesFromCurrent = [NSString stringWithFormat:@"%.2f", [GeoLocationHelper GetDistanceFromCurrentLocation:self.userLocation traillocation:trailLocation]];
+    milesFromCurrent = [milesFromCurrent stringByAppendingString:@" Miles"];
+    cell.distance.text = milesFromCurrent;
+    cell.statusImage.image = [Trails GetStatusIcon:trail.status];
+    
+    return cell;
     
 //    if ([MFMailComposeViewController canSendMail]) {
 //        
@@ -141,10 +161,7 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
 //        cell.longPressRecognizer = nil;
 //    }
     
-    States *state = (States *)[(self.sectionInfoArray)[indexPath.section] trails];
-    cell.trails = (state.trails)[indexPath.row];
     
-    return cell;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
@@ -154,6 +171,7 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
     FindTrailSectionInfo *sectionInfo = (self.sectionInfoArray)[section];
     sectionInfo.headerView = sectionHeaderView;
     
+    NSLog(@"State Name for Header %@", sectionInfo.state.name);
     sectionHeaderView.titleLabel.text = sectionInfo.state.name;
     sectionHeaderView.section = section;
     sectionHeaderView.delegate = self;
