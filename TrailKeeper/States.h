@@ -13,6 +13,6 @@
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSArray *trails;
 
--(NSArray*)getStatesWithTrails;
+-(NSMutableArray*)getStatesWithTrails;
 
 @end
