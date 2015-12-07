@@ -11,9 +11,11 @@
 #import "FindTrailSectionInfo.h"
 #import "CustomFindTrailCell.h"
 #import "GeoLocationHelper.h"
+#import "TrailHomeViewController.h"
 #import "States.h"
 #import "Trails.h"
 #import "AppDelegate.h"
+#import "KCFloatingActionButton-Swift.h"
 
 static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
 
@@ -21,20 +23,26 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
 
 @property (nonatomic, strong) NSMutableArray *states;
 @property (nonatomic, strong) NSMutableArray *sectionInfoArray;
+//@property (nonatomic, strong) NSArray *trailName;
 @property (nonatomic) NSInteger openSectionIndex;
 @property (nonatomic) NSInteger uniformRowHeight;
 @property (nonatomic, strong) PFGeoPoint *userLocation;
+@property (nonatomic) UITableView *autocompleteTableView;
+@property (nonatomic) UITextField *searchText;
 
 @property (nonatomic) IBOutlet FindTrailSectionHeaderView *sectionHeaderView;
 @property (nonatomic, strong) AppDelegate *appDelegate;
 
 -(void)loadData;
+-(void)ShowSearchFab;
+-(void)goToSearchedTrail:(NSString*)trailName;
+//-(void)getTrailName;
 
 @end
 
 #pragma mark -
 
-#define DEFAULT_ROW_HEIGHT 88
+#define DEFAULT_ROW_HEIGHT 78
 #define HEADER_HEIGHT 48
 
 @implementation FindTrailViewController
@@ -62,6 +70,11 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
     [self.tblFindTrail registerNib:sectionHeaderNib forHeaderFooterViewReuseIdentifier:SectionHeaderViewIdentifier];
     
     [self loadData];
+    //[self getTrailName];
+    
+    // add some view properties
+    [self.tblFindTrail setSeparatorColor:[UIColor clearColor]];
+    [self.tblFindTrail setBackgroundColor:[UIColor clearColor]];
     
     // make sure the back button text does not show
     self.navigationItem.backBarButtonItem =
@@ -69,6 +82,7 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
                                      style:UIBarButtonItemStylePlain
                                     target:nil
                                     action:nil];
+    [self ShowSearchFab];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -82,6 +96,7 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
         for (States *state in self.states) {
             FindTrailSectionInfo *sectionInfo = [[FindTrailSectionInfo alloc] init];
             sectionInfo.state = state;
+            sectionInfo.open = NO;
             
             NSNumber *defaultRowHeight = @(DEFAULT_ROW_HEIGHT);
             NSInteger countOfTrails = [[sectionInfo.state trails] count];
@@ -103,15 +118,16 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
     // Dispose of any resources that can be recreated.
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"segueFindTrailToTrailHome"]) {
+        TrailHomeViewController *home = [segue destinationViewController];
+        home.sentTrailObjectId = self.sentTrailObjectId;
+    }
 }
-*/
 
 #pragma mark - UITableViewDataSource
 
@@ -124,20 +140,17 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     FindTrailSectionInfo *sectionInfo = (self.sectionInfoArray)[section];
-    NSInteger numStoriesInSection = [[sectionInfo.state trails] count];
+    NSInteger numTrailsInSection = [[sectionInfo.state trails] count];
     NSLog(@"Trails in section %lu", (unsigned long)[[sectionInfo.state trails] count]);
     
-    return numStoriesInSection;
+    return sectionInfo.open ? numTrailsInSection : 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    //static NSString *QuoteCellIdentifier = @"QuoteCellIdentifier";
-    
     CustomFindTrailCell *cell = [tableView dequeueReusableCellWithIdentifier:@"idCellRecord" forIndexPath:indexPath];
-    //cell.delegate = self;
-    
     FindTrailSectionInfo *sectionInfo = (self.sectionInfoArray)[indexPath.section];
+   
     Trails *trail = (sectionInfo.state.trails)[indexPath.row];
     cell.trailName.text = trail.trailName;
     cell.trailCity.text = trail.city;
@@ -148,20 +161,6 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
     cell.statusImage.image = [Trails GetStatusIcon:trail.status];
     
     return cell;
-    
-//    if ([MFMailComposeViewController canSendMail]) {
-//        
-//        if (cell.longPressRecognizer == nil) {
-//            UILongPressGestureRecognizer *longPressRecognizer =
-//            [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
-//            cell.longPressRecognizer = longPressRecognizer;
-//        }
-//    }
-//    else {
-//        cell.longPressRecognizer = nil;
-//    }
-    
-    
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
@@ -180,50 +179,101 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return self.tblFindTrail.rowHeight;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"Choose Row %ld", (long)indexPath.row);
     
     FindTrailSectionInfo *sectionInfo = (self.sectionInfoArray)[indexPath.section];
-    return [[sectionInfo objectInRowHeightsAtIndex:indexPath.row] floatValue];
-    // Alternatively, return rowHeight.
+    Trails *trail = (sectionInfo.state.trails)[indexPath.row];
+    self.sentTrailObjectId = trail.trailObjectId;
+
+    [self performSegueWithIdentifier:@"segueFindTrailToTrailHome" sender:self];
+    
+   [self.tblFindTrail deselectRowAtIndexPath:indexPath animated:YES];
 }
+
+#pragma mark - SectionHeaderViewDelegate
+
+- (void)sectionHeaderView:(FindTrailSectionHeaderView *)sectionHeaderView sectionOpened:(NSInteger)sectionOpened {
+    
+    FindTrailSectionInfo *sectionInfo = (self.sectionInfoArray)[sectionOpened];
+    
+    sectionInfo.open = YES;
+    
+    /*
+     Create an array containing the index paths of the rows to insert: These correspond to the rows for each quotation in the current section.
+     */
+    NSInteger countOfRowsToInsert = [sectionInfo.state.trails count];
+    NSMutableArray *indexPathsToInsert = [[NSMutableArray alloc] init];
+    for (NSInteger i = 0; i < countOfRowsToInsert; i++) {
+        [indexPathsToInsert addObject:[NSIndexPath indexPathForRow:i inSection:sectionOpened]];
+    }
+    
+    /*
+     Create an array containing the index paths of the rows to delete: These correspond to the rows for each quotation in the previously-open section, if there was one.
+     */
+    NSMutableArray *indexPathsToDelete = [[NSMutableArray alloc] init];
+    
+    NSInteger previousOpenSectionIndex = self.openSectionIndex;
+    if (previousOpenSectionIndex != NSNotFound) {
+        
+        FindTrailSectionInfo *previousOpenSection = (self.sectionInfoArray)[previousOpenSectionIndex];
+        previousOpenSection.open = NO;
+        [previousOpenSection.headerView toggleOpenWithUserAction:NO];
+        NSInteger countOfRowsToDelete = [previousOpenSection.state.trails count];
+        for (NSInteger i = 0; i < countOfRowsToDelete; i++) {
+            [indexPathsToDelete addObject:[NSIndexPath indexPathForRow:i inSection:previousOpenSectionIndex]];
+        }
+    }
+    
+    // style the animation so that there's a smooth flow in either direction
+    UITableViewRowAnimation insertAnimation;
+    UITableViewRowAnimation deleteAnimation;
+    if (previousOpenSectionIndex == NSNotFound || sectionOpened < previousOpenSectionIndex) {
+        insertAnimation = UITableViewRowAnimationTop;
+        deleteAnimation = UITableViewRowAnimationBottom;
+    }
+    else {
+        insertAnimation = UITableViewRowAnimationBottom;
+        deleteAnimation = UITableViewRowAnimationTop;
+    }
+    
+    // apply the updates
+    [self.tblFindTrail beginUpdates];
+    [self.tblFindTrail insertRowsAtIndexPaths:indexPathsToInsert withRowAnimation:insertAnimation];
+    [self.tblFindTrail deleteRowsAtIndexPaths:indexPathsToDelete withRowAnimation:deleteAnimation];
+    [self.tblFindTrail endUpdates];
+    
+    self.openSectionIndex = sectionOpened;
+}
+
+- (void)sectionHeaderView:(FindTrailSectionHeaderView *)sectionHeaderView sectionClosed:(NSInteger)sectionClosed {
+    
+    /*
+     Create an array of the index paths of the rows in the section that was closed, then delete those rows from the table view.
+     */
+    FindTrailSectionInfo *sectionInfo = (self.sectionInfoArray)[sectionClosed];
+    
+    sectionInfo.open = NO;
+    NSInteger countOfRowsToDelete = [self.tblFindTrail numberOfRowsInSection:sectionClosed];
+    
+    if (countOfRowsToDelete > 0) {
+        NSMutableArray *indexPathsToDelete = [[NSMutableArray alloc] init];
+        for (NSInteger i = 0; i < countOfRowsToDelete; i++) {
+            [indexPathsToDelete addObject:[NSIndexPath indexPathForRow:i inSection:sectionClosed]];
+        }
+        [self.tblFindTrail deleteRowsAtIndexPaths:indexPathsToDelete withRowAnimation:UITableViewRowAnimationTop];
+    }
+    self.openSectionIndex = NSNotFound;
+}
+
 
 #pragma events
 
 - (IBAction)btn_drawerClick:(id)sender {
     [self.appDelegate.drawerController toggleDrawerSide:MMDrawerSideLeft animated:true completion:nil];
-}
-
-#pragma mark - Handling long presses
-
-- (void)handleLongPress:(UILongPressGestureRecognizer *)longPressRecognizer {
-    
-    /*
-     For the long press, the only state of interest is Began.
-     When the long press is detected, find the index path of the row (if there is one) at press location.
-     If there is a row at the location, create a suitable menu controller and display it.
-     */
-    if (longPressRecognizer.state == UIGestureRecognizerStateBegan) {
-        
-        NSIndexPath *pressedIndexPath =
-        [self.tblFindTrail indexPathForRowAtPoint:[longPressRecognizer locationInView:self.tblFindTrail]];
-        
-        if (pressedIndexPath && (pressedIndexPath.row != NSNotFound) && (pressedIndexPath.section != NSNotFound)) {
-            
-            [self becomeFirstResponder];
-            //NSString *title = NSLocalizedString(@"Email", @"Email menu title");
-            //APLEmailMenuItem *menuItem =
-            //[[APLEmailMenuItem alloc] initWithTitle:title action:@selector(emailMenuButtonPressed:)];
-            //menuItem.indexPath = pressedIndexPath;
-            
-            //UIMenuController *menuController = [UIMenuController sharedMenuController];
-            //menuController.menuItems = @[menuItem];
-            
-            CGRect cellRect = [self.tblFindTrail rectForRowAtIndexPath:pressedIndexPath];
-            // lower the target rect a bit (so not to show too far above the cell's bounds)
-            cellRect.origin.y += 40.0;
-            //[menuController setTargetRect:cellRect inView:self.tblFindTrail];
-            //[menuController setMenuVisible:YES animated:YES];
-        }
-    }
 }
 
 #pragma Private Methods
@@ -239,4 +289,93 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
     [self.tblFindTrail reloadData];
 }
 
+-(void)ShowSearchFab {
+    KCFloatingActionButton *fab = [[KCFloatingActionButton alloc] init];
+    fab.buttonColor = [UIColor grayColor];
+    __weak KCFloatingActionButton *_fab = fab;
+    [fab addItem:@"FInd Trail" icon:[UIImage imageNamed:@"search.png"] handler:^(KCFloatingActionButtonItem *item) {
+        
+        UIAlertController *alert = [UIAlertController
+                                    alertControllerWithTitle:@"Enter Trail Name"
+                                    message:nil
+                                    preferredStyle:UIAlertControllerStyleAlert];
+        
+        [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+            textField.placeholder = @"Trail";
+            textField.keyboardAppearance = UIKeyboardAppearanceDefault;
+            textField.keyboardType = UIKeyboardTypeDefault;
+            textField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
+            
+//            [textField addTarget:self
+//                          action:@selector(alertTextFieldAutoComplete:)
+//                forControlEvents:UIControlEventEditingChanged];
+        }];
+        
+        UIAlertAction *cancelAction = [UIAlertAction
+                                       actionWithTitle:@"Cancel"
+                                       style:UIAlertActionStyleCancel
+                                       handler:^(UIAlertAction *action)
+                                       {
+                                           NSLog(@"Cancel Action");
+                                       }];
+        
+        UIAlertAction *okAction = [UIAlertAction
+                                   actionWithTitle:@"OK"
+                                   style:UIAlertActionStyleDefault
+                                   handler:^(UIAlertAction *action)
+                                   {
+                                       NSLog(@"Leave Comment OK Action");
+                                       UITextField *trail = alert.textFields.firstObject;
+                                       [self goToSearchedTrail:trail.text];
+                                   }];
+        
+        [alert addAction:cancelAction];
+        [alert addAction:okAction];
+        
+        [self presentViewController:alert animated:YES completion:nil];
+        [_fab close];
+    }];
+    [self.view addSubview:fab];
+}
+
+-(void)alertTextFieldAutoComplete:(UITextField*)textField {
+    
+    UIAlertController *alertController = (UIAlertController *)self.presentedViewController;
+    if (alertController)
+    {
+        self.searchText = textField;
+//        UITextField *login = alertController.textFields.firstObject;
+//        UIAlertAction *okAction = alertController.actions.lastObject;
+//        okAction.enabled = login.text.length > 2;
+    }
+    
+}
+
+-(void)goToSearchedTrail:(NSString*)trailName {
+    
+}
+
+//-(void)getTrailName {
+//    Trails *trails = [[Trails alloc]init];
+//    self.trailName = [trails GetTrailNames];
+//    
+//    self.searchText = [[UITextField alloc] init];
+//    
+//    self.autocompleteTableView = [[UITableView alloc] initWithFrame:
+//                             CGRectMake(0, 80, 320, 120) style:UITableViewStylePlain];
+//    self.autocompleteTableView.delegate = self;
+//    self.autocompleteTableView.dataSource = self;
+//    self.autocompleteTableView.scrollEnabled = YES;
+//    self.autocompleteTableView.hidden = YES;
+//    [self.view addSubview:self.autocompleteTableView];
+//}
+
+//- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+//    self.autocompleteTableView.hidden = NO;
+//    
+//    NSString *substring = [NSString stringWithString:textField.text];
+//    substring = [substring
+//                 stringByReplacingCharactersInRange:range withString:string];
+//    return YES;
+//}
 @end

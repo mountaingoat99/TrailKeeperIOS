@@ -13,6 +13,7 @@
 
 @interface FindTrailSectionInfo : NSObject
 
+@property (getter=isOpen) BOOL open;
 @property States *state;
 @property FindTrailSectionHeaderView *headerView;
 

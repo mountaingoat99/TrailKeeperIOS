@@ -6,6 +6,9 @@ platform :ios, '9.0'
 target 'TrailKeeper' do
 
 pod 'Parse'
+use_frameworks!
+pod "KCFloatingActionButton"
+
 
 end
 

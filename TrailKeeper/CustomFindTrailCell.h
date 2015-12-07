@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@class FindTrailHighlightTextView;
 @class Trails;
 
 @interface CustomFindTrailCell : UITableViewCell
@@ -19,7 +18,5 @@
 @property (nonatomic, weak) IBOutlet UIImageView *statusImage;
 
 @property (nonatomic) Trails *trails;
-
-@property (nonatomic) UILongPressGestureRecognizer *longPressRecognizer;
 
 @end

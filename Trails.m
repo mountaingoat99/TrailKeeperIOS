@@ -215,25 +215,19 @@
     return allTrails;
 }
 
--(NSMutableArray*)GetTrailNames {
-    NSMutableArray *trailNames;
+-(NSArray*)GetTrailNames {
+    NSMutableArray *trailNames= [[NSMutableArray alloc] init];
     PFQuery *query = [PFQuery queryWithClassName:@"Trails"];
     [query fromLocalDatastore];
-    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
-        if (!error) {
-            NSLog(@"Successfully Retrieved Trails");
-            // add the items to the NSArray
-            for (PFObject *object in objects) {
-                Trails *trail = [[Trails alloc] init];
-                trail.trailName = [object objectForKey:@"trailName"];
-                
-                [trailNames addObject:trail];
-            }
-            
-        } else {
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-        }
-    }];
+    NSArray * _Nullable objects = [query findObjects];
+    NSLog(@"Successfully Retrieved Trails");
+    // add the items to the NSArray
+    for (PFObject *object in objects) {
+        Trails *trail = [[Trails alloc] init];
+        trail.trailName = [object objectForKey:@"trailName"];
+        
+        [trailNames addObject:trail];
+    }
     return trailNames;
 }
 

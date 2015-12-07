@@ -11,7 +11,7 @@
 
 @interface FindTrailViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, SectionHeaderViewDelegate>
 
-
+@property (strong, nonatomic) NSString *sentTrailObjectId;
 
 @property (weak, nonatomic) IBOutlet UITableView *tblFindTrail;
 

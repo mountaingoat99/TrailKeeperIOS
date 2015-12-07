@@ -7,7 +7,7 @@
 //
 
 #import "PushNotificationHelper.h"
-#import <Parse.h>
+#import <Parse/Parse.h>
 #import "Installation.h"
 #import "Trails.h"
 

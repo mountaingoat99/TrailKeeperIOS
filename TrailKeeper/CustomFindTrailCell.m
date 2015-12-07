@@ -7,8 +7,6 @@
 //
 
 #import "CustomFindTrailCell.h"
-#import "Trails.h"
-#import "GeoLocationHelper.h"
 
 @interface CustomFindTrailCell ()
 
@@ -16,17 +14,5 @@
 
 
 @implementation CustomFindTrailCell
-
--(void)setLongPressRecognizer:(UILongPressGestureRecognizer *)newLongPressRecognizer {
-    if (_longPressRecognizer != newLongPressRecognizer) {
-        if (_longPressRecognizer != nil) {
-            [self removeGestureRecognizer:_longPressRecognizer];
-        }
-        if (newLongPressRecognizer != nil) {
-            [self addGestureRecognizer:newLongPressRecognizer];
-        }
-        _longPressRecognizer = newLongPressRecognizer;
-    }
-}
 
 @end
