@@ -42,6 +42,7 @@
 		26C033631BFFF7DD003B9114 /* CustomTrailHomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C033621BFFF7DD003B9114 /* CustomTrailHomeCell.m */; };
 		26D6E5CD1BEEBCEB007C9F6C /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26D6E5CC1BEEBCEB007C9F6C /* CustomCell.m */; };
 		26DBC1211BE82F2F00273D56 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26DBC1201BE82F2F00273D56 /* CoreLocation.framework */; };
+		26E0C3891C1676890085589A /* SearchTrailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E0C3881C1676890085589A /* SearchTrailViewController.m */; };
 		26F7A3941BE453E5007D98D6 /* GetAllObjectsFromParseHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F7A3931BE453E5007D98D6 /* GetAllObjectsFromParseHelper.m */; };
 		26F8D40C1BE5A227007770F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26F8D40A1BE5A227007770F4 /* Main.storyboard */; };
 		26F8D40F1BE5A389007770F4 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F8D40E1BE5A389007770F4 /* MainViewController.m */; };
@@ -124,6 +125,8 @@
 		26D6E5CB1BEEBCEB007C9F6C /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
 		26D6E5CC1BEEBCEB007C9F6C /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
 		26DBC1201BE82F2F00273D56 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		26E0C3871C1676890085589A /* SearchTrailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchTrailViewController.h; sourceTree = "<group>"; };
+		26E0C3881C1676890085589A /* SearchTrailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTrailViewController.m; sourceTree = "<group>"; };
 		26F7A3921BE453E5007D98D6 /* GetAllObjectsFromParseHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetAllObjectsFromParseHelper.h; sourceTree = "<group>"; };
 		26F7A3931BE453E5007D98D6 /* GetAllObjectsFromParseHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetAllObjectsFromParseHelper.m; sourceTree = "<group>"; };
 		26F8D40B1BE5A227007770F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -268,6 +271,8 @@
 				262D3A731C07956600284767 /* SignInViewController.m */,
 				262D3A751C07957700284767 /* UnitsOfMeasureViewController.h */,
 				262D3A761C07957700284767 /* UnitsOfMeasureViewController.m */,
+				26E0C3871C1676890085589A /* SearchTrailViewController.h */,
+				26E0C3881C1676890085589A /* SearchTrailViewController.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -550,6 +555,7 @@
 				26A4C1311BCB434D00524635 /* StateListHelper.m in Sources */,
 				26A4C1221BCB41EF00524635 /* AlertControllerHelper.m in Sources */,
 				26A4C1341BCB438D00524635 /* NotificationReciever.m in Sources */,
+				26E0C3891C1676890085589A /* SearchTrailViewController.m in Sources */,
 				26F8D4381BE6C009007770F4 /* TrailSubscriptionsViewController.m in Sources */,
 				26F8D42C1BE6BFCB007770F4 /* FindTrailViewController.m in Sources */,
 				26F8D4231BE65E4A007770F4 /* UIViewController+MMDrawerController.m in Sources */,

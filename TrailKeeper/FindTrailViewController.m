@@ -293,46 +293,8 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
     KCFloatingActionButton *fab = [[KCFloatingActionButton alloc] init];
     fab.buttonColor = [UIColor grayColor];
     __weak KCFloatingActionButton *_fab = fab;
-    [fab addItem:@"FInd Trail" icon:[UIImage imageNamed:@"search.png"] handler:^(KCFloatingActionButtonItem *item) {
-        
-        UIAlertController *alert = [UIAlertController
-                                    alertControllerWithTitle:@"Enter Trail Name"
-                                    message:nil
-                                    preferredStyle:UIAlertControllerStyleAlert];
-        
-        [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
-            textField.placeholder = @"Trail";
-            textField.keyboardAppearance = UIKeyboardAppearanceDefault;
-            textField.keyboardType = UIKeyboardTypeDefault;
-            textField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
-            
-//            [textField addTarget:self
-//                          action:@selector(alertTextFieldAutoComplete:)
-//                forControlEvents:UIControlEventEditingChanged];
-        }];
-        
-        UIAlertAction *cancelAction = [UIAlertAction
-                                       actionWithTitle:@"Cancel"
-                                       style:UIAlertActionStyleCancel
-                                       handler:^(UIAlertAction *action)
-                                       {
-                                           NSLog(@"Cancel Action");
-                                       }];
-        
-        UIAlertAction *okAction = [UIAlertAction
-                                   actionWithTitle:@"OK"
-                                   style:UIAlertActionStyleDefault
-                                   handler:^(UIAlertAction *action)
-                                   {
-                                       NSLog(@"Leave Comment OK Action");
-                                       UITextField *trail = alert.textFields.firstObject;
-                                       [self goToSearchedTrail:trail.text];
-                                   }];
-        
-        [alert addAction:cancelAction];
-        [alert addAction:okAction];
-        
-        [self presentViewController:alert animated:YES completion:nil];
+    [fab addItem:@"Search" icon:[UIImage imageNamed:@"search.png"] handler:^(KCFloatingActionButtonItem *item) {
+        [self performSegueWithIdentifier:@"segueFindTrailToSearchTrail" sender:self];
         [_fab close];
     }];
     [self.view addSubview:fab];
