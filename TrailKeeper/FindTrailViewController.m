@@ -15,11 +15,15 @@
 #import "States.h"
 #import "Trails.h"
 #import "AppDelegate.h"
-#import "KCFloatingActionButton-Swift.h"
+#import "WYPopoverController.h"
+#import "SearchTrailViewController.h"
 
 static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
 
-@interface FindTrailViewController ()
+@interface FindTrailViewController () <WYPopoverControllerDelegate>
+{
+    WYPopoverController* popoverController;
+}
 
 @property (nonatomic, strong) NSMutableArray *states;
 @property (nonatomic, strong) NSMutableArray *sectionInfoArray;
@@ -34,9 +38,6 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
 @property (nonatomic, strong) AppDelegate *appDelegate;
 
 -(void)loadData;
--(void)ShowSearchFab;
--(void)goToSearchedTrail:(NSString*)trailName;
-//-(void)getTrailName;
 
 @end
 
@@ -46,6 +47,8 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
 #define HEADER_HEIGHT 48
 
 @implementation FindTrailViewController
+
+@synthesize popoverContr;
 
 -(BOOL)canBecomeFirstResponder {
     return YES;
@@ -82,7 +85,6 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
                                      style:UIBarButtonItemStylePlain
                                     target:nil
                                     action:nil];
-    [self ShowSearchFab];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -276,6 +278,26 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
     [self.appDelegate.drawerController toggleDrawerSide:MMDrawerSideLeft animated:true completion:nil];
 }
 
+- (IBAction)btn_searchClick:(id)sender {
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        
+        UIStoryboard *sboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        SearchTrailViewController *search = [sboard instantiateViewControllerWithIdentifier:@"SearchTrailViewController"];
+        popoverController = [[WYPopoverController alloc] initWithContentViewController:search];
+        popoverController.delegate = self;
+        popoverController.popoverContentSize = CGSizeMake(280, 110);
+        [popoverController presentPopoverFromBarButtonItem:(UIBarButtonItem *)sender permittedArrowDirections:WYPopoverArrowDirectionAny animated:YES];
+        
+    } else {
+        
+        UIStoryboard *sboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        SearchTrailViewController *search = [sboard instantiateViewControllerWithIdentifier:@"SearchTrailViewController"];
+        popoverContr = [[UIPopoverController alloc] initWithContentViewController:search];
+        popoverContr.popoverContentSize = CGSizeMake(400, 400);
+        [popoverContr presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    }
+}
+
 #pragma Private Methods
 
 -(void)loadData {
@@ -289,55 +311,4 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
     [self.tblFindTrail reloadData];
 }
 
--(void)ShowSearchFab {
-    KCFloatingActionButton *fab = [[KCFloatingActionButton alloc] init];
-    fab.buttonColor = [UIColor grayColor];
-    __weak KCFloatingActionButton *_fab = fab;
-    [fab addItem:@"Search" icon:[UIImage imageNamed:@"search.png"] handler:^(KCFloatingActionButtonItem *item) {
-        [self performSegueWithIdentifier:@"segueFindTrailToSearchTrail" sender:self];
-        [_fab close];
-    }];
-    [self.view addSubview:fab];
-}
-
--(void)alertTextFieldAutoComplete:(UITextField*)textField {
-    
-    UIAlertController *alertController = (UIAlertController *)self.presentedViewController;
-    if (alertController)
-    {
-        self.searchText = textField;
-//        UITextField *login = alertController.textFields.firstObject;
-//        UIAlertAction *okAction = alertController.actions.lastObject;
-//        okAction.enabled = login.text.length > 2;
-    }
-    
-}
-
--(void)goToSearchedTrail:(NSString*)trailName {
-    
-}
-
-//-(void)getTrailName {
-//    Trails *trails = [[Trails alloc]init];
-//    self.trailName = [trails GetTrailNames];
-//    
-//    self.searchText = [[UITextField alloc] init];
-//    
-//    self.autocompleteTableView = [[UITableView alloc] initWithFrame:
-//                             CGRectMake(0, 80, 320, 120) style:UITableViewStylePlain];
-//    self.autocompleteTableView.delegate = self;
-//    self.autocompleteTableView.dataSource = self;
-//    self.autocompleteTableView.scrollEnabled = YES;
-//    self.autocompleteTableView.hidden = YES;
-//    [self.view addSubview:self.autocompleteTableView];
-//}
-
-//- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-//    self.autocompleteTableView.hidden = NO;
-//    
-//    NSString *substring = [NSString stringWithString:textField.text];
-//    substring = [substring
-//                 stringByReplacingCharactersInRange:range withString:string];
-//    return YES;
-//}
 @end

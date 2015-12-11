@@ -12,9 +12,11 @@
 @interface FindTrailViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, SectionHeaderViewDelegate>
 
 @property (strong, nonatomic) NSString *sentTrailObjectId;
+@property (nonatomic, retain) UIPopoverController *popoverContr;
 
 @property (weak, nonatomic) IBOutlet UITableView *tblFindTrail;
 
 - (IBAction)btn_drawerClick:(id)sender;
+- (IBAction)btn_searchClick:(id)sender;
 
 @end

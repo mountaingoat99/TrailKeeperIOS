@@ -6,8 +6,7 @@ platform :ios, '9.0'
 target 'TrailKeeper' do
 
 pod 'Parse'
-use_frameworks!
-pod "KCFloatingActionButton"
+pod 'WYPopoverController', '~> 0.2.0'
 
 
 end

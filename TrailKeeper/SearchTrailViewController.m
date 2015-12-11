@@ -7,6 +7,7 @@
 //
 
 #import "SearchTrailViewController.h"
+#import "WYPopoverController.h"
 
 @interface SearchTrailViewController ()
 
@@ -36,6 +37,16 @@
                                      style:UIBarButtonItemStylePlain
                                     target:nil
                                     action:nil];
+    
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        // this doesn't seem to work
+        [WYPopoverController setDefaultTheme:[WYPopoverTheme theme]];
+        WYPopoverBackgroundView *appearance = [WYPopoverBackgroundView appearance];
+        appearance.backgroundColor = [UIColor colorWithRed:.16 green:.45 blue:.81 alpha:1];
+        
+    } else {
+        self.popoverPresentationController.backgroundColor = [UIColor colorWithRed:.16 green:.45 blue:.81 alpha:1];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
