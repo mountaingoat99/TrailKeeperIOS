@@ -588,7 +588,7 @@
                                 <action selector="btn_drawerClick:" destination="hur-5N-8BM" id="1cE-Md-4DH"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="search" id="DE6-tl-B90">
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="DE6-tl-B90">
                             <connections>
                                 <action selector="btn_searchClick:" destination="hur-5N-8BM" id="xJa-ZK-eQz"/>
                             </connections>
@@ -622,14 +622,14 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4fk-MO-b2d">
                                 <rect key="frame" x="8" y="10" width="234" height="90"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Trail Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="45s-RI-lbD">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Trail Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="45s-RI-lbD" customClass="HTAutocompleteTextField">
                                         <rect key="frame" x="16" y="16" width="202" height="24"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="2ei-sM-Tf6"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CFy-sa-R0D">
@@ -641,7 +641,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wKV-ja-Sn1">
-                                        <rect key="frame" x="118" y="50" width="100" height="30"/>
+                                        <rect key="frame" x="134" y="50" width="100" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="46" id="CtJ-o0-ewY"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="156" id="FqY-Og-CSu"/>
@@ -649,7 +649,7 @@
                                             <constraint firstAttribute="width" constant="100" id="gvr-ts-14y"/>
                                             <constraint firstAttribute="width" secondItem="wKV-ja-Sn1" secondAttribute="height" multiplier="19:6" id="j3X-B7-hTU"/>
                                         </constraints>
-                                        <state key="normal" title="Search">
+                                        <state key="normal" title="Go">
                                             <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <variation key="default">
@@ -679,11 +679,13 @@
                                     <constraint firstItem="CFy-sa-R0D" firstAttribute="leading" secondItem="45s-RI-lbD" secondAttribute="leading" id="g3F-mi-UVC"/>
                                     <constraint firstItem="45s-RI-lbD" firstAttribute="top" secondItem="4fk-MO-b2d" secondAttribute="top" constant="16" id="hxa-NG-umx"/>
                                     <constraint firstAttribute="bottom" secondItem="wKV-ja-Sn1" secondAttribute="bottom" constant="10" id="vGV-g2-EI6"/>
+                                    <constraint firstAttribute="trailing" secondItem="wKV-ja-Sn1" secondAttribute="trailing" id="vbK-Kn-Biw"/>
                                     <constraint firstAttribute="height" constant="250" id="xrU-dw-jig"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="xrU-dw-jig"/>
+                                        <exclude reference="VP3-4r-Ugz"/>
                                         <exclude reference="Mfs-RM-cp7"/>
                                     </mask>
                                 </variation>
@@ -707,8 +709,9 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="250" height="110"/>
                     <connections>
-                        <outlet property="txtAutoCompleteTrailName" destination="45s-RI-lbD" id="9zo-oH-uwk"/>
+                        <outlet property="txtAutoCompleteTrailName" destination="45s-RI-lbD" id="d7W-XZ-3Yj"/>
                         <outlet property="viewBackground" destination="iUE-bM-kCR" id="bR4-gP-r4m"/>
+                        <segue destination="GMy-jg-7sC" kind="show" identifier="segueSearchTrailToTrailHome" id="Y2K-73-7EP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qqf-U4-d7E" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1846,7 +1849,6 @@
         <image name="hard" width="170" height="170"/>
         <image name="medium" width="170" height="170"/>
         <image name="open" width="170" height="170"/>
-        <image name="search" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Fo8-Zi-W9W"/>

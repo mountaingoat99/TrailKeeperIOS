@@ -215,6 +215,14 @@
     return allTrails;
 }
 
+-(NSString*)GetIdByTrailName:(NSString*)trailName {
+    PFQuery *query = [PFQuery queryWithClassName:@"Trails"];
+    [query fromLocalDatastore];
+    [query whereKey:@"trailName" equalTo:trailName];
+    PFObject * _Nullable trailObject = [query getFirstObject];
+    return trailObject.objectId;
+}
+
 -(NSArray*)GetTrailNames {
     NSMutableArray *trailNames= [[NSMutableArray alloc] init];
     PFQuery *query = [PFQuery queryWithClassName:@"Trails"];
@@ -226,7 +234,7 @@
         Trails *trail = [[Trails alloc] init];
         trail.trailName = [object objectForKey:@"trailName"];
         
-        [trailNames addObject:trail];
+        [trailNames addObject:trail.trailName];
     }
     return trailNames;
 }

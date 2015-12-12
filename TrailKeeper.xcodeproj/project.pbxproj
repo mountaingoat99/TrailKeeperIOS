@@ -12,6 +12,8 @@
 		2615C11E1BCAE7660065B62C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2615C11D1BCAE7660065B62C /* AppDelegate.m */; };
 		2615C1261BCAE7660065B62C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2615C1251BCAE7660065B62C /* Assets.xcassets */; };
 		2615C1291BCAE7660065B62C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2615C1271BCAE7660065B62C /* LaunchScreen.storyboard */; };
+		262C4D0C1C1BA2600046AD71 /* HTAutocompleteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 262C4D081C1BA2600046AD71 /* HTAutocompleteManager.m */; };
+		262C4D0D1C1BA2600046AD71 /* HTAutocompleteTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 262C4D0B1C1BA2600046AD71 /* HTAutocompleteTextField.m */; };
 		262CFA8D1BE303E000378C5C /* offline_trails.db in Resources */ = {isa = PBXBuildFile; fileRef = 262CFA8C1BE303E000378C5C /* offline_trails.db */; };
 		262D3A6E1C07935500284767 /* CreateAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 262D3A6D1C07935500284767 /* CreateAccountViewController.m */; };
 		262D3A711C07955600284767 /* UpdateAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 262D3A701C07955600284767 /* UpdateAccountViewController.m */; };
@@ -72,6 +74,10 @@
 		2615C1251BCAE7660065B62C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2615C1281BCAE7660065B62C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2615C12A1BCAE7660065B62C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		262C4D081C1BA2600046AD71 /* HTAutocompleteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTAutocompleteManager.m; sourceTree = "<group>"; };
+		262C4D091C1BA2600046AD71 /* HTAutocompleteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTAutocompleteManager.h; sourceTree = "<group>"; };
+		262C4D0A1C1BA2600046AD71 /* HTAutocompleteTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTAutocompleteTextField.h; sourceTree = "<group>"; };
+		262C4D0B1C1BA2600046AD71 /* HTAutocompleteTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTAutocompleteTextField.m; sourceTree = "<group>"; };
 		262CFA8C1BE303E000378C5C /* offline_trails.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = offline_trails.db; path = ../../offline_trails.db; sourceTree = "<group>"; };
 		262D3A6C1C07935500284767 /* CreateAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateAccountViewController.h; sourceTree = "<group>"; };
 		262D3A6D1C07935500284767 /* CreateAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateAccountViewController.m; sourceTree = "<group>"; };
@@ -320,6 +326,10 @@
 		2615C1351BCAEC540065B62C /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				262C4D081C1BA2600046AD71 /* HTAutocompleteManager.m */,
+				262C4D091C1BA2600046AD71 /* HTAutocompleteManager.h */,
+				262C4D0A1C1BA2600046AD71 /* HTAutocompleteTextField.h */,
+				262C4D0B1C1BA2600046AD71 /* HTAutocompleteTextField.m */,
 				26A4C1321BCB438D00524635 /* NotificationReciever.h */,
 				26A4C1331BCB438D00524635 /* NotificationReciever.m */,
 			);
@@ -543,9 +553,11 @@
 				26F7A3941BE453E5007D98D6 /* GetAllObjectsFromParseHelper.m in Sources */,
 				262D3A771C07957700284767 /* UnitsOfMeasureViewController.m in Sources */,
 				26A4C12B1BCB433200524635 /* PushNotificationHelper.m in Sources */,
+				262C4D0C1C1BA2600046AD71 /* HTAutocompleteManager.m in Sources */,
 				26AAB1CA1BCDDE8B0084B67D /* User.m in Sources */,
 				26A4C1251BCB430A00524635 /* ConnectionDetector.m in Sources */,
 				26744DB01BF41D9300309733 /* TrailHomeViewController.m in Sources */,
+				262C4D0D1C1BA2600046AD71 /* HTAutocompleteTextField.m in Sources */,
 				2615C11E1BCAE7660065B62C /* AppDelegate.m in Sources */,
 				26A5E98A1C13A64400C7FE07 /* States.m in Sources */,
 				26F8D4261BE6913F007770F4 /* SettingsHelper.m in Sources */,

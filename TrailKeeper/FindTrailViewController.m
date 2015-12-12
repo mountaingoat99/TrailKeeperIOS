@@ -27,7 +27,6 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
 
 @property (nonatomic, strong) NSMutableArray *states;
 @property (nonatomic, strong) NSMutableArray *sectionInfoArray;
-//@property (nonatomic, strong) NSArray *trailName;
 @property (nonatomic) NSInteger openSectionIndex;
 @property (nonatomic) NSInteger uniformRowHeight;
 @property (nonatomic, strong) PFGeoPoint *userLocation;
@@ -73,7 +72,6 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
     [self.tblFindTrail registerNib:sectionHeaderNib forHeaderFooterViewReuseIdentifier:SectionHeaderViewIdentifier];
     
     [self loadData];
-    //[self getTrailName];
     
     // add some view properties
     [self.tblFindTrail setSeparatorColor:[UIColor clearColor]];
@@ -286,6 +284,7 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
         popoverController = [[WYPopoverController alloc] initWithContentViewController:search];
         popoverController.delegate = self;
         popoverController.popoverContentSize = CGSizeMake(280, 110);
+        search.controller = popoverController;
         [popoverController presentPopoverFromBarButtonItem:(UIBarButtonItem *)sender permittedArrowDirections:WYPopoverArrowDirectionAny animated:YES];
         
     } else {

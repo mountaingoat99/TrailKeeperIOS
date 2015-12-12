@@ -33,6 +33,7 @@
 -(NSArray*)GetClosestTrailsForHomeScreen;
 -(Trails*)GetTrailObject:(NSString*)trailObjectId;
 -(NSMutableArray *)GetAllTrailInfo;
+-(NSString*)GetIdByTrailName:(NSString*)trailName;
 -(NSArray*)GetTrailNames;
 -(NSMutableOrderedSet*)GetTrailStates;
 -(NSMutableArray*)getTrailsByState:(NSString*)state;
