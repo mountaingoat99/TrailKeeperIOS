@@ -10,7 +10,15 @@
 #import "HTAutocompleteTextField.h"
 #import "WYPopoverController.h"
 
+@protocol FindTrailDelegate
+
+-(void)GoToTrailHome:(NSString*)sentTrailObjectId;
+
+@end
+
 @interface SearchTrailViewController : UIViewController <UITextFieldDelegate>
+
+@property (nonatomic, strong) id<FindTrailDelegate> delegate;
 
 @property (nonatomic, assign) WYPopoverController *controller;
 @property (weak, nonatomic) IBOutlet UIImageView *viewBackground;

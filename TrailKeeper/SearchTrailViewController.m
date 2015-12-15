@@ -20,7 +20,6 @@
 @property (nonatomic, strong) NSString *sentTrailObjectId;
 
 -(void)goToTrail;
-//-(void)loadData;
 
 @end
 
@@ -82,10 +81,7 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"segueSearchTrailToTrailHome"]) {
-        TrailHomeViewController *home = [segue destinationViewController];
-        home.sentTrailObjectId = self.sentTrailObjectId;
-    }
+    
 }
 
 - (IBAction)btn_SearchClick:(id)sender {
@@ -95,7 +91,10 @@
 #pragma private methods
 
 -(void)goToTrail {
-    if (self.txtAutoCompleteTrailName.text.length > 0) {
+    
+    id<FindTrailDelegate> strongDelegate = self.delegate;
+    
+
         Trails *trails = [[Trails alloc] init];
         self.sentTrailObjectId = [trails GetIdByTrailName:self.txtAutoCompleteTrailName.text];
         if (self.sentTrailObjectId != nil) {
@@ -105,30 +104,27 @@
                 [self dismissViewControllerAnimated:YES completion:nil];
             }
             
-            UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-            TrailHomeViewController *mainView = [mainStoryBoard instantiateViewControllerWithIdentifier:@"TrailHomeViewController"];
-            mainView.sentTrailObjectId = self.sentTrailObjectId;
-            UINavigationController *centerNav = [[UINavigationController alloc] initWithRootViewController:mainView];
-            appDelegate.drawerController.centerViewController = centerNav;
-            [appDelegate.drawerController toggleDrawerSide:MMDrawerSideLeft animated:NO completion:nil];
+            [strongDelegate GoToTrailHome:self.sentTrailObjectId];
+            
+//            UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//            AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+//            TrailHomeViewController *mainView = [mainStoryBoard instantiateViewControllerWithIdentifier:@"TrailHomeViewController"];
+//            mainView.sentTrailObjectId = self.sentTrailObjectId;
+//            UINavigationController *centerNav = [[UINavigationController alloc] initWithRootViewController:mainView];
+//            appDelegate.drawerController.centerViewController = centerNav;
+//            [appDelegate.drawerController toggleDrawerSide:MMDrawerSideLeft animated:NO completion:nil];
             //[self performSegueWithIdentifier:@"segueSearchTrailToTrailHome" sender:self];
-        } else {
-            [AlertControllerHelper ShowAlert:@"No Results" message:@"We cannot find that trail! Go ahead and add it yourself so other users know about it" view:self];
-        }
+//        } else {
+//            [AlertControllerHelper ShowAlert:@"No Results" message:@"We cannot find that trail! Go ahead and add it yourself so other users know about it" view:self];
+//        }
+//        
+//    } else {
+//        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+//            [self.controller dismissPopoverAnimated:YES];
+//        } else {
+//            [self dismissViewControllerAnimated:YES completion:nil];
         
-    } else {
-        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-            [self.controller dismissPopoverAnimated:YES];
-        } else {
-            [self dismissViewControllerAnimated:YES completion:nil];
-        }
     }
 }
-
-//-(void)loadData {
-//    Trails *trails = [[Trails alloc] init];
-//    self.trailListMain = [trails GetTrailNames];
-//}
 
 @end

@@ -17,6 +17,7 @@
 #import "AppDelegate.h"
 #import "WYPopoverController.h"
 #import "SearchTrailViewController.h"
+#import "AlertControllerHelper.h"
 
 static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
 
@@ -281,6 +282,7 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
         
         UIStoryboard *sboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         SearchTrailViewController *search = [sboard instantiateViewControllerWithIdentifier:@"SearchTrailViewController"];
+        search.delegate = self;
         popoverController = [[WYPopoverController alloc] initWithContentViewController:search];
         popoverController.delegate = self;
         popoverController.popoverContentSize = CGSizeMake(280, 110);
@@ -308,6 +310,18 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
     self.states = [state getStatesWithTrails];
     
     [self.tblFindTrail reloadData];
+}
+
+#pragma delegate methods
+
+-(void)GoToTrailHome:(NSString*)sentTrailObjectId {
+    
+    if (sentTrailObjectId != nil) {
+        self.sentTrailObjectId = sentTrailObjectId;
+        [self performSegueWithIdentifier:@"segueFindTrailToTrailHome" sender:self];
+    } else {
+        [AlertControllerHelper ShowAlert:@"No Results" message:@"We cannot find that trail! Go ahead and add it yourself so other users know about it" view:self];
+    }
 }
 
 @end

@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "FindTrailSectionHeaderView.h"
+#import "SearchTrailViewController.h"
 
-@interface FindTrailViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, SectionHeaderViewDelegate>
+@interface FindTrailViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, SectionHeaderViewDelegate, FindTrailDelegate>
 
 @property (strong, nonatomic) NSString *sentTrailObjectId;
 @property (nonatomic, retain) UIPopoverController *popoverContr;
