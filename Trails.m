@@ -218,7 +218,8 @@
 -(NSString*)GetIdByTrailName:(NSString*)trailName {
     PFQuery *query = [PFQuery queryWithClassName:@"Trails"];
     [query fromLocalDatastore];
-    [query whereKey:@"trailName" equalTo:trailName];
+    [query whereKey:@"trailName" matchesRegex:trailName modifiers:@"i"];
+    //[query whereKey:@"trailName" equalTo:trailName];
     PFObject * _Nullable trailObject = [query getFirstObject];
     return trailObject.objectId;
 }

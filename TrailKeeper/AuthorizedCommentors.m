@@ -80,4 +80,27 @@
     }];
 }
 
+
+-(NSArray*)GetUserNames {
+    NSMutableArray *userNames = [[NSMutableArray alloc] init];
+    PFQuery *query = [PFQuery queryWithClassName:@"AuthorizedCommentors"];
+    [query fromLocalDatastore];
+    NSArray * _Nullable objects = [query findObjects];
+    NSLog(@"Successfully Retrieved UserNames");
+    for (PFObject *object in objects) {
+        
+        [userNames addObject:[object objectForKey:@"userName"]];
+    }
+    return userNames;
+}
+
+-(NSString*)GetUserObjectIdByName:(NSString*)userName {
+    PFQuery *query = [PFQuery queryWithClassName:@"AuthorizedCommentors"];
+    [query fromLocalDatastore];
+    [query whereKey:@"userName" matchesRegex:userName modifiers:@"i"];
+    //[query whereKey:@"userName" equalTo:userName];
+    PFObject * _Nullable userObject = [query getFirstObject];
+    return [userObject objectForKey:@"userObjectId"];
+}
+
 @end

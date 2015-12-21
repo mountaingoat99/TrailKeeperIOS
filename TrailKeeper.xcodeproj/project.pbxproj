@@ -12,6 +12,7 @@
 		2615C11E1BCAE7660065B62C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2615C11D1BCAE7660065B62C /* AppDelegate.m */; };
 		2615C1261BCAE7660065B62C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2615C1251BCAE7660065B62C /* Assets.xcassets */; };
 		2615C1291BCAE7660065B62C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2615C1271BCAE7660065B62C /* LaunchScreen.storyboard */; };
+		261D7B941C24EECB00B53018 /* CustomCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 261D7B931C24EECB00B53018 /* CustomCommentCell.m */; };
 		262C4D0C1C1BA2600046AD71 /* HTAutocompleteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 262C4D081C1BA2600046AD71 /* HTAutocompleteManager.m */; };
 		262C4D0D1C1BA2600046AD71 /* HTAutocompleteTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 262C4D0B1C1BA2600046AD71 /* HTAutocompleteTextField.m */; };
 		262CFA8D1BE303E000378C5C /* offline_trails.db in Resources */ = {isa = PBXBuildFile; fileRef = 262CFA8C1BE303E000378C5C /* offline_trails.db */; };
@@ -74,6 +75,8 @@
 		2615C1251BCAE7660065B62C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2615C1281BCAE7660065B62C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2615C12A1BCAE7660065B62C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		261D7B921C24EECB00B53018 /* CustomCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCommentCell.h; sourceTree = "<group>"; };
+		261D7B931C24EECB00B53018 /* CustomCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCommentCell.m; sourceTree = "<group>"; };
 		262C4D081C1BA2600046AD71 /* HTAutocompleteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTAutocompleteManager.m; sourceTree = "<group>"; };
 		262C4D091C1BA2600046AD71 /* HTAutocompleteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTAutocompleteManager.h; sourceTree = "<group>"; };
 		262C4D0A1C1BA2600046AD71 /* HTAutocompleteTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTAutocompleteTextField.h; sourceTree = "<group>"; };
@@ -370,6 +373,8 @@
 				26A5E9811C133A3A00C7FE07 /* FindTrailSectionHeaderView.m */,
 				26A5E9851C13A39F00C7FE07 /* FindTrailSectionInfo.h */,
 				26A5E9861C13A39F00C7FE07 /* FindTrailSectionInfo.m */,
+				261D7B921C24EECB00B53018 /* CustomCommentCell.h */,
+				261D7B931C24EECB00B53018 /* CustomCommentCell.m */,
 			);
 			name = CustomViews;
 			sourceTree = "<group>";
@@ -535,6 +540,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				262D3A741C07956600284767 /* SignInViewController.m in Sources */,
+				261D7B941C24EECB00B53018 /* CustomCommentCell.m in Sources */,
 				26A4C1101BCB3D7800524635 /* DBManager.m in Sources */,
 				26AAB1CD1BCDDEB60084B67D /* AuthorizedCommentors.m in Sources */,
 				26D6E5CD1BEEBCEB007C9F6C /* CustomCell.m in Sources */,

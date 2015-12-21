@@ -50,10 +50,6 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
 
 @synthesize popoverContr;
 
--(BOOL)canBecomeFirstResponder {
-    return YES;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -119,6 +115,9 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
     // Dispose of any resources that can be recreated.
 }
 
+-(BOOL)canBecomeFirstResponder {
+    return YES;
+}
 
 #pragma mark - Navigation
 

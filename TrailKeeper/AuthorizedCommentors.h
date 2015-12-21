@@ -19,5 +19,7 @@
 -(void)AddAuthorizedCommentor:(AuthorizedCommentors*)commentor;
 -(void)UpdateAuthorizedCommentorsUserName:(NSString*)objectId Username:(NSString*)username;
 -(void)DeleteAuthorizedCommentor:(NSString*)userName;
+-(NSArray*)GetUserNames;
+-(NSString*)GetUserObjectIdByName:(NSString*)userName;
 
 @end

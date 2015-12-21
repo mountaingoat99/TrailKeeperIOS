@@ -18,9 +18,9 @@
 
 + (NSString *)parseClassName;
 
--(NSMutableArray*)GetCommentsByUser:(NSString*)userObjectId;
+-(NSArray*)GetCommentsByUser:(NSString*)userObjectId;
 -(NSArray*)GetCommentsByTrail:(NSString*)trailObjectId;
--(NSMutableArray*)GetAllComments;
+-(NSArray*)GetAllComments;
 -(void)CreateNewComment:(Comments*)comment;
 -(void)SaveNewComment:(Comments*)newComment;
 -(Comments*)GetOfflineComments;

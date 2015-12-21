@@ -10,7 +10,8 @@
 #import "HTAutocompleteTextField.h"
 
 typedef enum {
-    HTAutoCompleteTrailNames
+    HTAutoCompleteTrailNames,
+    HTAutoCompleteUserNames
 //    HTAutocompleteTypeEmail, // Default
 //    HTAutocompleteTypeColor,
 //    HTAutoCompleteTypeNumbers,

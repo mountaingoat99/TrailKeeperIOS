@@ -8,7 +8,7 @@
 
 #import "HTAutocompleteManager.h"
 #import "Trails.h"
-
+#import "AuthorizedCommentors.h"
 static HTAutocompleteManager *sharedManager;
 
 @implementation HTAutocompleteManager
@@ -24,8 +24,7 @@ static HTAutocompleteManager *sharedManager;
 
 - (NSString *)textField:(HTAutocompleteTextField *)textField
     completionForPrefix:(NSString *)prefix
-             ignoreCase:(BOOL)ignoreCase
-{
+             ignoreCase:(BOOL)ignoreCase {
     
     if (textField.autocompleteType == HTAutoCompleteTrailNames) {
         
@@ -50,6 +49,40 @@ static HTAutocompleteManager *sharedManager;
         for (int i = 0; i < trailName.count; i++) {
             NSString *stringFromReference = [trailName objectAtIndex:i];
         
+            NSString *stringToCompare;
+            if (ignoreCase) {
+                stringToCompare = [stringFromReference lowercaseString];
+            } else {
+                stringToCompare = stringFromReference;
+            }
+            
+            if ([stringToCompare hasPrefix:stringToLookFor]) {
+                return [stringFromReference stringByReplacingCharactersInRange:[stringToCompare rangeOfString:stringToLookFor] withString:@""];
+            }
+        }
+    } else if (textField.autocompleteType == HTAutoCompleteUserNames) {
+        
+        static dispatch_once_t numberOnceToken;
+        static NSArray *userName;
+        
+         AuthorizedCommentors *users = [[AuthorizedCommentors alloc] init];
+        
+        dispatch_once(&numberOnceToken, ^ {
+            userName = [users GetUserNames];
+        });
+        
+        NSString *stringToLookFor;
+        NSArray *componentsString = [prefix componentsSeparatedByString:@","];
+        NSString *prefixLastComponent = [componentsString.lastObject stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        if (ignoreCase) {
+            stringToLookFor = [prefixLastComponent lowercaseString];
+        } else {
+            stringToLookFor = prefixLastComponent;
+        }
+        
+        for (int i = 0; i < userName.count; i++) {
+            NSString *stringFromReference = [userName objectAtIndex:i];
+            
             NSString *stringToCompare;
             if (ignoreCase) {
                 stringToCompare = [stringFromReference lowercaseString];

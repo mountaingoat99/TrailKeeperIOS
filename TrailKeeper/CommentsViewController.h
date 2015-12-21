@@ -7,12 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HTAutocompleteTextField.h"
 
-@interface CommentsViewController : UIViewController
+@interface CommentsViewController : UIViewController <UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource>
+
+@property (unsafe_unretained, nonatomic) IBOutlet HTAutocompleteTextField *txtAutoComplete;
 
 @property (strong, nonatomic) NSString *sentTrailObjectId;
+@property (weak, nonatomic) IBOutlet UITableView *tblFindComment;
+
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *btnDrawer;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentSearch;
 
 - (IBAction)btn_drawerClick:(id)sender;
+- (IBAction)Filter_IndexChanged:(id)sender;
 
 @end
