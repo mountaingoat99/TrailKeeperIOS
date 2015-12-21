@@ -1738,20 +1738,16 @@
                         <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Map" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QxC-UG-Iqx">
-                                <rect key="frame" x="166" y="301" width="42" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="42" id="7Wq-p8-dgN"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E7b-Ec-slb">
+                                <rect key="frame" x="-4" y="0.0" width="383" height="623"/>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="QxC-UG-Iqx" firstAttribute="centerY" secondItem="1dt-dm-7Yz" secondAttribute="centerY" id="pbp-dv-7Ja"/>
-                            <constraint firstItem="QxC-UG-Iqx" firstAttribute="centerX" secondItem="1dt-dm-7Yz" secondAttribute="centerX" id="pis-ZO-QMt"/>
+                            <constraint firstItem="6ll-W7-8wT" firstAttribute="top" secondItem="E7b-Ec-slb" secondAttribute="bottom" id="0dv-9g-j6o"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="E7b-Ec-slb" secondAttribute="trailing" constant="-20" id="ebb-S7-M9W"/>
+                            <constraint firstItem="E7b-Ec-slb" firstAttribute="top" secondItem="E2n-nV-irM" secondAttribute="bottom" id="lfi-Dc-Ub8"/>
+                            <constraint firstItem="E7b-Ec-slb" firstAttribute="leading" secondItem="1dt-dm-7Yz" secondAttribute="leadingMargin" constant="-20" id="orj-Uf-Lpy"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Map" id="6JE-dO-JT4">
@@ -1762,6 +1758,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="mapView" destination="E7b-Ec-slb" id="5RT-RV-mZT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gyu-Y9-8Eb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

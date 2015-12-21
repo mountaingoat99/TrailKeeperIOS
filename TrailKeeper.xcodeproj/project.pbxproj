@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		260EC2641BDB13F600BB01DF /* Converters.m in Sources */ = {isa = PBXBuildFile; fileRef = 260EC2631BDB13F600BB01DF /* Converters.m */; };
+		261114441C2799A200E38EE0 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261114431C2799A200E38EE0 /* MapKit.framework */; };
+		261114471C279F0800E38EE0 /* TrailMapLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = 261114461C279F0800E38EE0 /* TrailMapLocations.m */; };
 		2615C11B1BCAE7660065B62C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2615C11A1BCAE7660065B62C /* main.m */; };
 		2615C11E1BCAE7660065B62C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2615C11D1BCAE7660065B62C /* AppDelegate.m */; };
 		2615C1261BCAE7660065B62C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2615C1251BCAE7660065B62C /* Assets.xcassets */; };
@@ -68,6 +70,9 @@
 /* Begin PBXFileReference section */
 		260EC2621BDB13F600BB01DF /* Converters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Converters.h; sourceTree = "<group>"; };
 		260EC2631BDB13F600BB01DF /* Converters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Converters.m; sourceTree = "<group>"; };
+		261114431C2799A200E38EE0 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		261114451C279F0800E38EE0 /* TrailMapLocations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrailMapLocations.h; sourceTree = "<group>"; };
+		261114461C279F0800E38EE0 /* TrailMapLocations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrailMapLocations.m; sourceTree = "<group>"; };
 		2615C1161BCAE7660065B62C /* TrailKeeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrailKeeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2615C11A1BCAE7660065B62C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2615C11C1BCAE7660065B62C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -180,6 +185,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				261114441C2799A200E38EE0 /* MapKit.framework in Frameworks */,
 				26DBC1211BE82F2F00273D56 /* CoreLocation.framework in Frameworks */,
 				26B65D001BD5CB74008616EC /* SystemConfiguration.framework in Frameworks */,
 				26751E991BCB24BA002C3498 /* libsqlite3.tbd in Frameworks */,
@@ -356,6 +362,8 @@
 				26AAB1D81BCDE0E70084B67D /* Installation.m */,
 				26A5E9881C13A64400C7FE07 /* States.h */,
 				26A5E9891C13A64400C7FE07 /* States.m */,
+				261114451C279F0800E38EE0 /* TrailMapLocations.h */,
+				261114461C279F0800E38EE0 /* TrailMapLocations.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -398,6 +406,7 @@
 		8E2C8ACE4F64BE6172923985 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				261114431C2799A200E38EE0 /* MapKit.framework */,
 				26DBC1201BE82F2F00273D56 /* CoreLocation.framework */,
 				26B65CFF1BD5CB74008616EC /* SystemConfiguration.framework */,
 				26751E981BCB24BA002C3498 /* libsqlite3.tbd */,
@@ -543,6 +552,7 @@
 				261D7B941C24EECB00B53018 /* CustomCommentCell.m in Sources */,
 				26A4C1101BCB3D7800524635 /* DBManager.m in Sources */,
 				26AAB1CD1BCDDEB60084B67D /* AuthorizedCommentors.m in Sources */,
+				261114471C279F0800E38EE0 /* TrailMapLocations.m in Sources */,
 				26D6E5CD1BEEBCEB007C9F6C /* CustomCell.m in Sources */,
 				26F8D4351BE6BFEF007770F4 /* AddTrailViewController.m in Sources */,
 				26A5E9871C13A39F00C7FE07 /* FindTrailSectionInfo.m in Sources */,
