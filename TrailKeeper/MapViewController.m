@@ -84,7 +84,6 @@
 }
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
-    NSLog(@"View: %@", view);
     [self openDialog:view.annotation.title];
 }
 
@@ -145,7 +144,6 @@
 }
 
 -(void)openDialog:(NSString*)trailName {
-    NSLog(@"Annotation Trail Name %@", trailName);
     
     UIAlertController *alert = [UIAlertController
                                 alertControllerWithTitle:trailName

@@ -599,6 +599,7 @@
                         <outlet property="tblFindTrail" destination="4Iu-ty-ICO" id="7b7-DG-NwC"/>
                         <segue destination="GMy-jg-7sC" kind="show" identifier="segueFindTrailToTrailHome" id="lME-Da-pbt"/>
                         <segue destination="GMy-jg-7sC" kind="show" identifier="segueFindTrailToTrailHome" id="9bj-BX-mYe"/>
+                        <segue destination="sKl-ua-KVP" kind="show" identifier="segueFindTrailToMap" id="stQ-Rm-DOn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XYY-kj-7Ti" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1971,11 +1972,11 @@
         <image name="open" width="170" height="170"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="nBy-B7-tTJ"/>
-        <segue reference="hIZ-pe-2Wh"/>
-        <segue reference="VXT-hM-XIA"/>
         <segue reference="zjZ-ZA-Yv8"/>
-        <segue reference="7cm-3b-rHB"/>
+        <segue reference="lME-Da-pbt"/>
+        <segue reference="nBy-B7-tTJ"/>
+        <segue reference="stQ-Rm-DOn"/>
         <segue reference="5dN-Ou-gbx"/>
+        <segue reference="7cm-3b-rHB"/>
     </inferredMetricsTieBreakers>
 </document>

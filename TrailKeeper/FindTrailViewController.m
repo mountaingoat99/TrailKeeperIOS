@@ -18,6 +18,7 @@
 #import "WYPopoverController.h"
 #import "SearchTrailViewController.h"
 #import "AlertControllerHelper.h"
+#import "MapViewController.h"
 
 static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
 
@@ -38,6 +39,9 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
 @property (nonatomic, strong) AppDelegate *appDelegate;
 
 -(void)loadData;
+-(void)openDialog:(NSString*)trailName;
+-(void)openAppleMaps;
+-(void)openTrailHome;
 
 @end
 
@@ -127,6 +131,10 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
         TrailHomeViewController *home = [segue destinationViewController];
         home.sentTrailObjectId = self.sentTrailObjectId;
     }
+    if ([segue.identifier isEqualToString:@"segueFindTrailToMap"]) {
+        MapViewController *home = [segue destinationViewController];
+        home.sentTrailObjectId = self.sentTrailObjectId;
+    }
 }
 
 #pragma mark - UITableViewDataSource
@@ -189,9 +197,8 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
     Trails *trail = (sectionInfo.state.trails)[indexPath.row];
     self.sentTrailObjectId = trail.trailObjectId;
 
-    [self performSegueWithIdentifier:@"segueFindTrailToTrailHome" sender:self];
-    
-   [self.tblFindTrail deselectRowAtIndexPath:indexPath animated:YES];
+    [self openDialog:trail.trailName];
+    [self.tblFindTrail deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 #pragma mark - SectionHeaderViewDelegate
@@ -309,6 +316,54 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
     self.states = [state getStatesWithTrails];
     
     [self.tblFindTrail reloadData];
+}
+
+-(void)openDialog:(NSString*)trailName {
+    
+    UIAlertController *alert = [UIAlertController
+                                alertControllerWithTitle:trailName
+                                message:nil
+                                preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *cancelAction = [UIAlertAction
+                                   actionWithTitle:@"Cancel"
+                                   style:UIAlertActionStyleCancel
+                                   handler:^(UIAlertAction *action)
+                                   {
+                                       NSLog(@"Cancel Action");
+                                   }];
+    
+    UIAlertAction *trailScreenAction = [UIAlertAction
+                                        actionWithTitle:@"Trail Home"
+                                        style:UIAlertActionStyleDefault
+                                        handler:^(UIAlertAction *action)
+                                        {
+                                            NSLog(@"Trail Home Action");
+                                            [self openTrailHome];
+                                        }];
+    
+    UIAlertAction *mapAction = [UIAlertAction
+                                actionWithTitle:@"Map"
+                                style:UIAlertActionStyleDefault
+                                handler:^(UIAlertAction *action)
+                                {
+                                    NSLog(@"Subscribe No Action");
+                                    [self openAppleMaps];
+                                }];
+    
+    [alert addAction:cancelAction];
+    [alert addAction:trailScreenAction];
+    [alert addAction:mapAction];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+-(void)openAppleMaps {
+    [self performSegueWithIdentifier:@"segueFindTrailToMap" sender:self];
+}
+
+-(void)openTrailHome {
+    [self performSegueWithIdentifier:@"segueFindTrailToTrailHome" sender:self];
 }
 
 #pragma delegate methods
