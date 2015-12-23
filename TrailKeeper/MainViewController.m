@@ -117,7 +117,7 @@
     }
     if ([segue.identifier isEqualToString:@"segueHomeToMap"]) {
         MapViewController *map = [segue destinationViewController];
-        //TODO send the sentTrailObjectID
+        map.sentTrailObjectId = self.sentTrailObjectId;
     }
 }
 

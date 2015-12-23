@@ -23,6 +23,7 @@
 @property (nonatomic) BOOL skillEasy;
 @property (nonatomic) BOOL skillMedium;
 @property (nonatomic) BOOL skillHard;
+@property (nonatomic) double distanceFromUser;
 
 + (NSString *)parseClassName;
 
@@ -31,6 +32,7 @@
 +(NSString *)ConvertTrailStatusForPush:(NSNumber*)status trailname:(NSString*)trailName;
 
 -(NSArray*)GetClosestTrailsForHomeScreen;
+-(NSMutableArray*)GetAllTrailLocationsByDistance;
 -(Trails*)GetTrailObject:(NSString*)trailObjectId;
 -(NSMutableArray *)GetAllTrailInfo;
 -(NSString*)GetIdByTrailName:(NSString*)trailName;

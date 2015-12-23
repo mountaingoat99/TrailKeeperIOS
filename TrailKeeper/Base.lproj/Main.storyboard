@@ -783,13 +783,13 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Petrified Springs Park" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c0I-lK-EMv">
                                                     <rect key="frame" x="16" y="8" width="351" height="23"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Comment" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kMq-IA-rsS">
                                                     <rect key="frame" x="24" y="35" width="343" height="25"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nwv-Nj-QPx">
@@ -1760,6 +1760,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="mapView" destination="E7b-Ec-slb" id="5RT-RV-mZT"/>
+                        <segue destination="GMy-jg-7sC" kind="show" identifier="segueMapToTrailHome" id="hIZ-pe-2Wh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gyu-Y9-8Eb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1970,10 +1971,10 @@
         <image name="open" width="170" height="170"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="OlQ-5H-NIw"/>
-        <segue reference="zjZ-ZA-Yv8"/>
-        <segue reference="VXT-hM-XIA"/>
         <segue reference="nBy-B7-tTJ"/>
+        <segue reference="hIZ-pe-2Wh"/>
+        <segue reference="VXT-hM-XIA"/>
+        <segue reference="zjZ-ZA-Yv8"/>
         <segue reference="7cm-3b-rHB"/>
         <segue reference="5dN-Ou-gbx"/>
     </inferredMetricsTieBreakers>

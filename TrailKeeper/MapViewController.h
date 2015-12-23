@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 
-@interface MapViewController : UIViewController
+@interface MapViewController : UIViewController <MKMapViewDelegate>
+
+@property (strong, nonatomic) NSString *sentTrailObjectId;
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 

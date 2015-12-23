@@ -43,6 +43,7 @@
 @dynamic skillEasy;
 @dynamic skillMedium;
 @dynamic skillHard;
+@dynamic distanceFromUser;
 
 #pragma init
 
@@ -61,6 +62,7 @@
         self.skillEasy = [aDecoder decodeBoolForKey:@"skillEasy"];
         self.skillMedium = [aDecoder decodeBoolForKey:@"skillMedium"];
         self.skillHard = [aDecoder decodeBoolForKey:@"skillHard"];
+        self.distanceFromUser = [aDecoder decodeDoubleForKey:@"distanceFromUser"];
     }
     return self;
 }
@@ -79,6 +81,7 @@
     [aCoder encodeBool:self.skillEasy forKey:@"skillEasy"];
     [aCoder encodeBool:self.skillMedium forKey:@"skillMedium"];
     [aCoder encodeBool:self.skillHard forKey:@"skillHard"];
+    [aCoder encodeDouble:self.distanceFromUser forKey:@"distanceFromUser"];
 }
 
 +(void)load {
@@ -161,6 +164,43 @@
     query.limit = 5;
     NSArray * _Nullable objects = [query findObjects];
     return objects;
+}
+
+-(NSMutableArray*)GetAllTrailLocationsByDistance; {
+    NSMutableArray *trailLocations = [[NSMutableArray alloc] init];
+    // User's location
+    PFGeoPoint *userGeoPoint = [GeoLocationHelper GetUsersCurrentPostion];
+    // Create a query for places
+    PFQuery *query = [PFQuery queryWithClassName:@"Trails"];
+    [query fromLocalDatastore];
+    // Interested in locations near user.
+    [query whereKey:@"geoLocation" nearGeoPoint:userGeoPoint];
+    NSArray * _Nullable objects = [query findObjects];
+    
+    for (PFObject *object in objects) {
+        Trails *trail = [[Trails alloc] init];
+        trail.trailName = [object objectForKey:@"trailName"];
+        trail.status = [object objectForKey:@"status"];
+        trail.mapLink = [object objectForKey:@"mapLink"];
+        trail.city = [object objectForKey:@"city"];
+        trail.state = [object objectForKey:@"state"];
+        trail.country = [object objectForKey:@"country"];
+        trail.length = [object objectForKey:@"length"];
+        trail.geoLocation = [object objectForKey:@"geoLocation"];
+        trail.privateTrail = [Converters getBoolValueFromNSNumber:[object objectForKey:@"privateTrail"]];
+        trail.skillEasy = [Converters getBoolValueFromNSNumber:[object objectForKey:@"skillEasy"]];
+        trail.skillMedium = [Converters getBoolValueFromNSNumber:[object objectForKey:@"skillMedium"]];
+        trail.skillHard = [Converters getBoolValueFromNSNumber:[object objectForKey:@"skillHard"]];
+        trail.distanceFromUser = [GeoLocationHelper GetDistanceFromCurrentLocation:userGeoPoint traillocation:trail.geoLocation];
+        
+        [trailLocations addObject:trail];
+    }
+    
+    // sort the array by distance
+    NSSortDescriptor *valueDescriptor = [[NSSortDescriptor alloc] initWithKey:@"distanceFromUser" ascending:YES];
+    [trailLocations sortUsingDescriptors:[NSArray arrayWithObject:valueDescriptor]];
+    
+    return trailLocations;
 }
 
 -(Trails*)GetTrailObject:(NSString*)trailObjectId {
