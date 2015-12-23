@@ -132,8 +132,10 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
         home.sentTrailObjectId = self.sentTrailObjectId;
     }
     if ([segue.identifier isEqualToString:@"segueFindTrailToMap"]) {
-        MapViewController *home = [segue destinationViewController];
-        home.sentTrailObjectId = self.sentTrailObjectId;
+        MapViewController *map = [segue destinationViewController];
+        map.sentTrailObjectId = self.sentTrailObjectId;
+        map.navigateBack = YES;
+        self.appDelegate.whichController = self;
     }
 }
 

@@ -34,6 +34,12 @@
     [super viewDidLoad];
     self.appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     
+    if (self.navigateBack) {
+        [self.btnNavigation setImage:[UIImage imageNamed:@"back"]];
+    } else {
+        [self.btnNavigation setImage:[UIImage imageNamed:@"drawer_icon"]];
+    }
+    
     self.mapView.delegate = self;
     
     // get users current location and zoom in
@@ -90,7 +96,15 @@
 #pragma Events
 
 - (IBAction)btn_drawerClick:(id)sender {
-    [self.appDelegate.drawerController toggleDrawerSide:MMDrawerSideLeft animated:true completion:nil];
+    if (self.navigateBack) {
+        UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        NSString *name = NSStringFromClass([self.appDelegate.whichController class]);
+        id lastWindow = [mainStoryBoard instantiateViewControllerWithIdentifier:name];
+        UINavigationController *centerNav = [[UINavigationController alloc] initWithRootViewController:lastWindow];
+        self.appDelegate.drawerController.centerViewController = centerNav;
+    } else {
+        [self.appDelegate.drawerController toggleDrawerSide:MMDrawerSideLeft animated:true completion:nil];
+    }
 }
 
 #pragma private methods

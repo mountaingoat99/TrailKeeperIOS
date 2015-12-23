@@ -42,6 +42,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    
     // Initialize the refresh control.
     self.refreshControl = [[UIRefreshControl alloc] init];
     //self.refreshControl.backgroundColor = [UIColor blackColor];
@@ -95,7 +97,7 @@
 -(void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     // set the current ViewController
-    self.appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -118,6 +120,8 @@
     if ([segue.identifier isEqualToString:@"segueHomeToMap"]) {
         MapViewController *map = [segue destinationViewController];
         map.sentTrailObjectId = self.sentTrailObjectId;
+        map.navigateBack = YES;
+        self.appDelegate.whichController = self;
     }
 }
 

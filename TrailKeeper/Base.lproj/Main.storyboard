@@ -1760,6 +1760,7 @@
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="btnNavigation" destination="moc-C8-fs7" id="UdY-U7-rjd"/>
                         <outlet property="mapView" destination="E7b-Ec-slb" id="5RT-RV-mZT"/>
                         <segue destination="GMy-jg-7sC" kind="show" identifier="segueMapToTrailHome" id="hIZ-pe-2Wh"/>
                     </connections>
@@ -1973,9 +1974,9 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="zjZ-ZA-Yv8"/>
-        <segue reference="lME-Da-pbt"/>
-        <segue reference="nBy-B7-tTJ"/>
+        <segue reference="hIZ-pe-2Wh"/>
         <segue reference="stQ-Rm-DOn"/>
+        <segue reference="nBy-B7-tTJ"/>
         <segue reference="5dN-Ou-gbx"/>
         <segue reference="7cm-3b-rHB"/>
     </inferredMetricsTieBreakers>

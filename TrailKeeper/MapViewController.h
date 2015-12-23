@@ -12,7 +12,9 @@
 @interface MapViewController : UIViewController <MKMapViewDelegate>
 
 @property (strong, nonatomic) NSString *sentTrailObjectId;
+@property (nonatomic) BOOL navigateBack;
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *btnNavigation;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
 - (IBAction)btn_drawerClick:(id)sender;
