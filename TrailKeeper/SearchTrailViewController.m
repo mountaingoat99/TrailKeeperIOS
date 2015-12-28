@@ -41,7 +41,7 @@
     self.txtAutoCompleteTrailName.autocompleteType = HTAutoCompleteTrailNames;
     self.txtAutoCompleteTrailName.autocorrectionType = UITextAutocorrectionTypeNo;
     self.txtAutoCompleteTrailName.autocapitalizationType = UITextAutocapitalizationTypeWords;
-    self.txtAutoCompleteTrailName.layer.sublayerTransform = CATransform3DMakeTranslation(0, 0, 0);
+    self.txtAutoCompleteTrailName.layer.sublayerTransform = CATransform3DMakeTranslation(5, 0, 0);
     self.txtAutoCompleteTrailName.delegate = self;
     
     [self.txtAutoCompleteTrailName becomeFirstResponder];

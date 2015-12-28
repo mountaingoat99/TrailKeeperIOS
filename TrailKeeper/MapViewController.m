@@ -77,7 +77,6 @@
 
 #pragma MapView Methods
 
-// this breaks the pins
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
     if ([annotation isKindOfClass:[MKUserLocation class]])
         return nil;

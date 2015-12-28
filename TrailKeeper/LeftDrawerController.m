@@ -10,12 +10,18 @@
 #import "SettingsViewController.h"
 #import "SettingsHelper.h"
 #import "AppDelegate.h"
+#import "User.h"
+#import "AlertControllerHelper.h"
 
 @interface LeftDrawerController ()
 
 @property (nonatomic, strong) NSArray *settingList;
+@property (nonatomic) BOOL isAnonUser;
+@property (nonatomic) BOOL isParseUser;
 
 -(void)loadData;
+-(void)checkForParseUser;
+-(void)checkForAnonUser;
 
 @end
 
@@ -30,6 +36,8 @@
     self.tblSettings.dataSource = self;
     
     [self loadData];
+    [self checkForParseUser];
+    [self checkForAnonUser];
 }
 
 -(void)viewDidAppear:(BOOL)animated {
@@ -104,11 +112,19 @@
             break;
         }
         case 4: {
-            NSLog(@"Add Trail");
-            id mainView = [mainStoryBoard instantiateViewControllerWithIdentifier:@"AddTrailViewController"];
-            UINavigationController *centerNav = [[UINavigationController alloc] initWithRootViewController:mainView];
-            appDelegate.drawerController.centerViewController = centerNav;
-            [appDelegate.drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+            if (self.isParseUser) {
+                if (!self.isAnonUser) {
+                    NSLog(@"Add Trail");
+                    id mainView = [mainStoryBoard instantiateViewControllerWithIdentifier:@"AddTrailViewController"];
+                    UINavigationController *centerNav = [[UINavigationController alloc] initWithRootViewController:mainView];
+                    appDelegate.drawerController.centerViewController = centerNav;
+                    [appDelegate.drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+                } else {
+                    [AlertControllerHelper ShowAlert:@"Verify Email" message:@"Please verify your email first!" view:self];
+                }
+            } else {
+                [AlertControllerHelper ShowAlert:@"No Account" message:@"Please sign up for an account in Settings and verify your email first!" view:self];
+            }
             break;
         }
         case 5: {
@@ -174,6 +190,7 @@
 }
 
 #pragma mark - private methods
+
 -(void)loadData {
     if (self.settingList != nil) {
         self.settingList = nil;
@@ -182,6 +199,16 @@
     self.settingList = [SettingsHelper getSettingsList];
     
     [self.tblSettings reloadData];
+}
+
+-(void)checkForParseUser {
+    self.isParseUser = [User isParseUser];
+    NSLog(@"IsParseUser is %d ", self.isParseUser);
+}
+
+-(void)checkForAnonUser {
+    self.isAnonUser = [User isAnonUser];
+    NSLog(@"IsAnonUser is %d ", self.isAnonUser);
 }
 
 @end

@@ -23,6 +23,7 @@
 @property (nonatomic) BOOL skillEasy;
 @property (nonatomic) BOOL skillMedium;
 @property (nonatomic) BOOL skillHard;
+@property (nonatomic, strong) NSString *lastUpdatedByUserObjectId;
 @property (nonatomic) double distanceFromUser;
 
 + (NSString *)parseClassName;

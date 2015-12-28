@@ -49,7 +49,7 @@ static NSString *const filterNone = @"filterAll";
     self.txtAutoComplete.autocorrectionType = UITextAutocorrectionTypeNo;
     self.txtAutoComplete.autocapitalizationType = UITextAutocapitalizationTypeWords;
     self.txtAutoComplete.returnKeyType = UIReturnKeySearch;
-    self.txtAutoComplete.layer.sublayerTransform = CATransform3DMakeTranslation(0, 0, 0);
+    self.txtAutoComplete.layer.sublayerTransform = CATransform3DMakeTranslation(5, 0, 0);
     self.txtAutoComplete.delegate = self;
     
     // set the default filter type

@@ -63,6 +63,7 @@
         self.skillMedium = [aDecoder decodeBoolForKey:@"skillMedium"];
         self.skillHard = [aDecoder decodeBoolForKey:@"skillHard"];
         self.distanceFromUser = [aDecoder decodeDoubleForKey:@"distanceFromUser"];
+        self.lastUpdatedByUserObjectId = [aDecoder decodeObjectForKey:@"lastUpdatedByUserObjectId"];
     }
     return self;
 }
@@ -82,6 +83,7 @@
     [aCoder encodeBool:self.skillMedium forKey:@"skillMedium"];
     [aCoder encodeBool:self.skillHard forKey:@"skillHard"];
     [aCoder encodeDouble:self.distanceFromUser forKey:@"distanceFromUser"];
+    [aCoder encodeObject:self.lastUpdatedByUserObjectId forKey:@"lastUpdatedByUserObjectId"];
 }
 
 +(void)load {
@@ -185,9 +187,9 @@
         trail.city = [object objectForKey:@"city"];
         trail.state = [object objectForKey:@"state"];
         trail.country = [object objectForKey:@"country"];
-        trail.length = [object objectForKey:@"length"];
+        trail.length = [object objectForKey:@"distance"];
         trail.geoLocation = [object objectForKey:@"geoLocation"];
-        trail.privateTrail = [Converters getBoolValueFromNSNumber:[object objectForKey:@"privateTrail"]];
+        trail.privateTrail = [Converters getBoolValueFromNSNumber:[object objectForKey:@"private"]];
         trail.skillEasy = [Converters getBoolValueFromNSNumber:[object objectForKey:@"skillEasy"]];
         trail.skillMedium = [Converters getBoolValueFromNSNumber:[object objectForKey:@"skillMedium"]];
         trail.skillHard = [Converters getBoolValueFromNSNumber:[object objectForKey:@"skillHard"]];
@@ -217,9 +219,9 @@
         trail.city = [object objectForKey:@"city"];
         trail.state = [object objectForKey:@"state"];
         trail.country = [object objectForKey:@"country"];
-        trail.length = [object objectForKey:@"length"];
+        trail.length = [object objectForKey:@"distance"];
         trail.geoLocation = [object objectForKey:@"geoLocation"];
-        trail.privateTrail = [Converters getBoolValueFromNSNumber:[object objectForKey:@"privateTrail"]];
+        trail.privateTrail = [Converters getBoolValueFromNSNumber:[object objectForKey:@"private"]];
         trail.skillEasy = [Converters getBoolValueFromNSNumber:[object objectForKey:@"skillEasy"]];
         trail.skillMedium = [Converters getBoolValueFromNSNumber:[object objectForKey:@"skillMedium"]];
         trail.skillHard = [Converters getBoolValueFromNSNumber:[object objectForKey:@"skillHard"]];
@@ -243,9 +245,9 @@
         trail.city = [object objectForKey:@"city"];
         trail.state = [object objectForKey:@"state"];
         trail.country = [object objectForKey:@"country"];
-        trail.length = [object objectForKey:@"length"];
+        trail.length = [object objectForKey:@"distance"];
         trail.geoLocation = [object objectForKey:@"geoLocation"];
-        trail.privateTrail = [Converters getBoolValueFromNSNumber:[object objectForKey:@"privateTrail"]];
+        trail.privateTrail = [Converters getBoolValueFromNSNumber:[object objectForKey:@"private"]];
         trail.skillEasy = [Converters getBoolValueFromNSNumber:[object objectForKey:@"skillEasy"]];
         trail.skillMedium = [Converters getBoolValueFromNSNumber:[object objectForKey:@"skillMedium"]];
         trail.skillHard = [Converters getBoolValueFromNSNumber:[object objectForKey:@"skillHard"]];
@@ -321,9 +323,9 @@
                 trail.city = [object objectForKey:@"city"];
                 trail.state = [object objectForKey:@"state"];
                 trail.country = [object objectForKey:@"country"];
-                trail.length = [object objectForKey:@"length"];
+                trail.length = [object objectForKey:@"distance"];
                 trail.geoLocation = [object objectForKey:@"geoLocation"];
-                trail.privateTrail = [Converters getBoolValueFromNSNumber:[object objectForKey:@"privateTrail"]];
+                trail.privateTrail = [Converters getBoolValueFromNSNumber:[object objectForKey:@"private"]];
                 trail.skillEasy = [Converters getBoolValueFromNSNumber:[object objectForKey:@"skillEasy"]];
                 trail.skillMedium = [Converters getBoolValueFromNSNumber:[object objectForKey:@"skillMedium"]];
                 trail.skillHard = [Converters getBoolValueFromNSNumber:[object objectForKey:@"skillHard"]];
@@ -357,7 +359,7 @@
 }
 
 -(void)UpdateTrailStatus:(NSString*)objectId Choice:(NSNumber*)choice TrailName:(NSString*)trailName {
-    PFUser *user = [PFUser currentUser];
+    //PFUser *user = [PFUser currentUser];
     PFQuery *query = [PFQuery queryWithClassName:@"Trails"];
     [query fromLocalDatastore];
     
@@ -392,13 +394,14 @@
     trail[@"city"] = newTrail.city;
     trail[@"state"] = newTrail.state;
     trail[@"country"] = newTrail.country;
-    trail[@"length"] = newTrail.length;
+    trail[@"distance"] = newTrail.length;
     trail[@"geoLocation"] = newTrail.geoLocation;
-    trail[@"privateTrail"] = [Converters ConvertBoolToNSNumber:newTrail.privateTrail];
+    trail[@"private"] = [Converters ConvertBoolToNSNumber:newTrail.privateTrail];
     trail[@"skillEasy"] = [Converters ConvertBoolToNSNumber:newTrail.skillEasy];
     trail[@"skillMedium"] = [Converters ConvertBoolToNSNumber:newTrail.skillMedium];
     trail[@"skillHard"] = [Converters ConvertBoolToNSNumber:newTrail.skillHard];
-    trail[@"lastUpdatedByUserObjectd"] = user.objectId;
+    trail[@"lastUpdatedByUserObjectId"] = user.objectId;
+    trail[@"createdBy"] = user.username;
     
     [trail pinInBackground];
     [trail saveEventually];

@@ -76,13 +76,16 @@
 }
 
 -(void)SaveNewTrailStatus:(Trails*)trailname {
-    PFObject *trailS = [PFObject objectWithClassName:@"TrailStatus"];
-    trailS[@"trailName"] = trailname.trailName;
-    // Call method to get the random number generator
-    trailS[@"updateStatusPin"] = [self GenerateRandomPin];
+    //TODO need to set this up as a connection check and save to db if no connection
     
-    [trailS pinInBackground];
-    [trailS saveEventually];
+    
+    PFObject *trails = [PFObject objectWithClassName:@"TrailStatus"];
+    trails[@"trailName"] = trailname.trailName;
+    // Call method to get the random number generator
+    trails[@"updateStatusPin"] = [self GenerateRandomPin];
+    
+    [trails pinInBackground];
+    [trails saveEventually];
 }
 
 -(void)UpdateTrailStatusUser:(NSString*)trailName {
