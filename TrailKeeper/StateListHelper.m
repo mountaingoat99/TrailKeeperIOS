@@ -65,6 +65,16 @@
     return states;
 }
 
++(NSMutableArray*)GetAllStateName {
+    NSMutableArray *states = [[NSMutableArray alloc] init];
+    
+    for (NSString *name in [[self GetStates]allValues]) {
+        [states addObject:name];
+    }
+    
+    return states;
+}
+
 +(NSString*)GetStateName:(NSString*)abbreviation {
     NSString *correctStateName = @"Unknown";
     

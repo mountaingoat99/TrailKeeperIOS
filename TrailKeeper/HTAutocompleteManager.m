@@ -9,6 +9,8 @@
 #import "HTAutocompleteManager.h"
 #import "Trails.h"
 #import "AuthorizedCommentors.h"
+#import "StateListHelper.h"
+
 static HTAutocompleteManager *sharedManager;
 
 @implementation HTAutocompleteManager
@@ -82,6 +84,70 @@ static HTAutocompleteManager *sharedManager;
         
         for (int i = 0; i < userName.count; i++) {
             NSString *stringFromReference = [userName objectAtIndex:i];
+            
+            NSString *stringToCompare;
+            if (ignoreCase) {
+                stringToCompare = [stringFromReference lowercaseString];
+            } else {
+                stringToCompare = stringFromReference;
+            }
+            
+            if ([stringToCompare hasPrefix:stringToLookFor]) {
+                return [stringFromReference stringByReplacingCharactersInRange:[stringToCompare rangeOfString:stringToLookFor] withString:@""];
+            }
+        }
+    } else if (textField.autocompleteType == HTAutoCompleteStates) {
+        static dispatch_once_t numberOnceToken;
+        static NSArray *states;
+        
+        dispatch_once(&numberOnceToken, ^ {
+            states = [StateListHelper GetAllStateName];
+        });
+        
+        NSString *stringToLookFor;
+        NSArray *componentsString = [prefix componentsSeparatedByString:@","];
+        NSString *prefixLastComponent = [componentsString.lastObject stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        if (ignoreCase) {
+            stringToLookFor = [prefixLastComponent lowercaseString];
+        } else {
+            stringToLookFor = prefixLastComponent;
+        }
+        
+        for (int i = 0; i < states.count; i++) {
+            NSString *stringFromReference = [states objectAtIndex:i];
+            
+            NSString *stringToCompare;
+            if (ignoreCase) {
+                stringToCompare = [stringFromReference lowercaseString];
+            } else {
+                stringToCompare = stringFromReference;
+            }
+            
+            if ([stringToCompare hasPrefix:stringToLookFor]) {
+                return [stringFromReference stringByReplacingCharactersInRange:[stringToCompare rangeOfString:stringToLookFor] withString:@""];
+            }
+        }
+    } else if (textField.autocompleteType == HTAutoCompleteCountries) {
+        static dispatch_once_t numberOnceToken;
+        static NSArray *countries;
+        
+        
+        
+        dispatch_once(&numberOnceToken, ^ {
+            countries = [StateListHelper GetCountries];
+        });
+        
+        NSString *stringToLookFor;
+        NSArray *componentsString = [prefix componentsSeparatedByString:@","];
+        NSString *prefixLastComponent = [componentsString.lastObject stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        if (ignoreCase) {
+            stringToLookFor = [prefixLastComponent lowercaseString];
+        } else {
+            stringToLookFor = prefixLastComponent;
+        }
+        
+        for (int i = 0; i < countries.count; i++) {
+            NSString *stringFromReference = [countries objectAtIndex:i];
             
             NSString *stringToCompare;
             if (ignoreCase) {

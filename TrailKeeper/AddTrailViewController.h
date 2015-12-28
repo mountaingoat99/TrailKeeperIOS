@@ -11,7 +11,7 @@
 #import "HTAutocompleteManager.h"
 #import <MapKit/MapKit.h>
 
-@interface AddTrailViewController : UIViewController <MultiSelectSegmentedControlDelegate, HTAutocompleteDataSource, HTAutocompleteTextFieldDelegate, MKMapViewDelegate, UITextFieldDelegate>
+@interface AddTrailViewController : UIViewController <MultiSelectSegmentedControlDelegate, MKMapViewDelegate, UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet MultiSelectSegmentedControl *segmentedControlSkills;
 @property (weak, nonatomic) IBOutlet UITextField *txtTrailName;

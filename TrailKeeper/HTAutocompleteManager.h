@@ -11,7 +11,9 @@
 
 typedef enum {
     HTAutoCompleteTrailNames,
-    HTAutoCompleteUserNames
+    HTAutoCompleteUserNames,
+    HTAutoCompleteStates,
+    HTAutoCompleteCountries
 //    HTAutocompleteTypeEmail, // Default
 //    HTAutocompleteTypeColor,
 //    HTAutoCompleteTypeNumbers,

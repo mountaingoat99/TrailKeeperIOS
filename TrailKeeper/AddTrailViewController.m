@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "GeoLocationHelper.h"
 #import "AlertControllerHelper.h"
+#import "HTAutocompleteManager.h"
 
 @interface AddTrailViewController ()
 
@@ -72,15 +73,15 @@
     // sets the default datasouce for the autocomplete text field
     [HTAutocompleteTextField setDefaultAutocompleteDataSource:[HTAutocompleteManager sharedManager]];
     // set up the autocomplete text
+    self.txtState.autocompleteType = HTAutoCompleteStates;
     self.txtState.autocorrectionType = UITextAutocorrectionTypeNo;
-    self.txtState.keyboardType = UIKeyboardTypeDefault;
-    self.txtState.autocapitalizationType = UITextAutocapitalizationTypeAllCharacters;
+    self.txtState.autocapitalizationType = UITextAutocapitalizationTypeWords;
     self.txtState.layer.sublayerTransform = CATransform3DMakeTranslation(5, 0, 0);
     self.txtState.delegate = self;
     
+    self.txtCountry.autocompleteType = HTAutoCompleteCountries;
     self.txtCountry.autocorrectionType = UITextAutocorrectionTypeNo;
-    self.txtCountry.keyboardType = UIKeyboardTypeDefault;
-    self.txtCountry.autocapitalizationType = UITextAutocapitalizationTypeWords;
+    self.txtCountry.autocapitalizationType = UITextAutocapitalizationTypeAllCharacters;
     self.txtCountry.layer.sublayerTransform = CATransform3DMakeTranslation(5, 0, 0);
     self.txtCountry.delegate = self;
     
@@ -245,10 +246,12 @@
         return NO;
     }
     if (self.txtState.text.length == 0) {
+        // make sure the state is legit
         [AlertControllerHelper ShowAlert:@"State?" message:@"Please add a state" view:self];
         return NO;
     }
     if (self.txtCountry.text.length == 0) {
+        // make sure the country is legit
         [AlertControllerHelper ShowAlert:@"Country?" message:@"Please add a country" view:self];
         return NO;
     }
