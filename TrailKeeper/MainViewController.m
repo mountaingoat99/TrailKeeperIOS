@@ -229,6 +229,7 @@
 
 -(void)refresh:(UIRefreshControl*)refreshControl {
     // refresh all the objects
+    [GetAllObjectsFromParseHelper UnpinallAllTrailObjects];
     [GetAllObjectsFromParseHelper RefreshTrails];
     [GetAllObjectsFromParseHelper RefreshTrailStatus];
     [GetAllObjectsFromParseHelper RefreshAuthorizedCommentors];

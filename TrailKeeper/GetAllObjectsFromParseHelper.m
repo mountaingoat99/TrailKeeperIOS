@@ -7,8 +7,18 @@
 //
 
 #import "GetAllObjectsFromParseHelper.h"
+#import "ConnectionDetector.h"
 
 @implementation GetAllObjectsFromParseHelper
+
++(void)UnpinallAllTrailObjects {
+    if ([ConnectionDetector hasConnectivity]) {
+        NSLog(@"Unpinning all Current Trail Objects");
+        [PFObject unpinAllObjects];
+    } else {
+        NSLog(@"No Connection, we will not be unpinning all Current Trail Objects");
+    }
+}
 
 +(void)RefreshTrails {
     PFQuery *query = [PFQuery queryWithClassName:@"Trails"];

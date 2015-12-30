@@ -14,6 +14,7 @@
 
 @interface GetAllObjectsFromParseHelper : PFObject
 
++(void)UnpinallAllTrailObjects;
 +(void)RefreshTrails;
 +(void)RefreshTrailStatus;
 +(void)RefreshAuthorizedCommentors;

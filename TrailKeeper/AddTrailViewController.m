@@ -11,6 +11,7 @@
 #import "GeoLocationHelper.h"
 #import "AlertControllerHelper.h"
 #import "HTAutocompleteManager.h"
+#import "StateListHelper.h"
 
 @interface AddTrailViewController ()
 
@@ -77,13 +78,18 @@
     self.txtState.autocorrectionType = UITextAutocorrectionTypeNo;
     self.txtState.autocapitalizationType = UITextAutocapitalizationTypeWords;
     self.txtState.layer.sublayerTransform = CATransform3DMakeTranslation(5, 0, 0);
+    self.txtState.keyboardType = UIKeyboardTypeDefault;
     self.txtState.delegate = self;
     
     self.txtCountry.autocompleteType = HTAutoCompleteCountries;
     self.txtCountry.autocorrectionType = UITextAutocorrectionTypeNo;
-    self.txtCountry.autocapitalizationType = UITextAutocapitalizationTypeAllCharacters;
+    self.txtCountry.autocapitalizationType = UITextAutocapitalizationTypeWords;
     self.txtCountry.layer.sublayerTransform = CATransform3DMakeTranslation(5, 0, 0);
+    self.txtCountry.keyboardType = UIKeyboardTypeDefault;
     self.txtCountry.delegate = self;
+    // right now lets just make USA the default country
+    self.txtCountry.text = @"USA";
+    self.txtCountry.enabled = NO;
     
     [self.switchCurrentLocation setOnTintColor:[UIColor grayColor]];
     
@@ -151,11 +157,12 @@
         [self.txtState becomeFirstResponder];
     }
     if (textField == self.txtState) {
-        [self.txtCountry becomeFirstResponder];
-    }
-    if (textField == self.txtCountry) {
         [self.txtLength becomeFirstResponder];
     }
+    // commented out until we dd more countries - USA default right now
+//    if (textField == self.txtCountry) {
+//        [self.txtLength becomeFirstResponder];
+//    }
     if (textField == self.txtLength) {
         [textField resignFirstResponder];
     }
@@ -237,6 +244,8 @@
 }
 
 -(BOOL)validateFields {
+    BOOL validState = YES;
+    
     if (self.txtTrailName.text.length < 3) {
         [AlertControllerHelper ShowAlert:@"Trail Name?" message:@"Please add a valid trail name at least longer than 4 digits" view:self];
         return NO;
@@ -246,17 +255,33 @@
         return NO;
     }
     if (self.txtState.text.length == 0) {
-        // make sure the state is legit
         [AlertControllerHelper ShowAlert:@"State?" message:@"Please add a state" view:self];
         return NO;
     }
+    
+    // make sure the state is in the list of states
+    for (NSString *name in [[StateListHelper GetStates]allValues]) {
+        if ([self.txtState.text isEqualToString:name]) {
+            validState = YES;
+            break;
+        } else {
+            validState = NO;
+        }
+    }
+    if (!validState) {
+        [AlertControllerHelper ShowAlert:@"State?" message:@"That state does not seem to exist, can you try again?" view:self];
+        return NO;
+    }
+    
     if (self.txtCountry.text.length == 0) {
         // make sure the country is legit
         [AlertControllerHelper ShowAlert:@"Country?" message:@"Please add a country" view:self];
         return NO;
     }
+    // TODO when we add more countries we will want to make sure they are valid
+    
     if (self.point == nil && self.switchCurrentLocation.on == false) {
-        [AlertControllerHelper ShowAlert:@"Location?" message:@"Please add a location to the map or flio the Use Current Location switch" view:self];
+        [AlertControllerHelper ShowAlert:@"Location?" message:@"Please add a location to the map or flip the Use Current Location switch" view:self];
         return NO;
     }
     return YES;
