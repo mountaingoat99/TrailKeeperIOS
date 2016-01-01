@@ -7,8 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CustomNotificationCell.h"
 
-@interface TrailSubscriptionsViewController : UIViewController
+@interface TrailSubscriptionsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, CustomNotificationDelegate>
+
+@property (strong, nonatomic) NSString *sentTrailObjectId;
+
+@property (weak, nonatomic) IBOutlet UITableView *tblNotifications;
 
 - (IBAction)btn_drawerClick:(id)sender;
 

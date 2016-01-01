@@ -33,6 +33,8 @@ static NSString *const filterNone = @"filterAll";
 
 @implementation CommentsViewController
 
+#pragma mark loadEvents
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
@@ -119,7 +121,7 @@ static NSString *const filterNone = @"filterAll";
     }
 }
 
-#pragma TableView
+#pragma mark TableView
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return self.tblFindComment.rowHeight;
@@ -145,7 +147,7 @@ static NSString *const filterNone = @"filterAll";
     return cell;
 }
 
-#pragma Events
+#pragma mark Events
 
 - (IBAction)btn_drawerClick:(id)sender {
     if (self.sentTrailObjectId != nil) {

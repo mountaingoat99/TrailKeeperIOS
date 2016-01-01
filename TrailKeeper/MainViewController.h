@@ -17,7 +17,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundView;
 @property (weak, nonatomic) IBOutlet UITableView *tbltrailCards;
 
-
 - (IBAction)btn_drawerClick:(id)sender;
 
 @end

@@ -18,10 +18,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="BLs-Sp-OoB">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="BLs-Sp-OoB">
                                 <rect key="frame" x="-4" y="20" width="383" height="647"/>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="110" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LWd-CW-yy2">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="110" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LWd-CW-yy2">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -731,18 +731,76 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trail Subscriptions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wi9-Fk-NRd">
-                                <rect key="frame" x="110" y="323" width="154" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="NotificationTableView" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="71" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ffj-Qf-w3x">
+                                <rect key="frame" x="-4" y="64" width="383" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="CustomNotificationCell" selectionStyle="none" indentationWidth="10" reuseIdentifier="idCellRecord" id="1mb-iQ-feF" customClass="CustomNotificationCell">
+                                        <rect key="frame" x="0.0" y="92" width="383" height="71"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1mb-iQ-feF" id="muh-Q1-vEi">
+                                            <rect key="frame" x="0.0" y="0.0" width="383" height="70"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trail Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wyi-fc-kBT">
+                                                    <rect key="frame" x="8" y="8" width="367" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7TV-st-ecF">
+                                                    <rect key="frame" x="12" y="29" width="34" height="27"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <state key="normal" title="Home">
+                                                        <color key="titleColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="btn_HomeClick:" destination="1mb-iQ-feF" eventType="touchUpInside" id="3Bl-wI-udp"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X5b-ak-vOt">
+                                                    <rect key="frame" x="70" y="23" width="72" height="39"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <state key="normal" title="Unsubscribe">
+                                                        <color key="titleColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="btn_UnsubscribeClick:" destination="1mb-iQ-feF" eventType="touchUpInside" id="faS-5n-Ryk"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="7TV-st-ecF" firstAttribute="top" secondItem="Wyi-fc-kBT" secondAttribute="bottom" constant="8" id="0kc-iK-zKc"/>
+                                                <constraint firstItem="7TV-st-ecF" firstAttribute="top" secondItem="Wyi-fc-kBT" secondAttribute="bottom" id="9c8-1d-Jks"/>
+                                                <constraint firstItem="7TV-st-ecF" firstAttribute="leading" secondItem="muh-Q1-vEi" secondAttribute="leadingMargin" constant="4" id="Dal-mA-QrO"/>
+                                                <constraint firstItem="Wyi-fc-kBT" firstAttribute="top" secondItem="muh-Q1-vEi" secondAttribute="topMargin" id="bdD-Rp-eBC"/>
+                                                <constraint firstItem="X5b-ak-vOt" firstAttribute="leading" secondItem="7TV-st-ecF" secondAttribute="trailing" constant="24" id="cdC-bd-u9d"/>
+                                                <constraint firstItem="Wyi-fc-kBT" firstAttribute="leading" secondItem="muh-Q1-vEi" secondAttribute="leadingMargin" id="ldL-7o-qx2"/>
+                                                <constraint firstItem="X5b-ak-vOt" firstAttribute="bottom" secondItem="muh-Q1-vEi" secondAttribute="bottomMargin" id="rdZ-3H-ril"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Wyi-fc-kBT" secondAttribute="trailing" id="sE4-Kh-5gg"/>
+                                                <constraint firstItem="X5b-ak-vOt" firstAttribute="centerY" secondItem="7TV-st-ecF" secondAttribute="centerY" id="yjv-Tx-Vfv"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="0kc-iK-zKc"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="btnHome" destination="7TV-st-ecF" id="fUz-s3-deM"/>
+                                            <outlet property="btnUnsubscribe" destination="X5b-ak-vOt" id="s4V-C6-cLC"/>
+                                            <outlet property="lblTrailName" destination="Wyi-fc-kBT" id="2KM-tb-Omf"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="wi9-Fk-NRd" firstAttribute="leading" secondItem="cuO-ji-vGa" secondAttribute="leadingMargin" constant="94" id="8eC-gW-vAa"/>
-                            <constraint firstItem="wi9-Fk-NRd" firstAttribute="centerY" secondItem="cuO-ji-vGa" secondAttribute="centerY" id="Ohn-g8-Svg"/>
-                            <constraint firstItem="wi9-Fk-NRd" firstAttribute="centerX" secondItem="cuO-ji-vGa" secondAttribute="centerX" id="SUp-Uh-Q6I"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ffj-Qf-w3x" secondAttribute="trailing" constant="-20" id="7rA-ca-etI"/>
+                            <constraint firstItem="ffj-Qf-w3x" firstAttribute="top" secondItem="gvG-Hf-fYl" secondAttribute="bottom" id="DpC-TU-5ne"/>
+                            <constraint firstItem="ffj-Qf-w3x" firstAttribute="leading" secondItem="cuO-ji-vGa" secondAttribute="leadingMargin" constant="-20" id="fCK-lC-ear"/>
+                            <constraint firstItem="0pw-Li-c36" firstAttribute="top" secondItem="ffj-Qf-w3x" secondAttribute="bottom" id="k8b-0w-Llq"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Trail Subscriptions" id="kje-Xe-5uv">
@@ -753,6 +811,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="tblNotifications" destination="ffj-Qf-w3x" id="2yQ-G5-rG2"/>
+                        <segue destination="GMy-jg-7sC" kind="show" identifier="segueSubscriptionsToTrailHome" id="raA-OU-fas"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rqM-xH-Vy0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -995,7 +1057,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="ugW-zq-iQV">
                                 <rect key="frame" x="-4" y="0.0" width="383" height="667"/>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ugT-B2-UH7">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ugT-B2-UH7">
                                 <rect key="frame" x="4" y="30" width="367" height="174"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aJi-td-u1Y">
@@ -2228,11 +2290,11 @@
         <image name="open" width="170" height="170"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="zjZ-ZA-Yv8"/>
-        <segue reference="OlQ-5H-NIw"/>
-        <segue reference="nBy-B7-tTJ"/>
         <segue reference="stQ-Rm-DOn"/>
-        <segue reference="7cm-3b-rHB"/>
+        <segue reference="nBy-B7-tTJ"/>
+        <segue reference="raA-OU-fas"/>
+        <segue reference="zjZ-ZA-Yv8"/>
         <segue reference="5dN-Ou-gbx"/>
+        <segue reference="7cm-3b-rHB"/>
     </inferredMetricsTieBreakers>
 </document>

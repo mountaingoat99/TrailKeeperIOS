@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2604CAA61C3379A5006F0226 /* CustomNotificationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2604CAA51C3379A5006F0226 /* CustomNotificationCell.m */; };
 		260EC2641BDB13F600BB01DF /* Converters.m in Sources */ = {isa = PBXBuildFile; fileRef = 260EC2631BDB13F600BB01DF /* Converters.m */; };
 		261114441C2799A200E38EE0 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261114431C2799A200E38EE0 /* MapKit.framework */; };
 		2615C11B1BCAE7660065B62C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2615C11A1BCAE7660065B62C /* main.m */; };
@@ -68,6 +69,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2604CAA41C3379A5006F0226 /* CustomNotificationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomNotificationCell.h; sourceTree = "<group>"; };
+		2604CAA51C3379A5006F0226 /* CustomNotificationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomNotificationCell.m; sourceTree = "<group>"; };
 		260EC2621BDB13F600BB01DF /* Converters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Converters.h; sourceTree = "<group>"; };
 		260EC2631BDB13F600BB01DF /* Converters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Converters.m; sourceTree = "<group>"; };
 		261114431C2799A200E38EE0 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -383,6 +386,8 @@
 				26A5E9861C13A39F00C7FE07 /* FindTrailSectionInfo.m */,
 				261D7B921C24EECB00B53018 /* CustomCommentCell.h */,
 				261D7B931C24EECB00B53018 /* CustomCommentCell.m */,
+				2604CAA41C3379A5006F0226 /* CustomNotificationCell.h */,
+				2604CAA51C3379A5006F0226 /* CustomNotificationCell.m */,
 			);
 			name = CustomViews;
 			sourceTree = "<group>";
@@ -592,6 +597,7 @@
 				26F8D4201BE65E4A007770F4 /* MMDrawerBarButtonItem.m in Sources */,
 				26A5E97F1C12894200C7FE07 /* CustomFindTrailCell.m in Sources */,
 				26F8D4291BE6A387007770F4 /* SettingsViewController.m in Sources */,
+				2604CAA61C3379A5006F0226 /* CustomNotificationCell.m in Sources */,
 				26F8D4151BE65539007770F4 /* LeftDrawerController.m in Sources */,
 				26F8D43E1BE6C026007770F4 /* ContactViewController.m in Sources */,
 				26AAB1D91BCDE0E70084B67D /* Installation.m in Sources */,
