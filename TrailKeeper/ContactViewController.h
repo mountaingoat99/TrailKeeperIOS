@@ -7,9 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MessageUI/MessageUI.h>
 
-@interface ContactViewController : UIViewController
+@interface ContactViewController : UIViewController <UITextFieldDelegate,MFMessageComposeViewControllerDelegate, MFMailComposeViewControllerDelegate>
+
+@property (weak, nonatomic) IBOutlet UITextField *txtName;
+@property (weak, nonatomic) IBOutlet UITextField *txtFeedback;
 
 - (IBAction)btn_drawerClick:(id)sender;
+- (IBAction)btn_sendClick:(id)sender;
 
 @end
