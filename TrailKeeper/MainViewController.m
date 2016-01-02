@@ -24,6 +24,7 @@
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (nonatomic, strong) CALayer *darkBackgroundLayer;
 @property (nonatomic, strong) UILabel *messageLabel;
+@property (nonatomic, strong) NSString *measurementLabel;
 
 -(void)loadData;
 -(void)updateView:(NSNotification *)notification;
@@ -43,6 +44,13 @@
     [super viewDidLoad];
     
     self.appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    
+    NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
+    if ([[preferences objectForKey:@"userMeasurements"] isEqualToString:@"imperial"]) {
+        self.measurementLabel = @" Miles";
+    } else {
+        self.measurementLabel = @" Kilometers";
+    }
     
     // Initialize the refresh control.
     self.refreshControl = [[UIRefreshControl alloc] init];
@@ -185,7 +193,7 @@
     cell.lblTrailCityState.text = [NSString stringWithFormat:@"%@", cityState];
     PFGeoPoint *trailLocation  = [[self.trailList objectAtIndex:indexPath.row] objectForKey:@"geoLocation"];
     NSString *milesFromCurrent = [NSString stringWithFormat:@"%.2f", [GeoLocationHelper GetDistanceFromCurrentLocation:self.userLocation traillocation:trailLocation]];
-    milesFromCurrent = [milesFromCurrent stringByAppendingString:@" Miles"];
+    milesFromCurrent = [milesFromCurrent stringByAppendingString:self.measurementLabel];
     cell.lblTrailMileageFrom.text =  milesFromCurrent;
     return cell;
 }

@@ -18,6 +18,7 @@
 @property (nonatomic, strong) NSString *state;
 @property (nonatomic, strong) NSString *country;
 @property (nonatomic, strong) NSNumber *length;
+@property (nonatomic, strong) NSString *measurement;
 @property (nonatomic, strong) PFGeoPoint * geoLocation;
 @property (nonatomic) BOOL privateTrail;
 @property (nonatomic) BOOL skillEasy;

@@ -34,6 +34,7 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
 @property (nonatomic, strong) PFGeoPoint *userLocation;
 @property (nonatomic) UITableView *autocompleteTableView;
 @property (nonatomic) UITextField *searchText;
+@property (nonatomic, strong) NSString *measurementLabel;
 
 @property (nonatomic) IBOutlet FindTrailSectionHeaderView *sectionHeaderView;
 @property (nonatomic, strong) AppDelegate *appDelegate;
@@ -56,6 +57,13 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
+    if ([[preferences objectForKey:@"userMeasurements"] isEqualToString:@"imperial"]) {
+        self.measurementLabel = @" Miles";
+    } else {
+        self.measurementLabel = @" Kilometers";
+    }
     
     // get users current location
     self.userLocation = [GeoLocationHelper GetUsersCurrentPostion];
@@ -166,7 +174,7 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
     cell.trailCity.text = trail.city;
     PFGeoPoint *trailLocation = trail.geoLocation;
     NSString *milesFromCurrent = [NSString stringWithFormat:@"%.2f", [GeoLocationHelper GetDistanceFromCurrentLocation:self.userLocation traillocation:trailLocation]];
-    milesFromCurrent = [milesFromCurrent stringByAppendingString:@" Miles"];
+    milesFromCurrent = [milesFromCurrent stringByAppendingString:self.measurementLabel];
     cell.distance.text = milesFromCurrent;
     cell.statusImage.image = [Trails GetStatusIcon:trail.status];
     

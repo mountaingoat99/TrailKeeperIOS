@@ -91,6 +91,13 @@
     self.txtCountry.text = @"USA";
     self.txtCountry.enabled = NO;
     
+    NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
+    if ([[preferences objectForKey:@"userMeasurements"] isEqualToString:@"imperial"]) {
+        self.txtLength.placeholder  = @"Length - Miles";
+    } else {
+        self.txtLength.placeholder  = @"Length - Kilometers";
+    }
+    
     [self.switchCurrentLocation setOnTintColor:[UIColor grayColor]];
     
     self.segmentedControlSkills.delegate = self;
@@ -302,6 +309,12 @@
         f.numberStyle = NSNumberFormatterDecimalStyle;
         NSNumber *myNumber = [f numberFromString:self.txtLength.text];
         trail.length = myNumber;
+        NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
+        if ([[preferences objectForKey:@"userMeasurements"] isEqualToString:@"imperial"]) {
+            trail.measurement = @"miles";
+        } else {
+            trail.measurement = @"kilometers";
+        }
         // see if they are using a point or user location
         if (self.point != nil) {
             trail.geoLocation = [PFGeoPoint geoPointWithLatitude:self.point.coordinate.latitude longitude:self.point.coordinate.longitude];

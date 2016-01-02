@@ -17,7 +17,12 @@
 
 +(double)GetDistanceFromCurrentLocation:(PFGeoPoint*)userLocation traillocation:(PFGeoPoint*)trailLocation {
     double distance = 0.0;
-    distance = [userLocation distanceInMilesTo:trailLocation];
+    NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
+    if ([[preferences objectForKey:@"userMeasurements"] isEqualToString:@"imperial"]) {
+        distance = [userLocation distanceInMilesTo:trailLocation];
+    } else {
+        distance = [userLocation distanceInKilometersTo:trailLocation];
+    }
     return distance;
 }
 

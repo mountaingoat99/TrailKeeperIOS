@@ -33,7 +33,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    
+   
     if (self.navigateBack) {
         [self.btnNavigation setImage:[UIImage imageNamed:@"back"]];
     } else {
@@ -137,7 +137,12 @@
         double distance = [GeoLocationHelper GetDistanceFromCurrentLocation:self.userLocation traillocation:t.geoLocation];
         point.coordinate = coordinate;
         point.title = t.trailName;
-        point.subtitle = [NSString stringWithFormat:@"%.2f Miles Away", distance];
+        NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
+        if ([[preferences objectForKey:@"userMeasurements"] isEqualToString:@"imperial"]) {
+            point.subtitle = [NSString stringWithFormat:@"%.2f Miles Away", distance];
+        } else {
+            point.subtitle = [NSString stringWithFormat:@"%.2f Kilometers Away", distance];
+        }
         
         [self.mapView addAnnotation:point];
         
