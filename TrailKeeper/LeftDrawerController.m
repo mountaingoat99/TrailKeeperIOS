@@ -56,7 +56,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -144,11 +143,19 @@
             break;
         }
         case 7: {
-            NSLog(@"Get Trail Pin");
-            id mainView = [mainStoryBoard instantiateViewControllerWithIdentifier:@"GetTrailPinViewController"];
-            UINavigationController *centerNav = [[UINavigationController alloc] initWithRootViewController:mainView];
-            appDelegate.drawerController.centerViewController = centerNav;
-            [appDelegate.drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+            if (self.isParseUser) {
+                if (!self.isAnonUser) {
+                    NSLog(@"Get Trail Pin");
+                    id mainView = [mainStoryBoard instantiateViewControllerWithIdentifier:@"GetTrailPinViewController"];
+                    UINavigationController *centerNav = [[UINavigationController alloc] initWithRootViewController:mainView];
+                    appDelegate.drawerController.centerViewController = centerNav;
+                    [appDelegate.drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+                } else {
+                    [AlertControllerHelper ShowAlert:@"Verify Email" message:@"Please verify your email first!" view:self];
+                }
+            } else {
+                [AlertControllerHelper ShowAlert:@"No Account" message:@"Please sign up for an account in Settings and verify your email first!" view:self];
+            }
             break;
         }
         case 8: {

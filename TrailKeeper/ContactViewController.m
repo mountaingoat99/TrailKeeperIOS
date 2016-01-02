@@ -35,7 +35,10 @@
     //self.txtFeedback.keyboardType = UIKeyboardTypeDefault;
     self.txtFeedback.delegate = self;
     
-    [self.txtName becomeFirstResponder];
+    PFUser *user = [PFUser currentUser];
+    self.txtName.text = user.username;
+    
+    [self.txtFeedback becomeFirstResponder];
 }
 
 -(void)viewDidDisappear:(BOOL)animated {
@@ -53,7 +56,7 @@
     }
     if (textField == self.txtFeedback) {
         [self sendEmail];
-        //[textField resignFirstResponder];
+        [textField resignFirstResponder];
     }
     return YES;
 }
@@ -69,6 +72,12 @@
 #pragma mark - button events
 
 - (IBAction)btn_drawerClick:(id)sender {
+    if ([self.txtName isFirstResponder]) {
+        [self.txtName resignFirstResponder];
+    }
+    if ([self.txtFeedback isFirstResponder]) {
+        [self.txtFeedback resignFirstResponder];
+    }
     [self.appDelegate.drawerController toggleDrawerSide:MMDrawerSideLeft animated:true completion:nil];
 }
 
@@ -131,19 +140,16 @@
 
 -(void)canceledEmail {
     self.emailErrorMessage = @"Email Cancelled";
-    //[AlertControllerHelper ShowAlert:@"" message:@"Email Cancelled" view:self];
 }
 
 -(void)SentEmail {
     self.emailErrorMessage = @"Email Sent";
-    //[AlertControllerHelper ShowAlert:@"" message:@"Email Sent" view:self];
     self.txtName.text = @"";
     self.txtFeedback.text = @"";
 }
 
 -(void)FailedEmail {
     self.emailErrorMessage = @"Email Failed";
-    //[AlertControllerHelper ShowAlert:@"" message:@"Email Failed" view:self];
 }
 
 @end
