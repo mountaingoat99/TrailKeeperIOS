@@ -1596,16 +1596,82 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="7c3-3M-8x3">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RcA-ka-WxK">
+                                <rect key="frame" x="4" y="72" width="367" height="84"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KJq-jc-QJq">
+                                        <rect key="frame" x="317" y="46" width="34" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="49" id="1AS-o6-uaX"/>
+                                            <constraint firstAttribute="width" constant="100" id="70r-cH-7dq"/>
+                                            <constraint firstAttribute="width" secondItem="KJq-jc-QJq" secondAttribute="height" multiplier="19:6" id="KtA-C9-RjD"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="156" id="Req-jF-eWN"/>
+                                            <constraint firstAttribute="width" constant="46" id="bZr-dO-WYA"/>
+                                        </constraints>
+                                        <state key="normal" title="Save">
+                                            <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="70r-cH-7dq"/>
+                                                <exclude reference="bZr-dO-WYA"/>
+                                                <exclude reference="KtA-C9-RjD"/>
+                                                <exclude reference="1AS-o6-uaX"/>
+                                                <exclude reference="Req-jF-eWN"/>
+                                            </mask>
+                                        </variation>
+                                        <connections>
+                                            <action selector="btn_saveClick:" destination="NPM-by-bX5" eventType="touchUpInside" id="CMd-Db-veg"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="500" id="4xX-aP-YLv"/>
+                                    <constraint firstAttribute="height" constant="250" id="Cyk-57-Yg4"/>
+                                    <constraint firstAttribute="trailing" secondItem="KJq-jc-QJq" secondAttribute="trailing" constant="16" id="Eak-8m-CcO"/>
+                                    <constraint firstAttribute="bottom" secondItem="KJq-jc-QJq" secondAttribute="bottom" constant="8" id="h8Y-ue-BWf"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="4xX-aP-YLv"/>
+                                        <exclude reference="Cyk-57-Yg4"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="YdB-PJ-dEF">
+                                <rect key="frame" x="16" y="82" width="343" height="29"/>
+                                <segments>
+                                    <segment title="Imperial"/>
+                                    <segment title="Metric"/>
+                                </segments>
+                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="Filter_IndexChanged:" destination="LC3-Up-6aK" eventType="valueChanged" id="HcI-de-lDO"/>
+                                    <action selector="btn_indexChanged:" destination="NPM-by-bX5" eventType="valueChanged" id="KAX-NS-cTY"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="7c3-3M-8x3" secondAttribute="trailing" id="1sM-LG-g2a"/>
                             <constraint firstItem="7c3-3M-8x3" firstAttribute="leading" secondItem="6Jx-x8-ENw" secondAttribute="leading" id="65u-MW-JgA"/>
                             <constraint firstItem="7c3-3M-8x3" firstAttribute="top" secondItem="6Jx-x8-ENw" secondAttribute="top" id="72U-93-vR7"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="RcA-ka-WxK" secondAttribute="trailing" constant="-12" id="Efu-Q1-4mB"/>
+                            <constraint firstItem="RcA-ka-WxK" firstAttribute="leading" secondItem="6Jx-x8-ENw" secondAttribute="leadingMargin" constant="-12" id="O1k-do-sQV"/>
+                            <constraint firstItem="YdB-PJ-dEF" firstAttribute="leading" secondItem="6Jx-x8-ENw" secondAttribute="leadingMargin" id="dZS-2f-22V"/>
+                            <constraint firstItem="RcA-ka-WxK" firstAttribute="top" secondItem="AlN-CP-GZb" secondAttribute="bottom" constant="8" id="dfQ-dJ-kui"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="YdB-PJ-dEF" secondAttribute="trailing" id="dv8-1P-9kR"/>
+                            <constraint firstItem="YdB-PJ-dEF" firstAttribute="top" secondItem="AlN-CP-GZb" secondAttribute="bottom" constant="18" id="mdZ-1E-aDs"/>
                             <constraint firstItem="7c3-3M-8x3" firstAttribute="bottom" secondItem="4o1-FX-d5v" secondAttribute="top" id="ndd-G6-cnP"/>
+                            <constraint firstItem="KJq-jc-QJq" firstAttribute="top" secondItem="YdB-PJ-dEF" secondAttribute="bottom" constant="8" id="ntp-Je-sJl"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="segmentMeasurements" destination="YdB-PJ-dEF" id="Mbh-xM-PpY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zRb-7y-Fke" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2536,10 +2602,10 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="zjZ-ZA-Yv8"/>
-        <segue reference="hIZ-pe-2Wh"/>
+        <segue reference="OlQ-5H-NIw"/>
+        <segue reference="nBy-B7-tTJ"/>
         <segue reference="8U8-zK-gWV"/>
         <segue reference="5dN-Ou-gbx"/>
         <segue reference="7cm-3b-rHB"/>
-        <segue reference="nBy-B7-tTJ"/>
     </inferredMetricsTieBreakers>
 </document>

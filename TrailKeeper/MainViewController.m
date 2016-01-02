@@ -247,6 +247,11 @@
     NSString *firstLoad = @"firstLoad";
     
     if ([preferences objectForKey:firstLoad] == nil) {
+        // first set the measurement type
+        // TODO when going global check location and set metric for most places
+        NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
+        [preferences setObject:@"imperial" forKey:@"userMeasurements"];
+        
         [self refresh:self.refreshControl];
         [preferences setObject:@"NO" forKey:@"firstLoad"];
         

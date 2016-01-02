@@ -10,4 +10,9 @@
 
 @interface UnitsOfMeasureViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentMeasurements;
+
+- (IBAction)btn_indexChanged:(id)sender;
+- (IBAction)btn_saveClick:(id)sender;
+
 @end
