@@ -13,6 +13,8 @@
 #import "CommentsViewController.h"
 #import "User.h"
 #import "AlertControllerHelper.h"
+#import "GetAllObjectsFromParseHelper.h"
+#import "Converters.h"
 
 static NSString * const CTCellIdentifier = @"idCellRecord";
 
@@ -23,15 +25,20 @@ static NSString * const CTCellIdentifier = @"idCellRecord";
 @property (nonatomic, strong) NSString *trailName;
 @property (nonatomic) BOOL isAnonUser;
 @property (nonatomic) BOOL isParseUser;
+//@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 -(void)checkForParseUser;
 -(void)checkForAnonUser;
--(void)loadTableData;
--(void)loadTrailData;
+-(void)loadTableData:(NSArray*)comments;
+-(void)loadTrailData:(Trails*)trail;
 -(NSString*)formateDate:(NSString*)date;
 -(void)subscribeToTrail:(BOOL)isSubscribed;
 -(void)SetTrailStatus:(NSNumber*)trailStatus;
 -(void)leaveNewComment:(NSString*)comment;
+-(void)btn_drawerClick;
+-(void)refresh;
+-(NSArray*)RefreshComments;
+-(Trails*)RefreshTrails;
 
 @end
 
@@ -45,6 +52,15 @@ static NSString * const CTCellIdentifier = @"idCellRecord";
     
     [self checkForParseUser];
     [self checkForAnonUser];
+    
+    // Initialize the refresh control.
+//    self.refreshControl = [[UIRefreshControl alloc] init];
+//    //self.refreshControl.backgroundColor = [UIColor blackColor];
+//    self.refreshControl.tintColor = [UIColor whiteColor];
+//    [self.refreshControl addTarget:self
+//                            action:@selector(refresh:)
+//                  forControlEvents:UIControlEventValueChanged];
+//    [self.tblComments addSubview:self.refreshControl];
     
     self.appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     
@@ -68,8 +84,19 @@ static NSString * const CTCellIdentifier = @"idCellRecord";
     self.vTrailHomeBackground.layer.shadowOffset = CGSizeMake(1, 0);
     self.vTrailHomeBackground.layer.shadowOpacity = 0.5;
     
-    [self loadTrailData];
-    [self loadTableData];
+    // find out if we are getting the sentTrailObjectId from another ViewController
+    // or from the AppDelegate notification
+    if (self.sentTrailObjectId == nil) {
+        //[self.refreshControl beginRefreshing];
+        self.sentTrailObjectId = self.appDelegate.notificationTrailId;
+        // create the button
+        UIBarButtonItem *drawerButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"drawer_icon"] style:UIBarButtonItemStylePlain target:self action:@selector(btn_drawerClick)];
+        self.navigationItem.leftBarButtonItem = drawerButton;
+        [self refresh];
+    } else {
+        [self loadTrailData:nil];
+        [self loadTableData:nil];
+    }
     self.navigationItem.title = self.trailName;
 }
 
@@ -124,10 +151,6 @@ static NSString * const CTCellIdentifier = @"idCellRecord";
 }
 
 #pragma Events
-
-//- (IBAction)btn_backClick:(id)sender {
-//    [self performSegueWithIdentifier:@"segueTrailHomeToHome" sender:self];
-//}
 
 - (IBAction)btn_subscribeClick:(id)sender {
     
@@ -301,20 +324,34 @@ static NSString * const CTCellIdentifier = @"idCellRecord";
     }
 }
 
+-(void)btn_drawerClick {
+    if (self.appDelegate.notificationTrailId != nil) {
+        [self.appDelegate.drawerController toggleDrawerSide:MMDrawerSideLeft animated:true completion:nil];
+    }
+}
+
 #pragma private methods
--(void)loadTableData {
+-(void)loadTableData:(NSArray*)comments {
+    
     if (self.commentList != nil) {
         self.commentList = nil;
     }
     
-    Comments *comments = [[Comments alloc] init];
-    self.commentList = [comments GetCommentsByTrail:self.sentTrailObjectId];
+    if (comments == nil) {
+        Comments *commentModel = [[Comments alloc] init];
+        self.commentList = [commentModel GetCommentsByTrail:self.sentTrailObjectId];
+    } else {
+        self.commentList = comments;
+    }
+    
     [self.tblComments reloadData];
 }
 
--(void)loadTrailData {
-    Trails *trails = [[Trails alloc] init];
-    trails = [trails GetTrailObject:self.sentTrailObjectId];
+-(void)loadTrailData:(Trails*)trails {
+    if (trails == nil) {
+        trails = [[Trails alloc] init];
+        trails = [trails GetTrailObject:self.sentTrailObjectId];
+    }
     
     self.trailName = trails.trailName;
     self.lblTrailName.text = self.trailName;
@@ -368,6 +405,8 @@ static NSString * const CTCellIdentifier = @"idCellRecord";
     comments.comment = comment;
     
     [comments SaveNewComment:comments];
+    [GetAllObjectsFromParseHelper RefreshComments]; // This is not working
+    [self loadTableData:(NSMutableArray*)nil];
 }
 
 -(void)checkForParseUser {
@@ -378,6 +417,50 @@ static NSString * const CTCellIdentifier = @"idCellRecord";
 -(void)checkForAnonUser {
     self.isAnonUser = [User isAnonUser];
     NSLog(@"IsAnonUser is %d ", self.isAnonUser);
+}
+
+-(void)refresh {
+    NSLog(@"Refresh Trail Home Screen From Notification");
+    Trails *trail = [self RefreshTrails];
+    NSArray* comments = [self RefreshComments];
+    
+    [self loadTrailData:trail];
+    [self loadTableData:comments];
+    
+//    if (self.refreshControl) {
+//        [self.refreshControl endRefreshing];
+//    }
+}
+
+-(Trails*)RefreshTrails {
+    Trails *trail = [[Trails alloc] init];
+    PFQuery *query = [PFQuery queryWithClassName:@"Trails"];
+    [query whereKey:@"objectId" equalTo:self.sentTrailObjectId];
+    NSArray * _Nullable objects = [query findObjects];
+    
+    for (PFObject *object in objects ){
+        trail.trailName = [object objectForKey:@"trailName"];
+        trail.status = [object objectForKey:@"status"];
+        trail.mapLink = [object objectForKey:@"mapLink"];
+        trail.city = [object objectForKey:@"city"];
+        trail.state = [object objectForKey:@"state"];
+        trail.country = [object objectForKey:@"country"];
+        trail.length = [object objectForKey:@"distance"];
+        trail.geoLocation = [object objectForKey:@"geoLocation"];
+        trail.privateTrail = [Converters getBoolValueFromNSNumber:[object objectForKey:@"private"]];
+        trail.skillEasy = [Converters getBoolValueFromNSNumber:[object objectForKey:@"skillEasy"]];
+        trail.skillMedium = [Converters getBoolValueFromNSNumber:[object objectForKey:@"skillMedium"]];
+        trail.skillHard = [Converters getBoolValueFromNSNumber:[object objectForKey:@"skillHard"]];
+    }
+    return trail;
+}
+
+-(NSArray*)RefreshComments {
+    PFQuery *query = [PFQuery queryWithClassName:@"Comments"];
+    [query whereKey:@"trailObjectId" equalTo:self.sentTrailObjectId];
+    [query orderByDescending:@"workingCreatedDate"];
+    NSArray * _Nullable objects = [query findObjects];
+    return objects;
 }
 
 @end

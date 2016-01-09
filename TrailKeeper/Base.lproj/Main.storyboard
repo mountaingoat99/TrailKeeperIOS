@@ -1613,11 +1613,11 @@
                                         </state>
                                         <variation key="default">
                                             <mask key="constraints">
-                                                <exclude reference="70r-cH-7dq"/>
-                                                <exclude reference="bZr-dO-WYA"/>
-                                                <exclude reference="KtA-C9-RjD"/>
                                                 <exclude reference="1AS-o6-uaX"/>
+                                                <exclude reference="70r-cH-7dq"/>
+                                                <exclude reference="KtA-C9-RjD"/>
                                                 <exclude reference="Req-jF-eWN"/>
+                                                <exclude reference="bZr-dO-WYA"/>
                                             </mask>
                                         </variation>
                                         <connections>
@@ -1762,8 +1762,8 @@
                                         </state>
                                         <variation key="default">
                                             <mask key="constraints">
-                                                <exclude reference="Qa1-as-257"/>
                                                 <exclude reference="OxP-Fa-JJh"/>
+                                                <exclude reference="Qa1-as-257"/>
                                                 <exclude reference="sii-HZ-cbP"/>
                                             </mask>
                                         </variation>
@@ -1793,7 +1793,7 @@
                                         <rect key="frame" x="16" y="8" width="335" height="117"/>
                                         <string key="text">In order to ensure only the correct users are changing the status of a trail, we ask that you provide us with your name, trail name, and explanation why you are qualified to changes the trail status - Owner, Admin, Park Manager, etc... After receiving your request, we will email you the trail pin within 24 hours.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -1939,8 +1939,8 @@
                                         </state>
                                         <variation key="default">
                                             <mask key="constraints">
-                                                <exclude reference="Zed-Qv-WHK"/>
                                                 <exclude reference="Mt0-94-pW8"/>
+                                                <exclude reference="Zed-Qv-WHK"/>
                                                 <exclude reference="jAj-Sc-sZR"/>
                                             </mask>
                                         </variation>
@@ -2109,10 +2109,10 @@
                         <viewControllerLayoutGuide type="bottom" id="6ll-W7-8wT"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="1dt-dm-7Yz">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E7b-Ec-slb">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E7b-Ec-slb">
                                 <rect key="frame" x="-4" y="20" width="383" height="647"/>
                             </mapView>
                         </subviews>
@@ -2601,11 +2601,11 @@
         <image name="open" width="170" height="170"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="zjZ-ZA-Yv8"/>
-        <segue reference="OlQ-5H-NIw"/>
-        <segue reference="nBy-B7-tTJ"/>
-        <segue reference="8U8-zK-gWV"/>
         <segue reference="5dN-Ou-gbx"/>
         <segue reference="7cm-3b-rHB"/>
+        <segue reference="VXT-hM-XIA"/>
+        <segue reference="OlQ-5H-NIw"/>
+        <segue reference="zjZ-ZA-Yv8"/>
+        <segue reference="nBy-B7-tTJ"/>
     </inferredMetricsTieBreakers>
 </document>

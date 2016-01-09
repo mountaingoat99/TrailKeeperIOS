@@ -15,6 +15,7 @@
 @property (nonatomic, strong) NSString *userObjectId;
 @property (nonatomic, strong) NSString *userName;
 @property (nonatomic, strong) NSString *comment;
+@property (nonatomic, strong) NSDate *workingCreatedDate;
 
 + (NSString *)parseClassName;
 

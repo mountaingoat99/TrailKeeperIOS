@@ -24,6 +24,7 @@
 @property (nonatomic, strong) UIViewController *whichController;
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) CLLocation *currentLocation;
+@property (nonatomic, strong) NSString *notificationTrailId;
 
 @end
 

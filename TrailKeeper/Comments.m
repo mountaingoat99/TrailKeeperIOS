@@ -31,6 +31,7 @@
 @dynamic userObjectId;
 @dynamic userName;
 @dynamic comment;
+@dynamic workingCreatedDate;
 
 #pragma init methods
 
@@ -41,6 +42,7 @@
         self.userObjectId = [aDecoder decodeObjectForKey:@"userObjectId"];
         self.userName = [aDecoder decodeObjectForKey:@"userName"];
         self.comment = [aDecoder decodeObjectForKey:@"comment"];
+        self.workingCreatedDate = [aDecoder decodeObjectForKey:@"workingCreatedDate"];
 
     }
     return self;
@@ -52,6 +54,7 @@
     [aCoder encodeObject:self.userObjectId forKey:@"userObjectId"];
     [aCoder encodeObject:self.userName forKey:@"userName"];
     [aCoder encodeObject:self.comment forKey:@"comment"];
+    [aCoder encodeObject:self.workingCreatedDate forKey:@"workingCreatedDate"];
 }
 
 +(void)load {
@@ -100,11 +103,12 @@
 
 -(void)SaveNewComment:(Comments*)newComment {
     PFObject *comment = [PFObject objectWithClassName:@"Comments"];
-    comment[@"trailObjecId"] = newComment.trailObjectId;
+    comment[@"trailObjectId"] = newComment.trailObjectId;
     comment[@"trailName"] = newComment.trailName;
     comment[@"userObjectId"] = newComment.userObjectId;
     comment[@"userName"] = newComment.userName;
     comment[@"comment"] = newComment.comment;
+    comment[@"workingCreatedDate"] = [NSDate date];
     
     [comment pinInBackground];
     [comment saveEventually];
