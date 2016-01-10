@@ -80,8 +80,6 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
     UINib *sectionHeaderNib = [UINib nibWithNibName:@"SectionHeaderView" bundle:nil];
     [self.tblFindTrail registerNib:sectionHeaderNib forHeaderFooterViewReuseIdentifier:SectionHeaderViewIdentifier];
     
-    [self loadData];
-    
     // add some view properties
     [self.tblFindTrail setSeparatorColor:[UIColor clearColor]];
     [self.tblFindTrail setBackgroundColor:[UIColor clearColor]];
@@ -96,7 +94,7 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
+    [self loadData];
     if((self.sectionInfoArray == nil) ||
        [self.sectionInfoArray count] != [self numberOfSectionsInTableView:self.tblFindTrail]) {
         

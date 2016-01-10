@@ -482,6 +482,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="btnCloseOpen" destination="pzD-tz-aP4" id="48J-bO-VYy"/>
                         <outlet property="imageEasy" destination="aCb-Ej-FCX" id="UNX-2t-cQh"/>
                         <outlet property="imageHard" destination="3Jz-eZ-hfW" id="Znk-Fh-he2"/>
                         <outlet property="imageMedium" destination="oZd-Ol-aiO" id="iYg-et-rfd"/>

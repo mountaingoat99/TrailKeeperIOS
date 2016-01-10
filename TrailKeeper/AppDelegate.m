@@ -140,17 +140,18 @@ static NSString *const filterStatusNotification = @"com.singlecog.trailkeeper.NE
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-        NSLog(@"DidReceiveRemoteNotification");
+    NSLog(@"DidReceiveRemoteNotification");
     NSLog(@"JSON: %@", userInfo);
     NSString *actionType = [userInfo objectForKey:@"action"];
-    // get the trailObjectId from the notification and save it to the shared preferences so
-    // we can use it on the open app on notification tap
-    self.notificationTrailId = [userInfo objectForKey:@"trailObjectId"];
-    NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
-    [preferences setObject:self.notificationTrailId forKey:@"notificationObjectId"];
-    NSLog(@"notificationObjectId: %@", self.notificationTrailId);
     // we do not want to show the notification is the user is the one who sent the update
     if (![self isUserWhoUpdated:userInfo]) {
+        // get the trailObjectId from the notification and save it to the shared preferences so
+        // we can use it on the open app on notification tap
+        self.notificationTrailId = [userInfo objectForKey:@"trailObjectId"];
+        NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
+        [preferences setObject:self.notificationTrailId forKey:@"notificationObjectId"];
+        NSLog(@"notificationObjectId: %@", self.notificationTrailId);
+        
         // we also want to reload data from Parse if we have new info
         if ([actionType isEqualToString:filterCommentNotification]) {
             // reload the comment class
@@ -166,7 +167,7 @@ static NSString *const filterStatusNotification = @"com.singlecog.trailkeeper.NE
             PFInstallation *currentInstallation = [PFInstallation currentInstallation];
             if (currentInstallation.badge != 0) {
                 currentInstallation.badge = 0;
-                [currentInstallation saveEventually];
+                [currentInstallation saveInBackground];
             }
             [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
         }
@@ -219,7 +220,7 @@ static NSString *const filterStatusNotification = @"com.singlecog.trailkeeper.NE
     PFInstallation *currentInstallation = [PFInstallation currentInstallation];
     if (currentInstallation.badge != 0) {
         currentInstallation.badge = 0;
-        [currentInstallation saveEventually];
+        [currentInstallation saveInBackground];
     }
     
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.

@@ -53,7 +53,7 @@
     authorizedCommentors[@"canComment"] = [Converters ConvertBoolToNSNumber:commentor.canComment];
     
     [authorizedCommentors pinInBackground];
-    [authorizedCommentors saveEventually];
+    [authorizedCommentors saveInBackground];
     
 }
 
@@ -64,7 +64,7 @@
     [query getFirstObjectInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error) {
         object[@"userName"] = username;
         [object pinInBackground];
-        [object saveEventually];
+        [object saveInBackground];
     }];
 }
 

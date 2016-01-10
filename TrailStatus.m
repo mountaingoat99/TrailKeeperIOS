@@ -85,7 +85,7 @@
     trails[@"updateStatusPin"] = [self GenerateRandomPin];
     
     [trails pinInBackground];
-    [trails saveEventually];
+    [trails saveInBackground];
 }
 
 -(void)UpdateTrailStatusUser:(NSString*)trailName {

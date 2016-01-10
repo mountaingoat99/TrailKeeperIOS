@@ -21,11 +21,10 @@ static NSString * const CTCellIdentifier = @"idCellRecord";
 @interface TrailHomeViewController ()
 
 @property (nonatomic, strong) AppDelegate *appDelegate;
-@property (nonatomic, strong) NSArray *commentList;
+@property (nonatomic, strong) NSMutableArray *commentList;
 @property (nonatomic, strong) NSString *trailName;
 @property (nonatomic) BOOL isAnonUser;
 @property (nonatomic) BOOL isParseUser;
-//@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 -(void)checkForParseUser;
 -(void)checkForAnonUser;
@@ -52,15 +51,6 @@ static NSString * const CTCellIdentifier = @"idCellRecord";
     
     [self checkForParseUser];
     [self checkForAnonUser];
-    
-    // Initialize the refresh control.
-//    self.refreshControl = [[UIRefreshControl alloc] init];
-//    //self.refreshControl.backgroundColor = [UIColor blackColor];
-//    self.refreshControl.tintColor = [UIColor whiteColor];
-//    [self.refreshControl addTarget:self
-//                            action:@selector(refresh:)
-//                  forControlEvents:UIControlEventValueChanged];
-//    [self.tblComments addSubview:self.refreshControl];
     
     self.appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     
@@ -331,7 +321,7 @@ static NSString * const CTCellIdentifier = @"idCellRecord";
 }
 
 #pragma private methods
--(void)loadTableData:(NSArray*)comments {
+-(void)loadTableData:(NSMutableArray*)comments {
     
     if (self.commentList != nil) {
         self.commentList = nil;
@@ -375,6 +365,15 @@ static NSString * const CTCellIdentifier = @"idCellRecord";
     } else {
         self.imageHard.hidden = YES;
     }
+    
+    // set the close/open button text
+    if ([trails.status isEqualToNumber:@1]) {
+        [self.btnCloseOpen setTitle:@"Open Trail" forState:UIControlStateNormal];
+    } else if ([trails.status isEqualToNumber:@2]) {
+        [self.btnCloseOpen setTitle:@"Close Trail" forState:UIControlStateNormal];
+    } else {
+        [self.btnCloseOpen setTitle:@"Open Trail" forState:UIControlStateNormal];
+    }
 }
 
 -(NSString*)formateDate:(NSDate*)date {
@@ -391,6 +390,8 @@ static NSString * const CTCellIdentifier = @"idCellRecord";
 -(void)SetTrailStatus:(NSNumber*)trailStatus {
     Trails *trails = [[Trails alloc] init];
     [trails UpdateTrailStatus:self.sentTrailObjectId Choice:trailStatus TrailName:self.trailName];
+    self.imageStatus.image = [Trails GetStatusIcon:trailStatus];
+    
 }
 
 -(void)leaveNewComment:(NSString*)comment {
@@ -403,10 +404,15 @@ static NSString * const CTCellIdentifier = @"idCellRecord";
     comments.userName = user.username;
     comments.userObjectId = user.objectId;
     comments.comment = comment;
+    comments.workingCreatedDate = [NSDate date];
     
     [comments SaveNewComment:comments];
-    [GetAllObjectsFromParseHelper RefreshComments]; // This is not working
-    [self loadTableData:(NSMutableArray*)nil];
+    [self.commentList insertObject:comments atIndex:0];
+    
+    [self.tblComments reloadData];
+    //[GetAllObjectsFromParseHelper RefreshComments];
+    //NSArray *appendedComments = [self RefreshComments];
+    //[self loadTableData:(NSMutableArray*)self.commentList];
 }
 
 -(void)checkForParseUser {
@@ -426,10 +432,6 @@ static NSString * const CTCellIdentifier = @"idCellRecord";
     
     [self loadTrailData:trail];
     [self loadTableData:comments];
-    
-//    if (self.refreshControl) {
-//        [self.refreshControl endRefreshing];
-//    }
 }
 
 -(Trails*)RefreshTrails {
@@ -455,12 +457,13 @@ static NSString * const CTCellIdentifier = @"idCellRecord";
     return trail;
 }
 
--(NSArray*)RefreshComments {
+-(NSMutableArray*)RefreshComments {
     PFQuery *query = [PFQuery queryWithClassName:@"Comments"];
     [query whereKey:@"trailObjectId" equalTo:self.sentTrailObjectId];
     [query orderByDescending:@"workingCreatedDate"];
     NSArray * _Nullable objects = [query findObjects];
-    return objects;
+    NSMutableArray *array = [[NSMutableArray alloc] initWithArray:objects];
+    return array;
 }
 
 @end

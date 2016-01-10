@@ -76,13 +76,14 @@
     return objects;
 }
 
--(NSArray*)GetCommentsByTrail:(NSString*)trailObjectId {
+-(NSMutableArray*)GetCommentsByTrail:(NSString*)trailObjectId {
     PFQuery *query = [PFQuery queryWithClassName:@"Comments"];
     [query whereKey:@"trailObjectId" equalTo:trailObjectId];
     [query orderByDescending:@"workingCreatedDate"];
     [query fromLocalDatastore];
     NSArray * _Nullable objects = [query findObjects];
-    return objects;
+    NSMutableArray *array = [[NSMutableArray alloc] initWithArray:objects];
+    return array;
 }
 
 -(NSArray*)GetAllComments {
@@ -108,10 +109,10 @@
     comment[@"userObjectId"] = newComment.userObjectId;
     comment[@"userName"] = newComment.userName;
     comment[@"comment"] = newComment.comment;
-    comment[@"workingCreatedDate"] = [NSDate date];
+    comment[@"workingCreatedDate"] = newComment.workingCreatedDate;
     
     [comment pinInBackground];
-    [comment saveEventually];
+    [comment saveInBackground];
     
     // TODO add the call to send the notification
 }

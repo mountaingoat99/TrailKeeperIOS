@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageEasy;
 @property (weak, nonatomic) IBOutlet UIImageView *imageMedium;
 @property (weak, nonatomic) IBOutlet UIImageView *imageHard;
+@property (weak, nonatomic) IBOutlet UIButton *btnCloseOpen;
 
 - (IBAction)btn_subscribeClick:(id)sender;
 - (IBAction)btn_statusClick:(id)sender;
