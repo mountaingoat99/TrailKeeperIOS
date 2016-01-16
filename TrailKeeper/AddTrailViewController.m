@@ -88,7 +88,7 @@
     self.txtCountry.keyboardType = UIKeyboardTypeDefault;
     self.txtCountry.delegate = self;
     // right now lets just make USA the default country
-    self.txtCountry.text = @"USA";
+    self.txtCountry.text = @"United States";
     self.txtCountry.enabled = NO;
     
     NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
