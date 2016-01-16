@@ -45,7 +45,6 @@
 @dynamic skillHard;
 @dynamic distanceFromUser;
 @dynamic lastUpdatedByUserObjectId;
-@dynamic measurement;
 
 #pragma init
 
@@ -59,7 +58,6 @@
         self.state = [aDecoder decodeObjectForKey:@"state"];
         self.country = [aDecoder decodeObjectForKey:@"country"];
         self.length = [aDecoder decodeObjectForKey:@"length"];
-        self.measurement = [aDecoder decodeObjectForKey:@"measurement"];
         self.geoLocation = [aDecoder decodeObjectForKey:@"geoLocation"];
         self.privateTrail = [aDecoder decodeBoolForKey:@"privateTrail"];
         self.skillEasy = [aDecoder decodeBoolForKey:@"skillEasy"];
@@ -79,8 +77,7 @@
     [aCoder encodeObject:self.city forKey:@"city"];
     [aCoder encodeObject:self.state forKey:@"state"];
     [aCoder encodeObject:self.country forKey:@"country"];
-    [aCoder encodeObject:self.length forKey:@"lenght"];
-    [aCoder encodeObject:self.measurement forKey:@"measurement"];
+    [aCoder encodeObject:self.length forKey:@"length"];
     [aCoder encodeObject:self.geoLocation forKey:@"geoLocation"];
     [aCoder encodeBool:self.privateTrail forKey:@"privateTrail"];
     [aCoder encodeBool:self.skillEasy forKey:@"skillEasy"];
@@ -398,7 +395,6 @@
     trail[@"state"] = newTrail.state;
     trail[@"country"] = newTrail.country;
     trail[@"distance"] = newTrail.length;
-    trail[@"measurement"] = newTrail.measurement;
     trail[@"geoLocation"] = newTrail.geoLocation;
     trail[@"private"] = [Converters ConvertBoolToNSNumber:newTrail.privateTrail];
     trail[@"skillEasy"] = [Converters ConvertBoolToNSNumber:newTrail.skillEasy];
@@ -435,7 +431,6 @@
         offlineTrail.skillMedium = [[[NSString alloc] initWithString:[[trail objectAtIndex:0] objectAtIndex:9]] boolValue];
         offlineTrail.skillHard = [[[NSString alloc] initWithString:[[trail objectAtIndex:0] objectAtIndex:10]] boolValue];
         offlineTrail.privateTrail = [[[NSString alloc] initWithString:[[trail objectAtIndex:0] objectAtIndex:11]] boolValue];
-        offlineTrail.measurement = [[NSString alloc] initWithString:[[trail objectAtIndex:0] objectAtIndex:12]];
     }
     return offlineTrail;
 }
@@ -452,7 +447,7 @@
 
 -(void)AddOfflineTrail:(Trails*)trail {
     self.dbManager = [[DBManager alloc] initWithDatabaseFilename:@"offline_trails.db"];
-    NSString *query = [NSString stringWithFormat:@"insert into offline_trail(name, city, state, country, length, latitude, longitude, status, easy, medium, hard, private, measurement) values('%@','%@','%@','%@','%@','%f','%f','%@','%@','%@','%@','%@','%@')",
+    NSString *query = [NSString stringWithFormat:@"insert into offline_trail(name, city, state, country, length, latitude, longitude, status, easy, medium, hard, private) values('%@','%@','%@','%@','%@','%f','%f','%@','%@','%@','%@','%@')",
              trail.trailName,
              trail.city,
              trail.state,
@@ -464,8 +459,7 @@
              [Converters ConvertBoolToNSNumber:trail.skillEasy],
              [Converters ConvertBoolToNSNumber:trail.skillMedium],
              [Converters ConvertBoolToNSNumber:trail.skillHard],
-             [Converters ConvertBoolToNSNumber:trail.privateTrail],
-             trail.measurement];
+             [Converters ConvertBoolToNSNumber:trail.privateTrail]];
     
     [self.dbManager executeQuery:query];
     if (self.dbManager.affectedRows != 0) {

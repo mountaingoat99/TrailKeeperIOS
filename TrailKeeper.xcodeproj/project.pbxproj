@@ -8,13 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		2604CAA61C3379A5006F0226 /* CustomNotificationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2604CAA51C3379A5006F0226 /* CustomNotificationCell.m */; };
+		260DBBF41C4AE19E009D3374 /* offline_trails.db in Resources */ = {isa = PBXBuildFile; fileRef = 260DBBF31C4AE19E009D3374 /* offline_trails.db */; };
 		260EC2641BDB13F600BB01DF /* Converters.m in Sources */ = {isa = PBXBuildFile; fileRef = 260EC2631BDB13F600BB01DF /* Converters.m */; };
 		261114441C2799A200E38EE0 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261114431C2799A200E38EE0 /* MapKit.framework */; };
 		2615C11B1BCAE7660065B62C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2615C11A1BCAE7660065B62C /* main.m */; };
 		2615C11E1BCAE7660065B62C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2615C11D1BCAE7660065B62C /* AppDelegate.m */; };
 		2615C1261BCAE7660065B62C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2615C1251BCAE7660065B62C /* Assets.xcassets */; };
 		2615C1291BCAE7660065B62C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2615C1271BCAE7660065B62C /* LaunchScreen.storyboard */; };
-		261CFE931C37817100B0F861 /* offline_trails.db in Resources */ = {isa = PBXBuildFile; fileRef = 261CFE921C37817100B0F861 /* offline_trails.db */; };
 		261D7B941C24EECB00B53018 /* CustomCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 261D7B931C24EECB00B53018 /* CustomCommentCell.m */; };
 		262C4D0C1C1BA2600046AD71 /* HTAutocompleteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 262C4D081C1BA2600046AD71 /* HTAutocompleteManager.m */; };
 		262C4D0D1C1BA2600046AD71 /* HTAutocompleteTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 262C4D0B1C1BA2600046AD71 /* HTAutocompleteTextField.m */; };
@@ -71,6 +71,7 @@
 /* Begin PBXFileReference section */
 		2604CAA41C3379A5006F0226 /* CustomNotificationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomNotificationCell.h; sourceTree = "<group>"; };
 		2604CAA51C3379A5006F0226 /* CustomNotificationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomNotificationCell.m; sourceTree = "<group>"; };
+		260DBBF31C4AE19E009D3374 /* offline_trails.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = offline_trails.db; path = ../../offline_trails.db; sourceTree = "<group>"; };
 		260EC2621BDB13F600BB01DF /* Converters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Converters.h; sourceTree = "<group>"; };
 		260EC2631BDB13F600BB01DF /* Converters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Converters.m; sourceTree = "<group>"; };
 		261114431C2799A200E38EE0 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -81,7 +82,6 @@
 		2615C1251BCAE7660065B62C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2615C1281BCAE7660065B62C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2615C12A1BCAE7660065B62C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		261CFE921C37817100B0F861 /* offline_trails.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = offline_trails.db; path = ../../offline_trails.db; sourceTree = "<group>"; };
 		261D7B921C24EECB00B53018 /* CustomCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCommentCell.h; sourceTree = "<group>"; };
 		261D7B931C24EECB00B53018 /* CustomCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCommentCell.m; sourceTree = "<group>"; };
 		262C4D081C1BA2600046AD71 /* HTAutocompleteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTAutocompleteManager.m; sourceTree = "<group>"; };
@@ -202,7 +202,7 @@
 		2615C10D1BCAE7660065B62C = {
 			isa = PBXGroup;
 			children = (
-				261CFE921C37817100B0F861 /* offline_trails.db */,
+				260DBBF31C4AE19E009D3374 /* offline_trails.db */,
 				2615C1181BCAE7660065B62C /* TrailKeeper */,
 				2615C1171BCAE7660065B62C /* Products */,
 				DA81B6D8C2CD2D0BA67C0168 /* Pods */,
@@ -494,7 +494,7 @@
 				26F8D40C1BE5A227007770F4 /* Main.storyboard in Resources */,
 				26A5E9841C133A7800C7FE07 /* SectionHeaderView.xib in Resources */,
 				2615C1261BCAE7660065B62C /* Assets.xcassets in Resources */,
-				261CFE931C37817100B0F861 /* offline_trails.db in Resources */,
+				260DBBF41C4AE19E009D3374 /* offline_trails.db in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

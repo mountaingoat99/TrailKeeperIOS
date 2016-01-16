@@ -308,12 +308,14 @@
         NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
         f.numberStyle = NSNumberFormatterDecimalStyle;
         NSNumber *myNumber = [f numberFromString:self.txtLength.text];
-        trail.length = myNumber;
         NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
         if ([[preferences objectForKey:@"userMeasurements"] isEqualToString:@"imperial"]) {
-            trail.measurement = @"miles";
+            //convert the length here is preferences are miles;
+            double miles = [myNumber doubleValue];
+            miles = miles * 1.6;
+            trail.length = [NSNumber numberWithDouble:miles];
         } else {
-            trail.measurement = @"kilometers";
+            trail.length = myNumber;
         }
         // see if they are using a point or user location
         if (self.point != nil) {
