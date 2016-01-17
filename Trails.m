@@ -20,7 +20,7 @@
 @property (nonatomic, strong) DBManager *dbManager;
 
 -(void)AddOfflineTrail:(Trails*)trail;
--(void)DeleteNewTrail:(int)tableId;
+-(void)DeleteNewTrail:(NSString*)trailName;
 
 @end
 
@@ -469,9 +469,9 @@
     }
 }
 
--(void)DeleteNewTrail:(int)tableId {
+-(void)DeleteNewTrail:(NSString*)trailName {
     self.dbManager = [[DBManager alloc] initWithDatabaseFilename:@"offline_trails.db"];
-    NSString *query = [NSString stringWithFormat:@"delete from offline_trail where id=%d", tableId];
+    NSString *query = [NSString stringWithFormat:@"delete from offline_trail where name=%@", trailName];
     [self.dbManager executeQuery:query];
 }
 

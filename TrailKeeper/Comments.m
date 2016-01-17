@@ -16,7 +16,7 @@
 @property (nonatomic, strong) DBManager *dbManager;
 
 -(void)addOfflineComment:(Comments*)comment;
--(void)deleteOneOfflineComment:(int)tableId;
+-(void)deleteOneOfflineComment:(NSString*)comment;
 
 @end
 
@@ -163,9 +163,9 @@
     
 }
 
--(void)deleteOneOfflineComment:(int)tableId {
+-(void)deleteOneOfflineComment:(NSString*)comment {
     self.dbManager = [[DBManager alloc] initWithDatabaseFilename:@"offline_trails.db"];
-    NSString *query = [NSString stringWithFormat:@"delete from offline_comment where id=%d", tableId];
+    NSString *query = [NSString stringWithFormat:@"delete from offline_comment where comment=%@", comment];
     [self.dbManager executeQuery:query];
 }
 

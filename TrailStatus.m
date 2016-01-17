@@ -10,13 +10,14 @@
 #import <Parse/PFObject+Subclass.h>
 #include <stdlib.h>
 #import "DBManager.h"
+#import "ConnectionDetector.h"
 
 @interface TrailStatus ()
 
 @property (nonatomic, strong) DBManager *dbManager;
 
 -(void)addOfflineTrailStatus:(TrailStatus*)trailStatus;
--(void)deleteOneOfflineTrailStatus:(int)tableId;
+-(void)deleteOneOfflineTrailStatus:(NSString*)trailName;
 -(NSNumber*)GenerateRandomPin;
 
 @end
@@ -70,16 +71,19 @@
 }
 
 -(void)SaveNewTrailStatus:(Trails*)trailname {
-    //TODO need to set this up as a connection check and save to db if no connection
-    
-    
     PFObject *trails = [PFObject objectWithClassName:@"TrailStatus"];
     trails[@"trailName"] = trailname.trailName;
-    // Call method to get the random number generator
-    trails[@"updateStatusPin"] = [self GenerateRandomPin];
-    
+    NSNumber *pin = [self GenerateRandomPin];
+    trails[@"updateStatusPin"] = pin;
+    if ([ConnectionDetector hasConnectivity]) {
+        [trails saveInBackground];
+    } else {
+        TrailStatus *status = [[TrailStatus alloc] init];
+        status.trailName = trailname.trailName;
+        status.updateStatusPin = [pin stringValue];
+        [self addOfflineTrailStatus:status];
+    }
     [trails pinInBackground];
-    [trails saveInBackground];
 }
 
 -(void)UpdateTrailStatusUser:(NSString*)trailName {
@@ -125,7 +129,7 @@
     self.dbManager = [[DBManager alloc] initWithDatabaseFilename:@"offline_trails.db"];
     NSString *query = [NSString stringWithFormat:@"insert into offline_status(trailName, updateStatusPin) values('%@','%@')",
                        trailStatus.trailName,
-                       [self GenerateRandomPin]];
+                       trailStatus.updateStatusPin];
     [self.dbManager executeQuery:query];
     if (self.dbManager.affectedRows != 0) {
         NSLog(@"AddOffLineTrailStatus query has been successfully inserted. Rows: %d", self.dbManager.affectedRows);
@@ -134,9 +138,9 @@
     }
 }
 
--(void)deleteOneOfflineTrailStatus:(int)tableId {
+-(void)deleteOneOfflineTrailStatus:(NSString*)trailName {
     self.dbManager = [[DBManager alloc] initWithDatabaseFilename:@"offline_trails.db"];
-    NSString *query = [NSString stringWithFormat:@"delete from offline_status where id=%d", tableId];
+    NSString *query = [NSString stringWithFormat:@"delete from offline_status where trailName=%@", trailName];
     [self.dbManager executeQuery:query];
 }
 
