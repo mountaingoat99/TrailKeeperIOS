@@ -17,7 +17,7 @@
 @property (nonatomic, strong) NSString *updateStatusPin;
 @property (nonatomic, strong) NSArray *authorizedUserNames;
 
--(NSString*)GetTrailPin:(NSString*)trailName;
+-(NSNumber*)GetTrailPin:(NSString*)trailName;
 -(void)SaveNewTrailStatus:(Trails*)trailName;
 -(void)UpdateTrailStatusUser:(NSString*)trailName;
 -(TrailStatus*)GetOffTrailStatus;

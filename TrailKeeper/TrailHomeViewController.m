@@ -25,6 +25,11 @@ static NSString * const CTCellIdentifier = @"idCellRecord";
 @property (nonatomic, strong) NSString *trailName;
 @property (nonatomic) BOOL isAnonUser;
 @property (nonatomic) BOOL isParseUser;
+@property (nonatomic, strong) NSNumber *trailPin;
+@property (nonatomic) BOOL pinIsValid;
+@property (nonatomic, strong) UIAlertAction *openAction;
+@property (nonatomic, strong) UIAlertAction *closedAction;
+@property (nonatomic, strong) UIAlertAction *unKnownAction;
 
 -(void)checkForParseUser;
 -(void)checkForAnonUser;
@@ -38,6 +43,7 @@ static NSString * const CTCellIdentifier = @"idCellRecord";
 -(void)refresh;
 -(NSArray*)RefreshComments;
 -(Trails*)RefreshTrails;
+-(void)CheckTrailPin;
 
 @end
 
@@ -51,7 +57,7 @@ static NSString * const CTCellIdentifier = @"idCellRecord";
     
     [self checkForParseUser];
     [self checkForAnonUser];
-    
+
     self.appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     
     self.tblComments.delegate = self;
@@ -88,6 +94,7 @@ static NSString * const CTCellIdentifier = @"idCellRecord";
         [self loadTableData:nil];
     }
     self.navigationItem.title = self.trailName;
+        [self CheckTrailPin];
 }
 
 -(void)viewDidAppear:(BOOL)animated {
@@ -201,7 +208,8 @@ static NSString * const CTCellIdentifier = @"idCellRecord";
     if (self.isParseUser) {
         if (!self.isAnonUser) {
     
-            NSString *name = [NSString stringWithFormat:@"How is the trail?"];
+            NSString *name = [NSString stringWithFormat:@"Enter Trail Pin to set status.\n\nRequest a pin in the menu if you do not have one yet."];
+            
             
             UIAlertController *alert = [UIAlertController
                                         alertControllerWithTitle:name
@@ -216,38 +224,51 @@ static NSString * const CTCellIdentifier = @"idCellRecord";
                                                NSLog(@"Cancel Action");
                                            }];
             
-            UIAlertAction *openAction = [UIAlertAction
-                       
+            self.openAction = [UIAlertAction
                                          actionWithTitle:@"Open"
-                                        style:UIAlertActionStyleDefault
-                                        handler:^(UIAlertAction *action)
-                                        {
-                                            NSLog(@"Open Trail Action");
-                                            [self SetTrailStatus:@2];
-                                        }];
+                                         style:UIAlertActionStyleDefault
+                                         handler:^(UIAlertAction *action)
+                                         {
+                                             NSLog(@"Open Trail Action");
+                                             [self SetTrailStatus:@2];
+                                         }];
             
-            UIAlertAction *closedAction = [UIAlertAction
-                                       actionWithTitle:@"Closed"
-                                       style:UIAlertActionStyleDefault
-                                       handler:^(UIAlertAction *action)
-                                       {
-                                           NSLog(@"Close Trail Action");
-                                           [self SetTrailStatus:@1];
-                                       }];
-            
-            UIAlertAction *unKnownAction = [UIAlertAction
-                                           actionWithTitle:@"Unknown"
+            self.closedAction = [UIAlertAction
+                                           actionWithTitle:@"Closed"
                                            style:UIAlertActionStyleDefault
                                            handler:^(UIAlertAction *action)
                                            {
-                                               NSLog(@"Unknown Trail Action");
-                                               [self SetTrailStatus:@3];
+                                               NSLog(@"Close Trail Action");
+                                               [self SetTrailStatus:@1];
                                            }];
             
+            self.unKnownAction = [UIAlertAction
+                                            actionWithTitle:@"Unknown"
+                                            style:UIAlertActionStyleDefault
+                                            handler:^(UIAlertAction *action)
+                                            {
+                                                NSLog(@"Unknown Trail Action");
+                                                [self SetTrailStatus:@3];
+                                            }];
+            
+            [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+                textField.placeholder = @"Trail Pin";
+                textField.keyboardAppearance = UIKeyboardAppearanceDefault;
+                textField.keyboardType = UIKeyboardTypeNumberPad;
+                //textField.backgroundColor = [UIColor whiteColor];
+                //[textField superview].backgroundColor = textField.backgroundColor;
+                //[[textField superview] superview].backgroundColor = [UIColor clearColor];
+                [textField addTarget:self action:@selector(textChanged:) forControlEvents:UIControlEventEditingChanged];
+                
+            }];
+            
             [alert addAction:cancelAction];
-            [alert addAction:openAction];
-            [alert addAction:closedAction];
-            [alert addAction:unKnownAction];
+            [alert addAction:self.openAction];
+            [alert addAction:self.closedAction];
+            [alert addAction:self.unKnownAction];
+            [self.openAction setEnabled:NO];
+            [self.closedAction setEnabled:NO];
+            [self.unKnownAction setEnabled:NO];
             
             [self presentViewController:alert animated:YES completion:nil];
             
@@ -464,6 +485,28 @@ static NSString * const CTCellIdentifier = @"idCellRecord";
     NSArray * _Nullable objects = [query findObjects];
     NSMutableArray *array = [[NSMutableArray alloc] initWithArray:objects];
     return array;
+}
+
+-(void)CheckTrailPin {
+    TrailStatus *status = [[TrailStatus alloc] init];
+    self.trailPin = [status GetTrailPin:self.trailName];
+}
+
+-(void)EnableOpenClose:(UIAlertAction*)action {
+    [action setEnabled:YES];
+}
+
+-(void)textChanged:(UITextField *)textField {
+    NSLog(@"textfield data %@ ",textField.text);
+    if ([textField.text isEqualToString:[self.trailPin stringValue]]) {
+        [self.openAction setEnabled:YES];
+        [self.closedAction setEnabled:YES];
+        [self.unKnownAction setEnabled:YES];
+    } else {
+        [self.openAction setEnabled:NO];
+        [self.closedAction setEnabled:NO];
+        [self.unKnownAction setEnabled:NO];
+    }
 }
 
 @end

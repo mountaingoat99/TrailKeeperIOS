@@ -58,20 +58,14 @@
 
 #pragma public methods
 
--(NSString*)GetTrailPin:(NSString*)trailName {
-    __block NSString *trailPin = nil;
+-(NSNumber*)GetTrailPin:(NSString*)trailName {
+    NSNumber *trailPin = nil;
     PFQuery *query = [PFQuery queryWithClassName:@"TrailStatus"];
     [query whereKey:@"trailName" equalTo:trailName];
     [query fromLocalDatastore];
-    [query getFirstObjectInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error) {
-        if (!error) {
-            NSLog(@"Successfully Retrieved %@ pin Object ID", object.objectId);
-            trailPin = [object objectForKey:@"updateStatusPin"];
-        } else {
-            NSLog(@"Did not retrieved the trail pin");
-        }
-        
-    }];
+    PFObject *_Nullable trailObject = [query getFirstObject];
+    trailPin = [trailObject objectForKey:@"updateStatusPin"];
+    NSLog(@"Successfully Retrieved %@ pin Object ID", trailPin);
     return trailPin;
 }
 
