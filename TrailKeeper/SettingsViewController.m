@@ -28,6 +28,7 @@
 -(void)deleteAccount;
 -(void)resendEmailVerification;
 -(void)unitsOfMeasure;
+-(void)removeUserInstallations;
 
 @end
 
@@ -206,6 +207,7 @@
                                         NSLog(@"Subscribe Yes Action");
                                         User *user = [[User alloc]init];
                                         [user UserLogOut];
+                                        [self removeUserInstallations];
                                         [AlertControllerHelper ShowAlert:@"Goodbye" message:@"You have been signed out" view:self];
                                         
                                     }];
@@ -255,6 +257,7 @@
                                                 AuthorizedCommentors *commentors = [[AuthorizedCommentors alloc] init];
                                                 [commentors DeleteAuthorizedCommentor:deletedUserName];
                                                 [PFUser logOut];
+                                                [self removeUserInstallations];
                                             } else {
                                                 NSLog(@"Delete Account Error %@ ", [error localizedDescription]);
                                                 [AlertControllerHelper ShowAlert:@"Error!" message:[error localizedDescription] view:self];
@@ -289,7 +292,16 @@
 
 -(void)unitsOfMeasure {
     [self performSegueWithIdentifier:@"segueAccountSettingsToUnitsOfMeasure" sender:self];
-    
+}
+
+-(void)removeUserInstallations {
+    Installation *install = [[Installation alloc] init];
+    NSArray *channels = [install GetUserChannels];
+    for (NSString *channel in channels) {
+        PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+        [currentInstallation removeObjectsInArray:@[channel] forKey:@"channels"];
+        [currentInstallation saveInBackground];
+    }
 }
 
 @end

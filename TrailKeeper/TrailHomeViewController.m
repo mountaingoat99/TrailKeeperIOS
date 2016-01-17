@@ -30,6 +30,7 @@ static NSString * const CTCellIdentifier = @"idCellRecord";
 @property (nonatomic, strong) UIAlertAction *openAction;
 @property (nonatomic, strong) UIAlertAction *closedAction;
 @property (nonatomic, strong) UIAlertAction *unKnownAction;
+@property (nonatomic, strong) NSString *mapURL;
 
 -(void)checkForParseUser;
 -(void)checkForAnonUser;
@@ -44,6 +45,7 @@ static NSString * const CTCellIdentifier = @"idCellRecord";
 -(NSArray*)RefreshComments;
 -(Trails*)RefreshTrails;
 -(void)CheckTrailPin;
+
 
 @end
 
@@ -334,6 +336,15 @@ static NSString * const CTCellIdentifier = @"idCellRecord";
     }
 }
 
+- (IBAction)btn_MapClick:(id)sender {
+    NSLog(@"Map Link: %@", self.mapURL);
+    if (self.mapURL != nil) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.mapURL]];
+    } else {
+        [AlertControllerHelper ShowAlert:@"No Map!" message:@"If you have a trail map link contact us and we can add it to TrailKeeper" view:self];
+    }
+}
+
 -(void)btn_drawerClick {
     if (self.appDelegate.notificationTrailId != nil) {
         [self.appDelegate.drawerController toggleDrawerSide:MMDrawerSideLeft animated:true completion:nil];
@@ -394,6 +405,9 @@ static NSString * const CTCellIdentifier = @"idCellRecord";
     } else {
         [self.btnCloseOpen setTitle:@"Open Trail" forState:UIControlStateNormal];
     }
+    
+    // get the map url
+    self.mapURL = trails.mapLink;
 }
 
 -(NSString*)formateDate:(NSDate*)date {

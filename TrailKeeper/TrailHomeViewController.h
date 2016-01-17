@@ -22,10 +22,12 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageMedium;
 @property (weak, nonatomic) IBOutlet UIImageView *imageHard;
 @property (weak, nonatomic) IBOutlet UIButton *btnCloseOpen;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *btnMapButton;
 
 - (IBAction)btn_subscribeClick:(id)sender;
 - (IBAction)btn_statusClick:(id)sender;
 - (IBAction)btn_AllCommentsClick:(id)sender;
 - (IBAction)btn_LeaveCommentClick:(id)sender;
+- (IBAction)btn_MapClick:(id)sender;
 
 @end

@@ -477,12 +477,19 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="7n8-6A-R58"/>
+                    <navigationItem key="navigationItem" id="7n8-6A-R58">
+                        <barButtonItem key="rightBarButtonItem" image="map" id="15M-07-f8p">
+                            <connections>
+                                <action selector="btn_MapClick:" destination="GMy-jg-7sC" id="bmK-D9-yjq"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <nil key="simulatedStatusBarMetrics"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="btnCloseOpen" destination="pzD-tz-aP4" id="48J-bO-VYy"/>
+                        <outlet property="btnMapButton" destination="15M-07-f8p" id="gXZ-9f-gtW"/>
                         <outlet property="imageEasy" destination="aCb-Ej-FCX" id="UNX-2t-cQh"/>
                         <outlet property="imageHard" destination="3Jz-eZ-hfW" id="Znk-Fh-he2"/>
                         <outlet property="imageMedium" destination="oZd-Ol-aiO" id="iYg-et-rfd"/>
@@ -2598,6 +2605,7 @@
         <image name="drawer_icon" width="29" height="29"/>
         <image name="easy" width="170" height="170"/>
         <image name="hard" width="170" height="170"/>
+        <image name="map" width="32" height="32"/>
         <image name="medium" width="170" height="170"/>
         <image name="open" width="170" height="170"/>
     </resources>
