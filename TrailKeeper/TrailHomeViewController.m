@@ -256,8 +256,7 @@ static NSString * const CTCellIdentifier = @"idCellRecord";
                 textField.keyboardAppearance = UIKeyboardAppearanceDefault;
                 textField.keyboardType = UIKeyboardTypeNumberPad;
                 //textField.backgroundColor = [UIColor whiteColor];
-                //[textField superview].backgroundColor = textField.backgroundColor;
-                //[[textField superview] superview].backgroundColor = [UIColor clearColor];
+                //textField.superview.backgroundColor = [UIColor whiteColor];
                 [textField addTarget:self action:@selector(textChanged:) forControlEvents:UIControlEventEditingChanged];
                 
             }];
