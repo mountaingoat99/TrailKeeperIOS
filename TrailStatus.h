@@ -21,6 +21,8 @@
 -(void)SaveNewTrailStatus:(Trails*)trailName;
 -(void)UpdateTrailStatusUser:(NSString*)trailName;
 -(TrailStatus*)GetOffTrailStatus;
--(NSNumber*)GetDbCommentRowCount;
+-(void)SaveStatus:(TrailStatus*)trailStatus;
+-(int)GetDbCommentRowCount;
+-(void)deleteOneOfflineTrailStatus:(NSString*)trailName;
 
 @end

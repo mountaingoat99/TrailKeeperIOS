@@ -45,12 +45,7 @@
     
     self.appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     
-    NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
-    if ([[preferences objectForKey:@"userMeasurements"] isEqualToString:@"imperial"]) {
-        self.measurementLabel = @" Miles";
-    } else {
-        self.measurementLabel = @" Kilometers";
-    }
+    
     
     // Initialize the refresh control.
     self.refreshControl = [[UIRefreshControl alloc] init];
@@ -73,6 +68,14 @@
     
     // see if we need to load all the data and show the welcome message
     [self firstTimeLoad];
+    
+    // set the measurement preferences
+    NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
+    if ([[preferences objectForKey:userMeasurementKey] isEqualToString:imperialDefault]) {
+        self.measurementLabel = @" Miles";
+    } else {
+        self.measurementLabel = @" Kilometers";
+    }
     
     //Register a notification to reload the table if the user give location permissions on the app
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateView:) name:@"updateRoot" object:nil];
@@ -252,16 +255,14 @@
 
 -(void)firstTimeLoad {
     NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
-    NSString *firstLoad = @"firstLoad";
     
-    if ([preferences objectForKey:firstLoad] == nil) {
+    if ([preferences objectForKey:firstTimeLoadKey] == nil) {
         // first set the measurement type
         // TODO when going global check location and set metric for most places
-        NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
-        [preferences setObject:@"imperial" forKey:@"userMeasurements"];
+        [preferences setObject:imperialDefault forKey:userMeasurementKey];
         
         [self refresh:self.refreshControl];
-        [preferences setObject:@"NO" forKey:@"firstLoad"];
+        [preferences setObject:@"NO" forKey:firstTimeLoadKey];
         
         NSString *name = [NSString stringWithFormat:@"Welcome! \nWould you like to take full advantage of the TrailKeeper App and sign up for an Account? \nDon't worry, you can always go into the Settings and sign-up later"];
         

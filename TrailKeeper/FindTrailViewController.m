@@ -59,7 +59,7 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
     [super viewDidLoad];
     
     NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
-    if ([[preferences objectForKey:@"userMeasurements"] isEqualToString:@"imperial"]) {
+    if ([[preferences objectForKey:userMeasurementKey] isEqualToString:imperialDefault]) {
         self.measurementLabel = @" Miles";
     } else {
         self.measurementLabel = @" Kilometers";

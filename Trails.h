@@ -45,6 +45,7 @@
 -(void)CreateNewTrail:(Trails*)newTrail;
 -(void)SaveNewTrail:(Trails*)newTrail;
 -(Trails*)GetOffLineTrail;
--(NSNumber*)GetDbTrailsRowCount;
+-(int)GetDbTrailsRowCount;
+-(void)DeleteNewTrail:(NSString*)trailName;
 
 @end

@@ -8,11 +8,11 @@
 
 #import "UnitsOfMeasureViewController.h"
 #import "AlertControllerHelper.h"
+#import "AppDelegate.h"
 
 @interface UnitsOfMeasureViewController ()
 
 @property (nonatomic, strong) NSUserDefaults *preferences;
-@property (nonatomic, strong) NSString *userMeasurements;
 
 @end
 
@@ -22,9 +22,8 @@
     [super viewDidLoad];
     
     self.preferences = [NSUserDefaults standardUserDefaults];
-    [self.preferences objectForKey:@"userMeasurements"];
-    NSLog(@"User default for measurement is %@", [self.preferences objectForKey:@"userMeasurements"]);
-    self.userMeasurements = @"userMeasurements";
+    [self.preferences objectForKey:userMeasurementKey];
+    NSLog(@"User default for measurement is %@", [self.preferences objectForKey:userMeasurementKey]);
 
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
@@ -43,7 +42,7 @@
         [[UISegmentedControl appearance] setTitleTextAttributes:segmentedControlTextAttributesiPadPicked forState:UIControlStateSelected];
     }
     
-    if ([[self.preferences objectForKey:@"userMeasurements"] isEqualToString:@"imperial"] ) {
+    if ([[self.preferences objectForKey:userMeasurementKey] isEqualToString:imperialDefault] ) {
         [self.segmentMeasurements setSelectedSegmentIndex:0];
     } else {
         [self.segmentMeasurements setSelectedSegmentIndex:1];
@@ -81,12 +80,12 @@
 
 - (IBAction)btn_saveClick:(id)sender {
         if (self.segmentMeasurements.selectedSegmentIndex == 0) {
-        [self.preferences setObject:@"imperial" forKey:@"userMeasurements"];
+        [self.preferences setObject:imperialDefault forKey:userMeasurementKey];
     } else {
-        [self.preferences setObject:@"metric" forKey:@"userMeasurements"];
+        [self.preferences setObject:metricDefault forKey:userMeasurementKey];
     }
     
-    [AlertControllerHelper ShowAlert:@"Default Measurement" message:[NSString stringWithFormat:@"Measurements have been updated to %@.", [self.preferences objectForKey:@"userMeasurements"]] view:self];
+    [AlertControllerHelper ShowAlert:@"Default Measurement" message:[NSString stringWithFormat:@"Measurements have been updated to %@.", [self.preferences objectForKey:userMeasurementKey]] view:self];
 }
 
 @end

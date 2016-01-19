@@ -14,5 +14,8 @@
 @interface ConnectionDetector : NSObject
 
 +(BOOL)hasConnectivity;
++(void)checkForOfflineTrailData;
++(void)checkForOfflineTrailStatusData;
++(void)checkForOfflineTrailCommentData;
 
 @end

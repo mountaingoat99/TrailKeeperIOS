@@ -25,6 +25,7 @@
 -(void)CreateNewComment:(Comments*)comment;
 -(void)SaveNewComment:(Comments*)newComment;
 -(Comments*)GetOfflineComments;
--(NSNumber*)GetDbCommentRowCount;
+-(int)GetDbCommentRowCount;
+-(void)deleteOneOfflineComment:(NSString*)comment;
 
 @end

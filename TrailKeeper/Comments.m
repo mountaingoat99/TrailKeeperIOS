@@ -10,13 +10,13 @@
 #import <Parse/PFObject+Subclass.h>
 #import "ConnectionDetector.h"
 #import "DBManager.h"
+#import "AppDelegate.h"
 
 @interface Comments ()
 
 @property (nonatomic, strong) DBManager *dbManager;
 
 -(void)addOfflineComment:(Comments*)comment;
--(void)deleteOneOfflineComment:(NSString*)comment;
 
 @end
 
@@ -135,12 +135,11 @@
     return allComments;
 }
 
--(NSNumber*)GetDbCommentRowCount {
-    NSNumber *num;
+-(int)GetDbCommentRowCount {
     self.dbManager = [[DBManager alloc] initWithDatabaseFilename:@"offline_trails.db"];
     NSString *query = [NSString stringWithFormat:@"SELECT Count(*) FROM offline_comment"];
     
-    return num = [self.dbManager loadNumberFromDB:query];
+     return [[self.dbManager loadNumberFromDB:query] intValue];
 }
 
 #pragma private methods
@@ -157,6 +156,10 @@
     [self.dbManager executeQuery:query];
     if (self.dbManager.affectedRows != 0) {
         NSLog(@"AddOffLineComment query has been successfully inserted. Rows: %d", self.dbManager.affectedRows);
+        // set the preferences so we know to look for it later to save
+        AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+        NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
+        [preferences setBool:YES forKey:HasOfflineCommentKey];
     } else {
         NSLog(@"AddOffLineComment query has failed");
     }

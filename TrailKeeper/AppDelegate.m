@@ -14,13 +14,23 @@
 #import "MMDrawerVisualState.h"
 #import "AlertControllerHelper.h"
 #import "GetAllObjectsFromParseHelper.h"
+#import "ConnectionDetector.h"
 
 static NSString *const filterCommentNotification = @"com.singlecog.trailkeeper.NEW_COMMENT_NOTIF";
 static NSString *const filterStatusNotification = @"com.singlecog.trailkeeper.NEW_STATUS_NOTIF";
+NSString *const HasOfflineTrailKey = @"HasOffLineTrailKey";
+NSString *const HasOfflineTrailStatusKey = @"HasOfflineTrailStatusKey";
+NSString *const HasOfflineCommentKey = @"HasOfflineCommentKey";
+NSString *const firstTimeLoadKey = @"firstTimeLoadKey";
+NSString *const userMeasurementKey = @"userMeasurementKey";
+NSString *const imperialDefault = @"imperial";
+NSString *const metricDefault = @"metric";
+
 
 @interface AppDelegate ()
 
 -(BOOL)isUserWhoUpdated:(NSDictionary*)userInfo;
+-(void)hasOfflineContent;
 
 @end
 
@@ -223,6 +233,8 @@ static NSString *const filterStatusNotification = @"com.singlecog.trailkeeper.NE
         [currentInstallation saveInBackground];
     }
     
+    [self hasOfflineContent];
+    
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
 
@@ -286,6 +298,22 @@ static NSString *const filterStatusNotification = @"com.singlecog.trailkeeper.NE
     PFUser *user = [PFUser currentUser];
     NSString *userObjectId = [userInfo objectForKey:@"userId"];
     return ([userObjectId isEqualToString:user.objectId]);
+}
+
+-(void)hasOfflineContent {
+    if ([ConnectionDetector hasConnectivity]) {
+        NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
+        
+        if ([preferences boolForKey:HasOfflineTrailKey]) {
+            [ConnectionDetector checkForOfflineTrailData];
+        }
+        if ([preferences boolForKey:HasOfflineTrailStatusKey]) {
+            [ConnectionDetector checkForOfflineTrailStatusData];
+        }
+        if ([preferences boolForKey:HasOfflineCommentKey]) {
+            [ConnectionDetector checkForOfflineTrailCommentData];
+        }
+    }
 }
 
 @end

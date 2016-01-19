@@ -11,13 +11,13 @@
 #include <stdlib.h>
 #import "DBManager.h"
 #import "ConnectionDetector.h"
+#import "AppDelegate.h"
 
 @interface TrailStatus ()
 
 @property (nonatomic, strong) DBManager *dbManager;
 
 -(void)addOfflineTrailStatus:(TrailStatus*)trailStatus;
--(void)deleteOneOfflineTrailStatus:(NSString*)trailName;
 -(NSNumber*)GenerateRandomPin;
 
 @end
@@ -86,6 +86,14 @@
     [trails pinInBackground];
 }
 
+-(void)SaveStatus:(TrailStatus*)trailStatus {
+    PFObject *status = [PFObject objectWithClassName:@"TrailStatus"];
+    status[@"trailName"] = trailStatus.trailName;
+    status[@"updateStatusPin"] = trailStatus.updateStatusPin;
+    [status saveInBackground];
+    [status pinInBackground];
+}
+
 -(void)UpdateTrailStatusUser:(NSString*)trailName {
     PFUser *currentUser = [PFUser currentUser];
     PFQuery *query = [PFQuery queryWithClassName:@"TrailStatus"];
@@ -115,12 +123,11 @@
     return status;
 }
 
--(NSNumber*)GetDbCommentRowCount {
-    NSNumber *num;
+-(int)GetDbCommentRowCount {
     self.dbManager = [[DBManager alloc] initWithDatabaseFilename:@"offline_trails.db"];
     NSString *query = [NSString stringWithFormat:@"SELECT Count(*) FROM offline_status"];
     
-    return num = [self.dbManager loadNumberFromDB:query];
+    return [[self.dbManager loadNumberFromDB:query] intValue];
 }
 
 #pragma private methods
@@ -133,6 +140,10 @@
     [self.dbManager executeQuery:query];
     if (self.dbManager.affectedRows != 0) {
         NSLog(@"AddOffLineTrailStatus query has been successfully inserted. Rows: %d", self.dbManager.affectedRows);
+        // set the preferences so we know to look for it later to save
+        AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+        NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
+        [preferences setBool:YES forKey:HasOfflineTrailStatusKey];
     } else {
         NSLog(@"AddOffLineTrailStatus query has failed");
     }

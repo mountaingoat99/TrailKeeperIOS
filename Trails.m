@@ -14,13 +14,13 @@
 #import "Converters.h"
 #import "GeoLocationHelper.h"
 #import "MainViewController.h"
+#import "AppDelegate.h"
 
 @interface Trails ()
 
 @property (nonatomic, strong) DBManager *dbManager;
 
 -(void)AddOfflineTrail:(Trails*)trail;
--(void)DeleteNewTrail:(NSString*)trailName;
 
 @end
 
@@ -435,12 +435,11 @@
     return offlineTrail;
 }
 
--(NSNumber*)GetDbTrailsRowCount {
-    NSNumber *num;
+-(int)GetDbTrailsRowCount {
     self.dbManager = [[DBManager alloc] initWithDatabaseFilename:@"offline_trails.db"];
     NSString *query = [NSString stringWithFormat:@"SELECT Count(*) FROM offline_trail"];
     
-    return num = [self.dbManager loadNumberFromDB:query];
+    return [[self.dbManager loadNumberFromDB:query] intValue];
 }
 
 #pragma Private methods
@@ -464,6 +463,10 @@
     [self.dbManager executeQuery:query];
     if (self.dbManager.affectedRows != 0) {
         NSLog(@"AddOffLineTrail query has been successfully inserted. Rows: %d", self.dbManager.affectedRows);
+        // set the preferences so we know to look for it later to save
+        AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+        NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
+        [preferences setBool:YES forKey:HasOfflineTrailKey];
     } else {
         NSLog(@"AddOffLineTrail query has failed");
     }

@@ -138,7 +138,7 @@
         point.coordinate = coordinate;
         point.title = t.trailName;
         NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
-        if ([[preferences objectForKey:@"userMeasurements"] isEqualToString:@"imperial"]) {
+        if ([[preferences objectForKey:userMeasurementKey] isEqualToString:imperialDefault]) {
             point.subtitle = [NSString stringWithFormat:@"%.2f Miles Away", distance];
         } else {
             point.subtitle = [NSString stringWithFormat:@"%.2f Kilometers Away", distance];

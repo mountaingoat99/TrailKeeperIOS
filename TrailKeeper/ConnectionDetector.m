@@ -7,6 +7,10 @@
 //
 
 #import "ConnectionDetector.h"
+#import "Trails.h"
+#import "TrailStatus.h"
+#import "Comments.h"
+#import "AppDelegate.h"
 
 @implementation ConnectionDetector
 
@@ -61,6 +65,58 @@
     }
     
     return NO;
+}
+
++(void)checkForOfflineTrailData {
+    Trails *trails = [[Trails alloc]init];
+    if ([trails GetDbTrailsRowCount] > 0) {
+        do {
+            // get the a trail
+            Trails *trail = [[Trails alloc] init];
+            trail = [trails GetOffLineTrail];
+            // save the trailname
+            NSString *trailName = trail.trailName;
+            // save the trail
+            [trails SaveNewTrail:trail];
+            // delete the trail from the DB
+            [trails DeleteNewTrail:trailName];
+        } while ([trails GetDbTrailsRowCount] > 0);
+        AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+        NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
+        [preferences setBool:NO forKey:HasOfflineTrailKey];
+    }
+}
+
++(void)checkForOfflineTrailStatusData {
+    TrailStatus *status = [[TrailStatus alloc] init];
+    if ([status GetDbCommentRowCount] > 0) {
+        do {
+            TrailStatus *trailStatus = [[TrailStatus alloc]init];
+            trailStatus = [status GetOffTrailStatus];
+            NSString *trailName = trailStatus.trailName;
+            [status SaveStatus:trailStatus];
+            [status deleteOneOfflineTrailStatus:trailName];
+        } while ([status GetDbCommentRowCount] > 0);
+        AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+        NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
+        [preferences setBool:NO forKey:HasOfflineTrailStatusKey];
+    }
+}
+
++(void)checkForOfflineTrailCommentData {
+    Comments *comments = [[Comments alloc] init];
+    if ([comments GetDbCommentRowCount] > 0) {
+        do {
+            Comments *oneComment = [[Comments alloc] init];
+            oneComment =[comments GetOfflineComments];
+            NSString *comment = oneComment.comment;
+            [comments SaveNewComment:oneComment];
+            [comments deleteOneOfflineComment:comment];
+        } while ([comments GetDbCommentRowCount] > 0);
+        AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+        NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
+        [preferences setBool:NO forKey:HasOfflineCommentKey];
+    }
 }
 
 @end
