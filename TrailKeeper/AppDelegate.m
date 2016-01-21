@@ -21,6 +21,7 @@ static NSString *const filterStatusNotification = @"com.singlecog.trailkeeper.NE
 NSString *const HasOfflineTrailKey = @"HasOffLineTrailKey";
 NSString *const HasOfflineTrailStatusKey = @"HasOfflineTrailStatusKey";
 NSString *const HasOfflineCommentKey = @"HasOfflineCommentKey";
+NSString *const HasOfflineTrailStatusUpdate = @"HasOfflineTrailStatusUpdate";
 NSString *const firstTimeLoadKey = @"firstTimeLoadKey";
 NSString *const userMeasurementKey = @"userMeasurementKey";
 NSString *const imperialDefault = @"imperial";
@@ -312,6 +313,9 @@ NSString *const metricDefault = @"metric";
         }
         if ([preferences boolForKey:HasOfflineCommentKey]) {
             [ConnectionDetector checkForOfflineTrailCommentData];
+        }
+        if ([preferences boolForKey:HasOfflineTrailStatusUpdate]) {
+            [ConnectionDetector checkForOfflineTrailStatusUpdate];
         }
     }
 }

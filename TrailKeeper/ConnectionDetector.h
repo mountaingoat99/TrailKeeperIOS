@@ -17,5 +17,6 @@
 +(void)checkForOfflineTrailData;
 +(void)checkForOfflineTrailStatusData;
 +(void)checkForOfflineTrailCommentData;
++(void)checkForOfflineTrailStatusUpdate;
 
 @end

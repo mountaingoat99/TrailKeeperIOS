@@ -22,6 +22,7 @@
 @property (nonatomic, strong) DBManager *dbManager;
 
 -(void)AddOfflineTrail:(Trails*)trail;
+-(void)AddOfflineTrailStatus:(NSString*)objectid Choice:(NSNumber*)choice;
 
 @end
 
@@ -360,8 +361,15 @@
     return trailObjectId;
 }
 
--(void)UpdateTrailStatus:(NSString*)objectId Choice:(NSNumber*)choice TrailName:(NSString*)trailName {
-    //PFUser *user = [PFUser currentUser];
+-(void)UpdateTrailStatus:(NSString*)objectId Choice:(NSNumber*)choice {
+    if ([ConnectionDetector hasConnectivity]) {
+        [self SaveNewTrailStatus:objectId Choice:choice];
+    } else {
+        [self AddOfflineTrailStatus:objectId Choice:choice];
+    }
+}
+
+-(void)SaveNewTrailStatus:(NSString*)objectId Choice:(NSNumber*)choice {
     PFQuery *query = [PFQuery queryWithClassName:@"Trails"];
     [query fromLocalDatastore];
     
@@ -370,7 +378,7 @@
         trail[@"status"] = choice;
         [trail pinInBackground];
         [trail saveInBackground];
-     }];
+    }];
 }
 
 -(void)CreateNewTrail:(Trails*)newTrail {
@@ -486,9 +494,57 @@
     }
 }
 
+-(void)AddOfflineTrailStatus:(NSString*)objectid Choice:(NSNumber*)choice {
+    self.dbManager = [[DBManager alloc] initWithDatabaseFilename:@"offline_trails.db"];
+    NSString *query = [NSString stringWithFormat:@"insert into offline_trail_status(trailObjectId, choice) values('%@','%@')",
+                       objectid, choice];
+    
+    NSLog(@"Add offline trail status Query: %@", query);
+    [self.dbManager executeQuery:query];
+    if (self.dbManager.affectedRows != 0) {
+        NSLog(@"AddOffLineTrailStatus query has been successfully inserted. Rows: %d", self.dbManager.affectedRows);
+        // set the preferences so we know to look for it later to save
+        NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
+        [preferences setBool:YES forKey:HasOfflineTrailStatusKey];
+    } else {
+        NSLog(@"AddOffLineTrailStatus query has failed");
+    }
+}
+
 -(void)DeleteNewTrail:(NSString*)trailName {
     self.dbManager = [[DBManager alloc] initWithDatabaseFilename:@"offline_trails.db"];
     NSString *query = [NSString stringWithFormat:@"delete from offline_trail where name='%@'", trailName];
+    NSLog(@"Delete the old Trail Query: %@", query);
+    [self.dbManager executeQuery:query];
+}
+
+
+
+-(Trails*)GetOffLineTrailStatus {
+    Trails *offlineTrail = [[Trails alloc] init];
+    self.dbManager = [[DBManager alloc] initWithDatabaseFilename:@"offline_trails.db"];
+    NSString *query = [NSString stringWithFormat:@"select * from offline_trail_status LIMIT 1"];
+    NSArray *trail = [[NSArray alloc] initWithArray:[self.dbManager loadDataFromDB:query]];
+    
+    // get all the items from the array and out them into the trail object
+    if (trail.count > 0) {
+        offlineTrail.objectId = [[NSString alloc] initWithString:[[trail objectAtIndex:0] objectAtIndex:1]];
+        offlineTrail.status = [NSNumber numberWithInt:[[[NSString alloc] initWithString:[[trail objectAtIndex:0] objectAtIndex:2]] intValue]];
+    }
+    NSLog(@"TrailObjectId: %@, status: %@", offlineTrail.objectId, offlineTrail.status);
+    return offlineTrail;
+}
+
+-(int)GetDbTrailStatusRowCount {
+    self.dbManager = [[DBManager alloc] initWithDatabaseFilename:@"offline_trails.db"];
+    NSString *query = [NSString stringWithFormat:@"SELECT Count(*) FROM offline_trail_status"];
+    
+    return [[self.dbManager loadNumberFromDB:query] intValue];
+}
+
+-(void)DeleteNewTrailStatus:(NSString*)objectId {
+    self.dbManager = [[DBManager alloc] initWithDatabaseFilename:@"offline_trails.db"];
+    NSString *query = [NSString stringWithFormat:@"delete from offline_trail_status where trailObjectId='%@'", objectId];
     NSLog(@"Delete the old Trail Query: %@", query);
     [self.dbManager executeQuery:query];
 }

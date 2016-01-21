@@ -116,4 +116,23 @@
     }
 }
 
++(void)checkForOfflineTrailStatusUpdate {
+    Trails *trails = [[Trails alloc]init];
+    if ([trails GetDbTrailStatusRowCount] > 0) {
+        do {
+            // get the a trail
+            Trails *trail = [[Trails alloc] init];
+            trail = [trails GetOffLineTrailStatus];
+            // save the trailname
+            NSString *objectId = trail.objectId;
+            // save the trail
+            [trails SaveNewTrailStatus:trail.objectId Choice:trail.status];
+            // delete the trail from the DB
+            [trails DeleteNewTrailStatus:objectId];
+        } while ([trails GetDbTrailStatusRowCount] > 0);
+        NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
+        [preferences setBool:NO forKey:HasOfflineTrailStatusUpdate];
+    }
+}
+
 @end

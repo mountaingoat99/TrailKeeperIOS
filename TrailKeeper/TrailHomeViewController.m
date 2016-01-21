@@ -423,9 +423,8 @@ static NSString * const CTCellIdentifier = @"idCellRecord";
 
 -(void)SetTrailStatus:(NSNumber*)trailStatus {
     Trails *trails = [[Trails alloc] init];
-    [trails UpdateTrailStatus:self.sentTrailObjectId Choice:trailStatus TrailName:self.trailName];
+    [trails UpdateTrailStatus:self.sentTrailObjectId Choice:trailStatus];
     self.imageStatus.image = [Trails GetStatusIcon:trailStatus];
-    
 }
 
 -(void)leaveNewComment:(NSString*)comment {
