@@ -14,6 +14,7 @@
 
 +(NSDictionary*)GetStates;
 +(NSString*)GetStateName:(NSString*)abbreviation;
++(NSString*)GetStateAbbreviation:(NSString*)state;
 +(NSMutableArray*)GetAllStateName;
 +(NSMutableArray*)GetCountries;
 

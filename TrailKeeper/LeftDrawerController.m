@@ -127,19 +127,19 @@
             break;
         }
         case 5: {
-            if (self.isParseUser) {
-                if (!self.isAnonUser) {
+            //if (self.isParseUser) {
+                //if (!self.isAnonUser) {
                     NSLog(@"Trail Subscriptions");
                     id mainView = [mainStoryBoard instantiateViewControllerWithIdentifier:@"TrailSubscriptionsViewController"];
                     UINavigationController *centerNav = [[UINavigationController alloc] initWithRootViewController:mainView];
                     appDelegate.drawerController.centerViewController = centerNav;
                     [appDelegate.drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
-                } else {
-                    [AlertControllerHelper ShowAlert:@"Verify Email" message:@"Please verify your email first!" view:self];
-                }
-            } else {
-                [AlertControllerHelper ShowAlert:@"No Account" message:@"Please sign up for an account in Settings and verify your email first!" view:self];
-            }
+                //} else {
+                    //[AlertControllerHelper ShowAlert:@"Verify Email" message:@"Please verify your email first!" view:self];
+                //}
+            //} else {
+                //[AlertControllerHelper ShowAlert:@"No Account" message:@"Please sign up for an account in Settings and verify your email first!" view:self];
+            //}
             break;
         }
         case 6: {

@@ -109,7 +109,7 @@
     comment[@"userObjectId"] = newComment.userObjectId;
     comment[@"userName"] = newComment.userName;
     comment[@"comment"] = newComment.comment;
-    comment[@"workingCreatedDate"] = newComment.workingCreatedDate;
+    comment[@"workingCreatedDate"] = newComment.workingCreatedDate;  
     
     [comment pinInBackground];
     [comment saveInBackground];
@@ -126,11 +126,12 @@
     NSArray *comment = [[NSArray alloc] initWithArray:[self.dbManager loadDataFromDB:query]];
     
     if (comment.count > 0) {
-        allComments.trailObjectId = [[NSString alloc] initWithString:[[comment objectAtIndex:0] objectAtIndex:0]];
-        allComments.trailName = [[NSString alloc] initWithString:[[comment objectAtIndex:0] objectAtIndex:1]];
-        allComments.userObjectId = [[NSString alloc] initWithString:[[comment objectAtIndex:0] objectAtIndex:2]];
-        allComments.userName = [[NSString alloc] initWithString:[[comment objectAtIndex:0] objectAtIndex:3]];
-        allComments.comment = [[NSString alloc] initWithString:[[comment objectAtIndex:0] objectAtIndex:4]];
+        allComments.trailObjectId = [[NSString alloc] initWithString:[[comment objectAtIndex:0] objectAtIndex:1]];
+        allComments.trailName = [[NSString alloc] initWithString:[[comment objectAtIndex:0] objectAtIndex:2]];
+        allComments.userObjectId = [[NSString alloc] initWithString:[[comment objectAtIndex:0] objectAtIndex:3]];
+        allComments.userName = [[NSString alloc] initWithString:[[comment objectAtIndex:0] objectAtIndex:4]];
+        allComments.comment = [[NSString alloc] initWithString:[[comment objectAtIndex:0] objectAtIndex:5]];
+        allComments.workingCreatedDate = [NSDate date];
     }
     return allComments;
 }
@@ -146,18 +147,18 @@
 
 -(void)addOfflineComment:(Comments*)comment {
     self.dbManager = [[DBManager alloc] initWithDatabaseFilename:@"offline_trails.db"];
-    NSString *query = [NSString stringWithFormat:@"insert into offline_comment(trailObjectId, trailName, userObjectId, userName, comment) values('%@','%@','%@','%@','%@')",
+    NSString *query = [NSString stringWithFormat:@"insert into offline_comment(trail_object_id, trail_name, user_object_id, userName, comment) values('%@','%@','%@','%@','%@')",
                        comment.trailObjectId,
                        comment.trailName,
                        comment.userObjectId,
                        comment.userName,
                        comment.comment];
     
+    NSLog(@"Add offline comment Query: %@", query);
     [self.dbManager executeQuery:query];
     if (self.dbManager.affectedRows != 0) {
         NSLog(@"AddOffLineComment query has been successfully inserted. Rows: %d", self.dbManager.affectedRows);
         // set the preferences so we know to look for it later to save
-        AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
         NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
         [preferences setBool:YES forKey:HasOfflineCommentKey];
     } else {
@@ -168,7 +169,8 @@
 
 -(void)deleteOneOfflineComment:(NSString*)comment {
     self.dbManager = [[DBManager alloc] initWithDatabaseFilename:@"offline_trails.db"];
-    NSString *query = [NSString stringWithFormat:@"delete from offline_comment where comment=%@", comment];
+    NSString *query = [NSString stringWithFormat:@"delete from offline_comment where comment='%@'", comment];
+    NSLog(@"Delete the old Comment Query: %@", query);
     [self.dbManager executeQuery:query];
 }
 

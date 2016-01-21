@@ -14,7 +14,7 @@
 + (NSString *)parseClassName;
 
 @property (nonatomic, strong) NSString *trailName;
-@property (nonatomic, strong) NSString *updateStatusPin;
+@property (nonatomic, strong) NSNumber *updateStatusPin;
 @property (nonatomic, strong) NSArray *authorizedUserNames;
 
 -(NSNumber*)GetTrailPin:(NSString*)trailName;

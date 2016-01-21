@@ -440,7 +440,7 @@ static NSString * const CTCellIdentifier = @"idCellRecord";
     comments.comment = comment;
     comments.workingCreatedDate = [NSDate date];
     
-    [comments SaveNewComment:comments];
+    [comments CreateNewComment:comments];
     [self.commentList insertObject:comments atIndex:0];
     
     [self.tblComments reloadData];

@@ -12,6 +12,7 @@
 #import "AlertControllerHelper.h"
 #import "HTAutocompleteManager.h"
 #import "StateListHelper.h"
+#import "ConnectionDetector.h"
 
 @interface AddTrailViewController ()
 
@@ -286,12 +287,13 @@
         return NO;
     }
     // TODO when we add more countries we will want to make sure they are valid
-    
+    // use last saved current location if no connection
     if (self.point == nil && self.switchCurrentLocation.on == false) {
         [AlertControllerHelper ShowAlert:@"Location?" message:@"Please add a location to the map or flip the Use Current Location switch" view:self];
         return NO;
     }
-    return YES;
+    
+        return YES;
 }
 
 -(BOOL)saveNewTrail {
@@ -317,12 +319,35 @@
         } else {
             trail.length = myNumber;
         }
-        // see if they are using a point or user location
-        if (self.point != nil) {
-            trail.geoLocation = [PFGeoPoint geoPointWithLatitude:self.point.coordinate.latitude longitude:self.point.coordinate.longitude];
+        
+        if ([ConnectionDetector hasConnectivity]) {
+            // see if they are using a point or user location
+            if (self.point != nil) {
+                trail.geoLocation = [PFGeoPoint geoPointWithLatitude:self.point.coordinate.latitude longitude:self.point.coordinate.longitude];
+            } else {
+                trail.geoLocation = self.userLocation;
+            }
         } else {
-            trail.geoLocation = self.userLocation;
+            if (self.point != nil) {
+                trail.geoLocation = [PFGeoPoint geoPointWithLatitude:self.point.coordinate.latitude longitude:self.point.coordinate.longitude];
+            } else {
+                // let us see if the location is filled and not the default value
+                if ((self.userLocation.latitude > 0 || self.userLocation.longitude > 0)
+                    || (self.userLocation.latitude != 42.566763 || self.userLocation.longitude != -87.887405)) {
+                    trail.geoLocation = self.userLocation;
+                } else {
+                    // see if we have a previous saved location
+                    if (self.appDelegate.currentLocation.coordinate.latitude <= 0 || self.appDelegate.currentLocation.coordinate.longitude <= 0) {
+                        [AlertControllerHelper ShowAlert:@"No Connection" message:@"We can't get a location right now. Please try again when you have a connection" view:self];
+                        return NO;
+                    } else {
+                        
+                        trail.geoLocation = [PFGeoPoint geoPointWithLatitude:self.appDelegate.currentLocation.coordinate.longitude longitude:self.appDelegate.currentLocation.coordinate.longitude];
+                    }
+                }
+            }            
         }
+        
         // see what skill segements are on
         NSIndexSet *selectedIndices = self.segmentedControlSkills.selectedSegmentIndexes;
         if ([selectedIndices containsIndex:0]) {

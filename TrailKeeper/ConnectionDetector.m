@@ -81,7 +81,6 @@
             // delete the trail from the DB
             [trails DeleteNewTrail:trailName];
         } while ([trails GetDbTrailsRowCount] > 0);
-        AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
         NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
         [preferences setBool:NO forKey:HasOfflineTrailKey];
     }
@@ -97,7 +96,6 @@
             [status SaveStatus:trailStatus];
             [status deleteOneOfflineTrailStatus:trailName];
         } while ([status GetDbCommentRowCount] > 0);
-        AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
         NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
         [preferences setBool:NO forKey:HasOfflineTrailStatusKey];
     }
@@ -113,7 +111,6 @@
             [comments SaveNewComment:oneComment];
             [comments deleteOneOfflineComment:comment];
         } while ([comments GetDbCommentRowCount] > 0);
-        AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
         NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
         [preferences setBool:NO forKey:HasOfflineCommentKey];
     }

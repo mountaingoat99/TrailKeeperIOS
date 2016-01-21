@@ -15,6 +15,7 @@
 #import "GeoLocationHelper.h"
 #import "MainViewController.h"
 #import "AppDelegate.h"
+#import "StateListHelper.h"
 
 @interface Trails ()
 
@@ -388,14 +389,18 @@
 -(void)SaveNewTrail:(Trails*)newTrail {
     PFUser *user = [PFUser currentUser];
     PFObject *trail = [PFObject objectWithClassName:@"Trails"];
+    NSLog(@"Save New Trail Method - TrailName: %@, status: %@, mapLink: %@, city: %@ state: %@, country: %@, distance: %@, lat: %f, long: %f, private: %@, skillEasy: %@, skillMedium: %@, skillHard: %@, ",
+          newTrail.trailName, newTrail.status, newTrail.mapLink, newTrail.city, newTrail.state, newTrail.country, newTrail.length, newTrail.geoLocation.latitude, newTrail.geoLocation.longitude,
+          [Converters ConvertBoolToNSNumber:newTrail.privateTrail], [Converters ConvertBoolToNSNumber:newTrail.skillEasy], [Converters ConvertBoolToNSNumber:newTrail.skillMedium], [Converters ConvertBoolToNSNumber:newTrail.skillHard]);
     trail[@"trailName"] = newTrail.trailName;
     trail[@"status"] = newTrail.status;
     trail[@"mapLink"] = newTrail.state;
     trail[@"city"] = newTrail.city;
-    trail[@"state"] = newTrail.state;
+    trail[@"state"] = [StateListHelper GetStateAbbreviation:newTrail.state];
     trail[@"country"] = newTrail.country;
     trail[@"distance"] = newTrail.length;
-    trail[@"geoLocation"] = newTrail.geoLocation;
+    trail[@"geoLocation"] = [PFGeoPoint geoPointWithLatitude:newTrail.geoLocation.latitude longitude:newTrail.geoLocation.longitude];
+    //trail[@"geoLocation"] = newTrail.geoLocation;
     trail[@"private"] = [Converters ConvertBoolToNSNumber:newTrail.privateTrail];
     trail[@"skillEasy"] = [Converters ConvertBoolToNSNumber:newTrail.skillEasy];
     trail[@"skillMedium"] = [Converters ConvertBoolToNSNumber:newTrail.skillMedium];
@@ -415,23 +420,32 @@
     
     // get all the items from the array and out them into the trail object
     if (trail.count > 0) {
-        offlineTrail.trailName = [[NSString alloc] initWithString:[[trail objectAtIndex:0] objectAtIndex:0]];
-        offlineTrail.city = [[NSString alloc] initWithString:[[trail objectAtIndex:0] objectAtIndex:1]];
-        offlineTrail.state = [[NSString alloc] initWithString:[[trail objectAtIndex:0] objectAtIndex:2]];
-        offlineTrail.country = [[NSString alloc] initWithString:[[trail objectAtIndex:0] objectAtIndex:3]];
-        NSString *length = [[NSString alloc] initWithString:[[trail objectAtIndex:0] objectAtIndex:4]];
+        offlineTrail.trailName = [[NSString alloc] initWithString:[[trail objectAtIndex:0] objectAtIndex:1]];
+        offlineTrail.city = [[NSString alloc] initWithString:[[trail objectAtIndex:0] objectAtIndex:2]];
+        offlineTrail.state = [[NSString alloc] initWithString:[[trail objectAtIndex:0] objectAtIndex:3]];
+        offlineTrail.country = [[NSString alloc] initWithString:[[trail objectAtIndex:0] objectAtIndex:4]];
+        NSString *length = [[NSString alloc] initWithString:[[trail objectAtIndex:0] objectAtIndex:5]];
         offlineTrail.length = [NSNumber numberWithInteger:[length integerValue]];
-        double latitude = [[[NSString alloc] initWithString:[[trail objectAtIndex:0] objectAtIndex:5]] doubleValue];
-        double longitude = [[[NSString alloc] initWithString:[[trail objectAtIndex:0] objectAtIndex:6]] doubleValue];
-        offlineTrail.geoLocation.latitude = latitude;
-        offlineTrail.geoLocation.longitude = longitude;
-        NSString *status = [[NSString alloc] initWithString:[[trail objectAtIndex:0] objectAtIndex:7]];
+        NSLog(@"Database trail Latitude: %@", [[NSString alloc] initWithString:[[trail objectAtIndex:0] objectAtIndex:6]]);
+        NSLog(@"Database trail Longitude: %@", [[NSString alloc] initWithString:[[trail objectAtIndex:0] objectAtIndex:7]]);
+        //offlineTrail.geoLocation = [PFGeoPoint geoPointWithLatitude:[[NSString alloc] initWithString:[[trail objectAtIndex:0] objectAtIndex:6]]
+                                                          //longitude:[[NSString alloc] initWithString:[[trail objectAtIndex:0] objectAtIndex:7]]];
+        
+        double latitude = [[[NSString alloc] initWithString:[[trail objectAtIndex:0] objectAtIndex:6]] doubleValue];
+        double longitude = [[[NSString alloc] initWithString:[[trail objectAtIndex:0] objectAtIndex:7]] doubleValue];
+        offlineTrail.geoLocation = [PFGeoPoint geoPointWithLatitude:latitude longitude:longitude];
+        //offlineTrail.geoLocation.latitude = latitude;
+        //offlineTrail.geoLocation.longitude = longitude;
+        NSString *status = [[NSString alloc] initWithString:[[trail objectAtIndex:0] objectAtIndex:8]];
         offlineTrail.status = [NSNumber numberWithInteger:[status integerValue]];
-        offlineTrail.skillEasy = [[[NSString alloc] initWithString:[[trail objectAtIndex:0] objectAtIndex:8]] boolValue];
-        offlineTrail.skillMedium = [[[NSString alloc] initWithString:[[trail objectAtIndex:0] objectAtIndex:9]] boolValue];
-        offlineTrail.skillHard = [[[NSString alloc] initWithString:[[trail objectAtIndex:0] objectAtIndex:10]] boolValue];
-        offlineTrail.privateTrail = [[[NSString alloc] initWithString:[[trail objectAtIndex:0] objectAtIndex:11]] boolValue];
+        offlineTrail.skillEasy = [[[NSString alloc] initWithString:[[trail objectAtIndex:0] objectAtIndex:9]] boolValue];
+        offlineTrail.skillMedium = [[[NSString alloc] initWithString:[[trail objectAtIndex:0] objectAtIndex:10]] boolValue];
+        offlineTrail.skillHard = [[[NSString alloc] initWithString:[[trail objectAtIndex:0] objectAtIndex:11]] boolValue];
+        offlineTrail.privateTrail = [[[NSString alloc] initWithString:[[trail objectAtIndex:0] objectAtIndex:12]] boolValue];
     }
+    NSLog(@"TrailName: %@, status: %@, mapLink: %@, city: %@ state: %@, country: %@, distance: %@, lat: %f, long: %f, private: %@, skillEasy: %@, skillMedium: %@, skillHard: %@, ",
+          offlineTrail.trailName, offlineTrail.status, offlineTrail.mapLink, offlineTrail.city, offlineTrail.state, offlineTrail.country, offlineTrail.length, offlineTrail.geoLocation.latitude, offlineTrail.geoLocation.longitude,
+          [Converters ConvertBoolToNSNumber:offlineTrail.privateTrail], [Converters ConvertBoolToNSNumber:offlineTrail.skillEasy], [Converters ConvertBoolToNSNumber:offlineTrail.skillMedium], [Converters ConvertBoolToNSNumber:offlineTrail.skillHard]);
     return offlineTrail;
 }
 
@@ -460,11 +474,11 @@
              [Converters ConvertBoolToNSNumber:trail.skillHard],
              [Converters ConvertBoolToNSNumber:trail.privateTrail]];
     
+    NSLog(@"Add offline trail Query: %@", query);
     [self.dbManager executeQuery:query];
     if (self.dbManager.affectedRows != 0) {
         NSLog(@"AddOffLineTrail query has been successfully inserted. Rows: %d", self.dbManager.affectedRows);
         // set the preferences so we know to look for it later to save
-        AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
         NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
         [preferences setBool:YES forKey:HasOfflineTrailKey];
     } else {
@@ -474,7 +488,8 @@
 
 -(void)DeleteNewTrail:(NSString*)trailName {
     self.dbManager = [[DBManager alloc] initWithDatabaseFilename:@"offline_trails.db"];
-    NSString *query = [NSString stringWithFormat:@"delete from offline_trail where name=%@", trailName];
+    NSString *query = [NSString stringWithFormat:@"delete from offline_trail where name='%@'", trailName];
+    NSLog(@"Delete the old Trail Query: %@", query);
     [self.dbManager executeQuery:query];
 }
 

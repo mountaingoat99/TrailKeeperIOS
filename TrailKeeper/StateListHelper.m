@@ -77,15 +77,30 @@
 
 +(NSString*)GetStateName:(NSString*)abbreviation {
     NSString *correctStateName = @"Unknown";
+    correctStateName = [[self GetStates] objectForKey:abbreviation];
     
-    for (NSString *name in [[self GetStates]allKeys]) {
-        if ([name isEqualToString:abbreviation]) {
-            correctStateName = [[self GetStates] objectForKey:name];
-            break;
-        }
-    }
+//    for (NSString *name in [[self GetStates]allKeys]) {
+//        if ([name isEqualToString:abbreviation]) {
+//            correctStateName = [[self GetStates] objectForKey:name];
+//            break;
+//        }
+//    }
     
     return correctStateName;
+}
+
++(NSString*)GetStateAbbreviation:(NSString*)state {
+    NSArray *temp = [[self GetStates] allKeysForObject:state];
+    NSString *abbreviation = [temp lastObject];
+    
+//    NSString *abbreviation = @"";
+//    for (NSString *ab in [[self GetStates] allValues]) {
+//        if ([ab isEqualToString:state]) {
+//            abbreviation = [[self GetStates] valueForKey:ab];
+//            break;
+//        }
+//    }
+    return abbreviation;
 }
 
 +(NSMutableArray*)GetCountries {

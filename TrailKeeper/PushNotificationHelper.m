@@ -74,20 +74,20 @@ NSString* const STATUS_ACTION = @"com.singlecog.trailkeeper.NEW_STATUS_NOTIF";
 
 +(void)ConvertCommentPush:(NSDictionary*)object {
     // first lets get the variables from the JSON object
-    NSString *trailObjectId = [object objectForKey:@"trailObjectId"];
-    NSString *trailName = [object objectForKey:@"trailName"];
-    NSString *comment = [object objectForKey:@"fullComment"];
-    NSString *userId = [object objectForKey:@"userObjectId"];
+//    NSString *trailObjectId = [object objectForKey:@"trailObjectId"];
+//    NSString *trailName = [object objectForKey:@"trailName"];
+//    NSString *comment = [object objectForKey:@"fullComment"];
+//    NSString *userId = [object objectForKey:@"userObjectId"];
     
     // do something with this info, send the to the correct view controller?
 }
 
 +(void)ConvertStatusPush:(NSDictionary*)object {
     // first lets get the variables from the JSON object
-    NSString *trailObjectId = [object objectForKey:@"trailObjectId"];
-    NSString *trailName = [object objectForKey:@"trailName"];
-    NSString *statusString = [object objectForKey:@"statusUpdate"];
-    NSString *userId = [object objectForKey:@"userObjectId"];
+//    NSString *trailObjectId = [object objectForKey:@"trailObjectId"];
+//    NSString *trailName = [object objectForKey:@"trailName"];
+//    NSString *statusString = [object objectForKey:@"statusUpdate"];
+//    NSString *userId = [object objectForKey:@"userObjectId"];
     
     // do something with this info, send the to the correct view controller?
 }

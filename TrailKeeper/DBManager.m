@@ -41,7 +41,7 @@
         // Set the documents directory path to the documentsDirectory property.
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         self.documentsDirectory = [paths objectAtIndex:0];
-        //NSLog(@"Database Location:%@", self.documentsDirectory);
+        NSLog(@"Database Location:%@", self.documentsDirectory);
         
         // Keep the database filename.
         self.databaseFilename = offline_trails;

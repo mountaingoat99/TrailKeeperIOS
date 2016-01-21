@@ -211,7 +211,7 @@ NSString *const metricDefault = @"metric";
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-        NSLog(@"DidBecomeActive");
+    NSLog(@"DidBecomeActive");
     // we will need to see which notification was chosen and open it that way
     NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
     self.notificationTrailId = [preferences stringForKey:@"notificationObjectId"];
