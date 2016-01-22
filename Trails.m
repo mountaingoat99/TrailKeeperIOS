@@ -370,11 +370,13 @@
 }
 
 -(void)SaveNewTrailStatus:(NSString*)objectId Choice:(NSNumber*)choice {
+    PFUser *user = [PFUser currentUser];
     PFQuery *query = [PFQuery queryWithClassName:@"Trails"];
     [query fromLocalDatastore];
     
     // Retrieve the object by id
     [query getObjectInBackgroundWithId:objectId block:^(PFObject *trail, NSError *error) {
+        trail[@"lastUpdatedByUserObjectId"] = user.objectId;
         trail[@"status"] = choice;
         [trail pinInBackground];
         [trail saveInBackground];
