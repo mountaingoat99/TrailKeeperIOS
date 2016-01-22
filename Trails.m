@@ -505,7 +505,7 @@
         NSLog(@"AddOffLineTrailStatus query has been successfully inserted. Rows: %d", self.dbManager.affectedRows);
         // set the preferences so we know to look for it later to save
         NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
-        [preferences setBool:YES forKey:HasOfflineTrailStatusKey];
+        [preferences setBool:YES forKey:HasOfflineTrailStatusUpdate];
     } else {
         NSLog(@"AddOffLineTrailStatus query has failed");
     }

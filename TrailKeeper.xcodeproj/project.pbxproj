@@ -21,7 +21,7 @@
 		262D3A711C07955600284767 /* UpdateAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 262D3A701C07955600284767 /* UpdateAccountViewController.m */; };
 		262D3A741C07956600284767 /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 262D3A731C07956600284767 /* SignInViewController.m */; };
 		262D3A771C07957700284767 /* UnitsOfMeasureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 262D3A761C07957700284767 /* UnitsOfMeasureViewController.m */; };
-		262EFF3D1C507918001FDFE8 /* offline_trails.db in Resources */ = {isa = PBXBuildFile; fileRef = 262EFF3C1C507918001FDFE8 /* offline_trails.db */; };
+		262EFF431C51BAE4001FDFE8 /* offline_trails.db in Resources */ = {isa = PBXBuildFile; fileRef = 262EFF421C51BAE4001FDFE8 /* offline_trails.db */; };
 		26744DB01BF41D9300309733 /* TrailHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26744DAF1BF41D9300309733 /* TrailHomeViewController.m */; };
 		26751E991BCB24BA002C3498 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 26751E981BCB24BA002C3498 /* libsqlite3.tbd */; };
 		2696683E1C2F215E0073EF38 /* MultiSelectSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 2696683D1C2F215E0073EF38 /* MultiSelectSegmentedControl.m */; };
@@ -95,7 +95,7 @@
 		262D3A731C07956600284767 /* SignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInViewController.m; sourceTree = "<group>"; };
 		262D3A751C07957700284767 /* UnitsOfMeasureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnitsOfMeasureViewController.h; sourceTree = "<group>"; };
 		262D3A761C07957700284767 /* UnitsOfMeasureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnitsOfMeasureViewController.m; sourceTree = "<group>"; };
-		262EFF3C1C507918001FDFE8 /* offline_trails.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = offline_trails.db; path = ../../offline_trails.db; sourceTree = "<group>"; };
+		262EFF421C51BAE4001FDFE8 /* offline_trails.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = offline_trails.db; path = ../../offline_trails.db; sourceTree = "<group>"; };
 		26744DAE1BF41D9300309733 /* TrailHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrailHomeViewController.h; sourceTree = "<group>"; };
 		26744DAF1BF41D9300309733 /* TrailHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrailHomeViewController.m; sourceTree = "<group>"; };
 		26751E981BCB24BA002C3498 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
@@ -202,7 +202,7 @@
 		2615C10D1BCAE7660065B62C = {
 			isa = PBXGroup;
 			children = (
-				262EFF3C1C507918001FDFE8 /* offline_trails.db */,
+				262EFF421C51BAE4001FDFE8 /* offline_trails.db */,
 				2615C1181BCAE7660065B62C /* TrailKeeper */,
 				2615C1171BCAE7660065B62C /* Products */,
 				DA81B6D8C2CD2D0BA67C0168 /* Pods */,
@@ -499,7 +499,7 @@
 				26F8D40C1BE5A227007770F4 /* Main.storyboard in Resources */,
 				26A5E9841C133A7800C7FE07 /* SectionHeaderView.xib in Resources */,
 				2615C1261BCAE7660065B62C /* Assets.xcassets in Resources */,
-				262EFF3D1C507918001FDFE8 /* offline_trails.db in Resources */,
+				262EFF431C51BAE4001FDFE8 /* offline_trails.db in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
