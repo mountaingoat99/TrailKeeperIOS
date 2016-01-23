@@ -580,6 +580,10 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="hur-5N-8BM" id="dfJ-i6-i8M"/>
+                                    <outlet property="delegate" destination="hur-5N-8BM" id="7iH-Y4-Fkg"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2610,11 +2614,11 @@
         <image name="open" width="170" height="170"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="stQ-Rm-DOn"/>
+        <segue reference="nBy-B7-tTJ"/>
+        <segue reference="lME-Da-pbt"/>
+        <segue reference="zjZ-ZA-Yv8"/>
         <segue reference="5dN-Ou-gbx"/>
         <segue reference="7cm-3b-rHB"/>
-        <segue reference="VXT-hM-XIA"/>
-        <segue reference="OlQ-5H-NIw"/>
-        <segue reference="zjZ-ZA-Yv8"/>
-        <segue reference="nBy-B7-tTJ"/>
     </inferredMetricsTieBreakers>
 </document>

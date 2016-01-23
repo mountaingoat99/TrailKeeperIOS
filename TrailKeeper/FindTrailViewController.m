@@ -58,6 +58,45 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+//    NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
+//    if ([[preferences objectForKey:userMeasurementKey] isEqualToString:imperialDefault]) {
+//        self.measurementLabel = @" Miles";
+//    } else {
+//        self.measurementLabel = @" Kilometers";
+//    }
+//    
+//    // get users current location
+//    self.userLocation = [GeoLocationHelper GetUsersCurrentPostion];
+//    
+//    self.appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    //self.tblFindTrail.delegate = self;
+    //self.tblFindTrail.dataSource = self;
+    
+//    //default values on table
+//    self.tblFindTrail.sectionHeaderHeight = HEADER_HEIGHT;
+//    self.uniformRowHeight = DEFAULT_ROW_HEIGHT;
+//    self.openSectionIndex = NSNotFound;
+//    
+//    UINib *sectionHeaderNib = [UINib nibWithNibName:@"SectionHeaderView" bundle:nil];
+//    [self.tblFindTrail registerNib:sectionHeaderNib forHeaderFooterViewReuseIdentifier:SectionHeaderViewIdentifier];
+//    
+//    // add some view properties
+//    [self.tblFindTrail setSeparatorColor:[UIColor clearColor]];
+//    [self.tblFindTrail setBackgroundColor:[UIColor clearColor]];
+    
+    // make sure the back button text does not show
+//    self.navigationItem.backBarButtonItem =
+//    [[UIBarButtonItem alloc] initWithTitle:@""
+//                                     style:UIBarButtonItemStylePlain
+//                                    target:nil
+//                                    action:nil];
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    //self.tblFindTrail.delegate = self;
+    //self.tblFindTrail.dataSource = self;
+    
     NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
     if ([[preferences objectForKey:userMeasurementKey] isEqualToString:imperialDefault]) {
         self.measurementLabel = @" Miles";
@@ -69,8 +108,6 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
     self.userLocation = [GeoLocationHelper GetUsersCurrentPostion];
     
     self.appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    self.tblFindTrail.delegate = self;
-    self.tblFindTrail.dataSource = self;
     
     //default values on table
     self.tblFindTrail.sectionHeaderHeight = HEADER_HEIGHT;
@@ -84,16 +121,11 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
     [self.tblFindTrail setSeparatorColor:[UIColor clearColor]];
     [self.tblFindTrail setBackgroundColor:[UIColor clearColor]];
     
-    // make sure the back button text does not show
-    self.navigationItem.backBarButtonItem =
-    [[UIBarButtonItem alloc] initWithTitle:@""
-                                     style:UIBarButtonItemStylePlain
-                                    target:nil
-                                    action:nil];
-}
-
--(void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
+    [self.states removeAllObjects];
+    self.sectionInfoArray = nil;
+    
+    [self.tblFindTrail reloadData];
+    
     [self loadData];
     if((self.sectionInfoArray == nil) ||
        [self.sectionInfoArray count] != [self numberOfSectionsInTableView:self.tblFindTrail]) {
@@ -114,10 +146,18 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
         }
         self.sectionInfoArray = infoArray;
     }
+    
+    self.navigationItem.backBarButtonItem =
+    [[UIBarButtonItem alloc] initWithTitle:@""
+                                     style:UIBarButtonItemStylePlain
+                                    target:nil
+                                    action:nil];
 }
 
 -(void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
+    // close all open headers, app is breaking on 
+    
 }
 
 - (void)didReceiveMemoryWarning {
