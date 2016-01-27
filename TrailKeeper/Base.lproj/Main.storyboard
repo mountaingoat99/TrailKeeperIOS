@@ -520,15 +520,15 @@
                         <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="62" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4Iu-ty-ICO">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="86" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4Iu-ty-ICO">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="idCellRecord" rowHeight="62" id="Igz-2J-4oT" customClass="CustomFindTrailCell">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="62"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="idCellRecord" rowHeight="86" id="Igz-2J-4oT" customClass="CustomFindTrailCell">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="86"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Igz-2J-4oT" id="N38-w3-Lwx">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="61"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="85"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Petrified Springs Park" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jmt-3F-hsv">
@@ -545,17 +545,22 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kenosha" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZXg-EA-Z6l">
-                                                    <rect key="frame" x="24" y="33" width="150" height="21"/>
+                                                    <rect key="frame" x="24" y="33" width="339" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="150" id="bp9-jc-BS0"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="bp9-jc-BS0"/>
+                                                        </mask>
+                                                    </variation>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6 Miles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eNI-Nf-VHE">
-                                                    <rect key="frame" x="208" y="33" width="150" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="32" y="54" width="331" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -565,12 +570,23 @@
                                                 <constraint firstItem="ZXg-EA-Z6l" firstAttribute="top" secondItem="jmt-3F-hsv" secondAttribute="bottom" constant="4" id="9c9-Z8-JUI"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="kKD-bS-xmj" secondAttribute="trailing" constant="4" id="9fi-Gr-dZ2"/>
                                                 <constraint firstItem="eNI-Nf-VHE" firstAttribute="width" secondItem="ZXg-EA-Z6l" secondAttribute="width" id="ESE-Ku-pph"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="ZXg-EA-Z6l" secondAttribute="trailing" constant="4" id="Mqg-RG-pCr"/>
                                                 <constraint firstItem="kKD-bS-xmj" firstAttribute="centerY" secondItem="jmt-3F-hsv" secondAttribute="centerY" id="QTK-7W-eD9"/>
+                                                <constraint firstItem="eNI-Nf-VHE" firstAttribute="top" secondItem="ZXg-EA-Z6l" secondAttribute="bottom" id="ThK-Zu-vEk"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="eNI-Nf-VHE" secondAttribute="trailing" constant="9" id="U4C-75-mEb"/>
                                                 <constraint firstItem="jmt-3F-hsv" firstAttribute="leading" secondItem="N38-w3-Lwx" secondAttribute="leadingMargin" constant="4" id="e8P-2O-yEQ"/>
+                                                <constraint firstItem="eNI-Nf-VHE" firstAttribute="leading" secondItem="N38-w3-Lwx" secondAttribute="leadingMargin" constant="24" id="fM3-Vs-Hf0"/>
                                                 <constraint firstItem="eNI-Nf-VHE" firstAttribute="centerY" secondItem="ZXg-EA-Z6l" secondAttribute="centerY" id="hqh-JF-Tlg"/>
                                                 <constraint firstItem="ZXg-EA-Z6l" firstAttribute="leading" secondItem="N38-w3-Lwx" secondAttribute="leadingMargin" constant="16" id="lO5-Le-1Bh"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="eNI-Nf-VHE" secondAttribute="trailing" constant="4" id="pBk-qQ-qmz"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="ESE-Ku-pph"/>
+                                                    <exclude reference="U4C-75-mEb"/>
+                                                    <exclude reference="hqh-JF-Tlg"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="distance" destination="eNI-Nf-VHE" id="8Ue-qQ-Dkb"/>
@@ -2614,9 +2630,9 @@
         <image name="open" width="170" height="170"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hIZ-pe-2Wh"/>
-        <segue reference="stQ-Rm-DOn"/>
+        <segue reference="lME-Da-pbt"/>
         <segue reference="nBy-B7-tTJ"/>
+        <segue reference="stQ-Rm-DOn"/>
         <segue reference="zjZ-ZA-Yv8"/>
         <segue reference="7cm-3b-rHB"/>
         <segue reference="5dN-Ou-gbx"/>
