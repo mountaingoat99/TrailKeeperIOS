@@ -940,23 +940,23 @@
                                 </prototypes>
                             </tableView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="HTAutocompleteTextField" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VNt-hO-VnT" customClass="HTAutocompleteTextField">
-                                <rect key="frame" x="20" y="8" width="200" height="28"/>
+                                <rect key="frame" x="20" y="8" width="180" height="28"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="Lws-ln-AEe"/>
+                                    <constraint firstAttribute="width" constant="180" id="Lws-ln-AEe"/>
                                     <constraint firstAttribute="height" constant="28" id="iOS-gc-R1b"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d06-yO-PPO">
-                                <rect key="frame" x="20" y="35" width="200" height="1"/>
+                                <rect key="frame" x="20" y="35" width="180" height="1"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="zFI-GW-cK9"/>
                                 </constraints>
                             </view>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="DRz-YJ-WhW">
-                                <rect key="frame" x="228" y="8" width="143" height="29"/>
+                                <rect key="frame" x="208" y="8" width="163" height="29"/>
                                 <segments>
                                     <segment title="All"/>
                                     <segment title="Trail"/>
@@ -2630,10 +2630,10 @@
         <image name="open" width="170" height="170"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lME-Da-pbt"/>
+        <segue reference="OlQ-5H-NIw"/>
+        <segue reference="zjZ-ZA-Yv8"/>
         <segue reference="nBy-B7-tTJ"/>
         <segue reference="stQ-Rm-DOn"/>
-        <segue reference="zjZ-ZA-Yv8"/>
         <segue reference="7cm-3b-rHB"/>
         <segue reference="5dN-Ou-gbx"/>
     </inferredMetricsTieBreakers>

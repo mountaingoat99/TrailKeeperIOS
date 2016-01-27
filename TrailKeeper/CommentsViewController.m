@@ -41,8 +41,10 @@ static NSString *const filterNone = @"filterAll";
     
     if (self.sentTrailObjectId != nil) {
         self.btnDrawer.image = [UIImage imageNamed:@"back.png"];
+        self.filerType = filterTrail;
     } else {
         self.btnDrawer.image = [UIImage imageNamed:@"drawer_icon.png"];
+        self.filerType = filterNone;
     }
     
     // sets the default datasouce for the autocomplete text field
@@ -54,8 +56,6 @@ static NSString *const filterNone = @"filterAll";
     self.txtAutoComplete.layer.sublayerTransform = CATransform3DMakeTranslation(5, 0, 0);
     self.txtAutoComplete.delegate = self;
     
-    // set the default filter type
-    self.filerType = filterNone;
     self.txtAutoComplete.enabled = NO;
     
     self.tblFindComment.delegate = self;
@@ -201,13 +201,17 @@ static NSString *const filterNone = @"filterAll";
         self.commentList = [comments GetAllComments];
     } else if ([self.filerType isEqualToString:filterTrail]) {
         Trails *trail = [[Trails alloc] init];
-        NSString *trailid = [trail GetIdByTrailName:self.txtAutoComplete.text];
-        if (trailid != nil) {
-            self.commentList = [comments GetCommentsByTrail:trailid];
+        if (self.sentTrailObjectId != nil) {
+            self.commentList = [comments GetCommentsByTrail:self.sentTrailObjectId];
         } else {
-            self.commentList = [comments GetAllComments];
-            [self.txtAutoComplete becomeFirstResponder];
-            [AlertControllerHelper ShowAlert:@"No Comments" message:@"There are no comments for that trail" view:self];
+            NSString *trailid = [trail GetIdByTrailName:self.txtAutoComplete.text];
+            if (trailid != nil) {
+                self.commentList = [comments GetCommentsByTrail:trailid];
+            } else {
+                self.commentList = [comments GetAllComments];
+                [self.txtAutoComplete becomeFirstResponder];
+                [AlertControllerHelper ShowAlert:@"No Comments" message:@"There are no comments for that trail" view:self];
+            }
         }
         
     } else {
