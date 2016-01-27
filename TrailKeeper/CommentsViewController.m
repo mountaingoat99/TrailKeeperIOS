@@ -118,6 +118,7 @@ static NSString *const filterNone = @"filterAll";
     if([segue.identifier isEqualToString:@"segueCommentToTrailHome"]) {
         TrailHomeViewController *home = [segue destinationViewController];
         home.sentTrailObjectId = self.sentTrailObjectId;
+        home.isFromCommentViewController = self.isFromCommentViewController;
     }
 }
 

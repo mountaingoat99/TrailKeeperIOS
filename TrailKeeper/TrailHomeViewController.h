@@ -11,6 +11,7 @@
 @interface TrailHomeViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) NSString *sentTrailObjectId;
+@property (nonatomic) BOOL isFromCommentViewController;
 
 @property (weak, nonatomic) IBOutlet UIView *vTrailHomeBackground;
 @property (weak, nonatomic) IBOutlet UITableView *tblComments;

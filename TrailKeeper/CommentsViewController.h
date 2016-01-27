@@ -14,6 +14,7 @@
 @property (unsafe_unretained, nonatomic) IBOutlet HTAutocompleteTextField *txtAutoComplete;
 
 @property (strong, nonatomic) NSString *sentTrailObjectId;
+@property (nonatomic) BOOL isFromCommentViewController;
 @property (weak, nonatomic) IBOutlet UITableView *tblFindComment;
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *btnDrawer;

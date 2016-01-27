@@ -45,7 +45,7 @@ static NSString * const CTCellIdentifier = @"idCellRecord";
 -(NSArray*)RefreshComments;
 -(Trails*)RefreshTrails;
 -(void)CheckTrailPin;
-
+-(void)RemoveCommentViewController;
 
 @end
 
@@ -96,7 +96,11 @@ static NSString * const CTCellIdentifier = @"idCellRecord";
         [self loadTableData:nil];
     }
     self.navigationItem.title = self.trailName;
-        [self CheckTrailPin];
+    [self CheckTrailPin];
+    // if we went to the Comment screen and come back we want to remove it from the stack
+    if (self.isFromCommentViewController) {
+        [self RemoveCommentViewController];
+    }
 }
 
 -(void)viewDidAppear:(BOOL)animated {
@@ -121,6 +125,8 @@ static NSString * const CTCellIdentifier = @"idCellRecord";
      if ([segue.identifier isEqualToString:@"segueTrailHomeToComments"]) {
          CommentsViewController *comments = [segue destinationViewController];
          comments.sentTrailObjectId = self.sentTrailObjectId;
+         self.isFromCommentViewController = YES;
+         comments.isFromCommentViewController = self.isFromCommentViewController;
      }
  }
 
@@ -519,6 +525,27 @@ static NSString * const CTCellIdentifier = @"idCellRecord";
         [self.closedAction setEnabled:NO];
         [self.unKnownAction setEnabled:NO];
     }
+}
+
+-(void)RemoveCommentViewController {
+    NSMutableArray *navigationArray = [[NSMutableArray alloc] initWithArray:self.navigationController.viewControllers];
+    
+    // This seems like it works awesome when #codingWithVodka
+    // but need to do some serious testing to make sure
+    
+    for (int i = 0; i < (int)navigationArray.count; i++) {
+        if ([[navigationArray objectAtIndex:i] isKindOfClass:[CommentsViewController class]]) {
+            [navigationArray removeObjectAtIndex:i];
+        }
+        if ([[navigationArray objectAtIndex:i] isKindOfClass:[TrailHomeViewController class]] &&
+            [[navigationArray objectAtIndex:i - 1] isKindOfClass:[TrailHomeViewController class]]) {
+            [navigationArray removeObjectAtIndex:i];
+        }
+    }    
+    // [navigationArray removeAllObjects];
+    //[navigationArray removeObjectAtIndex: 2];
+    //[navigationArray removeObjectAtIndex:2];
+    self.navigationController.viewControllers = navigationArray;
 }
 
 @end
