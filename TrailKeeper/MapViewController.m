@@ -32,6 +32,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    float distance = 20.0;
+    
+    if (UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPhone) {
+        distance = 40.0;
+    }
+    
     self.appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
    
     if (self.navigateBack) {
@@ -48,7 +54,7 @@
     zoomLocation.latitude = self.userLocation.latitude;
     zoomLocation.longitude = self.userLocation.longitude;
     MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation,
-        20.0 * METERS_PER_MILE, 20.0 * METERS_PER_MILE);
+        distance * METERS_PER_MILE, distance * METERS_PER_MILE);
     [self.mapView setRegion:viewRegion animated:YES];
     //[self.mapView addAnnotation:@"Home"];
     

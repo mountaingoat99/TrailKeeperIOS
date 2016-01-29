@@ -93,10 +93,7 @@
     // add some view properties
     [self.tbltrailCards setSeparatorColor:[UIColor clearColor]];
     [self.tbltrailCards setBackgroundColor:[UIColor clearColor]];
-    
-    //self.tbltrailCards.backgroundView = [UIView new];
-    //self.tbltrailCards.backgroundView.backgroundColor = [UIColor clearColor];
-    
+        
     // make sure the back button text does not show
     self.navigationItem.backBarButtonItem =
     [[UIBarButtonItem alloc] initWithTitle:@""
