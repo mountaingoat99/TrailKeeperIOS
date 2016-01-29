@@ -2137,10 +2137,10 @@
                         <viewControllerLayoutGuide type="bottom" id="6ll-W7-8wT"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="1dt-dm-7Yz">
-                        <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E7b-Ec-slb">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E7b-Ec-slb">
                                 <rect key="frame" x="-4" y="0.0" width="383" height="623"/>
                             </mapView>
                         </subviews>
@@ -2630,11 +2630,11 @@
         <image name="open" width="170" height="170"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="OlQ-5H-NIw"/>
+        <segue reference="5dN-Ou-gbx"/>
+        <segue reference="7cm-3b-rHB"/>
+        <segue reference="8U8-zK-gWV"/>
+        <segue reference="oud-Dp-bYe"/>
         <segue reference="zjZ-ZA-Yv8"/>
         <segue reference="nBy-B7-tTJ"/>
-        <segue reference="stQ-Rm-DOn"/>
-        <segue reference="7cm-3b-rHB"/>
-        <segue reference="5dN-Ou-gbx"/>
     </inferredMetricsTieBreakers>
 </document>

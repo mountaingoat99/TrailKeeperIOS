@@ -158,15 +158,22 @@
 }
 
 -(NSArray*)GetClosestTrailsForHomeScreen; {
+    int count = 5;
+    // if they are using an ipad then get more trails
+    if (UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPhone) {
+        count = 10;
+    }
+    
     // User's location
     PFGeoPoint *userGeoPoint = [GeoLocationHelper GetUsersCurrentPostion];
     // Create a query for places
     PFQuery *query = [PFQuery queryWithClassName:@"Trails"];
+    
     [query fromLocalDatastore];
     // Interested in locations near user.
     [query whereKey:@"geoLocation" nearGeoPoint:userGeoPoint];
     // Limit what could be a lot of points.
-    query.limit = 5;
+    query.limit = count;
     NSArray * _Nullable objects = [query findObjects];
     return objects;
 }

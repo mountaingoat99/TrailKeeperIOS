@@ -94,6 +94,9 @@
     [self.tbltrailCards setSeparatorColor:[UIColor clearColor]];
     [self.tbltrailCards setBackgroundColor:[UIColor clearColor]];
     
+    //self.tbltrailCards.backgroundView = [UIView new];
+    //self.tbltrailCards.backgroundView.backgroundColor = [UIColor clearColor];
+    
     // make sure the back button text does not show
     self.navigationItem.backBarButtonItem =
     [[UIBarButtonItem alloc] initWithTitle:@""
@@ -187,6 +190,9 @@
     CustomCell *cell = [tableView dequeueReusableCellWithIdentifier:@"idCellRecord" forIndexPath:indexPath];
     cell.delegate = self;
     
+    // need to set this for iPad background view on UITableViews
+    cell.backgroundColor = cell.contentView.backgroundColor;
+    
     cell.sentTrailObjectId = [NSString stringWithFormat:@"%@", [[self.trailList objectAtIndex:indexPath.row] objectId]];
     cell.imageTrailStatus.image = [Trails GetStatusIcon:[[self.trailList objectAtIndex:indexPath.row] objectForKey:@"status"]];
     cell.lblTrailName.text = [NSString stringWithFormat:@"%@", [[self.trailList objectAtIndex:indexPath.row] objectForKey:@"trailName"]];
@@ -222,6 +228,7 @@
 
 #pragma mark - private methods
 -(void)loadData {
+    int count = 0;
     if (self.trailList != nil) {
         self.trailList = nil;
     }
@@ -229,7 +236,14 @@
     Trails *trails = [[Trails alloc] init];
     self.trailList = [trails GetClosestTrailsForHomeScreen];
     while (self.trailList.count == 0) {
+        count++;
+        if (count > 50) {
+            [AlertControllerHelper ShowAlert:@"No Connections!" message:@"It seems like the internet is broken. \nClose the app and try later when you have a stable connection." view:self];
+            return;
+        }
         self.trailList = [trails GetClosestTrailsForHomeScreen];
+        NSLog(@"TrailList Count %lu, ", (unsigned long)self.trailList.count);
+        NSLog(@"TrailList: %@", self.trailList);
     }
     [self.tbltrailCards reloadData];
 }
