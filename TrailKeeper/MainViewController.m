@@ -15,6 +15,7 @@
 #import "AlertControllerHelper.h"
 #import "CreateAccountViewController.h"
 #import "GetAllObjectsFromParseHelper.h"
+#import "AdMobView.h"
 
 @interface MainViewController ()
 
@@ -43,9 +44,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // make the google ad mob request
+    [AdMobView GetAdMobView:self];
+    
     self.appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    
-    
     
     // Initialize the refresh control.
     self.refreshControl = [[UIRefreshControl alloc] init];
