@@ -36,6 +36,7 @@
                              @"Delete Account",
                              @"Verify Email",
                              @"Units of Measure",
+                             @"Privacy Policy",
                              nil];
  
     return settingsList;

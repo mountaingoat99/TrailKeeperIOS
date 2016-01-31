@@ -30,6 +30,7 @@
 -(void)resendEmailVerification;
 -(void)unitsOfMeasure;
 -(void)removeUserInstallations;
+-(void)privacyPolicyLink;
 
 @end
 
@@ -110,6 +111,10 @@
         case 7:
             NSLog(@"Units of Measure");
             [self unitsOfMeasure];
+            break;
+        case 8:
+            NSLog(@"Privacy Policy");
+            [self privacyPolicyLink];
             break;
         default:
             break;
@@ -305,6 +310,11 @@
         [currentInstallation removeObjectsInArray:@[channel] forKey:@"channels"];
         [currentInstallation saveInBackground];
     }
+}
+
+-(void)privacyPolicyLink {
+    NSLog(@"Map Link: %@", @"https://www.iubenda.com/privacy-policy/7787521");
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://www.iubenda.com/privacy-policy/7787521"]];
 }
 
 @end
