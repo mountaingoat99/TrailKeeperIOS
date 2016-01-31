@@ -16,6 +16,7 @@
 
 @interface SearchTrailViewController ()
 
+@property (nonatomic, strong) AppDelegate *appDelegate;
 @property (nonatomic, strong) NSArray *trailListMain;
 @property (nonatomic, strong) NSString *sentTrailObjectId;
 
@@ -27,6 +28,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     
     // sets the default datasouce for the autocomplete text field
     [HTAutocompleteTextField setDefaultAutocompleteDataSource:[HTAutocompleteManager sharedManager]];
@@ -45,6 +48,8 @@
     self.txtAutoCompleteTrailName.delegate = self;
     
     [self.txtAutoCompleteTrailName becomeFirstResponder];
+    
+    [self.btnGo setTitleColor:self.appDelegate.colorButtons forState:UIControlStateNormal];
     
     //[self loadData];
     self.navigationItem.title = @"Search For Trail";

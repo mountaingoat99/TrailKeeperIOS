@@ -18,6 +18,7 @@
 @property (unsafe_unretained, nonatomic) IBOutlet HTAutocompleteTextField *txtTrailname;
 @property (weak, nonatomic) IBOutlet UITextField *txtEmail;
 @property (weak, nonatomic) IBOutlet UITextField *txtReason;
+@property (weak, nonatomic) IBOutlet UIButton *btnSignUp;
 
 - (IBAction)btn_drawerClick:(id)sender;
 - (IBAction)btn_signUpClick:(id)sender;

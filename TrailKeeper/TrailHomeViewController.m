@@ -15,6 +15,7 @@
 #import "AlertControllerHelper.h"
 #import "GetAllObjectsFromParseHelper.h"
 #import "Converters.h"
+#import "AdMobView.h"
 
 static NSString * const CTCellIdentifier = @"idCellRecord";
 
@@ -57,6 +58,8 @@ static NSString * const CTCellIdentifier = @"idCellRecord";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [AdMobView GetAdMobView:self];
+    
     [self checkForParseUser];
     [self checkForAnonUser];
 
@@ -95,6 +98,12 @@ static NSString * const CTCellIdentifier = @"idCellRecord";
         [self loadTrailData:nil];
         [self loadTableData:nil];
     }
+    // set the button colors
+    [self.btnSubscribe setTitleColor:self.appDelegate.colorButtons forState:UIControlStateNormal];
+    [self.btnClose setTitleColor:self.appDelegate.colorButtons forState:UIControlStateNormal];
+    [self.btnAllComments setTitleColor:self.appDelegate.colorButtons forState:UIControlStateNormal];
+    [self.btnAddComment setTitleColor:self.appDelegate.colorButtons forState:UIControlStateNormal];
+    
     self.navigationItem.title = self.trailName;
     [self CheckTrailPin];
     // if we went to the Comment screen and come back we want to remove it from the stack

@@ -11,6 +11,10 @@
 @interface UpdateAccountViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIView *viewBackground;
+@property (weak, nonatomic) IBOutlet UIButton *btnUpdateEmail;
+@property (weak, nonatomic) IBOutlet UIButton *btnVerify;
+@property (weak, nonatomic) IBOutlet UIButton *btnUserName;
+@property (weak, nonatomic) IBOutlet UIButton *btnPassword;
 
 - (IBAction)btn_updateEmailClick:(id)sender;
 - (IBAction)btn_VerifyPasswordClick:(id)sender;

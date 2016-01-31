@@ -13,6 +13,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *txtName;
 @property (weak, nonatomic) IBOutlet UITextField *txtFeedback;
+@property (weak, nonatomic) IBOutlet UIButton *btnSend;
 
 - (IBAction)btn_drawerClick:(id)sender;
 - (IBAction)btn_sendClick:(id)sender;

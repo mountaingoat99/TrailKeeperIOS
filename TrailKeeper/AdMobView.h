@@ -6,6 +6,8 @@
 //  Copyright © 2016 Jeremey Rodriguez. All rights reserved.
 //
 
+@import GoogleMobileAds;
+
 #import <UIKit/UIKit.h>
 
 @interface AdMobView : UIView <GADBannerViewDelegate>

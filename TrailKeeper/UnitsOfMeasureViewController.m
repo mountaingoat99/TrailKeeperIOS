@@ -9,9 +9,11 @@
 #import "UnitsOfMeasureViewController.h"
 #import "AlertControllerHelper.h"
 #import "AppDelegate.h"
+#import "AdMobView.h"
 
 @interface UnitsOfMeasureViewController ()
 
+@property (nonatomic, strong) AppDelegate *appDelegate;
 @property (nonatomic, strong) NSUserDefaults *preferences;
 
 @end
@@ -21,6 +23,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    
+    [AdMobView GetAdMobView:self];
+    
     self.preferences = [NSUserDefaults standardUserDefaults];
     [self.preferences objectForKey:userMeasurementKey];
     NSLog(@"User default for measurement is %@", [self.preferences objectForKey:userMeasurementKey]);
@@ -28,14 +34,14 @@
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
         // color attributes for the segmented controls in iphone
-        NSDictionary *segmentedControlTextAttributes = @{NSForegroundColorAttributeName:[UIColor grayColor], NSFontAttributeName:[UIFont systemFontOfSize:14.0f]};
+        NSDictionary *segmentedControlTextAttributes = @{NSForegroundColorAttributeName:self.appDelegate.colorButtons, NSFontAttributeName:[UIFont systemFontOfSize:14.0f]};
         NSDictionary *segmentedControlTextAttributesPicked = @{NSForegroundColorAttributeName:[UIColor blackColor], NSFontAttributeName:[UIFont systemFontOfSize:14.0f]};
         [[UISegmentedControl appearance] setTitleTextAttributes:segmentedControlTextAttributes forState:UIControlStateNormal];
         [[UISegmentedControl appearance] setTitleTextAttributes:segmentedControlTextAttributes forState:UIControlStateHighlighted];
         [[UISegmentedControl appearance] setTitleTextAttributes:segmentedControlTextAttributesPicked forState:UIControlStateSelected];
     } else {
         // color and size attributes for the SC in iPad
-        NSDictionary *segmentedControlTextAttributesiPad = @{NSForegroundColorAttributeName:[UIColor grayColor], NSFontAttributeName:[UIFont systemFontOfSize:18.0f]};
+        NSDictionary *segmentedControlTextAttributesiPad = @{NSForegroundColorAttributeName:self.appDelegate.colorButtons, NSFontAttributeName:[UIFont systemFontOfSize:18.0f]};
         NSDictionary *segmentedControlTextAttributesiPadPicked = @{NSForegroundColorAttributeName:[UIColor blackColor], NSFontAttributeName:[UIFont systemFontOfSize:18.0f]};
         [[UISegmentedControl appearance] setTitleTextAttributes:segmentedControlTextAttributesiPad forState:UIControlStateNormal];
         [[UISegmentedControl appearance] setTitleTextAttributes:segmentedControlTextAttributesiPad forState:UIControlStateHighlighted];
@@ -47,6 +53,8 @@
     } else {
         [self.segmentMeasurements setSelectedSegmentIndex:1];
     }
+    
+    [self.btnSave setTitleColor:self.appDelegate.colorButtons forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning {

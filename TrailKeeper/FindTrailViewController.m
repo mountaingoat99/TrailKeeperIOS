@@ -19,6 +19,7 @@
 #import "SearchTrailViewController.h"
 #import "AlertControllerHelper.h"
 #import "MapViewController.h"
+#import "AdMobView.h"
 
 static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
 
@@ -50,6 +51,17 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
 
 #define DEFAULT_ROW_HEIGHT 78
 #define HEADER_HEIGHT 48
+#define IS_IPAD (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+#define IS_IPHONE (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+#define IS_RETINA ([[UIScreen mainScreen] scale] >= 2.0)
+#define SCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
+#define SCREEN_HEIGHT ([[UIScreen mainScreen] bounds].size.height)
+#define SCREEN_MAX_LENGTH (MAX(SCREEN_WIDTH, SCREEN_HEIGHT))
+#define SCREEN_MIN_LENGTH (MIN(SCREEN_WIDTH, SCREEN_HEIGHT))
+#define IS_IPHONE_4_OR_LESS (IS_IPHONE && SCREEN_MAX_LENGTH < 568.0)
+#define IS_IPHONE_5 (IS_IPHONE && SCREEN_MAX_LENGTH == 568.0)
+#define IS_IPHONE_6 (IS_IPHONE && SCREEN_MAX_LENGTH == 667.0)
+#define IS_IPHONE_6P (IS_IPHONE && SCREEN_MAX_LENGTH == 736.0)
 
 @implementation FindTrailViewController
 
@@ -58,38 +70,7 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
-//    if ([[preferences objectForKey:userMeasurementKey] isEqualToString:imperialDefault]) {
-//        self.measurementLabel = @" Miles";
-//    } else {
-//        self.measurementLabel = @" Kilometers";
-//    }
-//    
-//    // get users current location
-//    self.userLocation = [GeoLocationHelper GetUsersCurrentPostion];
-//    
-//    self.appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    //self.tblFindTrail.delegate = self;
-    //self.tblFindTrail.dataSource = self;
-    
-//    //default values on table
-//    self.tblFindTrail.sectionHeaderHeight = HEADER_HEIGHT;
-//    self.uniformRowHeight = DEFAULT_ROW_HEIGHT;
-//    self.openSectionIndex = NSNotFound;
-//    
-//    UINib *sectionHeaderNib = [UINib nibWithNibName:@"SectionHeaderView" bundle:nil];
-//    [self.tblFindTrail registerNib:sectionHeaderNib forHeaderFooterViewReuseIdentifier:SectionHeaderViewIdentifier];
-//    
-//    // add some view properties
-//    [self.tblFindTrail setSeparatorColor:[UIColor clearColor]];
-//    [self.tblFindTrail setBackgroundColor:[UIColor clearColor]];
-    
-    // make sure the back button text does not show
-//    self.navigationItem.backBarButtonItem =
-//    [[UIBarButtonItem alloc] initWithTitle:@""
-//                                     style:UIBarButtonItemStylePlain
-//                                    target:nil
-//                                    action:nil];
+    [AdMobView GetAdMobView:self];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -120,6 +101,13 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
     // add some view properties
     [self.tblFindTrail setSeparatorColor:[UIColor clearColor]];
     [self.tblFindTrail setBackgroundColor:[UIColor clearColor]];
+    // ads padding after the last card for ad space
+    if (IS_IPAD) {
+        self.tblFindTrail.contentInset = UIEdgeInsetsMake(0.0, 0.0, 60.0, 0.0);
+    }
+    else {
+        self.tblFindTrail.contentInset = UIEdgeInsetsMake(0.0, 0.0, 50.0, 0.0);
+    }
     
     [self.states removeAllObjects];
     self.sectionInfoArray = nil;

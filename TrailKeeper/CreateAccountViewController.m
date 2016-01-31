@@ -13,9 +13,11 @@
 #import "AuthorizedCommentors.h"
 #import "Installation.h"
 #import "MainViewController.h"
+#import "AppDelegate.h"
 
 @interface CreateAccountViewController ()
 
+@property (nonatomic, strong) AppDelegate *appDelegate;
 @property (nonatomic, strong) UIActivityIndicatorView *spinner;
 @property (nonatomic, strong) UIAlertController *alertSpinner;
 
@@ -28,6 +30,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     
     self.viewBackground.backgroundColor = [UIColor whiteColor];
     self.viewBackground.layer.masksToBounds = NO;
@@ -46,6 +50,8 @@
     self.txtPassword.leftViewMode = UITextFieldViewModeAlways;
     self.txtPassword.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"password_image"]];
     [self.txtEmail becomeFirstResponder];
+    
+    [self.btnSignUp setTitleColor:self.appDelegate.colorButtons forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning {

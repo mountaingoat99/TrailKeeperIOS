@@ -11,6 +11,7 @@
 #import "GeoLocationHelper.h"
 #import "TrailHomeViewController.h"
 #import "Trails.h"
+#import "AdMobView.h"
 
 @interface MapViewController ()
 
@@ -32,6 +33,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [AdMobView GetAdMobView:self];
+    
     float distance = 20.0;
     
     if (UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPhone) {

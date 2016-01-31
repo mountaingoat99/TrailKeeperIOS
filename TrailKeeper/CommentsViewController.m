@@ -13,6 +13,7 @@
 #import "CustomCommentCell.h"
 #import "Comments.h"
 #import "AlertControllerHelper.h"
+#import "AdMobView.h"
 
 static NSString *const filterTrail = @"filterTrail";
 static NSString *const filterUser = @"filterUser";
@@ -31,12 +32,27 @@ static NSString *const filterNone = @"filterAll";
 
 @end
 
+#define IS_IPAD (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+#define IS_IPHONE (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+#define IS_RETINA ([[UIScreen mainScreen] scale] >= 2.0)
+#define SCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
+#define SCREEN_HEIGHT ([[UIScreen mainScreen] bounds].size.height)
+#define SCREEN_MAX_LENGTH (MAX(SCREEN_WIDTH, SCREEN_HEIGHT))
+#define SCREEN_MIN_LENGTH (MIN(SCREEN_WIDTH, SCREEN_HEIGHT))
+#define IS_IPHONE_4_OR_LESS (IS_IPHONE && SCREEN_MAX_LENGTH < 568.0)
+#define IS_IPHONE_5 (IS_IPHONE && SCREEN_MAX_LENGTH == 568.0)
+#define IS_IPHONE_6 (IS_IPHONE && SCREEN_MAX_LENGTH == 667.0)
+#define IS_IPHONE_6P (IS_IPHONE && SCREEN_MAX_LENGTH == 736.0)
+
 @implementation CommentsViewController
 
 #pragma mark loadEvents
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [AdMobView GetAdMobView:self];
+    
     self.appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     
     if (self.sentTrailObjectId != nil) {
@@ -63,14 +79,14 @@ static NSString *const filterNone = @"filterAll";
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
         // color attributes for the segmented controls in iphone
-        NSDictionary *segmentedControlTextAttributes = @{NSForegroundColorAttributeName:[UIColor grayColor], NSFontAttributeName:[UIFont systemFontOfSize:14.0f]};
+        NSDictionary *segmentedControlTextAttributes = @{NSForegroundColorAttributeName:self.appDelegate.colorButtons, NSFontAttributeName:[UIFont systemFontOfSize:14.0f]};
         NSDictionary *segmentedControlTextAttributesPicked = @{NSForegroundColorAttributeName:[UIColor blackColor], NSFontAttributeName:[UIFont systemFontOfSize:14.0f]};
         [[UISegmentedControl appearance] setTitleTextAttributes:segmentedControlTextAttributes forState:UIControlStateNormal];
         [[UISegmentedControl appearance] setTitleTextAttributes:segmentedControlTextAttributes forState:UIControlStateHighlighted];
         [[UISegmentedControl appearance] setTitleTextAttributes:segmentedControlTextAttributesPicked forState:UIControlStateSelected];
     } else {
         // color and size attributes for the SC in iPad
-        NSDictionary *segmentedControlTextAttributesiPad = @{NSForegroundColorAttributeName:[UIColor grayColor], NSFontAttributeName:[UIFont systemFontOfSize:18.0f]};
+        NSDictionary *segmentedControlTextAttributesiPad = @{NSForegroundColorAttributeName:self.appDelegate.colorButtons, NSFontAttributeName:[UIFont systemFontOfSize:18.0f]};
         NSDictionary *segmentedControlTextAttributesiPadPicked = @{NSForegroundColorAttributeName:[UIColor blackColor], NSFontAttributeName:[UIFont systemFontOfSize:18.0f]};
         [[UISegmentedControl appearance] setTitleTextAttributes:segmentedControlTextAttributesiPad forState:UIControlStateNormal];
         [[UISegmentedControl appearance] setTitleTextAttributes:segmentedControlTextAttributesiPad forState:UIControlStateHighlighted];
@@ -82,6 +98,13 @@ static NSString *const filterNone = @"filterAll";
     // add some view properties
     [self.tblFindComment setSeparatorColor:[UIColor clearColor]];
     [self.tblFindComment setBackgroundColor:[UIColor clearColor]];
+    // ads padding after the last card for ad space
+    if (IS_IPAD) {
+        self.tblFindComment.contentInset = UIEdgeInsetsMake(0.0, 0.0, 60.0, 0.0);
+    }
+    else {
+        self.tblFindComment.contentInset = UIEdgeInsetsMake(0.0, 0.0, 50.0, 0.0);
+    }
     
     self.tblFindComment.estimatedRowHeight = 68;
     self.tblFindComment.rowHeight = UITableViewAutomaticDimension;

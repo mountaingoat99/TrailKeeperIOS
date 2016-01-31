@@ -23,6 +23,7 @@
 @property (nonatomic, assign) WYPopoverController *controller;
 @property (weak, nonatomic) IBOutlet UIImageView *viewBackground;
 @property (unsafe_unretained, nonatomic) IBOutlet HTAutocompleteTextField *txtAutoCompleteTrailName;
+@property (weak, nonatomic) IBOutlet UIButton *btnGo;
 
 - (IBAction)btn_SearchClick:(id)sender;
 

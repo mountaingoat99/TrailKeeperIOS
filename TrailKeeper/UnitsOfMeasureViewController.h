@@ -11,6 +11,7 @@
 @interface UnitsOfMeasureViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentMeasurements;
+@property (weak, nonatomic) IBOutlet UIButton *btnSave;
 
 - (IBAction)btn_indexChanged:(id)sender;
 - (IBAction)btn_saveClick:(id)sender;

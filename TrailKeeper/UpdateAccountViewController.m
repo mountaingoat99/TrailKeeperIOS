@@ -10,9 +10,11 @@
 #import "User.h"
 #import "ConnectionDetector.h"
 #import "AlertControllerHelper.h"
+#import "AppDelegate.h"
 
 @interface UpdateAccountViewController ()
 
+@property (nonatomic, strong) AppDelegate *appDelegate;
 @property (nonatomic, strong) UIActivityIndicatorView *spinner;
 @property (nonatomic, strong) UIAlertController *alertSpinner;
 
@@ -30,11 +32,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    
     self.viewBackground.backgroundColor = [UIColor whiteColor];
     self.viewBackground.layer.masksToBounds = NO;
     self.viewBackground.layer.cornerRadius = 3.0;
     self.viewBackground.layer.shadowOffset = CGSizeMake(1, 0);
     self.viewBackground.layer.shadowOpacity = 0.5;
+    
+    [self.btnUpdateEmail setTitleColor:self.appDelegate.colorButtons forState:UIControlStateNormal];
+    [self.btnVerify setTitleColor:self.appDelegate.colorButtons forState:UIControlStateNormal];
+    [self.btnUserName setTitleColor:self.appDelegate.colorButtons forState:UIControlStateNormal];
+    [self.btnPassword setTitleColor:self.appDelegate.colorButtons forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning {

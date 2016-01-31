@@ -35,6 +35,18 @@
 
 @end
 
+#define IS_IPAD (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+#define IS_IPHONE (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+#define IS_RETINA ([[UIScreen mainScreen] scale] >= 2.0)
+#define SCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
+#define SCREEN_HEIGHT ([[UIScreen mainScreen] bounds].size.height)
+#define SCREEN_MAX_LENGTH (MAX(SCREEN_WIDTH, SCREEN_HEIGHT))
+#define SCREEN_MIN_LENGTH (MIN(SCREEN_WIDTH, SCREEN_HEIGHT))
+#define IS_IPHONE_4_OR_LESS (IS_IPHONE && SCREEN_MAX_LENGTH < 568.0)
+#define IS_IPHONE_5 (IS_IPHONE && SCREEN_MAX_LENGTH == 568.0)
+#define IS_IPHONE_6 (IS_IPHONE && SCREEN_MAX_LENGTH == 667.0)
+#define IS_IPHONE_6P (IS_IPHONE && SCREEN_MAX_LENGTH == 736.0)
+
 @implementation MainViewController
 
 @synthesize trailList;
@@ -95,7 +107,16 @@
     // add some view properties
     [self.tbltrailCards setSeparatorColor:[UIColor clearColor]];
     [self.tbltrailCards setBackgroundColor:[UIColor clearColor]];
-        
+    // ads padding after the last card for ad space
+    if (IS_IPAD) {
+        self.tbltrailCards.contentInset = UIEdgeInsetsMake(0.0, 0.0, 60.0, 0.0);
+    }
+    else {
+        self.tbltrailCards.contentInset = UIEdgeInsetsMake(0.0, 0.0, 50.0, 0.0);
+    }
+    
+    //self.btnHome.tintColor = [UIColor colorWithRed:29.0/255.0 green:173.0/255.0 blue:234.0/255.0 alpha:1.0];
+    
     // make sure the back button text does not show
     self.navigationItem.backBarButtonItem =
     [[UIBarButtonItem alloc] initWithTitle:@""
@@ -139,15 +160,14 @@
 
 #pragma mark - tableview
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 130.0;
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 110.0;
 }
 
 -(void)tableView:(UITableView*)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     
     cell.contentView.backgroundColor = [UIColor clearColor];
-    UIView *whiteRoundedCornerView = [[UIView alloc] initWithFrame:CGRectMake(5,10,self.view.window.bounds.size.width - 10,110)];
+    UIView *whiteRoundedCornerView = [[UIView alloc] initWithFrame:CGRectMake(5,10,self.view.window.bounds.size.width - 10,100)];
     whiteRoundedCornerView.backgroundColor = [UIColor whiteColor];
     whiteRoundedCornerView.layer.masksToBounds = NO;
     whiteRoundedCornerView.layer.cornerRadius = 3.0;
@@ -201,6 +221,8 @@
     NSString *milesFromCurrent = [NSString stringWithFormat:@"%.2f", [GeoLocationHelper GetDistanceFromCurrentLocation:self.userLocation traillocation:trailLocation]];
     milesFromCurrent = [milesFromCurrent stringByAppendingString:self.measurementLabel];
     cell.lblTrailMileageFrom.text =  milesFromCurrent;
+    [cell.btnTrailHome  setTitleColor:self.appDelegate.colorButtons forState:UIControlStateNormal];
+    [cell.btnTrailMap setTitleColor:self.appDelegate.colorButtons forState:UIControlStateNormal];
     return cell;
 }
 

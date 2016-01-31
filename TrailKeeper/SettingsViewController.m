@@ -13,6 +13,7 @@
 #import "AlertControllerHelper.h"
 #import "AuthorizedCommentors.h"
 #import "ConnectionDetector.h"
+#import "AdMobView.h"
 
 @interface SettingsViewController ()
 
@@ -36,6 +37,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [AdMobView GetAdMobView:self];
+    
     self.appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     
     self.tblSettings.delegate = self;

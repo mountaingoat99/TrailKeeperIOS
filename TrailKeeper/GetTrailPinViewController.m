@@ -69,6 +69,8 @@
     if (IS_IPHONE_6 || IS_IPHONE_6P) {
         [self.txtTrailname becomeFirstResponder];
     }
+    
+    [self.btnSignUp setTitleColor:self.appDelegate.colorButtons forState:UIControlStateNormal];
 }
 
 -(void)viewDidDisappear:(BOOL)animated {

@@ -12,9 +12,11 @@
 #import "User.h"
 #import "MainViewController.h"
 #import "Installation.h"
+#import "AppDelegate.h"
 
 @interface SignInViewController ()
 
+@property (nonatomic, strong) AppDelegate *appDelegate;
 @property (nonatomic, strong) UIActivityIndicatorView *spinner;
 @property (nonatomic, strong) UIAlertController *alertSpinner;
 
@@ -27,6 +29,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     
     self.viewBackground.backgroundColor = [UIColor whiteColor];
     self.viewBackground.layer.masksToBounds = NO;
@@ -42,6 +46,8 @@
     self.txtPassword.leftViewMode = UITextFieldViewModeAlways;
     self.txtPassword.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"password_image"]];
     [self.txtUserName becomeFirstResponder];
+    
+    [self.btnSignIn setTitleColor:self.appDelegate.colorButtons forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning {

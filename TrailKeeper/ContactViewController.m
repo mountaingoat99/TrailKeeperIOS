@@ -39,6 +39,8 @@
     self.txtName.text = user.username;
     
     [self.txtFeedback becomeFirstResponder];
+    
+    [self.btnSend setTitleColor:self.appDelegate.colorButtons forState:UIControlStateNormal];
 }
 
 -(void)viewDidDisappear:(BOOL)animated {

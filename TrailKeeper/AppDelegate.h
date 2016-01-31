@@ -35,6 +35,7 @@ extern NSString *const metricDefault;
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) CLLocation *currentLocation;
 @property (nonatomic, strong) NSString *notificationTrailId;
+@property (nonatomic, strong) UIColor *colorButtons;
 
 @end
 

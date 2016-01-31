@@ -12,6 +12,7 @@
 #import "Installation.h"
 #import "TrailHomeViewController.h"
 #import "AlertControllerHelper.h"
+#import "AdMobView.h"
 
 @interface TrailSubscriptionsViewController ()
 
@@ -25,10 +26,25 @@
 
 @end
 
+#define IS_IPAD (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+#define IS_IPHONE (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+#define IS_RETINA ([[UIScreen mainScreen] scale] >= 2.0)
+#define SCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
+#define SCREEN_HEIGHT ([[UIScreen mainScreen] bounds].size.height)
+#define SCREEN_MAX_LENGTH (MAX(SCREEN_WIDTH, SCREEN_HEIGHT))
+#define SCREEN_MIN_LENGTH (MIN(SCREEN_WIDTH, SCREEN_HEIGHT))
+#define IS_IPHONE_4_OR_LESS (IS_IPHONE && SCREEN_MAX_LENGTH < 568.0)
+#define IS_IPHONE_5 (IS_IPHONE && SCREEN_MAX_LENGTH == 568.0)
+#define IS_IPHONE_6 (IS_IPHONE && SCREEN_MAX_LENGTH == 667.0)
+#define IS_IPHONE_6P (IS_IPHONE && SCREEN_MAX_LENGTH == 736.0)
+
 @implementation TrailSubscriptionsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [AdMobView GetAdMobView:self];
+    
     self.appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     
     self.tblNotifications.delegate = self;
@@ -39,6 +55,13 @@
     // add some view properties
     [self.tblNotifications setSeparatorColor:[UIColor clearColor]];
     [self.tblNotifications setBackgroundColor:[UIColor clearColor]];
+    // ads padding after the last card for ad space
+    if (IS_IPAD) {
+        self.tblNotifications.contentInset = UIEdgeInsetsMake(0.0, 0.0, 60.0, 0.0);
+    }
+    else {
+        self.tblNotifications.contentInset = UIEdgeInsetsMake(0.0, 0.0, 50.0, 0.0);
+    }
     
     self.tblNotifications.estimatedRowHeight = 80;
     self.tblNotifications.rowHeight = UITableViewAutomaticDimension;
@@ -93,6 +116,8 @@
     NSLog(@"TrailName %@ and ObjectId %@", cell.channelName, cell.sentTrailObjectId);
     
     cell.lblTrailName.text = [NSString stringWithFormat:@"%@", [self.notificationList objectAtIndex:indexPath.row]];
+    [cell.btnHome setTitleColor:self.appDelegate.colorButtons forState:UIControlStateNormal];
+    [cell.btnUnsubscribe setTitleColor:self.appDelegate.colorButtons forState:UIControlStateNormal];
     return cell;
 }
 
