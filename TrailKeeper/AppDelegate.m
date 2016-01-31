@@ -132,7 +132,8 @@ NSString *const metricDefault = @"metric";
     [[UIView appearanceWhenContainedInInstancesOfClasses:@[[UIAlertController class]]] setBackgroundColor:[UIColor colorWithRed:230/255.0 green:230/255.0 blue:230/255.0 alpha:1]];
     
     // button colors
-    self.colorButtons = [UIColor colorWithRed:0.0/255.0 green:150.0/255.0 blue:136.0/255.0 alpha:1.0];
+    //self.colorButtons = [UIColor colorWithRed:0.0/255.0 green:150.0/255.0 blue:136.0/255.0 alpha:1.0];
+    self.colorButtons = [UIColor colorWithRed:98.0/255.0 green:126.0/255.0 blue:140.0/255.0 alpha:1.0];
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
