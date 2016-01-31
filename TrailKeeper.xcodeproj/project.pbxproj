@@ -655,8 +655,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "TrailKeeper App Development Profile";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "TrailKeeper App Development Profile";
+				CODE_SIGN_IDENTITY = "TrailKeeper Production Provisioning Profile";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "TrailKeeper Production Provisioning Profile";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_BITCODE = NO;
@@ -701,8 +701,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "TrailKeeper App Development Profile";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "TrailKeeper App Development Profile";
+				CODE_SIGN_IDENTITY = "TrailKeeper Production Provisioning Profile";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "TrailKeeper Production Provisioning Profile";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_BITCODE = NO;

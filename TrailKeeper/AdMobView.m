@@ -66,17 +66,15 @@
     // logging
     NSLog(@"Google Mobile Ads SDK version: %@", [GADRequest sdkVersion]);
     // test ad id
-    adView.adUnitID = @"ca-app-pub-3940256099942544/2934735716";
+    //adView.adUnitID = @"ca-app-pub-3940256099942544/2934735716";
     // production ad id
-    //self.bannerView.adUnitID = @"ca-app-pub-9150360740164586/1259440557";
+    adView.adUnitID = @"ca-app-pub-9150360740164586/1259440557";
     adView.rootViewController = uiView;
     // set the delegate
     adView.delegate=(id<GADBannerViewDelegate>)self;
     // make the ad request
     GADRequest *request = [GADRequest request];
     [adView loadRequest:request];
-    
-    //return adView;
 }
 
 /*
