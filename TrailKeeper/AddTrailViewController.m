@@ -68,7 +68,7 @@
     
     self.txtLength.autocapitalizationType = UITextAutocapitalizationTypeWords;
     self.txtLength.layer.sublayerTransform = CATransform3DMakeTranslation(5, 0, 0);
-    self.txtLength.keyboardType = UIKeyboardTypeNumberPad;
+    self.txtLength.keyboardType = UIKeyboardTypeDecimalPad;
     self.txtLength.returnKeyType = UIReturnKeyDone;
     self.txtLength.delegate = self;
     
