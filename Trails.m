@@ -411,7 +411,7 @@
           [Converters ConvertBoolToNSNumber:newTrail.privateTrail], [Converters ConvertBoolToNSNumber:newTrail.skillEasy], [Converters ConvertBoolToNSNumber:newTrail.skillMedium], [Converters ConvertBoolToNSNumber:newTrail.skillHard]);
     trail[@"trailName"] = newTrail.trailName;
     trail[@"status"] = newTrail.status;
-    trail[@"mapLink"] = newTrail.state;
+    //trail[@"mapLink"] = newTrail.state;
     trail[@"city"] = newTrail.city;
     trail[@"state"] = [StateListHelper GetStateAbbreviation:newTrail.state];
     trail[@"country"] = newTrail.country;
