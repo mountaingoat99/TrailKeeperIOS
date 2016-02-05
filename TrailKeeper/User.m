@@ -10,6 +10,7 @@
 #import <Parse/PFObject+Subclass.h>
 #import "AuthorizedCommentors.h"
 #import "Installation.h"
+#import "Converters.h"
 
 @interface User ()
 
@@ -60,8 +61,10 @@
     return [PFAnonymousUtils isLinkedWithUser:[PFUser currentUser]];
 }
 
-+(BOOL)isEmailVerified:(User*)user {
-    return user.emailVerified;
++(BOOL)isEmailVerified {
+    PFUser *currentUser = [PFUser currentUser];
+    NSLog(@"Is User verified: %@", [[PFUser currentUser] objectForKey:@"emailVerified"]);
+    return [Converters getBoolValueFromNSNumber:[currentUser objectForKey:@"emailVerified"]];
 }
 
 +(BOOL)isValidUserName:(NSString*)userName {

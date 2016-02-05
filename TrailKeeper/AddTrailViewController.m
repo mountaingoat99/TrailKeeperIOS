@@ -93,7 +93,7 @@
     self.txtCountry.enabled = NO;
     
     NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
-    if ([[preferences objectForKey:@"userMeasurements"] isEqualToString:@"imperial"]) {
+    if ([[preferences objectForKey:userMeasurementKey] isEqualToString:imperialDefault]) {
         self.txtLength.placeholder  = @"Length - Miles";
     } else {
         self.txtLength.placeholder  = @"Length - Kilometers";
@@ -311,7 +311,7 @@
         f.numberStyle = NSNumberFormatterDecimalStyle;
         NSNumber *myNumber = [f numberFromString:self.txtLength.text];
         NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
-        if ([[preferences objectForKey:@"userMeasurements"] isEqualToString:@"imperial"]) {
+        if ([[preferences objectForKey:userMeasurementKey] isEqualToString:imperialDefault]) {
             //convert the length here is preferences are miles;
             double miles = [myNumber doubleValue];
             miles = miles * 1.6;

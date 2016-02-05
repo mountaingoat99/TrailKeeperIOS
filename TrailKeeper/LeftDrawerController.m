@@ -16,12 +16,12 @@
 @interface LeftDrawerController ()
 
 @property (nonatomic, strong) NSArray *settingList;
-@property (nonatomic) BOOL isAnonUser;
+@property (nonatomic) BOOL isEmailVerified;
 @property (nonatomic) BOOL isParseUser;
 
 -(void)loadData;
 -(void)checkForParseUser;
--(void)checkForAnonUser;
+-(void)checkForEmailVerified;
 
 @end
 
@@ -37,11 +37,12 @@
     
     [self loadData];
     [self checkForParseUser];
-    [self checkForAnonUser];
+    [self checkForEmailVerified];
 }
 
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    NSLog(@"LeftDrawer ViewDidAppear");
     
     PFUser *user = [PFUser currentUser];
     if (user != nil) {
@@ -49,6 +50,9 @@
     } else {
         self.lblUserName.text = @"No Account";
     }
+    
+    [self checkForParseUser];
+    [self checkForEmailVerified];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -112,7 +116,7 @@
         }
         case 4: {
             if (self.isParseUser) {
-                if (!self.isAnonUser) {
+                if (self.isEmailVerified) {
                     NSLog(@"Add Trail");
                     id mainView = [mainStoryBoard instantiateViewControllerWithIdentifier:@"AddTrailViewController"];
                     UINavigationController *centerNav = [[UINavigationController alloc] initWithRootViewController:mainView];
@@ -152,7 +156,7 @@
         }
         case 7: {
             if (self.isParseUser) {
-                if (!self.isAnonUser) {
+                if (self.isEmailVerified) {
                     NSLog(@"Get Trail Pin");
                     id mainView = [mainStoryBoard instantiateViewControllerWithIdentifier:@"GetTrailPinViewController"];
                     UINavigationController *centerNav = [[UINavigationController alloc] initWithRootViewController:mainView];
@@ -221,9 +225,9 @@
     NSLog(@"IsParseUser is %d ", self.isParseUser);
 }
 
--(void)checkForAnonUser {
-    self.isAnonUser = [User isAnonUser];
-    NSLog(@"IsAnonUser is %d ", self.isAnonUser);
+-(void)checkForEmailVerified {
+    self.isEmailVerified = [User isEmailVerified];
+    NSLog(@"IsAnonUser is %d ", self.isEmailVerified);
 }
 
 @end

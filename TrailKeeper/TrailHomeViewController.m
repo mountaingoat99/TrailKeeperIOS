@@ -24,7 +24,7 @@ static NSString * const CTCellIdentifier = @"idCellRecord";
 @property (nonatomic, strong) AppDelegate *appDelegate;
 @property (nonatomic, strong) NSMutableArray *commentList;
 @property (nonatomic, strong) NSString *trailName;
-@property (nonatomic) BOOL isAnonUser;
+@property (nonatomic) BOOL isEmailVerified;
 @property (nonatomic) BOOL isParseUser;
 @property (nonatomic, strong) NSNumber *trailPin;
 @property (nonatomic) BOOL pinIsValid;
@@ -34,7 +34,7 @@ static NSString * const CTCellIdentifier = @"idCellRecord";
 @property (nonatomic, strong) NSString *mapURL;
 
 -(void)checkForParseUser;
--(void)checkForAnonUser;
+-(void)checkForEmailVerified;
 -(void)loadTableData:(NSArray*)comments;
 -(void)loadTrailData:(Trails*)trail;
 -(NSString*)formateDate:(NSString*)date;
@@ -61,7 +61,7 @@ static NSString * const CTCellIdentifier = @"idCellRecord";
     [AdMobView GetAdMobView:self];
     
     [self checkForParseUser];
-    [self checkForAnonUser];
+    [self checkForEmailVerified];
 
     self.appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     
@@ -170,7 +170,7 @@ static NSString * const CTCellIdentifier = @"idCellRecord";
     
     // lets make sure they are a user and they are verified
     if (self.isParseUser) {
-        if (!self.isAnonUser) {
+        if (self.isEmailVerified) {
             
             NSString *name = [NSString stringWithFormat:@"Receive Notifications for %@?", self.trailName];
             
@@ -223,7 +223,7 @@ static NSString * const CTCellIdentifier = @"idCellRecord";
     
     // lets make sure they are a user and they are verified
     if (self.isParseUser) {
-        if (!self.isAnonUser) {
+        if (self.isEmailVerified) {
     
             NSString *name = [NSString stringWithFormat:@"Enter Trail Pin to set status.\n\nRequest a pin in the menu if you do not have one yet."];
             
@@ -304,7 +304,7 @@ static NSString * const CTCellIdentifier = @"idCellRecord";
     
     // lets make sure they are a user and they are verified
     if (self.isParseUser) {
-        if (!self.isAnonUser) {
+        if (self.isEmailVerified) {
     
             NSString *name = [NSString stringWithFormat:@"Add Comment for %@?", self.trailName];
             
@@ -468,9 +468,9 @@ static NSString * const CTCellIdentifier = @"idCellRecord";
     NSLog(@"IsParseUser is %d ", self.isParseUser);
 }
 
--(void)checkForAnonUser {
-    self.isAnonUser = [User isAnonUser];
-    NSLog(@"IsAnonUser is %d ", self.isAnonUser);
+-(void)checkForEmailVerified {
+    self.isEmailVerified = [User isEmailVerified];
+    NSLog(@"IsEmailVerified is %d ", self.isEmailVerified);
 }
 
 -(void)refresh {

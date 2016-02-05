@@ -256,7 +256,7 @@
     self.trailList = [trails GetClosestTrailsForHomeScreen];
     while (self.trailList.count == 0) {
         count++;
-        if (count > 50) {
+        if (count > 500) {
             [AlertControllerHelper ShowAlert:@"No Connections!" message:@"It seems like the internet is broken. \nClose the app and try later when you have a stable connection." view:self];
             return;
         }
@@ -278,6 +278,7 @@
     [GetAllObjectsFromParseHelper RefreshTrailStatus];
     [GetAllObjectsFromParseHelper RefreshAuthorizedCommentors];
     [GetAllObjectsFromParseHelper RefreshComments];
+    [[PFUser currentUser] fetch];
     
     [self loadData];
     
@@ -332,7 +333,7 @@
 -(void)checkForNewUser {
     if(self.newUser) {
         PFUser *user = [PFUser currentUser];
-        NSString *message = [NSString stringWithFormat:@"Hey %@! \nThanks for signing up! You have one more step. Please check your email for a verification link.", user.username];
+        NSString *message = [NSString stringWithFormat:@"Hey %@! \nThanks for signing up! You have one more step. Please check your email for a verification link. Once you verify your email, come back and pull down to refresh all your data. If that doesn't work, but it usually does, fully close the app and open it again to refresh everything.", user.username];
         [AlertControllerHelper ShowAlert:@"Welcome" message:message view:self];
     }
 }

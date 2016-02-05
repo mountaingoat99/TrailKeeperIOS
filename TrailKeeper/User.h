@@ -15,7 +15,7 @@
 //+ (NSString *)parseClassName;
 +(BOOL)isParseUser;
 +(BOOL)isAnonUser;
-+(BOOL)isEmailVerified:(User*)user;
++(BOOL)isEmailVerified;
 +(BOOL)isValidUserName:(NSString*)userName;
 +(BOOL)isValidEmail:(NSString*)userEmail;
 +(BOOL)isValidPassword:(NSString*)userPassword;
