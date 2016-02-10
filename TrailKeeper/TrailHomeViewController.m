@@ -212,7 +212,7 @@ static NSString * const CTCellIdentifier = @"idCellRecord";
             [self presentViewController:alert animated:YES completion:nil];
             
         } else {
-            [AlertControllerHelper ShowAlert:@"Verify Email" message:@"Please verify your email first!" view:self];
+            [AlertControllerHelper ShowAlert:@"Verify Email" message:@"Please verify your email first or go to the Home Screen and pull down to refresh if you did verify it." view:self];
         }
     } else {
         [AlertControllerHelper ShowAlert:@"No Account" message:@"Please sign up for an account in Settings and verify your email first!" view:self];
@@ -289,7 +289,7 @@ static NSString * const CTCellIdentifier = @"idCellRecord";
             [self presentViewController:alert animated:YES completion:nil];
             
         } else {
-            [AlertControllerHelper ShowAlert:@"Verify Email" message:@"Please verify your email first!" view:self];
+            [AlertControllerHelper ShowAlert:@"Verify Email" message:@"Please verify your email first or go to the Home Screen and pull down to refresh if you did verify it." view:self];
         }
     } else {
         [AlertControllerHelper ShowAlert:@"No Account" message:@"Please sign up for an account in Settings and verify your email first!" view:self];
@@ -344,7 +344,7 @@ static NSString * const CTCellIdentifier = @"idCellRecord";
             [self presentViewController:alert animated:YES completion:nil];
             
         } else {
-            [AlertControllerHelper ShowAlert:@"Verify Email" message:@"Please verify your email first!" view:self];
+            [AlertControllerHelper ShowAlert:@"Verify Email" message:@"Please verify your email first or go to the Home Screen and pull down to refresh if you did verify it." view:self];
         }
     } else {
         [AlertControllerHelper ShowAlert:@"No Account" message:@"Please sign up for an account in Settings and verify your email first!" view:self];
