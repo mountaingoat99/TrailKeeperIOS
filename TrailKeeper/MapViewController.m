@@ -90,12 +90,21 @@
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
     if ([annotation isKindOfClass:[MKUserLocation class]])
         return nil;
+    Trails *trail = [[Trails alloc] init];
+    NSNumber *status = [trail TrailStatusFromTrailName:annotation.title];
+
+    MKPinAnnotationView *result = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:Nil];
+    result.canShowCallout = YES;
+    if ([status isEqualToNumber:@1]) {        // closed
+        result.pinTintColor = [UIColor redColor];
+    } else if ([status isEqualToNumber:@2]) { // Open
+        result.pinTintColor = [UIColor greenColor];
+    } else {                                    // unknown
+        result.pinTintColor = [UIColor yellowColor];
+    }
+    result.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
     
-    MKAnnotationView *annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"loc"];
-    annotationView.canShowCallout = YES;
-    annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-    
-    return annotationView;
+    return result;
 }
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
@@ -141,12 +150,14 @@
     // add new annotations to the map
     for (Trails *t in locations) {
         MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
+        
         CLLocationCoordinate2D coordinate;
         coordinate.latitude = t.geoLocation.latitude;
         coordinate.longitude = t.geoLocation.longitude;
         double distance = [GeoLocationHelper GetDistanceFromCurrentLocation:self.userLocation traillocation:t.geoLocation];
         point.coordinate = coordinate;
         point.title = t.trailName;
+        
         NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
         if ([[preferences objectForKey:userMeasurementKey] isEqualToString:imperialDefault]) {
             point.subtitle = [NSString stringWithFormat:@"%.2f Miles Away", distance];

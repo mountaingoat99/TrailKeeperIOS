@@ -178,6 +178,18 @@
     return objects;
 }
 
+-(NSNumber*)TrailStatusFromTrailName:(NSString*)trailName {
+    NSNumber* trailStatus = [[NSNumber alloc] init];
+    PFQuery *query = [PFQuery queryWithClassName:@"Trails"];
+    [query fromLocalDatastore];
+    [query whereKey:@"trailName" equalTo:trailName];
+    NSArray* _Nullable objects = [query findObjects];
+    for (PFObject *object in objects) {
+        trailStatus = [object objectForKey:@"status"];
+    }
+    return trailStatus;
+}
+
 -(NSMutableArray*)GetAllTrailLocationsByDistance; {
     NSMutableArray *trailLocations = [[NSMutableArray alloc] init];
     // User's location
