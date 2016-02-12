@@ -19,7 +19,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1.5</string>
+	<string>1.6</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>TrailKeeper uses your location to help you find the closest trails to your current location.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
