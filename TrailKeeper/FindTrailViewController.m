@@ -44,6 +44,7 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
 -(void)openDialog:(NSString*)trailName;
 -(void)openAppleMaps;
 -(void)openTrailHome;
+-(void)subscribeToTrail:(NSString*)trailName;
 
 @end
 
@@ -383,13 +384,23 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
                                 style:UIAlertActionStyleDefault
                                 handler:^(UIAlertAction *action)
                                 {
-                                    NSLog(@"Subscribe No Action");
+                                    NSLog(@"Open Map Action");
                                     [self openAppleMaps];
                                 }];
+    
+    UIAlertAction *subscribeAction = [UIAlertAction
+                                      actionWithTitle:@"Subscribe"
+                                      style:UIAlertActionStyleDefault
+                                      handler:^(UIAlertAction *action)
+                                      {
+                                          NSLog(@"Subscribe to trails");
+                                          [self subscribeToTrail:trailName];
+                                      }];
     
     [alert addAction:cancelAction];
     [alert addAction:trailScreenAction];
     [alert addAction:mapAction];
+    [alert addAction:subscribeAction];
     
     [self presentViewController:alert animated:YES completion:nil];
 }
@@ -400,6 +411,12 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
 
 -(void)openTrailHome {
     [self performSegueWithIdentifier:@"segueFindTrailToTrailHome" sender:self];
+}
+
+-(void)subscribeToTrail:(NSString*)trailName {
+    Installation *install = [[Installation alloc] init];
+    [install SubscribeToChannel:trailName Choice:YES];
+    [AlertControllerHelper ShowAlert:[NSString stringWithFormat:@"%@", trailName]  message:[NSString stringWithFormat:@"You will now receive notifications for %@", trailName] view:self];
 }
 
 #pragma delegate methods
