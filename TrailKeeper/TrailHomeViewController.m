@@ -169,8 +169,8 @@ static NSString * const CTCellIdentifier = @"idCellRecord";
 - (IBAction)btn_subscribeClick:(id)sender {
     
     // lets make sure they are a user and they are verified
-    if (self.isParseUser) {
-        if (self.isEmailVerified) {
+    //if (self.isParseUser) {
+        //if (self.isEmailVerified) {
             
             NSString *name = [NSString stringWithFormat:@"Receive Notifications for %@?", self.trailName];
             
@@ -211,12 +211,12 @@ static NSString * const CTCellIdentifier = @"idCellRecord";
             
             [self presentViewController:alert animated:YES completion:nil];
             
-        } else {
-            [AlertControllerHelper ShowAlert:@"Verify Email" message:@"Please verify your email first or go to the Home Screen and pull down to refresh if you did verify it." view:self];
-        }
-    } else {
-        [AlertControllerHelper ShowAlert:@"No Account" message:@"Please sign up for an account in Settings and verify your email first!" view:self];
-    }
+        //} else {
+            //[AlertControllerHelper ShowAlert:@"Verify Email" message:@"Please verify your email first or go to the Home Screen and pull down to refresh if you did verify it." view:self];
+        //}
+    //} else {
+        //[AlertControllerHelper ShowAlert:@"No Account" message:@"Please sign up for an account in Settings and verify your email first!" view:self];
+    //}
 }
 
 - (IBAction)btn_statusClick:(id)sender {
