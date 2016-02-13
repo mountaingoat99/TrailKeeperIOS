@@ -25,6 +25,7 @@ extern NSString *const HasOfflineTrailStatusKey;
 extern NSString *const HasOfflineCommentKey;
 extern NSString *const HasOfflineTrailStatusUpdate;
 extern NSString *const firstTimeLoadKey;
+extern NSString *const secondHomeViewLoad;
 extern NSString *const userMeasurementKey;
 extern NSString *const imperialDefault;
 extern NSString *const metricDefault;

@@ -23,6 +23,7 @@ NSString *const HasOfflineTrailStatusKey = @"HasOfflineTrailStatusKey";
 NSString *const HasOfflineCommentKey = @"HasOfflineCommentKey";
 NSString *const HasOfflineTrailStatusUpdate = @"HasOfflineTrailStatusUpdate";
 NSString *const firstTimeLoadKey = @"firstTimeLoadKey";
+NSString *const secondHomeViewLoad = @"secondHomeViewLoad";
 NSString *const userMeasurementKey = @"userMeasurementKey";
 NSString *const imperialDefault = @"imperial";
 NSString *const metricDefault = @"metric";

@@ -32,6 +32,7 @@
 -(void)firstTimeLoad;
 -(void)checkForNewUser;
 -(void)refresh:(UIRefreshControl*)refreshControl;
+-(void)checkForSecondView;
 
 @end
 
@@ -82,6 +83,7 @@
     
     // see if we need to load all the data and show the welcome message
     [self firstTimeLoad];
+    [self checkForSecondView];
     
     // set the measurement preferences
     NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
@@ -327,6 +329,36 @@
         [alert addAction:yesAction];
         
         [self presentViewController:alert animated:YES completion:nil];
+    }
+}
+
+-(void)checkForSecondView {
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSInteger viewCount = [prefs integerForKey:secondHomeViewLoad];
+    if (viewCount == 2) {
+        NSString *name = [NSString stringWithFormat:@"To refresh the app with current trail info or account updates just pull down to refresh on this page anytime."];
+        
+        UIAlertController *alert = [UIAlertController
+                                    alertControllerWithTitle:name
+                                    message:nil
+                                    preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *cancelAction = [UIAlertAction
+                                       actionWithTitle:@"Dismiss"
+                                       style:UIAlertActionStyleCancel
+                                       handler:^(UIAlertAction *action)
+                                       {
+                                           NSLog(@"Dismiss Action");
+                                       }];
+        
+        [alert addAction:cancelAction];
+        
+        [self presentViewController:alert animated:YES completion:nil];
+        viewCount++;
+        [prefs setInteger:viewCount forKey:secondHomeViewLoad];
+    } else if (viewCount < 2) {
+        viewCount++;
+        [prefs setInteger:viewCount forKey:secondHomeViewLoad];
     }
 }
 
